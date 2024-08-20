@@ -1,0 +1,428 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{2D5AB4FD-E813-4460-82C9-1A6606C4B439}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DoctorERP_v2_00</RootNamespace>
+    <AssemblyName>DoctorERP_v2_00</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Telerik.WinControls, Version=2023.1.117.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
+      <HintPath>..\lib\RCWF\2023.1.117.40\Telerik.WinControls.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.WinControls.ChartView, Version=2023.1.117.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.WinControls.GridView, Version=2023.1.117.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e" />
+    <Reference Include="Telerik.WinControls.Scheduler, Version=2023.1.117.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.WinControls.Themes.Material, Version=2023.1.117.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.WinControls.Themes.MaterialBlueGrey, Version=2023.1.117.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.WinControls.Themes.MaterialPink, Version=2023.1.117.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.WinControls.Themes.MaterialTeal, Version=2023.1.117.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.WinControls.UI, Version=2023.1.117.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
+      <HintPath>..\lib\RCWF\2023.1.117.40\Telerik.WinControls.UI.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="TelerikCommon, Version=2023.1.117.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
+      <HintPath>..\lib\RCWF\2023.1.117.40\TelerikCommon.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CustomBehaviors\CustomGridDataRowBehavior.cs" />
+    <Compile Include="CustomElements\CustomResourceHeaderCell.cs" />
+    <Compile Include="CustomElements\NameGridDataCellElement.cs" />
+    <Compile Include="CustomElements\OptionsSimpleListViewVisualItem.cs" />
+    <Compile Include="CustomElements\RoomGridDataCellElement.cs" />
+    <Compile Include="CustomElements\RoomIconListViewVisualItem.cs" />
+    <Compile Include="Data\Booking.cs" />
+    <Compile Include="Data\Byanat.cs" />
+    <Compile Include="Data\Guest.cs" />
+    <Compile Include="Data\HouseKeeper.cs" />
+    <Compile Include="Data\Room.cs" />
+    <Compile Include="Data\Utils.cs" />
+    <Compile Include="Dialogs\BookingEditAppointmentDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\BookingEditAppointmentDialog.Designer.cs">
+      <DependentUpon>BookingEditAppointmentDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\HouseKeepingEditAppointmentDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\HouseKeepingEditAppointmentDialog.Designer.cs">
+      <DependentUpon>HouseKeepingEditAppointmentDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HotelAppForm.BookingTab.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HotelAppForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HotelAppForm.Designer.cs">
+      <DependentUpon>HotelAppForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RadForm1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RadForm1.Designer.cs">
+      <DependentUpon>RadForm1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\BookingInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\BookingInfo.Designer.cs">
+      <DependentUpon>BookingInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\DateNavigator.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\DateNavigator.Designer.cs">
+      <DependentUpon>DateNavigator.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\EditGuestInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\EditGuestInfo.Designer.cs">
+      <DependentUpon>EditGuestInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\RoomDetailsUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\RoomDetailsUC.Designer.cs">
+      <DependentUpon>RoomDetailsUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\SearchDropDownList.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UserControls\SearchTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UserControls\UserControlBookingsByType.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UserControlBookingsByType.Designer.cs">
+      <DependentUpon>UserControlBookingsByType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\UserControlCurrentStatus.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UserControlCurrentStatus.Designer.cs">
+      <DependentUpon>UserControlCurrentStatus.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Dialogs\BookingEditAppointmentDialog.resx">
+      <DependentUpon>BookingEditAppointmentDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\HouseKeepingEditAppointmentDialog.resx">
+      <DependentUpon>HouseKeepingEditAppointmentDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HotelAppForm.resx">
+      <DependentUpon>HotelAppForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="RadForm1.resx">
+      <DependentUpon>RadForm1.cs</DependentUpon>
+    </EmbeddedResource>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="UserControls\BookingInfo.resx">
+      <DependentUpon>BookingInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\DateNavigator.resx">
+      <DependentUpon>DateNavigator.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\EditGuestInfo.resx">
+      <DependentUpon>EditGuestInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\RoomDetailsUC.resx">
+      <DependentUpon>RoomDetailsUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UserControlBookingsByType.resx">
+      <DependentUpon>UserControlBookingsByType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UserControlCurrentStatus.resx">
+      <DependentUpon>UserControlCurrentStatus.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="app.manifest" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="Resources\Roboto-Medium.ttf" />
+    <None Include="Resources\Roboto.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Background.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\blue grey_green_small.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Bobby.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\calendar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\clean.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Clock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\clock_small.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\default_small.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\double.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\double_user_blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\double_user_green.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\double_user_grey.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\double_user_orange.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\double_user_red.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\double_users.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\edit1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\family.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\family_user_blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\family_user_green.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\family_user_grey.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\family_user_orange.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\family_user_red.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\family_users.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fasha_borders.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fasha_no_borders.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fasha_no_borders_fullsize.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\free_room.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\free_room_bluegrey.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\free_room_pink.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\free_room_teal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GlyphArrowChevronLeft.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GlyphArrowChevronRight.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GlyphCalendar_small.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GlyphCheck_small.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GlyphClose.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GlyphWrench.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_done_white96_circle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_gavel_black_18dp_1x_grey96.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_person_white96_circle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_timelapse_black_18dp_1x_grey96.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Millie.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\not clean.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pink_blue_small.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\plus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\reapair.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\repair.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\repair_small.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\search.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\single.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\single_user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\single_user_blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\single_user_green.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\single_user_grey.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\single_user_orange.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\single_user_red.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\stars.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\stars.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\starsIcon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\teal_red_small.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tripple.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tripple_user_blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tripple_user_green.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tripple_user_grey.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tripple_user_orange.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tripple_user_red.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tripple_users.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Anna.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties ShouldAddDPIScalingManifest="True" />
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

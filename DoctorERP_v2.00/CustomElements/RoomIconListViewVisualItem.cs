@@ -1,12 +1,14 @@
-﻿using DoctorERP_v2_00.Data;
+﻿using DoctorERP_v2_00.Contract_ManagementDataSetTableAdapters;
 using HotelApp.Data;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Drawing;
 using System.Reflection;
 using System.Text;
 using Telerik.WinControls;
 using Telerik.WinControls.UI;
+using static DoctorERP_v2_00.Contract_ManagementDataSet;
 
 namespace HotelApp
 {
@@ -20,11 +22,11 @@ namespace HotelApp
             }
         }
 
-        private LightVisualElement roomId = new LightVisualElement();
-        private LightVisualElement roomStatus = new LightVisualElement();
-        private LightVisualElement bookingInfo = new LightVisualElement();
-        private LightVisualElement bookingDuration = new LightVisualElement(); 
-        private LightVisualElement houseKeepingInfo = new LightVisualElement();
+        private LightVisualElement companyName = new LightVisualElement();
+        private LightVisualElement cardStatus = new LightVisualElement();
+        private LightVisualElement parentName = new LightVisualElement();
+        private LightVisualElement endDate = new LightVisualElement(); 
+        private LightVisualElement PeriodDays = new LightVisualElement();
         private LightVisualElement needsRepair = new LightVisualElement();
         private StackLayoutElement verticalContainer = new StackLayoutElement();
         private StackLayoutElement roomHeaderContainer = new StackLayoutElement(); 
@@ -43,26 +45,26 @@ namespace HotelApp
             roomHeaderContainer.Orientation = System.Windows.Forms.Orientation.Horizontal;
             roomHeaderContainer.NotifyParentOnMouseInput = true;
             roomHeaderContainer.ShouldHandleMouseInput = false;
-            roomHeaderContainer.Children.Add(roomId);
-            roomHeaderContainer.Children.Add(roomStatus);
+            roomHeaderContainer.Children.Add(companyName);
+            roomHeaderContainer.Children.Add(cardStatus);
             roomHeaderContainer.StretchHorizontally = true;
 
-            roomId.NotifyParentOnMouseInput = true;
-            roomId.ShouldHandleMouseInput = false;
-            roomId.StretchHorizontally = true;
-            roomId.CustomFont = Utils.MainFont;
-            roomId.CustomFontSize = 9;
-            roomId.CustomFontStyle = FontStyle.Bold;
-            roomId.Margin = new System.Windows.Forms.Padding(5, 10, 0, 0);
-            roomId.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            companyName.NotifyParentOnMouseInput = true;
+            companyName.ShouldHandleMouseInput = false;
+            companyName.StretchHorizontally = true;
+            companyName.CustomFont = Utils.MainFont;
+            companyName.CustomFontSize = 10;
+            companyName.CustomFontStyle = FontStyle.Bold;
+            companyName.Margin = new System.Windows.Forms.Padding(5, 10, 0, 0);
+            companyName.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
 
-            roomStatus.NotifyParentOnMouseInput = true;
-            roomStatus.ShouldHandleMouseInput = false;
-            roomStatus.StretchHorizontally = false;
-            roomStatus.CustomFont = Utils.MainFont;
-            roomStatus.CustomFontSize = 9;
-            roomStatus.CustomFontStyle = FontStyle.Regular;
-            roomStatus.Margin = new System.Windows.Forms.Padding(0,5,5,0);
+            cardStatus.NotifyParentOnMouseInput = true;
+            cardStatus.ShouldHandleMouseInput = false;
+            cardStatus.StretchHorizontally = false;
+            cardStatus.CustomFont = Utils.MainFont;
+            cardStatus.CustomFontSize = 10;
+            cardStatus.CustomFontStyle = FontStyle.Italic;
+            cardStatus.Margin = new System.Windows.Forms.Padding(0,5,5,0);
 
             roomFooterContainer.Orientation = System.Windows.Forms.Orientation.Horizontal;
             roomFooterContainer.NotifyParentOnMouseInput = true;
@@ -73,54 +75,54 @@ namespace HotelApp
             roomFooterContainer.GradientStyle = GradientStyles.Solid;
             roomFooterContainer.MinSize = new System.Drawing.Size(0, 30);
 
-            bookingInfo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            bookingInfo.StretchHorizontally = false;
-            bookingInfo.Layout.LeftPart.Padding = new System.Windows.Forms.Padding(24, 0, 8, 0);
+            parentName.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            parentName.StretchHorizontally = false;
+            parentName.Layout.LeftPart.Padding = new System.Windows.Forms.Padding(24, 0, 8, 0);
 
-            bookingInfo.Alignment = System.Drawing.ContentAlignment.MiddleCenter;
-            bookingInfo.NotifyParentOnMouseInput = true;
-            bookingInfo.ShouldHandleMouseInput = false;
-            bookingInfo.CustomFont = Utils.MainFont;
-            bookingInfo.CustomFontSize = 12;
-            bookingInfo.CustomFontStyle = FontStyle.Regular;
+            parentName.Alignment = System.Drawing.ContentAlignment.MiddleCenter;
+            parentName.NotifyParentOnMouseInput = true;
+            parentName.ShouldHandleMouseInput = false;
+            parentName.CustomFont = Utils.MainFont;
+            parentName.CustomFontSize = 12;
+            parentName.CustomFontStyle = FontStyle.Regular;
 
-            needsRepair.Text = "repair";
-            bookingDuration.NotifyParentOnMouseInput = true;
-            bookingDuration.ShouldHandleMouseInput = false;
+            //needsRepair.Text = "أوشك علي الإنتهاء";
+            endDate.NotifyParentOnMouseInput = true;
+            endDate.ShouldHandleMouseInput = false;
 
-            bookingDuration.StretchVertically = true;
-            houseKeepingInfo.StretchVertically = true;
-            needsRepair.StretchVertically = true;
-            roomFooterContainer.Children.Add(bookingDuration);
-            roomFooterContainer.Children.Add(houseKeepingInfo);
-            roomFooterContainer.Children.Add(needsRepair); 
+            endDate.StretchVertically = true;
+            PeriodDays.StretchVertically = true;
+            //needsRepair.StretchVertically = true;
+            roomFooterContainer.Children.Add(endDate);
+            roomFooterContainer.Children.Add(PeriodDays);
+            //roomFooterContainer.Children.Add(needsRepair); 
 
-            needsRepair.NotifyParentOnMouseInput = true;
-            needsRepair.ShouldHandleMouseInput = false;
-            needsRepair.StretchHorizontally = false;
-            needsRepair.Alignment = ContentAlignment.MiddleRight;
-            needsRepair.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;           
-            needsRepair.CustomFont = Utils.MainFont;
-            needsRepair.CustomFontSize = 9;
-            needsRepair.CustomFontStyle = FontStyle.Regular;
+            //needsRepair.NotifyParentOnMouseInput = true;
+            //needsRepair.ShouldHandleMouseInput = false;
+            //needsRepair.StretchHorizontally = false;
+            //needsRepair.Alignment = ContentAlignment.MiddleRight;
+            //needsRepair.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;           
+            //needsRepair.CustomFont = Utils.MainFont;
+            //needsRepair.CustomFontSize = 9;
+            //needsRepair.CustomFontStyle = FontStyle.Regular;
 
-            houseKeepingInfo.NotifyParentOnMouseInput = true;
-            houseKeepingInfo.ShouldHandleMouseInput = false;
-            houseKeepingInfo.StretchHorizontally = false;
-            houseKeepingInfo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            houseKeepingInfo.CustomFont = Utils.MainFont;
-            houseKeepingInfo.CustomFontSize = 9;
-            houseKeepingInfo.CustomFontStyle = FontStyle.Regular;
+            PeriodDays.NotifyParentOnMouseInput = true;
+            PeriodDays.ShouldHandleMouseInput = false;
+            PeriodDays.StretchHorizontally = false;
+            PeriodDays.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            PeriodDays.CustomFont = Utils.MainFont;
+            PeriodDays.CustomFontSize = 12;
+            PeriodDays.CustomFontStyle = FontStyle.Regular;
 
-            bookingDuration.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            bookingDuration.CustomFont = Utils.MainFont;
-            bookingDuration.CustomFontSize = 9;
-            bookingDuration.CustomFontStyle = FontStyle.Regular;
-            bookingDuration.Margin = new System.Windows.Forms.Padding(5, 0, 0, 0);    
-            bookingDuration.StretchHorizontally = false; 
+            endDate.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            endDate.CustomFont = Utils.MainFont;
+            endDate.CustomFontSize = 12;
+            endDate.CustomFontStyle = FontStyle.Regular;
+            endDate.Margin = new System.Windows.Forms.Padding(5, 0, 0, 0);    
+            endDate.StretchHorizontally = false; 
              
             verticalContainer.Children.Add(roomHeaderContainer);
-            verticalContainer.Children.Add(bookingInfo);
+            verticalContainer.Children.Add(parentName);
             verticalContainer.Children.Add(roomFooterContainer);
 
             this.Children.Add(this.verticalContainer);
@@ -133,84 +135,90 @@ namespace HotelApp
             this.BackColor = Color.White;
             this.DrawFill = true;
             this.DrawBorder = false;
-            roomId.Margin = new System.Windows.Forms.Padding(8,8,0,0);
-            bookingInfo.ImageLayout = System.Windows.Forms.ImageLayout.None;
-            bookingInfo.Margin = new System.Windows.Forms.Padding(24, 0, 0, 0); 
+            companyName.Margin = new System.Windows.Forms.Padding(8,8,0,0);
+            parentName.ImageLayout = System.Windows.Forms.ImageLayout.None;
+            parentName.Margin = new System.Windows.Forms.Padding(24, 0, 0, 0); 
             
-            bookingInfo.Layout.LeftPart.Margin = new System.Windows.Forms.Padding(0, 0, 5, 0);
-            bookingInfo.StretchHorizontally = true;
-            bookingInfo.ImageAlignment = ContentAlignment.MiddleLeft;
-            bookingInfo.TextAlignment = ContentAlignment.MiddleLeft;
+            parentName.Layout.LeftPart.Margin = new System.Windows.Forms.Padding(0, 0, 5, 0);
+            parentName.StretchHorizontally = true;
+            parentName.ImageAlignment = ContentAlignment.MiddleLeft;
+            parentName.TextAlignment = ContentAlignment.MiddleLeft;
              
-            bookingDuration.Layout.LeftPart.Margin = new System.Windows.Forms.Padding(0, -3, 0, 0);
-            bookingDuration.ForeColor = Color.FromArgb(200, 0, 0, 0);
-            houseKeepingInfo.ForeColor = Color.FromArgb(200, 0, 0, 0);
-            houseKeepingInfo.Layout.LeftPart.Margin = new System.Windows.Forms.Padding(0, -3, 0, 0);
-            needsRepair.ForeColor = Color.FromArgb(200, 0, 0, 0);
-            needsRepair.Layout.LeftPart.Margin = new System.Windows.Forms.Padding(0, -3, 0, 0);
+            endDate.Layout.LeftPart.Margin = new System.Windows.Forms.Padding(0, -3, 0, 0);
+            endDate.ForeColor = Color.FromArgb(200, 0, 0, 0);
+            PeriodDays.ForeColor = Color.FromArgb(200, 0, 0, 0);
+            PeriodDays.Layout.LeftPart.Margin = new System.Windows.Forms.Padding(0, -3, 0, 0);
+            //needsRepair.ForeColor = Color.FromArgb(200, 0, 0, 0);
+            //needsRepair.Layout.LeftPart.Margin = new System.Windows.Forms.Padding(0, -3, 0, 0);
 
-            Byanat room = this.Data.DataBoundItem as Byanat;
-            if (room != null)
-            { 
-                HotelAppForm form = this.ElementTree.Control.FindForm() as HotelAppForm;
-                roomId.Text = "Room " + room.Id;
-                roomStatus.Text = room.Company;
 
-                if (room.Type == "Cars")
+
+            DataRowView datarow = this.Data.DataBoundItem as DataRowView;
+            ByanRow byan = datarow.Row as ByanRow;
+            if (byan != null)
+            {
+                companyName.Text = "الشركة : " + byan.CompanyName;
+                parentName.Text = byan.ParentName;
+                if (byan.ParentType == "سائق")
                 {
-                    bookingInfo.Text = "اوشك";
-                    bookingInfo.Image = Utils.GetImageByRoomType(ByanType.Cars);
-
-                    bookingDuration.Text = +(room.EndDate - room.StartDate).Days + 1 + " يوم";
-
-                    roomId.ForeColor = Color.FromArgb(190, 0, 0, 0);
-                    roomStatus.ForeColor = Color.Black;
-                    bookingInfo.ForeColor = Color.Black;
+                    parentName.Image = DoctorERP_v2_00.Properties.Resources.DriverIcon_32;
                 }
                 else
                 {
-                    bookingInfo.Text = "Free Room";
-                    bookingInfo.Image = Utils.GetAvailableImageByTheme();
-                    bookingDuration.Text = "0 days";
-                    this.BackColor = Utils.MainThemeColor;
-                    roomId.ForeColor = Color.White;
-                    roomStatus.ForeColor = Color.White;
-                    bookingInfo.ForeColor = Color.White;
+                    parentName.Image = DoctorERP_v2_00.Properties.Resources.CarsIcon_32;
+
                 }
 
+                //parentName.Image = Utils.GetImageByRoomType(ByanType.Cars);
+                int Period = (byan.EndDate - DateTime.Now).Days;
+                endDate.Text = byan.EndDate.ToString("yyyy/MM/dd") ;
+                PeriodDays.Text = Period + " يوم";
+                //needsRepair.Image = DoctorERP_v2_00.Properties.Resources.GlyphWrench;
+                endDate.Image = DoctorERP_v2_00.Properties.Resources.GlyphCalendar_small;
 
+                if (Period <= 0)
+                {
+                    cardStatus.Text = "منتهي";
 
-                if (room.Type == "Cars")
-                {
-                    this.BackColor = Color.FromArgb(247, 247, 247);
-                    //this.BackColor = Color.DarkGreen;
-                }
-                else
-                {
-                    this.BackColor = Color.FromArgb(232, 232, 232);
+                    //this.BackColor = Color.FromArgb(247, 247, 247);
                     this.BackColor = Color.DarkRed;
 
+                    PeriodDays.Image = DoctorERP_v2_00.Properties.Resources.GlyphClose;
+                    //needsRepair.Visibility = Telerik.WinControls.ElementVisibility.Visible;
+                    companyName.ForeColor = Color.White;
+                    cardStatus.ForeColor = Color.White;
+                    parentName.ForeColor = Color.White;
+
+                }
+                else if (Period <= 15)
+                {
+                    cardStatus.Text = "أوشك";
+
+                    //this.BackColor = Color.FromArgb(247, 247, 247);
+                    this.BackColor = Color.Gold;
+
+                    PeriodDays.Image = DoctorERP_v2_00.Properties.Resources.GlyphWrench;
+                    //needsRepair.Visibility = Telerik.WinControls.ElementVisibility.Visible;
+                    companyName.ForeColor = Color.Black;
+                    cardStatus.ForeColor = Color.Black;
+                    parentName.ForeColor = Color.Black;
+
                 }
 
+                else
+                {
+                    cardStatus.Text = "ساري";
 
-                houseKeepingInfo.Text = "" + room.Name;
-                needsRepair.Image = DoctorERP_v2_00.Properties.Resources.GlyphWrench;
-                bookingDuration.Image = DoctorERP_v2_00.Properties.Resources.GlyphCalendar_small;
-                if (room.Type == "Cars")
-                {
-                    houseKeepingInfo.Image = DoctorERP_v2_00.Properties.Resources.GlyphClose;
-                }
-                else
-                {
-                    houseKeepingInfo.Image = DoctorERP_v2_00.Properties.Resources.GlyphCheck_small;
-                }
-                if (room.Id == 2)
-                {
-                    needsRepair.Visibility = Telerik.WinControls.ElementVisibility.Visible;
-                }
-                else
-                {
-                    needsRepair.Visibility = Telerik.WinControls.ElementVisibility.Hidden;
+                    //this.BackColor = Color.FromArgb(232, 232, 232);
+                    this.BackColor = Color.DarkGreen;
+
+                    PeriodDays.Image = DoctorERP_v2_00.Properties.Resources.GlyphCheck_small;
+                    //needsRepair.Visibility = Telerik.WinControls.ElementVisibility.Hidden;
+                    companyName.ForeColor = Color.White;
+                    cardStatus.ForeColor = Color.White;
+                    parentName.ForeColor = Color.White;
+
+
                 }
             }
         }

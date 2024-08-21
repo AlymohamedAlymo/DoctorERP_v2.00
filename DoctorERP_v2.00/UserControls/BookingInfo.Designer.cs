@@ -199,7 +199,6 @@
             this.manageStatusLabel.Size = new System.Drawing.Size(150, 60);
             this.manageStatusLabel.TabIndex = 1;
             this.manageStatusLabel.Text = "Change reservation";
-            this.manageStatusLabel.Click += new System.EventHandler(this.manageStatusLabel_Click);
             // 
             // roomIdLabel
             // 

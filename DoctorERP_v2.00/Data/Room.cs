@@ -200,65 +200,65 @@ namespace HotelApp
             this.visible = true;
         }
 
-        public RoomStatus GetStatusAtDate(DateTime date, BindingList<Booking> bookings)//, bool IsToday)
-        {
-            RoomStatus status = RoomStatus.Available;
+        //public RoomStatus GetStatusAtDate(DateTime date, BindingList<Booking> bookings)//, bool IsToday)
+        //{
+        //    RoomStatus status = RoomStatus.Available;
 
-            foreach (Booking booking in bookings)
-            {
-                if (booking.RoomId == this.Id)
-                {
-                    if (booking.From <= date && booking.To == date)
-                    {
-                        status = RoomStatus.CheckedOut;
-                        break;
-                    }
-                    else if (booking.From <= date && booking.To >= date)
-                    {
-                        status = RoomStatus.Occupied;
-                        break;
-                    }
-                    else
-                    {
-                        if (date < booking.From)
-                        {
-                            status = RoomStatus.Reserved;
-                        }
-                    }
-                }
-            }
-            return status;
-        }
+        //    foreach (Booking booking in bookings)
+        //    {
+        //        if (booking.RoomId == this.Id)
+        //        {
+        //            if (booking.From <= date && booking.To == date)
+        //            {
+        //                status = RoomStatus.CheckedOut;
+        //                break;
+        //            }
+        //            else if (booking.From <= date && booking.To >= date)
+        //            {
+        //                status = RoomStatus.Occupied;
+        //                break;
+        //            }
+        //            else
+        //            {
+        //                if (date < booking.From)
+        //                {
+        //                    status = RoomStatus.Reserved;
+        //                }
+        //            }
+        //        }
+        //    }
+        //    return status;
+        //}
         
-        public RoomStatus GetStatusByBooking(DateTime date, BindingList<Booking> bookings)
-        {
-            foreach (Booking booking in bookings)
-            {
-                if (booking.RoomId == this.Id)
-                {
-                    if (date >= booking.From && date <= booking.To)
-                    {
-                        if (booking.Status == BookingStatus.Actual)
-                        {
-                            return RoomStatus.Occupied;
-                        }
-                        else if (booking.Status == BookingStatus.NoShow)
-                        {
-                            return RoomStatus.Available;
-                        }
-                        else if (booking.Status == BookingStatus.CheckedOut)
-                        {
-                            return RoomStatus.CheckedOut;
-                        }
-                        else if (booking.Status == BookingStatus.Reservation)
-                        {
-                            return RoomStatus.Reserved;
-                        }
-                    }
-                }
-            }
-            return RoomStatus.Available ;
-        }
+        //public RoomStatus GetStatusByBooking(DateTime date, BindingList<Booking> bookings)
+        //{
+        //    foreach (Booking booking in bookings)
+        //    {
+        //        if (booking.RoomId == this.Id)
+        //        {
+        //            if (date >= booking.From && date <= booking.To)
+        //            {
+        //                if (booking.Status == BookingStatus.Actual)
+        //                {
+        //                    return RoomStatus.Occupied;
+        //                }
+        //                else if (booking.Status == BookingStatus.NoShow)
+        //                {
+        //                    return RoomStatus.Available;
+        //                }
+        //                else if (booking.Status == BookingStatus.CheckedOut)
+        //                {
+        //                    return RoomStatus.CheckedOut;
+        //                }
+        //                else if (booking.Status == BookingStatus.Reservation)
+        //                {
+        //                    return RoomStatus.Reserved;
+        //                }
+        //            }
+        //        }
+        //    }
+        //    return RoomStatus.Available ;
+        //}
     }
 
     public enum RoomPriority

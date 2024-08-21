@@ -50,20 +50,20 @@ namespace HotelApp
         {
             base.SetContentCore(value);
             this.DrawText = false;
-            Booking booking = this.RowInfo.DataBoundItem as Booking;
-            if (booking != null)
-            {
-                nameElement.Text = booking.Name;
-                durationElement.Text = (booking.To - booking.From).Days.ToString();
-                if (durationElement.Text == "1")
-                {
-                    durationElement.Text = "1 day";
-                }
-                else
-                {
-                    durationElement.Text += " days";
-                }
-            }
+            //////Booking booking = this.RowInfo.DataBoundItem as Booking;
+            //////if (booking != null)
+            //////{
+            //////    nameElement.Text = booking.Name;
+            //////    durationElement.Text = (booking.To - booking.From).Days.ToString();
+            //////    if (durationElement.Text == "1")
+            //////    {
+            //////        durationElement.Text = "1 day";
+            //////    }
+            //////    else
+            //////    {
+            //////        durationElement.Text += " days";
+            //////    }
+            //////}
         }
             
         public override bool IsCompatible(GridViewColumn data, object context)

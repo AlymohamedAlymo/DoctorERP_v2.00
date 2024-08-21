@@ -22,28 +22,28 @@ namespace HotelApp
                 return typeof(RadDropDownList).FullName;
             }
         }
-        public void Inialize(BindingList<Room> rooms, BindingList<Booking> bookings)
-        {
-            foreach (Room r in rooms)
-            {
-                this.Items.Add("Room#" + r.Name);
-            }
-            foreach (Booking b in bookings)
-            {
-                if (!this.Items.Contains(b.Name))
-                {
-                    this.Items.Add(b.Name);
-                }
-            }
-            this.AutoCompleteMode = AutoCompleteMode.Suggest;
-            this.DropDownListElement.AutoCompleteSuggest.SuggestMode = SuggestMode.Contains;
-            this.SelectedIndexChanging += scheduleSearchDropDown_SelectedIndexChanging;
+        //public void Inialize(BindingList<Room> rooms, BindingList<Booking> bookings)
+        //{
+        //    foreach (Room r in rooms)
+        //    {
+        //        this.Items.Add("Room#" + r.Name);
+        //    }
+        //    foreach (Booking b in bookings)
+        //    {
+        //        if (!this.Items.Contains(b.Name))
+        //        {
+        //            this.Items.Add(b.Name);
+        //        }
+        //    }
+        //    this.AutoCompleteMode = AutoCompleteMode.Suggest;
+        //    this.DropDownListElement.AutoCompleteSuggest.SuggestMode = SuggestMode.Contains;
+        //    this.SelectedIndexChanging += scheduleSearchDropDown_SelectedIndexChanging;
 
-            this.DropDownListElement.CustomFont = Utils.MainFont;
-            this.DropDownListElement.CustomFontSize = 9f;
+        //    this.DropDownListElement.CustomFont = Utils.MainFont;
+        //    this.DropDownListElement.CustomFontSize = 9f;
 
-            this.DropDownListElement.EditableElement.TextBox.Padding = new Padding(0, 10, 0, 0);
-        }
+        //    this.DropDownListElement.EditableElement.TextBox.Padding = new Padding(0, 10, 0, 0);
+        //}
         
         protected override void CreateChildItems(Telerik.WinControls.RadElement parent)
         {
@@ -74,14 +74,14 @@ namespace HotelApp
 
         private void scheduleSearchDropDown_SelectedIndexChanging(object sender, Telerik.WinControls.UI.Data.PositionChangingCancelEventArgs e)
         {
-            if (e.Position > -1)
-            {
-                HotelAppForm form = this.FindForm() as HotelAppForm;
+            //if (e.Position > -1)
+            //{
+            //    HotelAppForm form = this.FindForm() as HotelAppForm;
 
-                form.PageView.SelectedPage = form.PageView.Pages[0];
-                form.HideRoomDetails();
-                form.OverviewSearch.Text = this.Text; 
-            }
+            //    form.PageView.SelectedPage = form.PageView.Pages[0];
+            //    form.HideRoomDetails();
+            //    form.OverviewSearch.Text = this.Text; 
+            //}
         }
     }
 }

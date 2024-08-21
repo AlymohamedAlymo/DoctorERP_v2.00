@@ -58,9 +58,9 @@ namespace HotelApp
                 HotelAppForm form = this.Scheduler.FindForm() as HotelAppForm;
                 if (form != null && this.ResourceId != null)
                 {
-                    Room room = Utils.GetRoomById(int.Parse(this.ResourceId.ToString()), form.Rooms);
-                    ByanType.Text = Utils.GetRoomType(room.Type);
-                    ByanType.Image = Utils.GetImageByRoomType(room.Type);
+                    //Room room = Utils.GetRoomById(int.Parse(this.ResourceId.ToString()), form.Rooms);
+                    //ByanType.Text = Utils.GetRoomType(room.Type);
+                    //ByanType.Image = Utils.GetImageByRoomType(room.Type);
                 }
             }
         }

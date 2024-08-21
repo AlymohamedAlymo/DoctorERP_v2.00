@@ -37,7 +37,14 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -68,15 +75,20 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contract_ManagementDataSet.cs">
+      <DependentUpon>Contract_ManagementDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Contract_ManagementDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Contract_ManagementDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="CustomBehaviors\CustomGridDataRowBehavior.cs" />
     <Compile Include="CustomElements\CustomResourceHeaderCell.cs" />
     <Compile Include="CustomElements\NameGridDataCellElement.cs" />
     <Compile Include="CustomElements\OptionsSimpleListViewVisualItem.cs" />
     <Compile Include="CustomElements\RoomGridDataCellElement.cs" />
     <Compile Include="CustomElements\RoomIconListViewVisualItem.cs" />
-    <Compile Include="Data\Booking.cs" />
-    <Compile Include="Data\Byanat.cs" />
-    <Compile Include="Data\Guest.cs" />
     <Compile Include="Data\HouseKeeper.cs" />
     <Compile Include="Data\Room.cs" />
     <Compile Include="Data\Utils.cs" />
@@ -91,9 +103,6 @@
     </Compile>
     <Compile Include="Dialogs\HouseKeepingEditAppointmentDialog.Designer.cs">
       <DependentUpon>HouseKeepingEditAppointmentDialog.cs</DependentUpon>
-    </Compile>
-    <Compile Include="HotelAppForm.BookingTab.cs">
-      <SubType>Form</SubType>
     </Compile>
     <Compile Include="HotelAppForm.cs">
       <SubType>Form</SubType>
@@ -113,23 +122,11 @@
     <Compile Include="UserControls\BookingInfo.Designer.cs">
       <DependentUpon>BookingInfo.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\DateNavigator.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControls\DateNavigator.Designer.cs">
-      <DependentUpon>DateNavigator.cs</DependentUpon>
-    </Compile>
     <Compile Include="UserControls\EditGuestInfo.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UserControls\EditGuestInfo.Designer.cs">
       <DependentUpon>EditGuestInfo.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UserControls\RoomDetailsUC.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControls\RoomDetailsUC.Designer.cs">
-      <DependentUpon>RoomDetailsUC.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\SearchDropDownList.cs">
       <SubType>Component</SubType>
@@ -177,14 +174,8 @@
     <EmbeddedResource Include="UserControls\BookingInfo.resx">
       <DependentUpon>BookingInfo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\DateNavigator.resx">
-      <DependentUpon>DateNavigator.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\EditGuestInfo.resx">
       <DependentUpon>EditGuestInfo.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\RoomDetailsUC.resx">
-      <DependentUpon>RoomDetailsUC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UserControlBookingsByType.resx">
       <DependentUpon>UserControlBookingsByType.cs</DependentUpon>
@@ -193,6 +184,18 @@
       <DependentUpon>UserControlCurrentStatus.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.manifest" />
+    <None Include="Contract_ManagementDataSet.xsc">
+      <DependentUpon>Contract_ManagementDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Contract_ManagementDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Contract_ManagementDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Contract_ManagementDataSet.xss">
+      <DependentUpon>Contract_ManagementDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -411,6 +414,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Anna.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Contract_Management.mdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="Resources\CarsIcon_32.png" />
+    <None Include="Resources\DriverIcon_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>

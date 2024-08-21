@@ -55,14 +55,6 @@ namespace HotelApp
         {
             base.SetContentCore(value);
             this.DrawText = false;
-            Booking booking = this.RowInfo.DataBoundItem as Booking;
-            if (booking != null)
-            {
-                Room room = Utils.GetRoomById(booking.RoomId, this.RowInfo.ViewTemplate.Tag as BindingList<Room>);
-                roomIdElement.Image = Utils.GetRoomIconByType(room.Type);
-                roomIdElement.Text = booking.RoomId.ToString();
-                roomTypeElement.Text = Utils.GetRoomType(room.Type).ToLower();
-            }
         }
             
         public override bool IsCompatible(GridViewColumn data, object context)

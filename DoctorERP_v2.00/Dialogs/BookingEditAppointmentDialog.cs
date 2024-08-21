@@ -15,7 +15,7 @@ namespace HotelApp
 {
     public partial class BookingEditAppointmentDialog : EditAppointmentDialog
     {
-        private BindingList<Guest> Guests;
+        //private BindingList<Guest> Guests;
 
         public BookingEditAppointmentDialog()
         {
@@ -39,10 +39,10 @@ namespace HotelApp
             return base.ValidateInput();
         }
         
-        public BookingEditAppointmentDialog(BindingList<Guest> guests) : this()
-        {
-            this.Guests = guests;
-        }
+        //public BookingEditAppointmentDialog(BindingList<Guest> guests) : this()
+        //{
+        //    this.Guests = guests;
+        //}
 
         protected override void OnLoad(EventArgs e)
         {
@@ -102,14 +102,14 @@ namespace HotelApp
             editGuestInfo.HeaderPanel.Visible = false;
             addGuestForm.Height = editGuestInfo.Height + addGuestForm.FormElement.TitleBar.Size.Height + 1; 
             editGuestInfo.SaveButton.Click += SaveButton_Click;
-            Guest guest = new Guest();
-            editGuestInfo.Initialize(guest, new Booking()); 
+            //Guest guest = new Guest();
+            //editGuestInfo.Initialize(guest, new Booking()); 
             addGuestForm.StartPosition = FormStartPosition.Manual;
             addGuestForm.Location = new Point(Screen.PrimaryScreen.Bounds.Width / 2 - addGuestForm.Width / 2,Screen.PrimaryScreen.Bounds.Height / 2 - addGuestForm.Height / 2);
            
             if (addGuestForm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             { 
-                this.Guests.Add(guest);
+                //this.Guests.Add(guest);
             }
         }
         
@@ -132,15 +132,15 @@ namespace HotelApp
         {
             base.LoadSettingsFromEvent(sourceEvent);
 
-            Booking b = this.Appointment.DataItem as Booking;
-            if (b != null)
-            {
-                this.Text = "Edit booking for room #" + b.RoomId;
-            }
-            else
-            {
-                this.Text = "New booking for room #" + this.Appointment.ResourceId;
-            }
+            //Booking b = this.Appointment.DataItem as Booking;
+            //if (b != null)
+            //{
+            //    this.Text = "Edit booking for room #" + b.RoomId;
+            //}
+            //else
+            //{
+            //    this.Text = "New booking for room #" + this.Appointment.ResourceId;
+            //}
 
             this.labelSubject.Text = "Guest:";
             this.txtSubject.Enabled = false;
@@ -163,36 +163,36 @@ namespace HotelApp
             this.buttonDelete.Visible = false;
             this.buttonRecurrence.Visible = false;
 
-            this.guestsDropDownList.DataSource = this.Guests;
+            //this.guestsDropDownList.DataSource = this.Guests;
             this.guestsDropDownList.DisplayMember = "Name";
             this.guestsDropDownList.ValueMember = "Id";
             this.guestsDropDownList.SelectedIndex = -1;
-            if (b != null)
-            {
-                for (int i = 0; i < this.guestsDropDownList.Items.Count; i++)
-                {
-                    if (this.guestsDropDownList.Items[i].Text == b.Guests[0].Name)
-                    {
-                        this.guestsDropDownList.SelectedIndex = i;
-                        this.guestsDropDownList.DropDownListElement.TextBox.TextBoxItem.SelectionLength = 0;
-                        break;
-                    }
-                }
-            } 
+            //if (b != null)
+            //{
+            //    for (int i = 0; i < this.guestsDropDownList.Items.Count; i++)
+            //    {
+            //        if (this.guestsDropDownList.Items[i].Text == b.Guests[0].Name)
+            //        {
+            //            this.guestsDropDownList.SelectedIndex = i;
+            //            this.guestsDropDownList.DropDownListElement.TextBox.TextBoxItem.SelectionLength = 0;
+            //            break;
+            //        }
+            //    }
+            //} 
             this.labelStatus.Visible = false;
             this.guestsDropDownList.SelectedValueChanged += guestsDropDownList_SelectedValueChanged;
         }
 
         private void guestsDropDownList_SelectedValueChanged(object sender, EventArgs e)
         {
-            string value = this.guestsDropDownList.SelectedValue + "";
-            Guest guest = Utils.GetGuestById(this.Guests, value);
+            //string value = this.guestsDropDownList.SelectedValue + "";
+            //Guest guest = Utils.GetGuestById(this.Guests, value);
 
-            if (guest != null)
-            {
-                this.txtSubject.Text = guest.Name;
-            }
-            ((RadScheduler)this.SchedulerData).Tag = guest;
+            //if (guest != null)
+            //{
+            //    this.txtSubject.Text = guest.Name;
+            //}
+            //((RadScheduler)this.SchedulerData).Tag = guest;
         }
     }
 }

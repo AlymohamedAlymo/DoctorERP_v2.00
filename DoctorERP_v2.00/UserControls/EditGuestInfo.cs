@@ -16,8 +16,8 @@ namespace CustomControls
 {
     public partial class EditGuestInfo : UserControl
     {
-        Guest currentGuest;
-        Booking booking;
+        //Guest currentGuest;
+        //Booking booking;
 
         public RadPanel HeaderPanel
         {
@@ -185,88 +185,88 @@ namespace CustomControls
             this.ccvTextBox.NullText = "Enter ccv";
         }
 
-        public Guest CurrentGuest
-        {
-            get
-            {
-                return this.currentGuest;
-            }
-        }
+        //public Guest CurrentGuest
+        //{
+        //    get
+        //    {
+        //        return this.currentGuest;
+        //    }
+        //}
 
         private void closeButton_Click(object sender, EventArgs e)
         {
             HotelAppForm form = this.FindForm() as HotelAppForm;
             if (form != null)
             {
-                if (form.PageView.SelectedPage == form.PageView.Pages[1])
-                {
-                    this.Parent.Visible = false;
-                }
-                else
-                {
-                    this.Visible = false;
-                    this.Parent.Controls[0].Visible = true;
-                }
+                //if (form.PageView.SelectedPage == form.PageView.Pages[1])
+                //{
+                //    this.Parent.Visible = false;
+                //}
+                //else
+                //{
+                //    this.Visible = false;
+                //    this.Parent.Controls[0].Visible = true;
+                //}
             }
         }
 
-        internal void Initialize(HotelApp.Guest guest, Booking booking)
-        {
-            currentGuest = guest;
-            this.booking = booking;
-            if (currentGuest == null)
-            {
-                return;
-            }
-            this.guestInfoLabel.Text = "EDIT GUEST INFORMATION";
-            this.idTextBox.Text = guest.Id;
-            this.nameTextBox.Text = guest.Name;
-            this.addressTextBox.Text = guest.Address;
-            this.cityTextBox.Text = guest.City;
-            this.phoneTextBox.Text = guest.Phone;
-            if (guest.CardDetails != null)
-            {
-                this.creditCardNumberTexBox.Text = guest.CardDetails.CreditCardId;
-                this.validDateTimePicker.Value = guest.CardDetails.ExpiresOn;
-                this.ccvTextBox.Text = guest.CardDetails.CCV.ToString();
-            }
+        //internal void Initialize(HotelApp.Guest guest, Booking booking)
+        //{
+        //    currentGuest = guest;
+        //    this.booking = booking;
+        //    if (currentGuest == null)
+        //    {
+        //        return;
+        //    }
+        //    this.guestInfoLabel.Text = "EDIT GUEST INFORMATION";
+        //    this.idTextBox.Text = guest.Id;
+        //    this.nameTextBox.Text = guest.Name;
+        //    this.addressTextBox.Text = guest.Address;
+        //    this.cityTextBox.Text = guest.City;
+        //    this.phoneTextBox.Text = guest.Phone;
+        //    if (guest.CardDetails != null)
+        //    {
+        //        this.creditCardNumberTexBox.Text = guest.CardDetails.CreditCardId;
+        //        this.validDateTimePicker.Value = guest.CardDetails.ExpiresOn;
+        //        this.ccvTextBox.Text = guest.CardDetails.CCV.ToString();
+        //    }
             
-            if (booking != null && !booking.Guests.Contains(guest))
-            {
-                booking.Guests.Add(guest);
-                booking.Name = booking.Guests.First().Name;
-            }
-        }
+        //    if (booking != null && !booking.Guests.Contains(guest))
+        //    {
+        //        booking.Guests.Add(guest);
+        //        booking.Name = booking.Guests.First().Name;
+        //    }
+        //}
 
         private void saveButton_Click(object sender, EventArgs e)
         {
             if (IsValidData())
             {
-                if (currentGuest == null)
-                {
-                    currentGuest = new Guest();
-                    currentGuest.CardDetails = new CreditCard();
-                }
-                this.currentGuest.Name = this.nameTextBox.Text;
-                this.currentGuest.Id = this.idTextBox.Text;
-                this.currentGuest.Address = this.addressTextBox.Text;
-                this.currentGuest.City = this.cityTextBox.Text;
-                this.currentGuest.Phone = this.phoneTextBox.Text;
-                this.currentGuest.CardDetails.CreditCardId = this.creditCardNumberTexBox.Text;
-                this.currentGuest.CardDetails.ExpiresOn = this.validDateTimePicker.Value;
-                this.currentGuest.CardDetails.CCV = uint.Parse(this.ccvTextBox.Text);
-                if (!this.booking.Guests.Contains(this.currentGuest))
-                {
-                    this.booking.Guests.Add(this.currentGuest);
-                }
-                booking.Name = booking.Guests.First().Name;
-                HotelAppForm form = this.FindForm() as HotelAppForm;
-                if (form != null && !form.Bookings.Contains(this.booking))
-                {
-                    form.Bookings.Add(this.booking);
-                }
-                this.saveButton.DialogResult = DialogResult.OK;
-                this.closeButton.PerformClick();
+                //if (currentGuest == null)
+                //{
+                //    currentGuest = new Guest();
+                //    currentGuest.CardDetails = new CreditCard();
+                //}
+                //this.currentGuest.Name = this.nameTextBox.Text;
+                //this.currentGuest.Id = this.idTextBox.Text;
+                //this.currentGuest.Address = this.addressTextBox.Text;
+                //this.currentGuest.City = this.cityTextBox.Text;
+                //this.currentGuest.Phone = this.phoneTextBox.Text;
+                //this.currentGuest.CardDetails.CreditCardId = this.creditCardNumberTexBox.Text;
+                //this.currentGuest.CardDetails.ExpiresOn = this.validDateTimePicker.Value;
+                //this.currentGuest.CardDetails.CCV = uint.Parse(this.ccvTextBox.Text);
+                //if (!this.booking.Guests.Contains(this.currentGuest))
+                //{
+                //    this.booking.Guests.Add(this.currentGuest);
+                //}
+                //booking.Name = booking.Guests.First().Name;
+                //HotelAppForm form = this.FindForm() as HotelAppForm;
+                //if (form != null && !form.Bookings.Contains(this.booking))
+                //{
+                //    form.Bookings.Add(this.booking);
+                //}
+                //this.saveButton.DialogResult = DialogResult.OK;
+                //this.closeButton.PerformClick();
             }
             else
             {

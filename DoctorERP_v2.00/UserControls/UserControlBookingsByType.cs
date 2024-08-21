@@ -15,7 +15,7 @@ namespace HotelApp
 {
     public partial class UserControlBookingsByType : UserControl
     {
-        public BindingList<Booking> Bookings;
+        //public BindingList<Booking> Bookings;
         public BindingList<Room> Rooms;
         public static ColorConverter converter = new ColorConverter();
 
@@ -98,129 +98,129 @@ namespace HotelApp
             }
         }
 
-        internal void Initialize(string reportsInterval, BindingList<Booking> bookings, BindingList<Room> rooms, DateTime dateTime)
-        {
-            this.Bookings = bookings;
-            this.Rooms = rooms;
+        //internal void Initialize(string reportsInterval, BindingList<Booking> bookings, BindingList<Room> rooms, DateTime dateTime)
+        //{
+        //    this.Bookings = bookings;
+        //    this.Rooms = rooms;
 
-            this.bookingsByTypeChartView.Series.Clear();
-            this.bookingsByRoomTypeChartView.Series.Clear();
-            this.availabilityChartView.Series.Clear();
-            this.averageChartView.Series.Clear();
-            this.averageChartView.GetArea<CartesianArea>().Orientation = Orientation.Vertical;
-            this.averageChartView.Axes.Clear();
+        //    this.bookingsByTypeChartView.Series.Clear();
+        //    this.bookingsByRoomTypeChartView.Series.Clear();
+        //    this.availabilityChartView.Series.Clear();
+        //    this.averageChartView.Series.Clear();
+        //    this.averageChartView.GetArea<CartesianArea>().Orientation = Orientation.Vertical;
+        //    this.averageChartView.Axes.Clear();
 
-            this.bookingsByTypeChartView.AreaType = ChartAreaType.Pie;
-            PieSeries series = new PieSeries();
-            series.LabelsOffsetFromCenter = 1.05f;
+        //    this.bookingsByTypeChartView.AreaType = ChartAreaType.Pie;
+        //    PieSeries series = new PieSeries();
+        //    series.LabelsOffsetFromCenter = 1.05f;
 
-            foreach (BookingStatus bookingStatus in Enum.GetValues(typeof(BookingStatus)))
-            {
-                PieDataPoint dataPoint = new PieDataPoint(GetBookingsByType(bookings, bookingStatus, dateTime, reportsInterval), Utils.GetBookingTypeByStatus(bookingStatus));
-                if (dataPoint.Value > 0)
-                {
-                    series.DataPoints.Add(dataPoint);
-                }
-            }
+        //    foreach (BookingStatus bookingStatus in Enum.GetValues(typeof(BookingStatus)))
+        //    {
+        //        PieDataPoint dataPoint = new PieDataPoint(GetBookingsByType(bookings, bookingStatus, dateTime, reportsInterval), Utils.GetBookingTypeByStatus(bookingStatus));
+        //        if (dataPoint.Value > 0)
+        //        {
+        //            series.DataPoints.Add(dataPoint);
+        //        }
+        //    }
 
-            series.ShowLabels = true;
-            if (series.DataPoints.Count > 0)
-            {
-                this.bookingsByTypeChartView.Series.Add(series);
-            }
+        //    series.ShowLabels = true;
+        //    if (series.DataPoints.Count > 0)
+        //    {
+        //        this.bookingsByTypeChartView.Series.Add(series);
+        //    }
 
-            this.bookingsByRoomTypeChartView.AreaType = ChartAreaType.Pie;
-            PieSeries series2 = new PieSeries();
-            series2.LabelsOffsetFromCenter = 1.05f;
-            foreach (ByanType ByanType in Enum.GetValues(typeof(ByanType)))
-            {
-                PieDataPoint dataPoint = new PieDataPoint(GetBookingsByRoomType(bookings, ByanType, dateTime, reportsInterval), Utils.GetRoomType(ByanType));
-                if (dataPoint.Value > 0)
-                {
-                    series2.DataPoints.Add(dataPoint);
-                }
-            }
+        //    this.bookingsByRoomTypeChartView.AreaType = ChartAreaType.Pie;
+        //    PieSeries series2 = new PieSeries();
+        //    series2.LabelsOffsetFromCenter = 1.05f;
+        //    foreach (ByanType ByanType in Enum.GetValues(typeof(ByanType)))
+        //    {
+        //        //PieDataPoint dataPoint = new PieDataPoint(GetBookingsByRoomType(bookings, ByanType, dateTime, reportsInterval), Utils.GetRoomType(ByanType));
+        //        //if (dataPoint.Value > 0)
+        //        //{
+        //        //    series2.DataPoints.Add(dataPoint);
+        //        //}
+        //    }
 
-            series2.ShowLabels = true;
-            if (series2.DataPoints.Count > 0)
-            {
-                this.bookingsByRoomTypeChartView.Series.Add(series2);
-            }
+        //    series2.ShowLabels = true;
+        //    if (series2.DataPoints.Count > 0)
+        //    {
+        //        this.bookingsByRoomTypeChartView.Series.Add(series2);
+        //    }
 
-            this.availabilityChartView.AreaType = ChartAreaType.Pie;
-            PieSeries series3 = new PieSeries();
-            series3.LabelsOffsetFromCenter = 1.05f;
+        //    this.availabilityChartView.AreaType = ChartAreaType.Pie;
+        //    PieSeries series3 = new PieSeries();
+        //    series3.LabelsOffsetFromCenter = 1.05f;
 
-            Availability needRepairs = GetBookingsByRoomRepairs(this.Bookings, dateTime, reportsInterval);
+        //    //Availability needRepairs = GetBookingsByRoomRepairs(this.Bookings, dateTime, reportsInterval);
 
-            if (needRepairs.Actual > 0)
-            {
-                series3.DataPoints.Add(new PieDataPoint(needRepairs.Actual, "Actual"));
-            }
-            if (needRepairs.Maintenance > 0)
-            {
-                series3.DataPoints.Add(new PieDataPoint(needRepairs.Maintenance, "Maintenance"));
-            }
+        //    if (needRepairs.Actual > 0)
+        //    {
+        //        series3.DataPoints.Add(new PieDataPoint(needRepairs.Actual, "Actual"));
+        //    }
+        //    if (needRepairs.Maintenance > 0)
+        //    {
+        //        series3.DataPoints.Add(new PieDataPoint(needRepairs.Maintenance, "Maintenance"));
+        //    }
 
-            series3.ShowLabels = true;
-            if (series3.DataPoints.Count > 0)
-            {
-                this.availabilityChartView.Series.Add(series3);
-            }
+        //    series3.ShowLabels = true;
+        //    if (series3.DataPoints.Count > 0)
+        //    {
+        //        this.availabilityChartView.Series.Add(series3);
+        //    }
 
-            foreach (ByanType ByanType in Enum.GetValues(typeof(ByanType)))
-            {
-                BarSeries series4 = new BarSeries();
-                CategoricalDataPoint dataPoint = new CategoricalDataPoint(GetBookingsDurationByRoomType(bookings, ByanType, dateTime, reportsInterval), Utils.GetRoomType(ByanType));
-                if (dataPoint.Value > 0)
-                {
-                    series4.DataPoints.Add(dataPoint);
-                }
-                if (series4.DataPoints.Count > 0)
-                {
-                    this.averageChartView.Series.Add(series4);
-                }
-                LinearAxis verticalAxis = series4.VerticalAxis as LinearAxis;
-                if (verticalAxis != null)
-                {
-                    verticalAxis.BorderColor = Color.FromArgb(209, 209, 209);
-                    verticalAxis.CustomFont = Utils.MainFontMedium;
-                    verticalAxis.CustomFontSize = 10f;
-                    verticalAxis.Minimum = 0;
-                    verticalAxis.Maximum = 3;
-                    verticalAxis.LastLabelVisibility = AxisLastLabelVisibility.Hidden;
-                    verticalAxis.LabelFormatProvider = new MyFormatProvider();
-                    verticalAxis.MajorStep = 1;
-                }
+        //    foreach (ByanType ByanType in Enum.GetValues(typeof(ByanType)))
+        //    {
+        //        BarSeries series4 = new BarSeries();
+        //        //CategoricalDataPoint dataPoint = new CategoricalDataPoint(GetBookingsDurationByRoomType(bookings, ByanType, dateTime, reportsInterval), Utils.GetRoomType(ByanType));
+        //        //if (dataPoint.Value > 0)
+        //        //{
+        //        //    series4.DataPoints.Add(dataPoint);
+        //        //}
+        //        if (series4.DataPoints.Count > 0)
+        //        {
+        //            this.averageChartView.Series.Add(series4);
+        //        }
+        //        LinearAxis verticalAxis = series4.VerticalAxis as LinearAxis;
+        //        if (verticalAxis != null)
+        //        {
+        //            verticalAxis.BorderColor = Color.FromArgb(209, 209, 209);
+        //            verticalAxis.CustomFont = Utils.MainFontMedium;
+        //            verticalAxis.CustomFontSize = 10f;
+        //            verticalAxis.Minimum = 0;
+        //            verticalAxis.Maximum = 3;
+        //            verticalAxis.LastLabelVisibility = AxisLastLabelVisibility.Hidden;
+        //            verticalAxis.LabelFormatProvider = new MyFormatProvider();
+        //            verticalAxis.MajorStep = 1;
+        //        }
 
-                CategoricalAxis horizontalAxis = series4.HorizontalAxis as CategoricalAxis;
-                if (horizontalAxis != null)
-                {
-                    horizontalAxis.LabelFitMode = AxisLabelFitMode.MultiLine;
-                    horizontalAxis.GapLength = 0.6;
-                    horizontalAxis.CustomFont = Utils.MainFontMedium;
-                    horizontalAxis.CustomFontSize = 10f;
-                    horizontalAxis.LabelFormat = "{0:dd/MM/yyyy}";
-                    horizontalAxis.BorderColor = Color.FromArgb(209, 209, 209);
-                }
+        //        CategoricalAxis horizontalAxis = series4.HorizontalAxis as CategoricalAxis;
+        //        if (horizontalAxis != null)
+        //        {
+        //            horizontalAxis.LabelFitMode = AxisLabelFitMode.MultiLine;
+        //            horizontalAxis.GapLength = 0.6;
+        //            horizontalAxis.CustomFont = Utils.MainFontMedium;
+        //            horizontalAxis.CustomFontSize = 10f;
+        //            horizontalAxis.LabelFormat = "{0:dd/MM/yyyy}";
+        //            horizontalAxis.BorderColor = Color.FromArgb(209, 209, 209);
+        //        }
 
-                this.averageChartView.ChartElement.InvalidateMeasure(true);
-                this.averageChartView.ChartElement.UpdateLayout();
-                RemoveBorderFromAxis(verticalAxis, horizontalAxis);
-            }
+        //        this.averageChartView.ChartElement.InvalidateMeasure(true);
+        //        this.averageChartView.ChartElement.UpdateLayout();
+        //        RemoveBorderFromAxis(verticalAxis, horizontalAxis);
+        //    }
 
-            this.averageChartView.GetArea<CartesianArea>().Orientation = Orientation.Horizontal;
-            this.bookingsByTypeChartView.ChartElement.InvalidateMeasure(true);
-            this.bookingsByTypeChartView.ChartElement.UpdateLayout();
-            this.bookingsByRoomTypeChartView.ChartElement.InvalidateMeasure(true);
-            this.bookingsByRoomTypeChartView.ChartElement.UpdateLayout();
-            this.availabilityChartView.ChartElement.InvalidateMeasure(true);
-            this.availabilityChartView.ChartElement.UpdateLayout();
+        //    this.averageChartView.GetArea<CartesianArea>().Orientation = Orientation.Horizontal;
+        //    this.bookingsByTypeChartView.ChartElement.InvalidateMeasure(true);
+        //    this.bookingsByTypeChartView.ChartElement.UpdateLayout();
+        //    this.bookingsByRoomTypeChartView.ChartElement.InvalidateMeasure(true);
+        //    this.bookingsByRoomTypeChartView.ChartElement.UpdateLayout();
+        //    this.availabilityChartView.ChartElement.InvalidateMeasure(true);
+        //    this.availabilityChartView.ChartElement.UpdateLayout();
             
-            this.bookingsByTypeChartView.ChartElement.Text = bookingsByTypeChartView.Series.Count > 0 ? "" : "No available data";
-            this.bookingsByRoomTypeChartView.ChartElement.Text = bookingsByTypeChartView.Series.Count > 0 ? "" : "No available data";
-            this.availabilityChartView.ChartElement.Text = bookingsByTypeChartView.Series.Count > 0 ? "" : "No available data";
-        }
+        //    this.bookingsByTypeChartView.ChartElement.Text = bookingsByTypeChartView.Series.Count > 0 ? "" : "No available data";
+        //    this.bookingsByRoomTypeChartView.ChartElement.Text = bookingsByTypeChartView.Series.Count > 0 ? "" : "No available data";
+        //    this.availabilityChartView.ChartElement.Text = bookingsByTypeChartView.Series.Count > 0 ? "" : "No available data";
+        //}
 
         private void RemoveBorderFromAxis(LinearAxis verticalAxis, CategoricalAxis horizontalAxis)
         {
@@ -246,69 +246,69 @@ namespace HotelApp
             }
         }
 
-        private double GetBookingsDurationByRoomType(BindingList<Booking> bookings, ByanType ByanType, DateTime date, string reportsInterval)
-        {
-            int days = 0;
-            if (reportsInterval == "Days")
-            {
-                days = 3;
-            }
-            else if (reportsInterval == "Weekly")
-            {
-                days = 7;
-            }
-            else
-            {
-                days = 30;
-            }
-            int cnt = 0;
-            double durationInDays = 0;
-            foreach (Booking b in bookings)
-            {
-                if (Utils.GetRoomById(b.RoomId, this.Rooms).Type == ByanType &&
-                    (b.From >= date && b.From <= date.AddDays(days) || b.To >= date && b.To <= date.AddDays(days)))
-                {
-                    durationInDays = b.To.Subtract(b.From).TotalDays;
-                    cnt++;
-                }
-            }
-            return durationInDays / days;
-        }
+        //private double GetBookingsDurationByRoomType(BindingList<Booking> bookings, ByanType ByanType, DateTime date, string reportsInterval)
+        //{
+        //    int days = 0;
+        //    if (reportsInterval == "Days")
+        //    {
+        //        days = 3;
+        //    }
+        //    else if (reportsInterval == "Weekly")
+        //    {
+        //        days = 7;
+        //    }
+        //    else
+        //    {
+        //        days = 30;
+        //    }
+        //    int cnt = 0;
+        //    double durationInDays = 0;
+        //    foreach (Booking b in bookings)
+        //    {
+        //        if (Utils.GetRoomById(b.RoomId, this.Rooms).Type == ByanType &&
+        //            (b.From >= date && b.From <= date.AddDays(days) || b.To >= date && b.To <= date.AddDays(days)))
+        //        {
+        //            durationInDays = b.To.Subtract(b.From).TotalDays;
+        //            cnt++;
+        //        }
+        //    }
+        //    return durationInDays / days;
+        //}
 
-        private Availability GetBookingsByRoomRepairs(BindingList<Booking> bookings, DateTime date, string reportsInterval)
-        {
-            Availability needRepairs = new Availability(0, 0);
-            int days = 0;
-            if (reportsInterval == "Days")
-            {
-                days = 2;
-            }
-            else if (reportsInterval == "Weekly")
-            {
-                days = 6;
-            }
-            else
-            {
-                days = 29;
-            }
-            Room room;
-            foreach (Booking booking in bookings)
-            {
-                room = Utils.GetRoomById(booking.RoomId, this.Rooms);
-                if ((booking.From >= date && booking.From <= date.AddDays(days) || booking.To >= date && booking.To <= date.AddDays(days)))
-                {
-                    if (room.NeedsRepairs)
-                    {
-                        needRepairs.Actual++;
-                    }
-                    else
-                    {
-                        needRepairs.Maintenance++;
-                    }
-                }
-            }
-            return needRepairs;
-        }
+        //private Availability GetBookingsByRoomRepairs(BindingList<Booking> bookings, DateTime date, string reportsInterval)
+        //{
+        //    Availability needRepairs = new Availability(0, 0);
+        //    int days = 0;
+        //    if (reportsInterval == "Days")
+        //    {
+        //        days = 2;
+        //    }
+        //    else if (reportsInterval == "Weekly")
+        //    {
+        //        days = 6;
+        //    }
+        //    else
+        //    {
+        //        days = 29;
+        //    }
+        //    Room room;
+        //    //foreach (Booking booking in bookings)
+        //    //{
+        //    //    room = Utils.GetRoomById(booking.RoomId, this.Rooms);
+        //    //    if ((booking.From >= date && booking.From <= date.AddDays(days) || booking.To >= date && booking.To <= date.AddDays(days)))
+        //    //    {
+        //    //        if (room.NeedsRepairs)
+        //    //        {
+        //    //            needRepairs.Actual++;
+        //    //        }
+        //    //        else
+        //    //        {
+        //    //            needRepairs.Maintenance++;
+        //    //        }
+        //    //    }
+        //    //}
+        //    return needRepairs;
+        //}
 
         private void LabelFormatting(object sender, ChartViewLabelFormattingEventArgs e)
         {
@@ -332,61 +332,61 @@ namespace HotelApp
             }
         }
 
-        private double GetBookingsByRoomType(BindingList<Booking> bookings, ByanType ByanType, DateTime date, string reportsInterval)
-        {
-            int days = 0;
-            if (reportsInterval == "Days")
-            {
-                days = 2;
-            }
-            else if (reportsInterval == "Weekly")
-            {
-                days = 6;
-            }
-            else
-            {
-                days = 29;
-            }
-            int cnt = 0;
+        //private double GetBookingsByRoomType(BindingList<Booking> bookings, ByanType ByanType, DateTime date, string reportsInterval)
+        //{
+        //    int days = 0;
+        //    if (reportsInterval == "Days")
+        //    {
+        //        days = 2;
+        //    }
+        //    else if (reportsInterval == "Weekly")
+        //    {
+        //        days = 6;
+        //    }
+        //    else
+        //    {
+        //        days = 29;
+        //    }
+        //    int cnt = 0;
 
-            foreach (Booking b in bookings)
-            {
-                if (Utils.GetRoomById(b.RoomId, this.Rooms).Type == ByanType &&
-                    (b.From >= date && b.From <= date.AddDays(days) || b.To >= date && b.To <= date.AddDays(days)))
-                {
-                    cnt++;
-                }
-            }
-            return cnt;
-        }
+        //    foreach (Booking b in bookings)
+        //    {
+        //        if (Utils.GetRoomById(b.RoomId, this.Rooms).Type == ByanType &&
+        //            (b.From >= date && b.From <= date.AddDays(days) || b.To >= date && b.To <= date.AddDays(days)))
+        //        {
+        //            cnt++;
+        //        }
+        //    }
+        //    return cnt;
+        //}
 
-        private double GetBookingsByType(BindingList<Booking> bookings, BookingStatus bookingStatus, DateTime date, string reportsInterval)
-        {
-            int days = 0;
-            if (reportsInterval == "Days")
-            {
-                days = 2;
-            }
-            else if (reportsInterval == "Weekly")
-            {
-                days = 6;
-            }
-            else
-            {
-                days = 29;
-            }
-            int cnt = 0;
+        //private double GetBookingsByType(BindingList<Booking> bookings, BookingStatus bookingStatus, DateTime date, string reportsInterval)
+        //{
+        //    int days = 0;
+        //    if (reportsInterval == "Days")
+        //    {
+        //        days = 2;
+        //    }
+        //    else if (reportsInterval == "Weekly")
+        //    {
+        //        days = 6;
+        //    }
+        //    else
+        //    {
+        //        days = 29;
+        //    }
+        //    int cnt = 0;
 
-            foreach (Booking b in bookings)
-            {
-                if (b.Status == bookingStatus &&
-                    (b.From >= date && b.From <= date.AddDays(days) || b.To >= date && b.To <= date.AddDays(days)))
-                {
-                    cnt++;
-                }
-            }
-            return cnt;
-        }
+        //    foreach (Booking b in bookings)
+        //    {
+        //        if (b.Status == bookingStatus &&
+        //            (b.From >= date && b.From <= date.AddDays(days) || b.To >= date && b.To <= date.AddDays(days)))
+        //        {
+        //            cnt++;
+        //        }
+        //    }
+        //    return cnt;
+        //}
 
         private class Availability
         {

@@ -59,99 +59,6 @@ namespace HotelApp.Data
                     return "N/A";
             }
         }
-
-        internal static System.Drawing.Image GetImageByRoomType(ByanType ByanType)
-        {
-            switch (ThemeResolutionService.ApplicationThemeName)
-            {
-                case "Material":
-                    return GetImageByRoomTypeMaterial(ByanType);
-                case "MaterialPink":
-                    return GetImageByRoomTypeMaterialPink(ByanType);
-                case "MaterialTeal":
-                    return GetImageByRoomTypeMaterialTeal(ByanType);
-                case "MaterialBlueGrey":
-                    return GetImageByRoomTypeMaterialBlueGrey(ByanType);
-                default:
-                    return DoctorERP_v2_00.Properties.Resources.free_room;
-            }
-        }
-
-        internal static System.Drawing.Image GetImageByRoomTypeMaterial(ByanType ByanType)
-        {
-            switch (ByanType)
-            {
-                case ByanType.Cars:
-                    return DoctorERP_v2_00.Properties.Resources.single_user_orange;
-                case ByanType.Driver:
-                    return DoctorERP_v2_00.Properties.Resources.double_user_orange;
-                case ByanType.Company:
-                    return DoctorERP_v2_00.Properties.Resources.tripple_user_orange;
-                default:
-                    return DoctorERP_v2_00.Properties.Resources.free_room;
-            }
-        }
-
-        internal static System.Drawing.Image GetImageByRoomTypeMaterialPink(ByanType ByanType)
-        {
-            switch (ByanType)
-            {
-                case ByanType.Cars:
-                    return DoctorERP_v2_00.Properties.Resources.single_user_blue;
-                case ByanType.Driver:
-                    return DoctorERP_v2_00.Properties.Resources.double_user_blue;
-                case ByanType.Company:
-                    return DoctorERP_v2_00.Properties.Resources.tripple_user_blue;
-                default:
-                    return DoctorERP_v2_00.Properties.Resources.free_room_pink;
-            }
-        }
-
-        internal static System.Drawing.Image GetImageByRoomTypeMaterialTeal(ByanType ByanType)
-        {
-            switch (ByanType)
-            {
-                case ByanType.Cars:
-                    return DoctorERP_v2_00.Properties.Resources.single_user_red;
-                case ByanType.Driver:
-                    return DoctorERP_v2_00.Properties.Resources.double_user_red;
-                case ByanType.Company:
-                    return DoctorERP_v2_00.Properties.Resources.tripple_user_red;
-                default:
-                    return DoctorERP_v2_00.Properties.Resources.free_room_teal;
-            }
-        }
-
-        internal static System.Drawing.Image GetImageByRoomTypeMaterialBlueGrey(ByanType ByanType)
-        {
-            switch (ByanType)
-            {
-                case ByanType.Cars:
-                    return DoctorERP_v2_00.Properties.Resources.single_user_green;
-                case ByanType.Driver:
-                    return DoctorERP_v2_00.Properties.Resources.double_user_green;
-                case ByanType.Company:
-                    return DoctorERP_v2_00.Properties.Resources.tripple_user_green;
-                default:
-                    return DoctorERP_v2_00.Properties.Resources.free_room_bluegrey;
-            }
-        }
-
-        internal static System.Drawing.Image GetRoomIconByType(ByanType ByanType)
-        {
-            switch (ByanType)
-            {
-                case ByanType.Cars:
-                    return DoctorERP_v2_00.Properties.Resources.single_user;
-                case ByanType.Driver:
-                    return DoctorERP_v2_00.Properties.Resources.double_users;
-                case ByanType.Company:
-                    return DoctorERP_v2_00.Properties.Resources.tripple_users;
-                default:
-                    return null;
-            }
-        }
-
         internal static System.Drawing.Image GetRoomIconByHouseKeepingStatus(HouseKeepingStatus houseKeepingStatus)
         {
             switch (houseKeepingStatus)
@@ -197,52 +104,52 @@ namespace HotelApp.Data
             }
         }
 
-        internal static System.Drawing.Image GetRoomImageByRoomType(ByanType ByanType)
-        {
-            switch (ByanType)
-            {
-                case ByanType.Cars:
-                    return DoctorERP_v2_00.Properties.Resources.single;
-                case ByanType.Driver:
-                    return DoctorERP_v2_00.Properties.Resources._double;
-                case ByanType.Company:
-                    return DoctorERP_v2_00.Properties.Resources.tripple;
-                default:
-                    return null;
-            }
-        }
+        //internal static System.Drawing.Image GetRoomImageByRoomType(ByanType ByanType)
+        //{
+        //    switch (ByanType)
+        //    {
+        //        case ByanType.Cars:
+        //            return DoctorERP_v2_00.Properties.Resources.single;
+        //        case ByanType.Driver:
+        //            return DoctorERP_v2_00.Properties.Resources._double;
+        //        case ByanType.Company:
+        //            return DoctorERP_v2_00.Properties.Resources.tripple;
+        //        default:
+        //            return null;
+        //    }
+        //}
 
-        public static string GetBookingTypeByStatus(BookingStatus bk)
-        {
-            switch (bk)
-            {
-                case BookingStatus.Reservation:
-                    return "Reservation";
-                case BookingStatus.Actual:
-                    return "Actual";
-                case BookingStatus.Cancelled:
-                    return "Cancelled";
-                case BookingStatus.CheckedOut:
-                    return "Checked out";
-                case BookingStatus.NoShow:
-                    return "No-show";
-                default:
-                    return "N/A";
-            }
-        }
+        //public static string GetBookingTypeByStatus(BookingStatus bk)
+        //{
+        //    switch (bk)
+        //    {
+        //        case BookingStatus.Reservation:
+        //            return "Reservation";
+        //        case BookingStatus.Actual:
+        //            return "Actual";
+        //        case BookingStatus.Cancelled:
+        //            return "Cancelled";
+        //        case BookingStatus.CheckedOut:
+        //            return "Checked out";
+        //        case BookingStatus.NoShow:
+        //            return "No-show";
+        //        default:
+        //            return "N/A";
+        //    }
+        //}
 
-        public static Guest GetGuestById(BindingList<Guest> guests, string id)
-        {
-            Guest g = null;
-            foreach (Guest guest in guests)
-            {
-                if (guest.Id == id)
-                {
-                    return guest;
-                }
-            }
-            return g;
-        }
+        //public static Guest GetGuestById(BindingList<Guest> guests, string id)
+        //{
+        //    Guest g = null;
+        //    foreach (Guest guest in guests)
+        //    {
+        //        if (guest.Id == id)
+        //        {
+        //            return guest;
+        //        }
+        //    }
+        //    return g;
+        //}
 
         internal static Image GetAvailableImageByTheme()
         {

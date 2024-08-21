@@ -11,7 +11,6 @@ using HotelApp;
 using HotelApp.Data;
 using Telerik.WinControls.UI;
 using Telerik.WinControls.Primitives;
-using DoctorERP_v2_00.Data;
 
 namespace CustomControls
 {
@@ -19,9 +18,9 @@ namespace CustomControls
     {
         #region Properties
         
-        public Booking Booking { get; set; }
+        //public Booking Booking { get; set; }
         
-        public Byanat Room { get; set; }
+        //public Byanat Room { get; set; }
         
         #endregion
         
@@ -53,7 +52,6 @@ namespace CustomControls
             this.manageStatusLabel.RootElement.EnableElementShadow = false;
             this.bookingDatesGrid.RootElement.EnableElementShadow = false;
 
-            this.roomIdLabel.Click += roomIdLabel_Click;
 
             this.paymentSeparator.SeparatorElement.Line1.BackColor = Color.FromArgb(209, 209, 209);
             
@@ -101,40 +99,38 @@ namespace CustomControls
             this.roomImageBox.RootElement.EnableElementShadow = false;
             this.roomImageBox.PanelElement.PanelFill.Visibility = Telerik.WinControls.ElementVisibility.Collapsed;
             
-            this.bookingStatusDropDown.DataSource = Enum.GetValues(typeof(BookingStatus));
-            this.bookingStatusDropDown.SelectedValueChanged += bookingStatusDropDown_SelectedValueChanged;
         }
         
         #endregion
         
         #region Events
             
-        private void bookingStatusDropDown_SelectedValueChanged(object sender, EventArgs e)
-        {
-            if (this.Booking.Status != (BookingStatus)this.bookingStatusDropDown.SelectedValue)
-            {
-                this.Booking.Status = (BookingStatus)this.bookingStatusDropDown.SelectedValue;
-                HotelAppForm form = this.FindForm() as HotelAppForm;
-                if (form != null)
-                {
-                    form.BookingsListView.ListViewElement.SynchronizeVisualItems();
-                }
-            }
-        }
+        //private void bookingStatusDropDown_SelectedValueChanged(object sender, EventArgs e)
+        //{
+        //    if (this.Booking.Status != (BookingStatus)this.bookingStatusDropDown.SelectedValue)
+        //    {
+        //        this.Booking.Status = (BookingStatus)this.bookingStatusDropDown.SelectedValue;
+        //        HotelAppForm form = this.FindForm() as HotelAppForm;
+        //        if (form != null)
+        //        {
+        //            form.BookingsListView.ListViewElement.SynchronizeVisualItems();
+        //        }
+        //    }
+        //}
             
-        private void roomIdLabel_Click(object sender, EventArgs e)
-        {
-            HotelAppForm form = this.FindForm() as HotelAppForm;
-            if (form != null)
-            {
-                string comingFrom = "Booking";
-                if (form.PageView.SelectedPage == form.PageView.Pages[2])
-                {
-                    comingFrom = "Schedule";
-                }
-                form.ShowRoomDetails(this.Room, this.Booking, comingFrom);
-            }
-        }
+        //private void roomIdLabel_Click(object sender, EventArgs e)
+        //{
+        //    HotelAppForm form = this.FindForm() as HotelAppForm;
+        //    if (form != null)
+        //    {
+        //        string comingFrom = "Booking";
+        //        if (form.PageView.SelectedPage == form.PageView.Pages[2])
+        //        {
+        //            comingFrom = "Schedule";
+        //        }
+        //        form.ShowRoomDetails(this.Room, this.Booking, comingFrom);
+        //    }
+        //}
             
         private void bookingNameLabel_Click(object sender, EventArgs e)
         {
@@ -149,11 +145,6 @@ namespace CustomControls
                 }
             }
                 
-            if (editGuestInfo != null)
-            {
-                editGuestInfo.Visible = true;
-                editGuestInfo.Initialize(this.Booking.Guests.FirstOrDefault(), this.Booking);
-            }
         }
         
         private void bookingDatesGrid_ViewRowFormatting(object sender, RowFormattingEventArgs e)
@@ -211,74 +202,69 @@ namespace CustomControls
             
         protected override void OnVisibleChanged(EventArgs e)
         {
-            base.OnVisibleChanged(e);
-            if (this.Booking != null)
-            {
-                this.bookingNameLabel.Text = this.Booking.Name;
-            }
         }
             
-        internal void LoadBookingInfo(Booking booking, BindingList<Room> rooms)
-        {
-            this.manageStatusLabel.ForeColor = Utils.MainThemeColor;
-            this.roomIdLabel.ForeColor = Utils.MainThemeColor;
-            this.Booking = booking;
-            //this.bookingInfoLabel.Text = "  BOOKING #" + booking.Id;
+        //internal void LoadBookingInfo(Booking booking, BindingList<Room> rooms)
+        //{
+        //    this.manageStatusLabel.ForeColor = Utils.MainThemeColor;
+        //    this.roomIdLabel.ForeColor = Utils.MainThemeColor;
+        //    this.Booking = booking;
+        //    //this.bookingInfoLabel.Text = "  BOOKING #" + booking.Id;
             
-            //Room room = Utils.GetRoomById(booking.RoomId, rooms);
-            //this.Room = room;
-            //this.roomImageBox.BackgroundImage = Utils.GetRoomImageByRoomType(room.Type);
-            this.roomImageBox.BackgroundImageLayout = ImageLayout.Zoom;
-            this.roomImageBox.PanelElement.PanelBorder.Visibility = Telerik.WinControls.ElementVisibility.Collapsed;
-            //this.bookingNameLabel.Text = booking.Name;
-            //this.bookingRoomTypeIcon.Image = Utils.GetImageByRoomType(room.Type);
-            //this.bookingStatusDropDown.SelectedValue = this.Booking.Status;
-            //this.roomIdLabel.Text = " Room " + room.Id;
-            //this.bookingPriceLabel.Text = "<html><size=15>$" + booking.Price + "<size=10.5> Payment";
+        //    //Room room = Utils.GetRoomById(booking.RoomId, rooms);
+        //    //this.Room = room;
+        //    //this.roomImageBox.BackgroundImage = Utils.GetRoomImageByRoomType(room.Type);
+        //    this.roomImageBox.BackgroundImageLayout = ImageLayout.Zoom;
+        //    this.roomImageBox.PanelElement.PanelBorder.Visibility = Telerik.WinControls.ElementVisibility.Collapsed;
+        //    //this.bookingNameLabel.Text = booking.Name;
+        //    //this.bookingRoomTypeIcon.Image = Utils.GetImageByRoomType(room.Type);
+        //    //this.bookingStatusDropDown.SelectedValue = this.Booking.Status;
+        //    //this.roomIdLabel.Text = " Room " + room.Id;
+        //    //this.bookingPriceLabel.Text = "<html><size=15>$" + booking.Price + "<size=10.5> Payment";
             
-            this.bookingDatesGrid.EnableGrouping = false;
-            this.bookingDatesGrid.AllowAddNewRow = false;
-            this.bookingDatesGrid.ReadOnly = true;
-            this.bookingDatesGrid.TableElement.RowHeaderColumnWidth = 0;
-            this.bookingDatesGrid.TableElement.TableHeaderHeight = 30;
-            this.bookingDatesGrid.TableElement.RowHeight = 40;
-            this.bookingDatesGrid.TableElement.VScrollBar.Visibility = Telerik.WinControls.ElementVisibility.Collapsed;
-            this.bookingDatesGrid.TableElement.VScrollBar.PropertyChanged += VScrollBar_PropertyChanged;
-            if (this.bookingDatesGrid.Columns.Count == 0)
-            {
-                this.bookingDatesGrid.Columns.Add("Occupied");
-                this.bookingDatesGrid.Columns.Add("Days");
+        //    this.bookingDatesGrid.EnableGrouping = false;
+        //    this.bookingDatesGrid.AllowAddNewRow = false;
+        //    this.bookingDatesGrid.ReadOnly = true;
+        //    this.bookingDatesGrid.TableElement.RowHeaderColumnWidth = 0;
+        //    this.bookingDatesGrid.TableElement.TableHeaderHeight = 30;
+        //    this.bookingDatesGrid.TableElement.RowHeight = 40;
+        //    this.bookingDatesGrid.TableElement.VScrollBar.Visibility = Telerik.WinControls.ElementVisibility.Collapsed;
+        //    this.bookingDatesGrid.TableElement.VScrollBar.PropertyChanged += VScrollBar_PropertyChanged;
+        //    if (this.bookingDatesGrid.Columns.Count == 0)
+        //    {
+        //        this.bookingDatesGrid.Columns.Add("Occupied");
+        //        this.bookingDatesGrid.Columns.Add("Days");
                     
-                foreach (GridViewDataColumn c in this.bookingDatesGrid.Columns)
-                {
-                    c.HeaderImage = DoctorERP_v2_00.Properties.Resources.GlyphCalendar_small;
-                    c.TextImageRelation = TextImageRelation.ImageBeforeText;
-                }
-                this.bookingDatesGrid.Columns["Occupied"].TextAlignment = ContentAlignment.MiddleLeft;
-                this.bookingDatesGrid.Columns["Days"].TextAlignment = ContentAlignment.MiddleRight;
-                this.bookingDatesGrid.Columns["Occupied"].MaxWidth = 180;
-                this.bookingDatesGrid.Columns["Occupied"].Width = 180;
-            }
-            this.bookingDatesGrid.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill;
-            this.bookingDatesGrid.Rows.Clear();
-            //this.bookingDatesGrid.Rows.Add("From: " + booking.From.ToString("dd.MM.yyyy") + " " +
-            //                               booking.From.DayOfWeek.ToString().Substring(0, 3), (booking.To - booking.From).Days);
-            //this.bookingDatesGrid.Rows.Add("To: " + booking.To.ToString("dd.MM.yyyy") + " " + booking.To.DayOfWeek.ToString().Substring(0, 3));
-            while (this.bookingDatesGrid.SelectedRows.Count > 0)
-            {
-                this.bookingDatesGrid.SelectedRows.First().IsSelected = false;
-            }
+        //        foreach (GridViewDataColumn c in this.bookingDatesGrid.Columns)
+        //        {
+        //            c.HeaderImage = DoctorERP_v2_00.Properties.Resources.GlyphCalendar_small;
+        //            c.TextImageRelation = TextImageRelation.ImageBeforeText;
+        //        }
+        //        this.bookingDatesGrid.Columns["Occupied"].TextAlignment = ContentAlignment.MiddleLeft;
+        //        this.bookingDatesGrid.Columns["Days"].TextAlignment = ContentAlignment.MiddleRight;
+        //        this.bookingDatesGrid.Columns["Occupied"].MaxWidth = 180;
+        //        this.bookingDatesGrid.Columns["Occupied"].Width = 180;
+        //    }
+        //    this.bookingDatesGrid.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill;
+        //    this.bookingDatesGrid.Rows.Clear();
+        //    //this.bookingDatesGrid.Rows.Add("From: " + booking.From.ToString("dd.MM.yyyy") + " " +
+        //    //                               booking.From.DayOfWeek.ToString().Substring(0, 3), (booking.To - booking.From).Days);
+        //    //this.bookingDatesGrid.Rows.Add("To: " + booking.To.ToString("dd.MM.yyyy") + " " + booking.To.DayOfWeek.ToString().Substring(0, 3));
+        //    while (this.bookingDatesGrid.SelectedRows.Count > 0)
+        //    {
+        //        this.bookingDatesGrid.SelectedRows.First().IsSelected = false;
+        //    }
                 
-            HotelAppForm f = this.FindForm() as HotelAppForm;
-            if (f != null && f.PageView.SelectedPage == f.PageView.Pages[2])
-            {
-                this.manageStatusLabel.Visible = false;
-            }
-            else
-            {
-                this.manageStatusLabel.Visible = true;
-            }
-        }
+        //    HotelAppForm f = this.FindForm() as HotelAppForm;
+        //    if (f != null && f.PageView.SelectedPage == f.PageView.Pages[2])
+        //    {
+        //        this.manageStatusLabel.Visible = false;
+        //    }
+        //    else
+        //    {
+        //        this.manageStatusLabel.Visible = true;
+        //    }
+        //}
             
         private void VScrollBar_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
@@ -288,14 +274,14 @@ namespace CustomControls
             }
         }
             
-        private void manageStatusLabel_Click(object sender, EventArgs e)
-        {
-            HotelAppForm f = this.FindForm() as HotelAppForm;
-            if (f != null && f.PageView.SelectedPage == f.PageView.Pages[1])
-            {
-                f.PageView.SelectedPage = f.PageView.Pages[2];
-            }
-        }
+        ////private void manageStatusLabel_Click(object sender, EventArgs e)
+        ////{
+        ////    HotelAppForm f = this.FindForm() as HotelAppForm;
+        ////    if (f != null && f.PageView.SelectedPage == f.PageView.Pages[1])
+        ////    {
+        ////        f.PageView.SelectedPage = f.PageView.Pages[2];
+        ////    }
+        ////}
 
         #endregion
     }

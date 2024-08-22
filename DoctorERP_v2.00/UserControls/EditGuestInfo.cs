@@ -316,5 +316,10 @@ namespace CustomControls
             }
             return true;
         }
+
+        private void EditGuestInfo_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

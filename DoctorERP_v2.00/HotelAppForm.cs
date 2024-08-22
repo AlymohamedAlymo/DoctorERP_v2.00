@@ -1,16 +1,20 @@
 ﻿using DoctorERP_v2_00.Contract_ManagementDataSetTableAdapters;
+using DoctorERP_v2_00.Dialogs;
 using HotelApp.Data;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity;
 using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
 using Telerik.WinControls;
 using Telerik.WinControls.Data;
 using Telerik.WinControls.Enumerations;
 using Telerik.WinControls.Primitives;
 using Telerik.WinControls.UI;
+using Telerik.WinControls.UI.SplashScreen;
 using static DoctorERP_v2_00.Contract_ManagementDataSet;
 
 namespace HotelApp
@@ -123,6 +127,55 @@ namespace HotelApp
             //this.ByanatView.VisualItemFormatting += roomsView_VisualItemFormatting;
             //this.ByanatView.ItemMouseClick += roomsView_ItemMouseClick;
             //this.bookingsLeftView.VisualItemFormatting += bookingsLeftView_VisualItemFormatting;
+
+            RadFlyoutManager.FlyoutClosed -= this.RadFlyoutManager_FlyoutClosed;
+            RadFlyoutManager.FlyoutClosed += this.RadFlyoutManager_FlyoutClosed;
+
+
+        }
+        private void RadFlyoutManager_FlyoutClosed(FlyoutClosedEventArgs e)
+        {
+            Action action = new Action(() =>
+            {
+                if (e.Content is FlyoutAddByanat)
+                {
+                    RadCallout callout = new RadCallout();
+                    callout.ArrowDirection = Telerik.WinControls.ArrowDirection.Up;
+
+                    FlyoutAddByanat content = e.Content as FlyoutAddByanat;
+                    if (content != null)
+                    {
+                        if (content.Result == DialogResult.Yes)
+                        {
+                            RadFlyoutManager.Show(this, typeof(FlyoutAddCarOrDriver));
+
+                        }
+
+                        //tbAgent Agent = (tbAgent)Bs.Current;
+                        //if (content.Result == DialogResult.OK)
+                        //{
+                        //    DBConnect.StartTransAction();
+                        //    radstatus.Text = Agent.note = "غير نشط";
+                        //    BtnReservation.Text = "تنشيط";
+                        //    Agent.Update();
+                        //    if (DBConnect.CommitTransAction())
+                        //    {
+                        //        ShowDesktopAlert("تنشيط بطاقة عميل", "تنشيط بطاقة العميل", "تمت عملية تنشيط البطاقة بنجاح", "تم تنشيط بطاقة العميل يمكن القيام بالعمليات عليها الأن.");
+                        //        FrmMain.DataHasChanged = true;
+                        //    }
+
+                        //    string ReserveReason = $"{content.ReserveReason}";
+                        //    RadCallout.Show(callout, this.BtnReservation, $"عملية تنشيط بطاقة العميل بسبب{ReserveReason} تمت!", "تمت العملية بنجاح");
+                    }
+                    else
+                        {
+                            //RadCallout.Show(callout, this.BtnReservation, "فشلت عملية تنشيط بطاقة العميل!", "فشلت العملية");
+                        }
+                    }
+
+            });
+
+            this.Invoke(action);
         }
 
         private void HotelApp_Load(object sender, EventArgs e)
@@ -539,6 +592,13 @@ namespace HotelApp
 
         private void radPanel1_Paint(object sender, PaintEventArgs e)
         {
+
+        }
+
+        private void radButton1_Click(object sender, EventArgs e)
+        {
+            RadFlyoutManager.Show(this, typeof(FlyoutAddByanat));
+
 
         }
 

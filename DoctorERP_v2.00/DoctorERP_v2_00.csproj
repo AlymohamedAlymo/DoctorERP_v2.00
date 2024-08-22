@@ -92,17 +92,17 @@
     <Compile Include="Data\HouseKeeper.cs" />
     <Compile Include="Data\Room.cs" />
     <Compile Include="Data\Utils.cs" />
-    <Compile Include="Dialogs\BookingEditAppointmentDialog.cs">
-      <SubType>Form</SubType>
+    <Compile Include="Dialogs\FlyoutAddByanat.cs">
+      <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Dialogs\BookingEditAppointmentDialog.Designer.cs">
-      <DependentUpon>BookingEditAppointmentDialog.cs</DependentUpon>
+    <Compile Include="Dialogs\FlyoutAddByanat.Designer.cs">
+      <DependentUpon>FlyoutAddByanat.cs</DependentUpon>
     </Compile>
-    <Compile Include="Dialogs\HouseKeepingEditAppointmentDialog.cs">
-      <SubType>Form</SubType>
+    <Compile Include="Dialogs\FlyoutAddCarOrDriver.cs">
+      <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Dialogs\HouseKeepingEditAppointmentDialog.Designer.cs">
-      <DependentUpon>HouseKeepingEditAppointmentDialog.cs</DependentUpon>
+    <Compile Include="Dialogs\FlyoutAddCarOrDriver.Designer.cs">
+      <DependentUpon>FlyoutAddCarOrDriver.cs</DependentUpon>
     </Compile>
     <Compile Include="HotelAppForm.cs">
       <SubType>Form</SubType>
@@ -146,11 +146,11 @@
     <Compile Include="UserControls\UserControlCurrentStatus.Designer.cs">
       <DependentUpon>UserControlCurrentStatus.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Dialogs\BookingEditAppointmentDialog.resx">
-      <DependentUpon>BookingEditAppointmentDialog.cs</DependentUpon>
+    <EmbeddedResource Include="Dialogs\FlyoutAddByanat.resx">
+      <DependentUpon>FlyoutAddByanat.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Dialogs\HouseKeepingEditAppointmentDialog.resx">
-      <DependentUpon>HouseKeepingEditAppointmentDialog.cs</DependentUpon>
+    <EmbeddedResource Include="Dialogs\FlyoutAddCarOrDriver.resx">
+      <DependentUpon>FlyoutAddCarOrDriver.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="HotelAppForm.resx">
       <DependentUpon>HotelAppForm.cs</DependentUpon>

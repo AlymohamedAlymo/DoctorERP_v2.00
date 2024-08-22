@@ -477,6 +477,7 @@
             this.Name = "EditGuestInfo";
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.Size = new System.Drawing.Size(270, 670);
+            this.Load += new System.EventHandler(this.EditGuestInfo_Load);
             ((System.ComponentModel.ISupportInitialize)(this.headerPanel)).EndInit();
             this.headerPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.guestInfoLabel)).EndInit();

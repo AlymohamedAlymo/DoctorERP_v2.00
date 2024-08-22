@@ -93,9 +93,29 @@ namespace DoctorERP_v2_00.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap CarsIcon_32 {
+        internal static System.Drawing.Bitmap CarBlue_32 {
             get {
-                object obj = ResourceManager.GetObject("CarsIcon_32", resourceCulture);
+                object obj = ResourceManager.GetObject("CarBlue_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap CarOrange_32 {
+            get {
+                object obj = ResourceManager.GetObject("CarOrange_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap CarRed_32 {
+            get {
+                object obj = ResourceManager.GetObject("CarRed_32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -133,6 +153,16 @@ namespace DoctorERP_v2_00.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Count_32 {
+            get {
+                object obj = ResourceManager.GetObject("Count_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap default_small {
             get {
                 object obj = ResourceManager.GetObject("default_small", resourceCulture);
@@ -143,9 +173,29 @@ namespace DoctorERP_v2_00.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap DriverIcon_32 {
+        internal static System.Drawing.Bitmap DriverBlue_32 {
             get {
-                object obj = ResourceManager.GetObject("DriverIcon_32", resourceCulture);
+                object obj = ResourceManager.GetObject("DriverBlue_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap DriverOrange_32 {
+            get {
+                object obj = ResourceManager.GetObject("DriverOrange_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap DriverRed_32 {
+            get {
+                object obj = ResourceManager.GetObject("DriverRed_32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

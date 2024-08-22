@@ -415,6 +415,27 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DriverBlue_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DriverRed_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DriverOrange_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CarBlue_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CarRed_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CarOrange_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Count_32.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
     <VisualStudio>

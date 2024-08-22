@@ -6,9 +6,12 @@ using System.Data;
 using System.Drawing;
 using System.Reflection;
 using System.Text;
+using System.Xml.Linq;
 using Telerik.WinControls;
 using Telerik.WinControls.UI;
 using static DoctorERP_v2_00.Contract_ManagementDataSet;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Rebar;
+using static Telerik.WinControls.NativeMethods;
 
 namespace HotelApp
 {
@@ -22,15 +25,15 @@ namespace HotelApp
             }
         }
 
-        private LightVisualElement companyName = new LightVisualElement();
-        private LightVisualElement cardStatus = new LightVisualElement();
-        private LightVisualElement parentName = new LightVisualElement();
-        private LightVisualElement endDate = new LightVisualElement(); 
-        private LightVisualElement PeriodDays = new LightVisualElement();
-        private LightVisualElement needsRepair = new LightVisualElement();
-        private StackLayoutElement verticalContainer = new StackLayoutElement();
-        private StackLayoutElement roomHeaderContainer = new StackLayoutElement(); 
-        private StackLayoutElement roomFooterContainer = new StackLayoutElement(); 
+        private readonly LightVisualElement companyName = new LightVisualElement();
+        private readonly LightVisualElement cardStatus = new LightVisualElement();
+        private readonly LightVisualElement parentName = new LightVisualElement();
+        private readonly LightVisualElement endDate = new LightVisualElement(); 
+        private readonly LightVisualElement PeriodDays = new LightVisualElement();
+        private readonly LightVisualElement needsRepair = new LightVisualElement();
+        private readonly StackLayoutElement verticalContainer = new StackLayoutElement();
+        private readonly StackLayoutElement roomHeaderContainer = new StackLayoutElement(); 
+        private readonly StackLayoutElement roomFooterContainer = new StackLayoutElement(); 
 
         protected override void CreateChildElements()
         {
@@ -55,7 +58,7 @@ namespace HotelApp
             companyName.CustomFont = Utils.MainFont;
             companyName.CustomFontSize = 10;
             companyName.CustomFontStyle = FontStyle.Bold;
-            companyName.Margin = new System.Windows.Forms.Padding(5, 10, 0, 0);
+            companyName.Margin = new System.Windows.Forms.Padding(0, 10, 0, 0);
             companyName.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
 
             cardStatus.NotifyParentOnMouseInput = true;
@@ -64,7 +67,7 @@ namespace HotelApp
             cardStatus.CustomFont = Utils.MainFont;
             cardStatus.CustomFontSize = 10;
             cardStatus.CustomFontStyle = FontStyle.Italic;
-            cardStatus.Margin = new System.Windows.Forms.Padding(0,5,5,0);
+            cardStatus.Margin = new System.Windows.Forms.Padding(0,5,-5,0);
 
             roomFooterContainer.Orientation = System.Windows.Forms.Orientation.Horizontal;
             roomFooterContainer.NotifyParentOnMouseInput = true;
@@ -84,27 +87,15 @@ namespace HotelApp
             parentName.ShouldHandleMouseInput = false;
             parentName.CustomFont = Utils.MainFont;
             parentName.CustomFontSize = 12;
-            parentName.CustomFontStyle = FontStyle.Regular;
+            parentName.CustomFontStyle = FontStyle.Bold;
 
-            //needsRepair.Text = "أوشك علي الإنتهاء";
             endDate.NotifyParentOnMouseInput = true;
             endDate.ShouldHandleMouseInput = false;
 
             endDate.StretchVertically = true;
             PeriodDays.StretchVertically = true;
-            //needsRepair.StretchVertically = true;
             roomFooterContainer.Children.Add(endDate);
             roomFooterContainer.Children.Add(PeriodDays);
-            //roomFooterContainer.Children.Add(needsRepair); 
-
-            //needsRepair.NotifyParentOnMouseInput = true;
-            //needsRepair.ShouldHandleMouseInput = false;
-            //needsRepair.StretchHorizontally = false;
-            //needsRepair.Alignment = ContentAlignment.MiddleRight;
-            //needsRepair.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;           
-            //needsRepair.CustomFont = Utils.MainFont;
-            //needsRepair.CustomFontSize = 9;
-            //needsRepair.CustomFontStyle = FontStyle.Regular;
 
             PeriodDays.NotifyParentOnMouseInput = true;
             PeriodDays.ShouldHandleMouseInput = false;
@@ -148,60 +139,63 @@ namespace HotelApp
             endDate.ForeColor = Color.FromArgb(200, 0, 0, 0);
             PeriodDays.ForeColor = Color.FromArgb(200, 0, 0, 0);
             PeriodDays.Layout.LeftPart.Margin = new System.Windows.Forms.Padding(0, -3, 0, 0);
-            //needsRepair.ForeColor = Color.FromArgb(200, 0, 0, 0);
-            //needsRepair.Layout.LeftPart.Margin = new System.Windows.Forms.Padding(0, -3, 0, 0);
-
-
 
             DataRowView datarow = this.Data.DataBoundItem as DataRowView;
-            ByanRow byan = datarow.Row as ByanRow;
-            if (byan != null)
+            if (datarow.Row is ByanRow byan)
             {
-                companyName.Text = "الشركة : " + byan.CompanyName;
+                companyName.Text = byan.CompanyName;
                 parentName.Text = byan.ParentName;
-                if (byan.ParentType == "سائق")
-                {
-                    parentName.Image = DoctorERP_v2_00.Properties.Resources.DriverIcon_32;
-                }
-                else
-                {
-                    parentName.Image = DoctorERP_v2_00.Properties.Resources.CarsIcon_32;
 
-                }
+                Bitmap icon = null;
 
-                //parentName.Image = Utils.GetImageByRoomType(ByanType.Cars);
+
                 int Period = (byan.EndDate - DateTime.Now).Days;
-                endDate.Text = byan.EndDate.ToString("yyyy/MM/dd") ;
+                endDate.Text = byan.EndDate.ToString("yyyy/MM/dd");
                 PeriodDays.Text = Period + " يوم";
-                //needsRepair.Image = DoctorERP_v2_00.Properties.Resources.GlyphWrench;
                 endDate.Image = DoctorERP_v2_00.Properties.Resources.GlyphCalendar_small;
+
 
                 if (Period <= 0)
                 {
                     cardStatus.Text = "منتهي";
 
-                    //this.BackColor = Color.FromArgb(247, 247, 247);
-                    this.BackColor = Color.DarkRed;
-
+                    this.BackColor = Color.FromArgb(224, 79, 95);
                     PeriodDays.Image = DoctorERP_v2_00.Properties.Resources.GlyphClose;
-                    //needsRepair.Visibility = Telerik.WinControls.ElementVisibility.Visible;
                     companyName.ForeColor = Color.White;
                     cardStatus.ForeColor = Color.White;
                     parentName.ForeColor = Color.White;
+
+                    if (byan.ParentType == "سائق")
+                    {
+                        icon = DoctorERP_v2_00.Properties.Resources.DriverRed_32;
+                    }
+                    else
+                    {
+                        icon = DoctorERP_v2_00.Properties.Resources.CarRed_32;
+
+                    }
 
                 }
                 else if (Period <= 15)
                 {
                     cardStatus.Text = "أوشك";
 
-                    //this.BackColor = Color.FromArgb(247, 247, 247);
-                    this.BackColor = Color.Gold;
+                    this.BackColor = Color.DarkOrange;
 
                     PeriodDays.Image = DoctorERP_v2_00.Properties.Resources.GlyphWrench;
-                    //needsRepair.Visibility = Telerik.WinControls.ElementVisibility.Visible;
                     companyName.ForeColor = Color.Black;
                     cardStatus.ForeColor = Color.Black;
                     parentName.ForeColor = Color.Black;
+
+                    if (byan.ParentType == "سائق")
+                    {
+                        icon = DoctorERP_v2_00.Properties.Resources.DriverOrange_32;
+                    }
+                    else
+                    {
+                        icon = DoctorERP_v2_00.Properties.Resources.CarOrange_32;
+
+                    }
 
                 }
 
@@ -209,17 +203,56 @@ namespace HotelApp
                 {
                     cardStatus.Text = "ساري";
 
-                    //this.BackColor = Color.FromArgb(232, 232, 232);
-                    this.BackColor = Color.DarkGreen;
-
+                    this.BackColor = Color.CornflowerBlue;
                     PeriodDays.Image = DoctorERP_v2_00.Properties.Resources.GlyphCheck_small;
-                    //needsRepair.Visibility = Telerik.WinControls.ElementVisibility.Hidden;
                     companyName.ForeColor = Color.White;
                     cardStatus.ForeColor = Color.White;
                     parentName.ForeColor = Color.White;
 
+                    if (byan.ParentType == "سائق")
+                    {
+                        icon = DoctorERP_v2_00.Properties.Resources.DriverBlue_32;
+                    }
+                    else
+                    {
+                        icon = DoctorERP_v2_00.Properties.Resources.CarBlue_32;
+
+                    }
 
                 }
+                parentName.Image = icon;
+
+                RadOffice2007ScreenTipElement screenTip = new RadOffice2007ScreenTipElement();
+
+                screenTip.RightToLeft = true;
+                screenTip.FooterVisible = true;
+
+                screenTip.CaptionLabel.Font = new Font("Traditional Arabic", 15, FontStyle.Bold);
+                screenTip.CaptionLabel.TextAlignment = ContentAlignment.MiddleCenter;
+                screenTip.CaptionLabel.Padding = new System.Windows.Forms.Padding(8);
+                screenTip.CaptionLabel.Image = icon;
+                screenTip.CaptionLabel.Text = "المتبقي : " + Period + " يوم";
+
+                string Header = " الأسم : " + byan.ParentName;
+                string Content = " تاريخ البدء : " + byan.StartDate.ToString("yyyy/MM/dd");
+                string Footer = " تاريخ الإنتهاء : " + byan.EndDate.ToString("yyyy/MM/dd");
+                screenTip.MainTextLabel.Text = Header + "\n" +
+                Content + "\n" +
+                Footer;
+
+                screenTip.MainTextLabel.Font = new Font("Traditional Arabic", 16, FontStyle.Bold);
+                screenTip.MainTextLabel.TextAlignment = ContentAlignment.MiddleCenter;
+
+
+                screenTip.FooterTextLabel.Text = " النوع : " + byan.ParentType + "\n" +
+                    " الشركة : " + byan.CompanyName;
+
+                screenTip.FooterTextLabel.Font = new Font("Traditional Arabic", 15, FontStyle.Bold);
+
+                this.ScreenTip = screenTip;
+                this.ScreenTip.ShouldApplyTheme = true;
+
+
             }
         }
     }

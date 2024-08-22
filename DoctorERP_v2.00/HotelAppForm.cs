@@ -9,6 +9,7 @@ using System.Data;
 using System.Data.Entity;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
 using Telerik.WinControls;
@@ -150,8 +151,11 @@ namespace HotelApp
 
             this.radLabel1.TextAlignment = ContentAlignment.TopLeft;
             this.radLabel2.TextAlignment = ContentAlignment.TopLeft;
+            this.radLabel4.TextAlignment = ContentAlignment.TopLeft;
 
+            
             this.ByanatView.VisualItemCreating += roomsView_VisualItemCreating;
+            this.LeftView.VisualItemCreating += leftView_VisualItemCreating;
 
             RadFlyoutManager.FlyoutClosed -= this.RadFlyoutManager_FlyoutClosed;
             RadFlyoutManager.FlyoutClosed += this.RadFlyoutManager_FlyoutClosed;
@@ -171,10 +175,21 @@ namespace HotelApp
             this.editGuestInfo.nameLabel.Text = "اسم السائق";
 
             GridViewDriver.Visible = true;
+            GridViewNotification.TableElement.TableHeaderHeight = 30;
 
             mainContainer.SelectedPage = OverviewPage;
 
         }
+
+
+        private void leftView_VisualItemCreating(object sender, ListViewVisualItemCreatingEventArgs e)
+        {
+            if (e.VisualItem is SimpleListViewVisualItem)
+            {
+                e.VisualItem = new OptionsSimpleListViewVisualItem();
+            }
+        }
+
 
         private void RadFlyoutManager_FlyoutClosed(FlyoutClosedEventArgs e)
         {
@@ -246,19 +261,22 @@ namespace HotelApp
             this.ByanatView.DisplayMember = "ParentType";
 
 
-            ListViewDataItemGroup CompaniesGroup = new ListViewDataItemGroup
-            {
-                Text = "الشركة"
-            };
+            //ListViewDataItemGroup CompaniesGroup = new ListViewDataItemGroup
+            //{
+            //    Text = "الشركة"
+            //};
 
-            this.LeftView.Groups.AddRange(new ListViewDataItemGroup[] { CompaniesGroup });
+            //this.LeftView.Groups.AddRange(new ListViewDataItemGroup[] { CompaniesGroup });
 
             foreach (CompaniesRow item in this.contract_ManagementDataSet.Companies.Rows)
             {
                 ListViewDataItem roomTypeItem = new ListViewDataItem(item.CompanyName);
                 roomTypeItem.Value = item.CompanyName;
+                int count = contract_ManagementDataSet.Byan.Where(u => u.CompanyName == item.CompanyName).Count();
+                roomTypeItem.Tag = count;
+
                 roomTypeItem.CheckState = Telerik.WinControls.Enumerations.ToggleState.On;
-                roomTypeItem.Group = CompaniesGroup;
+                //roomTypeItem.Group = CompaniesGroup;
                 this.LeftView.Items.Add(roomTypeItem);
             }
 
@@ -303,6 +321,36 @@ namespace HotelApp
         }
 
         private void radPanel5_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void GridViewDriver_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void idSeparator_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void radPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void radLabel1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ByanatView_SelectedItemChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void mainContainer_SelectedPageChanged(object sender, EventArgs e)
         {
 
         }

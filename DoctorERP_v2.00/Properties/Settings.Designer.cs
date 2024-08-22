@@ -27,7 +27,7 @@ namespace DoctorERP_v2_00.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
         [global::System.Configuration.DefaultSettingValueAttribute("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory|\\Contract_Management" +
-            ".mdb;Persist Security Info=True;Jet OLEDB:Database Password=Aly4807")]
+            ".db;Persist Security Info=True")]
         public string Contract_ManagementConnectionString {
             get {
                 return ((string)(this["Contract_ManagementConnectionString"]));

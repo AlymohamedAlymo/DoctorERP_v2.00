@@ -16,8 +16,6 @@ namespace CustomControls
 {
     public partial class EditGuestInfo : UserControl
     {
-        //Guest currentGuest;
-        //Booking booking;
 
         public RadPanel HeaderPanel
         {
@@ -64,74 +62,21 @@ namespace CustomControls
             this.idTextBox.TextBoxElement.CustomFontSize = 10.5f;
             this.idTextBox.ForeColor = Color.FromArgb(33, 33, 33);
 
-            this.addressLabel.LabelElement.CustomFont = Utils.MainFont;
-            this.addressLabel.LabelElement.CustomFontSize = 10.5f;
-            this.addressLabel.ForeColor = Color.FromArgb(89, 89, 89);
-            this.addressLabel.TextAlignment = ContentAlignment.BottomLeft;
+            this.noteLabel.LabelElement.CustomFont = Utils.MainFont;
+            this.noteLabel.LabelElement.CustomFontSize = 10.5f;
+            this.noteLabel.ForeColor = Color.FromArgb(89, 89, 89);
+            this.noteLabel.TextAlignment = ContentAlignment.BottomLeft;
 
-            this.addressTextBox.TextBoxElement.CustomFont = Utils.MainFont;
-            this.addressTextBox.TextBoxElement.CustomFontSize = 10.5f;
-            this.addressTextBox.ForeColor = Color.FromArgb(33, 33, 33);
-
-            this.cityLabel.LabelElement.CustomFont = Utils.MainFont;
-            this.cityLabel.LabelElement.CustomFontSize = 10.5f;
-            this.cityLabel.ForeColor = Color.FromArgb(89, 89, 89);
-            this.cityLabel.TextAlignment = ContentAlignment.BottomLeft;
-
-            this.cityTextBox.TextBoxElement.CustomFont = Utils.MainFont;
-            this.cityTextBox.TextBoxElement.CustomFontSize = 10.5f;
-            this.cityTextBox.ForeColor = Color.FromArgb(33, 33, 33);
-
-            this.phoneLabel.LabelElement.CustomFont = Utils.MainFont;
-            this.phoneLabel.LabelElement.CustomFontSize = 10.5f;
-            this.phoneLabel.ForeColor = Color.FromArgb(89, 89, 89);
-            this.phoneLabel.TextAlignment = ContentAlignment.BottomLeft;
-
-            this.phoneTextBox.TextBoxElement.CustomFont = Utils.MainFont;
-            this.phoneTextBox.TextBoxElement.CustomFontSize = 10.5f;
-            this.phoneTextBox.ForeColor = Color.FromArgb(33, 33, 33);
-
-            this.creditCardNumberLabel.LabelElement.CustomFont = Utils.MainFont;
-            this.creditCardNumberLabel.LabelElement.CustomFontSize = 10.5f;
-            this.creditCardNumberLabel.ForeColor = Color.FromArgb(89, 89, 89);
-            this.creditCardNumberLabel.TextAlignment = ContentAlignment.BottomLeft;
-
-            this.creditCardNumberTexBox.TextBoxElement.CustomFont = Utils.MainFont;
-            this.creditCardNumberTexBox.TextBoxElement.CustomFontSize = 10.5f;
-            this.creditCardNumberTexBox.ForeColor = Color.FromArgb(33, 33, 33);
-
-            this.validLabel.LabelElement.CustomFont = Utils.MainFont;
-            this.validLabel.LabelElement.CustomFontSize = 10.5f;
-            this.validLabel.ForeColor = Color.FromArgb(89, 89, 89);
-
-            this.validDateTimePicker.DateTimePickerElement.CustomFont = Utils.MainFont;
-            this.validDateTimePicker.DateTimePickerElement.CustomFontSize = 10.5f;
-            this.validDateTimePicker.DateTimePickerElement.ForeColor = Color.FromArgb(33, 33, 33);
-
-            this.ccvLabel.LabelElement.CustomFont = Utils.MainFont;
-            this.ccvLabel.LabelElement.CustomFontSize = 10.5f;
-            this.ccvLabel.ForeColor = Color.FromArgb(89, 89, 89);
-
-            this.ccvTextBox.TextBoxElement.CustomFont = Utils.MainFont;
-            this.ccvTextBox.TextBoxElement.CustomFontSize = 10.5f;
-            this.ccvTextBox.ForeColor = Color.FromArgb(33, 33, 33);
+            this.noteTextBox.TextBoxElement.CustomFont = Utils.MainFont;
+            this.noteTextBox.TextBoxElement.CustomFontSize = 10.5f;
+            this.noteTextBox.ForeColor = Color.FromArgb(33, 33, 33);
 
             this.editPanel.RootElement.EnableElementShadow = false;
-            this.radSplitContainer1.RootElement.EnableElementShadow = false;
             foreach (RadControl c in this.editPanel.Controls)
             {
                 c.RootElement.EnableElementShadow = false;
             }
 
-            foreach (Telerik.WinControls.UI.SplitPanel sp in this.radSplitContainer1.SplitPanels)
-            {
-                sp.RootElement.EnableElementShadow = false;
-                sp.SplitPanelElement.Border.Visibility = ElementVisibility.Collapsed;
-                foreach (RadControl c in sp.Controls)
-                {
-                    c.RootElement.EnableElementShadow = false;
-                }
-            }
             this.closeButton.RootElement.EnableElementShadow = false;
             this.closeButton.ButtonElement.Padding = new Padding(0);
             this.closeButton.ImageAlignment = ContentAlignment.TopRight;
@@ -140,49 +85,20 @@ namespace CustomControls
 
             this.nameLabel.LabelElement.LabelText.Margin = new Padding(5, 0, 0, 0);
             this.idLabel.LabelElement.LabelText.Margin = new Padding(5, 0, 0, 0);
-            this.addressLabel.LabelElement.LabelText.Margin = new Padding(5, 0, 0, 0);
-            this.cityLabel.LabelElement.LabelText.Margin = new Padding(5, 0, 0, 0);
-            this.phoneLabel.LabelElement.LabelText.Margin = new Padding(5, 0, 0, 0);
-            this.creditCardNumberLabel.LabelElement.LabelText.Margin = new Padding(5, 0, 0, 0);
-            this.validLabel.LabelElement.LabelText.Margin = new Padding(5, 0, 0, 0);
-
-            this.validDateTimePicker.Format = DateTimePickerFormat.Custom;
-            this.validDateTimePicker.CustomFormat = "MM.yyyy";
-            this.validDateTimePicker.DateTimePickerElement.CalendarSize = new Size(350, 380);
-            this.validDateTimePicker.DateTimePickerElement.TextBoxElement.Padding = new Padding(10, 0, 0, 0);
-            this.validDateTimePicker.DateTimePickerElement.ArrowButton.Margin = new Padding(0, 0, 10, 0);
-
-            this.ccvTextBox.TextBoxElement.Padding = new Padding(3, 0, 0, 0);
+            this.noteLabel.LabelElement.LabelText.Margin = new Padding(5, 0, 0, 0);
 
             this.nameTextBox.TextBoxElement.Border.Visibility = ElementVisibility.Collapsed;
-            this.addressTextBox.TextBoxElement.Border.Visibility = ElementVisibility.Collapsed;
-            this.cityTextBox.TextBoxElement.Border.Visibility = ElementVisibility.Collapsed;
+            this.noteTextBox.TextBoxElement.Border.Visibility = ElementVisibility.Collapsed;
             this.idTextBox.TextBoxElement.Border.Visibility = ElementVisibility.Collapsed;
-            this.phoneTextBox.TextBoxElement.Border.Visibility = ElementVisibility.Collapsed;
-            this.creditCardNumberTexBox.TextBoxElement.Border.Visibility = ElementVisibility.Collapsed;
 
             this.nameSeparator.SeparatorElement.Line1.BackColor = Color.FromArgb(209, 209, 209);
             this.idSeparator.SeparatorElement.Line1.BackColor = Color.FromArgb(209, 209, 209);
             this.addressSeparator.SeparatorElement.Line1.BackColor = Color.FromArgb(209, 209, 209);
-            this.citySeparator.SeparatorElement.Line1.BackColor = Color.FromArgb(209, 209, 209);
-            this.phoneSeparator.SeparatorElement.Line1.BackColor = Color.FromArgb(209, 209, 209);
-            this.creditCardSeparator.SeparatorElement.Line1.BackColor = Color.FromArgb(209, 209, 209);
-            this.validSeparator.SeparatorElement.Line1.BackColor = Color.FromArgb(209, 209, 209);
-            this.ccvSeparator.SeparatorElement.Line1.BackColor = Color.FromArgb(209, 209, 209);
-            this.ccvTextBox.TextBoxElement.ShowBorder = false;
 
             this.saveButton.ButtonElement.CustomFont = Utils.MainFontMedium;
             this.saveButton.ButtonElement.CustomFontSize = 10.5f;
             this.saveButton.ButtonElement.ForeColor = Color.FromArgb(33, 33, 33);
 
-            this.idTextBox.NullText = "Enter ID";
-            this.nameTextBox.NullText = "Enter name";
-            this.addressTextBox.NullText = "Enter address";
-            this.cityTextBox.NullText = "Enter city";
-            this.phoneTextBox.NullText = "Enter phone";
-            this.creditCardNumberTexBox.NullText = "Enter credit card id";
-            this.validDateTimePicker.Value = DateTime.Today;
-            this.ccvTextBox.NullText = "Enter ccv";
         }
 
         //public Guest CurrentGuest
@@ -288,36 +204,40 @@ namespace CustomControls
                 this.errorLabel.Text = "Id is not allowed to be empty!";
                 return false;
             }
-            if (this.addressTextBox.Text == "")
+            if (this.noteTextBox.Text == "")
             {
                 this.errorLabel.Text = "Address is not allowed to be empty!";
-                return false;
-            }
-            if (this.cityTextBox.Text == "")
-            {
-                this.errorLabel.Text = "City is not allowed to be empty!";
-                return false;
-            }
-            if (this.phoneTextBox.Text == "")
-            {
-                this.errorLabel.Text = "Phone is not allowed to be empty!";
-                return false;
-            }
-            if (this.creditCardNumberTexBox.Text == "")
-            {
-                this.errorLabel.Text = "Credit card # is not allowed to be empty!";
-                return false;
-            }
-            uint ccv = 0;
-            if (!uint.TryParse(this.ccvTextBox.Text, out ccv))
-            {
-                this.errorLabel.Text = "CCV is not allowed to be empty!";
                 return false;
             }
             return true;
         }
 
         private void EditGuestInfo_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void editPanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void addressLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void addressTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void idSeparator_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void radSeparator2_Click(object sender, EventArgs e)
         {
 
         }

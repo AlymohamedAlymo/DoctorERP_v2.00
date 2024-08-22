@@ -37,6 +37,10 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DoctorHelper, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\DoctorHelper.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -75,9 +79,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Contract_ManagementDataSet.cs">
-      <DependentUpon>Contract_ManagementDataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="Contract_ManagementDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -115,12 +116,6 @@
     </Compile>
     <Compile Include="RadForm1.Designer.cs">
       <DependentUpon>RadForm1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UserControls\BookingInfo.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControls\BookingInfo.Designer.cs">
-      <DependentUpon>BookingInfo.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\EditGuestInfo.cs">
       <SubType>UserControl</SubType>
@@ -171,9 +166,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="UserControls\BookingInfo.resx">
-      <DependentUpon>BookingInfo.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\EditGuestInfo.resx">
       <DependentUpon>EditGuestInfo.cs</DependentUpon>
     </EmbeddedResource>
@@ -184,6 +176,7 @@
       <DependentUpon>UserControlCurrentStatus.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.manifest" />
+    <None Include="Contract_Management.db" />
     <None Include="Contract_ManagementDataSet.xsc">
       <DependentUpon>Contract_ManagementDataSet.xsd</DependentUpon>
     </None>
@@ -416,9 +409,6 @@
     <None Include="Resources\Anna.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Contract_Management.mdb">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <None Include="Resources\CarsIcon_32.png" />
     <None Include="Resources\DriverIcon_32.png" />
   </ItemGroup>

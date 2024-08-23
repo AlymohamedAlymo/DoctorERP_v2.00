@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" ReportInfo.Created="04/27/2023 19:28:21" ReportInfo.Modified="06/10/2023 14:33:18" ReportInfo.CreatorVersion="2019.1.5.0">
+  <Dictionary>
+    <TableDataSource Name="data" Restrictions="HideAllProperties" ReferenceName="data" DataType="System.Int32" Enabled="true">
+      <Column Name="guid" DataType="System.Guid"/>
+      <Column Name="payguid" DataType="System.Guid"/>
+      <Column Name="regdate" DataType="System.DateTime"/>
+      <Column Name="code" DataType="System.Int32"/>
+      <Column Name="land" DataType="System.String"/>
+      <Column Name="contractno" DataType="System.Int32"/>
+      <Column Name="cash" DataType="System.Decimal"/>
+      <Column Name="bank" DataType="System.Decimal"/>
+      <Column Name="bankname" DataType="System.String"/>
+      <Column Name="checkno" DataType="System.String"/>
+      <Column Name="paynumber" DataType="System.Int32"/>
+      <Column Name="paydate" DataType="System.String"/>
+      <Column Name="status" DataType="System.String"/>
+    </TableDataSource>
+    <TableDataSource Name="planinfodata" Restrictions="HideAllProperties" ReferenceName="planinfodata" DataType="System.Int32" Enabled="true">
+      <Column Name="guid" DataType="System.Guid"/>
+      <Column Name="name" DataType="System.String"/>
+      <Column Name="ownerguid" DataType="System.Guid"/>
+      <Column Name="city" DataType="System.String"/>
+      <Column Name="location" DataType="System.String"/>
+      <Column Name="number" DataType="System.String"/>
+      <Column Name="landcount" DataType="System.Int32"/>
+      <Column Name="mosquecount" DataType="System.Int32"/>
+      <Column Name="gardencount" DataType="System.Int32"/>
+      <Column Name="schoolboyscount" DataType="System.Int32"/>
+      <Column Name="schoolgrilscount" DataType="System.Int32"/>
+      <Column Name="marketcount" DataType="System.Int32"/>
+      <Column Name="healthcount" DataType="System.Int32"/>
+      <Column Name="municipality" DataType="System.Int32"/>
+      <Column Name="notlisted" DataType="System.Int32"/>
+    </TableDataSource>
+    <TableDataSource Name="ownerdata" Restrictions="HideAllProperties" ReferenceName="ownerdata" DataType="System.Int32" Enabled="true">
+      <Column Name="guid" DataType="System.Guid"/>
+      <Column Name="number" DataType="System.Int32"/>
+      <Column Name="name" DataType="System.String"/>
+      <Column Name="civilid" DataType="System.String"/>
+      <Column Name="mobile" DataType="System.String"/>
+      <Column Name="email" DataType="System.String"/>
+      <Column Name="vatid" DataType="System.String"/>
+      <Column Name="publicnumber" DataType="System.String"/>
+      <Column Name="agentname" DataType="System.String"/>
+      <Column Name="agentcivilid" DataType="System.String"/>
+      <Column Name="agentmobile" DataType="System.String"/>
+      <Column Name="agentemail" DataType="System.String"/>
+      <Column Name="agentvatid" DataType="System.String"/>
+      <Column Name="agencynumber" DataType="System.String"/>
+      <Column Name="agentpublicnumber" DataType="System.String"/>
+      <Column Name="officename" DataType="System.String"/>
+      <Column Name="officecr" DataType="System.String"/>
+      <Column Name="officephone" DataType="System.String"/>
+      <Column Name="officeemail" DataType="System.String"/>
+      <Column Name="officevatid" DataType="System.String"/>
+      <Column Name="officepublicnumber" DataType="System.String"/>
+      <Column Name="note" DataType="System.String"/>
+      <Column Name="agenttype" DataType="System.Int32"/>
+    </TableDataSource>
+    <Parameter Name="UserName" DataType="System.String"/>
+    <Parameter Name="StartDate" DataType="System.DateTime"/>
+    <Parameter Name="EndDate" DataType="System.DateTime"/>
+    <Parameter Name="totaltext" DataType="System.String"/>
+    <Total Name="TotalBank" Expression="[data.bank]" Evaluator="Data1"/>
+    <Total Name="TotalCash" Expression="[data.cash]" Evaluator="Data1"/>
+  </Dictionary>
+  <ReportPage Name="Page1" Width="793.8" Height="1122.66" LeftMargin="0" TopMargin="0" RightMargin="0" BottomMargin="0">
+    <ReportTitleBand Name="ReportTitle1" Width="793.8" Height="189">
+      <TextObject Name="Text1" Left="18.9" Top="85.05" Width="756" Height="37.8" Text="مبيعات يومية" HorzAlign="Center" VertAlign="Center" Font="Arial, 14pt, style=Bold"/>
+      <TextObject Name="Text22" Left="689.85" Top="122.85" Width="85.05" Height="28.35" Text="من تاريخ" VertAlign="Center" Font="Arial, 12pt, style=Bold"/>
+      <TextObject Name="Text23" Left="689.85" Top="151.2" Width="85.05" Height="28.35" Text="إلى تاريخ" VertAlign="Center" Font="Arial, 12pt, style=Bold"/>
+      <TextObject Name="Text24" Left="585.9" Top="122.85" Width="103.95" Height="28.35" Text="[StartDate]" Format="Custom" Format.Format="yyyy/MM/dd" HorzAlign="Right" VertAlign="Center" Font="Arial, 12pt"/>
+      <TextObject Name="Text25" Left="585.9" Top="151.2" Width="103.95" Height="28.35" Text="[EndDate]" Format="Custom" Format.Format="yyyy/MM/dd" HorzAlign="Right" VertAlign="Center" Font="Arial, 12pt"/>
+      <TextObject Name="Text36" Left="18.9" Top="9.45" Width="756" Height="66.15" Text="مخطط : [planinfodata.name] &#13;&#10;لمالكه : [ownerdata.name]&#13;&#10;معتمد برقم : [planinfodata.number]" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt, style=Bold"/>
+      <TextObject Name="Text37" Left="18.9" Top="160.65" Width="132.3" Height="18.9" Text="[Date]" Format="Custom" Format.Format="yyyy/MM/dd hh:mm tt" HorzAlign="Center" VertAlign="Center" Font="Arial, 9pt"/>
+      <TextObject Name="Text38" Left="151.2" Top="160.65" Width="103.95" Height="18.9" Text="تاريخ ووقت الطباعة" VertAlign="Bottom" Font="Arial, 9pt"/>
+    </ReportTitleBand>
+    <PageHeaderBand Name="PageHeader1" Top="193" Width="793.8" Height="28.35">
+      <TextObject Name="Text3" Left="18.9" Width="94.5" Height="28.35" Border.Lines="All" Fill.Color="WhiteSmoke" Text="التاريخ" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text5" Left="113.4" Width="56.7" Height="28.35" Border.Lines="All" Fill.Color="WhiteSmoke" Text="رقم السند" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text7" Left="170.1" Width="75.6" Height="28.35" Border.Lines="All" Fill.Color="WhiteSmoke" Text="رقم الشيك" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text9" Left="245.7" Width="75.6" Height="28.35" Border.Lines="All" Fill.Color="WhiteSmoke" Text="اسم البنك" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text11" Left="321.3" Width="75.6" Height="28.35" Border.Lines="All" Fill.Color="WhiteSmoke" Text="البنك" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text13" Left="396.9" Width="75.6" Height="28.35" Border.Lines="All" Fill.Color="WhiteSmoke" Text="النقدي" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text15" Left="472.5" Width="75.6" Height="28.35" Border.Lines="All" Fill.Color="WhiteSmoke" Text="رقم العقد" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text17" Left="548.1" Width="75.6" Height="28.35" Border.Lines="All" Fill.Color="WhiteSmoke" Text="الأرض" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text19" Left="623.7" Width="66.15" Height="28.35" Border.Lines="All" Fill.Color="WhiteSmoke" Text="الكود" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text21" Left="689.85" Width="85.05" Height="28.35" Border.Lines="All" Fill.Color="WhiteSmoke" Text="التاريخ" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+    </PageHeaderBand>
+    <DataBand Name="Data1" Top="225.35" Width="793.8" Height="28.35" DataSource="data">
+      <TextObject Name="Text2" Left="18.9" Width="94.5" Height="28.35" Border.Lines="All" Text="[data.paydate]" HorzAlign="Center" VertAlign="Center"/>
+      <TextObject Name="Text4" Left="113.4" Width="56.7" Height="28.35" Border.Lines="All" Text="[data.paynumber]" HideZeros="true" HorzAlign="Center" VertAlign="Center"/>
+      <TextObject Name="Text6" Left="170.1" Width="75.6" Height="28.35" Border.Lines="All" Text="[data.checkno]" HorzAlign="Center" VertAlign="Center"/>
+      <TextObject Name="Text8" Left="245.7" Width="75.6" Height="28.35" Border.Lines="All" Text="[data.bankname]" HorzAlign="Center" VertAlign="Center"/>
+      <TextObject Name="Text10" Left="321.3" Width="75.6" Height="28.35" Border.Lines="All" Text="[data.bank]" HideZeros="true" Format="Number" Format.UseLocale="false" Format.DecimalDigits="2" Format.DecimalSeparator="." Format.GroupSeparator="," Format.NegativePattern="1" HorzAlign="Center" VertAlign="Center"/>
+      <TextObject Name="Text12" Left="396.9" Width="75.6" Height="28.35" Border.Lines="All" Text="[data.cash]" HideZeros="true" Format="Number" Format.UseLocale="false" Format.DecimalDigits="2" Format.DecimalSeparator="." Format.GroupSeparator="," Format.NegativePattern="1" HorzAlign="Center" VertAlign="Center"/>
+      <TextObject Name="Text14" Left="472.5" Width="75.6" Height="28.35" Border.Lines="All" Text="[data.contractno]" HorzAlign="Center" VertAlign="Center"/>
+      <TextObject Name="Text16" Left="548.1" Width="75.6" Height="28.35" Border.Lines="All" Text="[data.land]" HorzAlign="Center" VertAlign="Center"/>
+      <TextObject Name="Text18" Left="623.7" Width="66.15" Height="28.35" Border.Lines="All" Text="[data.code]" HorzAlign="Center" VertAlign="Center"/>
+      <TextObject Name="Text20" Left="689.85" Width="85.05" Height="28.35" Border.Lines="All" Text="[data.regdate]" Format="Custom" Format.Format="yyyy/MM/dd" HorzAlign="Center" VertAlign="Center"/>
+    </DataBand>
+    <ReportSummaryBand Name="ReportSummary1" Top="257.7" Width="793.8" Height="151.2">
+      <TextObject Name="Text26" Left="548.1" Top="9.45" Width="75.6" Height="28.35" Border.Lines="All" Fill.Color="WhiteSmoke" Text="النقدي" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text27" Left="548.1" Top="37.8" Width="75.6" Height="28.35" Border.Lines="All" Fill.Color="WhiteSmoke" Text="البنك" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text28" Left="396.9" Top="9.45" Width="151.2" Height="28.35" Border.Lines="All" Text="[TotalCash]" HideZeros="true" Format="Number" Format.UseLocale="false" Format.DecimalDigits="2" Format.DecimalSeparator="." Format.GroupSeparator="," Format.NegativePattern="1" HorzAlign="Center" VertAlign="Center"/>
+      <TextObject Name="Text29" Left="396.9" Top="37.8" Width="151.2" Height="28.35" Border.Lines="All" Text="[TotalBank]" HideZeros="true" Format="Number" Format.UseLocale="false" Format.DecimalDigits="2" Format.DecimalSeparator="." Format.GroupSeparator="," Format.NegativePattern="1" HorzAlign="Center" VertAlign="Center"/>
+      <TextObject Name="Text30" Left="245.7" Top="9.45" Width="75.6" Height="56.7" Border.Lines="All" Fill.Color="WhiteSmoke" Text="الإجمالي" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text31" Left="94.5" Top="9.45" Width="151.2" Height="56.7" Border.Lines="All" Text="[[TotalBank]+[TotalCash]]" HideZeros="true" Format="Number" Format.UseLocale="false" Format.DecimalDigits="2" Format.DecimalSeparator="." Format.GroupSeparator="," Format.NegativePattern="1" HorzAlign="Center" VertAlign="Center"/>
+      <TextObject Name="Text32" Left="548.1" Top="75.6" Width="75.6" Height="28.35" Border.Lines="All" Fill.Color="WhiteSmoke" Text="الإجمالي كتابة" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text33" Left="94.5" Top="75.6" Width="453.6" Height="28.35" Border.Lines="All" Text="[totaltext]" HideZeros="true" Format="Number" Format.UseLocale="false" Format.DecimalDigits="2" Format.DecimalSeparator="." Format.GroupSeparator="," Format.NegativePattern="1" HorzAlign="Right" VertAlign="Center"/>
+      <TextObject Name="Text34" Left="529.2" Top="122.85" Width="94.5" Height="18.9" Text="المستلم:" RightToLeft="true" Font="Arial, 12pt, style=Bold"/>
+      <TextObject Name="Text35" Left="226.8" Top="122.85" Width="94.5" Height="18.9" Text="إعداد المحاسب:" RightToLeft="true" Font="Arial, 12pt, style=Bold"/>
+    </ReportSummaryBand>
+    <PageFooterBand Name="PageFooter1" Top="412.9" Width="793.8" Height="37.8"/>
+  </ReportPage>
+</Report>

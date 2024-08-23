@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" ReportInfo.Created="05/07/2023 20:02:38" ReportInfo.Modified="06/13/2023 10:49:09" ReportInfo.CreatorVersion="2019.1.5.0">
+  <Dictionary>
+    <TableDataSource Name="data" Restrictions="HideAllProperties" ReferenceName="data" DataType="System.Int32" Enabled="true">
+      <Column Name="guid" DataType="System.Guid"/>
+      <Column Name="code" DataType="System.Int32"/>
+      <Column Name="number" DataType="System.Int32"/>
+      <Column Name="blocknumber" DataType="System.String"/>
+      <Column Name="landtype" DataType="System.String"/>
+      <Column Name="area" DataType="System.Decimal"/>
+      <Column Name="deednumber" DataType="System.String"/>
+      <Column Name="amount" DataType="System.Decimal"/>
+      <Column Name="isworkfee" DataType="System.Boolean" BindableControl="CheckBox"/>
+      <Column Name="workfee" DataType="System.Decimal"/>
+      <Column Name="issalefee" DataType="System.Boolean" BindableControl="CheckBox"/>
+      <Column Name="salesfee" DataType="System.Decimal"/>
+      <Column Name="isbuildingfee" DataType="System.Boolean" BindableControl="CheckBox"/>
+      <Column Name="buildingfee" DataType="System.Decimal"/>
+      <Column Name="isvat" DataType="System.Boolean" BindableControl="CheckBox"/>
+      <Column Name="vat" DataType="System.Decimal"/>
+      <Column Name="isdiscounttotal" DataType="System.Boolean" BindableControl="CheckBox"/>
+      <Column Name="discounttotal" DataType="System.Decimal"/>
+      <Column Name="discounttotalvalue" DataType="System.Decimal"/>
+      <Column Name="isdiscountfee" DataType="System.Boolean" BindableControl="CheckBox"/>
+      <Column Name="discountfee" DataType="System.Decimal"/>
+      <Column Name="discountfeevalue" DataType="System.Decimal"/>
+      <Column Name="total" DataType="System.Decimal"/>
+      <Column Name="south" DataType="System.String"/>
+      <Column Name="southdesc" DataType="System.String"/>
+      <Column Name="north" DataType="System.String"/>
+      <Column Name="northdesc" DataType="System.String"/>
+      <Column Name="east" DataType="System.String"/>
+      <Column Name="eastdesc" DataType="System.String"/>
+      <Column Name="west" DataType="System.String"/>
+      <Column Name="westdesc" DataType="System.String"/>
+      <Column Name="status" DataType="System.String"/>
+      <Column Name="note" DataType="System.String"/>
+      <Column Name="reservereason" DataType="System.String"/>
+    </TableDataSource>
+    <TableDataSource Name="tbPlanInfo" Restrictions="HideAllProperties" ReferenceName="tbPlanInfo" DataType="System.Int32" Enabled="true">
+      <Column Name="guid" DataType="System.Guid"/>
+      <Column Name="name" DataType="System.String"/>
+      <Column Name="ownerguid" DataType="System.Guid"/>
+      <Column Name="city" DataType="System.String"/>
+      <Column Name="location" DataType="System.String"/>
+      <Column Name="number" DataType="System.String"/>
+    </TableDataSource>
+    <Parameter Name="UserName" DataType="System.String"/>
+    <Parameter Name="TotalText" DataType="System.String"/>
+  </Dictionary>
+  <ReportPage Name="Page1">
+    <ReportTitleBand Name="ReportTitle1" Width="718.2" Height="850.5">
+      <TextObject Name="Text1" Left="567" Top="151.2" Width="132.3" Height="28.35" Border.Lines="All" Fill.Color="WhiteSmoke" Text="كود الصنف" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text2" Left="567" Top="179.55" Width="132.3" Height="28.35" Border.Lines="All" Fill.Color="WhiteSmoke" Text="رقم الأرض" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text3" Left="567" Top="207.9" Width="132.3" Height="28.35" Border.Lines="All" Fill.Color="WhiteSmoke" Text="اسم الصنف" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text4" Left="567" Top="236.25" Width="132.3" Height="28.35" Border.Lines="All" Fill.Color="WhiteSmoke" Text="رقم البلك" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text5" Left="567" Top="264.6" Width="132.3" Height="28.35" Border.Lines="All" Fill.Color="WhiteSmoke" Text="المساحة" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text6" Left="567" Top="292.95" Width="132.3" Height="28.35" Border.Lines="All" Fill.Color="WhiteSmoke" Text="اسم المخطط" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text7" Left="567" Top="321.3" Width="132.3" Height="28.35" Border.Lines="All" Fill.Color="WhiteSmoke" Text="رقم المخطط" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text8" Left="567" Top="349.65" Width="132.3" Height="28.35" Border.Lines="All" Fill.Color="WhiteSmoke" Text="رقم الصك" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text9" Left="567" Top="378" Width="132.3" Height="28.35" Border.Lines="All" Fill.Color="WhiteSmoke" Text="قيمة الأرض" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text12" Left="18.9" Top="378" Width="548.1" Height="28.35" Border.Lines="All" Text="[data.amount]" Format="Number" Format.UseLocale="false" Format.DecimalDigits="2" Format.DecimalSeparator="." Format.GroupSeparator="," Format.NegativePattern="1" HorzAlign="Right" VertAlign="Center"/>
+      <TextObject Name="Text13" Left="567" Top="406.35" Width="132.3" Height="28.35" Border.Lines="All" Fill.Color="WhiteSmoke" Text="ضريبة المبيعات" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text14" Left="567" Top="434.7" Width="132.3" Height="28.35" Border.Lines="All" Fill.Color="WhiteSmoke" Text="ضريبة التصرفات العقارية" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text15" Left="567" Top="463.05" Width="132.3" Height="28.35" Border.Lines="All" Fill.Color="WhiteSmoke" Text="عمولة السعي" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text16" Left="567" Top="491.4" Width="132.3" Height="28.35" Border.Lines="All" Fill.Color="WhiteSmoke" Text="ضريبة عمولة السعي" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text18" Left="567" Top="548.1" Width="132.3" Height="28.35" Border.Lines="All" Fill.Color="WhiteSmoke" Text="الإجمالي رقما" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text19" Left="567" Top="576.45" Width="132.3" Height="28.35" Border.Lines="All" Fill.Color="WhiteSmoke" Text="الإجمالي كتابة" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text20" Left="567" Top="614.25" Width="132.3" Height="56.7" Border.Lines="All" Fill.Color="WhiteSmoke" Text="الشمال" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text21" Left="567" Top="670.95" Width="132.3" Height="56.7" Border.Lines="All" Fill.Color="WhiteSmoke" Text="الجنوب" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text22" Left="567" Top="727.65" Width="132.3" Height="56.7" Border.Lines="All" Fill.Color="WhiteSmoke" Text="الشرق" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text23" Left="567" Top="784.35" Width="132.3" Height="56.7" Border.Lines="All" Fill.Color="WhiteSmoke" Text="الغرب" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text24" Left="18.9" Top="179.55" Width="548.1" Height="28.35" Border.Lines="All" Text="[data.number]" HorzAlign="Right" VertAlign="Center"/>
+      <TextObject Name="Text25" Left="18.9" Top="151.2" Width="548.1" Height="28.35" Border.Lines="All" Text="[data.code]" HorzAlign="Right" VertAlign="Center"/>
+      <TextObject Name="Text26" Left="18.9" Top="236.25" Width="548.1" Height="28.35" Border.Lines="All" Text="[data.blocknumber]" HorzAlign="Right" VertAlign="Center"/>
+      <TextObject Name="Text27" Left="18.9" Top="207.9" Width="548.1" Height="28.35" Border.Lines="All" Text="رقم الأرض [data.number]" HorzAlign="Right" VertAlign="Center"/>
+      <TextObject Name="Text28" Left="18.9" Top="292.95" Width="548.1" Height="28.35" Border.Lines="All" Text="[tbPlanInfo.name]" HorzAlign="Right" VertAlign="Center"/>
+      <TextObject Name="Text29" Left="18.9" Top="264.6" Width="548.1" Height="28.35" Border.Lines="All" Text="[data.area]" Format="Number" Format.UseLocale="false" Format.DecimalDigits="0" Format.DecimalSeparator="." Format.GroupSeparator="," Format.NegativePattern="1" HorzAlign="Right" VertAlign="Center"/>
+      <TextObject Name="Text30" Left="18.9" Top="349.65" Width="548.1" Height="28.35" Border.Lines="All" Text="[data.deednumber]" HorzAlign="Right" VertAlign="Center"/>
+      <TextObject Name="Text31" Left="18.9" Top="321.3" Width="548.1" Height="28.35" Border.Lines="All" Text="[tbPlanInfo.number]" HorzAlign="Right" VertAlign="Center"/>
+      <TextObject Name="Text36" Left="18.9" Top="548.1" Width="548.1" Height="28.35" Border.Lines="All" Text="[data.total]" Format="Number" Format.UseLocale="false" Format.DecimalDigits="2" Format.DecimalSeparator="." Format.GroupSeparator="," Format.NegativePattern="1" HorzAlign="Right" VertAlign="Center"/>
+      <TextObject Name="Text38" Left="18.9" Top="576.45" Width="548.1" Height="28.35" Border.Lines="All" Text="[TotalText]" HorzAlign="Right" VertAlign="Center"/>
+      <TextObject Name="Text43" Left="18.9" Top="614.25" Width="548.1" Height="28.35" Border.Lines="All" Text="[data.north]" HorzAlign="Right" VertAlign="Center"/>
+      <TextObject Name="Text44" Left="18.9" Top="642.6" Width="548.1" Height="28.35" Border.Lines="All" Text="[data.northdesc]" HorzAlign="Right" VertAlign="Center"/>
+      <TextObject Name="Text45" Left="18.9" Top="670.95" Width="548.1" Height="28.35" Border.Lines="All" Text="[data.south]" HorzAlign="Right" VertAlign="Center"/>
+      <TextObject Name="Text46" Left="18.9" Top="699.3" Width="548.1" Height="28.35" Border.Lines="All" Text="[data.southdesc]" HorzAlign="Right" VertAlign="Center"/>
+      <TextObject Name="Text47" Left="18.9" Top="727.65" Width="548.1" Height="28.35" Border.Lines="All" Text="[data.east]" HorzAlign="Right" VertAlign="Center"/>
+      <TextObject Name="Text48" Left="18.9" Top="756" Width="548.1" Height="28.35" Border.Lines="All" Text="[data.eastdesc]" HorzAlign="Right" VertAlign="Center"/>
+      <TextObject Name="Text49" Left="18.9" Top="784.35" Width="548.1" Height="28.35" Border.Lines="All" Text="[data.west]" HorzAlign="Right" VertAlign="Center"/>
+      <TextObject Name="Text50" Left="18.9" Top="812.7" Width="548.1" Height="28.35" Border.Lines="All" Text="[data.westdesc]" HorzAlign="Right" VertAlign="Center"/>
+      <TextObject Name="Text51" Left="463.05" Top="434.7" Width="103.95" Height="28.35" Border.Lines="All" Text="[data.buildingfee]" Format="Number" Format.UseLocale="false" Format.DecimalDigits="2" Format.DecimalSeparator="." Format.GroupSeparator="," Format.NegativePattern="1" HorzAlign="Right" VertAlign="Center"/>
+      <TextObject Name="Text52" Left="463.05" Top="406.35" Width="103.95" Height="28.35" Border.Lines="All" Text="[data.salesfee]" Format="Number" Format.UseLocale="false" Format.DecimalDigits="2" Format.DecimalSeparator="." Format.GroupSeparator="," Format.NegativePattern="1" HorzAlign="Right" VertAlign="Center"/>
+      <TextObject Name="Text53" Left="463.05" Top="491.4" Width="103.95" Height="28.35" Border.Lines="All" Text="[data.vat]" Format="Number" Format.UseLocale="false" Format.DecimalDigits="2" Format.DecimalSeparator="." Format.GroupSeparator="," Format.NegativePattern="1" HorzAlign="Right" VertAlign="Center"/>
+      <TextObject Name="Text54" Left="463.05" Top="463.05" Width="103.95" Height="28.35" Border.Lines="All" Text="[data.workfee]" Format="Number" Format.UseLocale="false" Format.DecimalDigits="2" Format.DecimalSeparator="." Format.GroupSeparator="," Format.NegativePattern="1" HorzAlign="Right" VertAlign="Center"/>
+      <TextObject Name="Text55" Left="18.9" Top="434.7" Width="444.15" Height="28.35" Border.Lines="All" Text="[[data.amount] * [data.buildingfee] / 100]" Format="Number" Format.UseLocale="false" Format.DecimalDigits="2" Format.DecimalSeparator="." Format.GroupSeparator="," Format.NegativePattern="1" HorzAlign="Right" VertAlign="Center"/>
+      <TextObject Name="Text56" Left="18.9" Top="406.35" Width="444.15" Height="28.35" Border.Lines="All" Text="[[data.amount] * [data.salesfee] / 100]" Format="Number" Format.UseLocale="false" Format.DecimalDigits="2" Format.DecimalSeparator="." Format.GroupSeparator="," Format.NegativePattern="1" HorzAlign="Right" VertAlign="Center"/>
+      <TextObject Name="Text57" Left="18.9" Top="491.4" Width="444.15" Height="28.35" Border.Lines="All" Text="[  ([data.amount] * [data.workfee] / 100)   * [data.vat] /100]" Format="Number" Format.UseLocale="false" Format.DecimalDigits="2" Format.DecimalSeparator="." Format.GroupSeparator="," Format.NegativePattern="1" HorzAlign="Right" VertAlign="Center"/>
+      <TextObject Name="Text58" Left="18.9" Top="463.05" Width="444.15" Height="28.35" Border.Lines="All" Text="[[data.amount] * [data.workfee] /100]" Format="Number" Format.UseLocale="false" Format.DecimalDigits="2" Format.DecimalSeparator="." Format.GroupSeparator="," Format.NegativePattern="1" HorzAlign="Right" VertAlign="Center"/>
+      <TextObject Name="Text59" Left="18.9" Top="103.95" Width="680.4" Height="28.35" Border.Lines="All" Fill.Color="WhiteSmoke" Text="بطاقة صنف" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text60" Left="18.9" Top="18.9" Width="680.4" Height="66.15" Text="مخطط : [planinfodata.name] &#13;&#10;لمالكه : [ownerdata.name]&#13;&#10;معتمد برقم : [planinfodata.number]" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt, style=Bold"/>
+      <TextObject Name="Text61" Left="567" Top="519.75" Width="132.3" Height="28.35" Border.Lines="All" Fill.Color="WhiteSmoke" Text="عمولة السعي مع الضريبة" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text63" Left="18.9" Top="519.75" Width="444.15" Height="28.35" Border.Lines="Left, Top, Bottom" Text="[  ([data.amount] * [data.workfee] / 100)   * [data.vat] /100 + ([data.amount] * [data.workfee] /100)]" Format="Number" Format.UseLocale="false" Format.DecimalDigits="2" Format.DecimalSeparator="." Format.GroupSeparator="," Format.NegativePattern="1" HorzAlign="Right" VertAlign="Center"/>
+      <TextObject Name="Text64" Left="463.05" Top="519.75" Width="103.95" Height="28.35" Border.Lines="Right, Top, Bottom" Format="Number" Format.UseLocale="false" Format.DecimalDigits="2" Format.DecimalSeparator="." Format.GroupSeparator="," Format.NegativePattern="1" HorzAlign="Right" VertAlign="Center"/>
+    </ReportTitleBand>
+  </ReportPage>
+</Report>

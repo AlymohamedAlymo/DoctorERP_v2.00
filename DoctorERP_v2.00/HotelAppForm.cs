@@ -1,6 +1,8 @@
 ﻿using CustomControls;
 using DoctorERP_v2_00.Contract_ManagementDataSetTableAdapters;
 using DoctorERP_v2_00.Dialogs;
+using DoctorHelper.Reports;
+using FastReport;
 using Helper.Helpers;
 using HotelApp.Data;
 using System;
@@ -79,7 +81,6 @@ namespace HotelApp
 
 
             searchContainerOverview.RootElement.EnableElementShadow = false;
-            searchContainerBookings.RootElement.EnableElementShadow = false;
 
             this.overviewMainContainer.PanelElement.PanelBorder.Visibility = ElementVisibility.Collapsed;
             this.navigationPanelOverview.BackgroundImage = DoctorERP_v2_00.Properties.Resources.fasha_no_borders;
@@ -127,11 +128,6 @@ namespace HotelApp
 
             this.radPanelEmptyOverview.RootElement.EnableElementShadow = false;
 
-            this.radPanel5.RootElement.EnableElementShadow = false;
-
-            this.radPanel5.PanelElement.PanelFill.BackColor = Color.Transparent;
-            this.radPanel5.BackColor = Color.Transparent;
-            this.radPanel5.PanelElement.PanelBorder.Visibility = ElementVisibility.Collapsed;
 
 
             this.radPanel3.BackgroundImage = DoctorERP_v2_00.Properties.Resources.fasha_no_borders;
@@ -611,5 +607,72 @@ namespace HotelApp
         {
 
         }
+
+        private void radPanel3_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void radButton5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+
+
+
+        #region report and print
+        private bool Readyreport(FastReport.Report rpt)
+        {
+            //Reports.GenerateReport(ReportTitle, DataGridMain, dgvManager.mBoundDataView.ToTable());
+            Reports.InitReport(rpt, "accbalancerpt.frx", false);
+
+            rpt.SetParameterValue("UserName", FrmMain.CurrentUser.name);
+
+            rpt.SetParameterValue("StartDate", dtStartDate.Value);
+            rpt.SetParameterValue("EndDate", dtEndDate.Value);
+
+            //decimal bank = CalcColumnTotal(DataGridMain, DataGridMain.Columns["bank"]);
+            //decimal cash = CalcColumnTotal(DataGridMain, DataGridMain.Columns["cash"]);
+
+            tbAgent.Fill("agenttype", 0);
+
+            tbPlanInfo.Fill();
+            rpt.RegisterData(tbPlanInfo.dtData, "planinfodata");
+            rpt.RegisterData(tbAgent.dtData, "ownerdata");
+
+
+
+            //rpt.SetParameterValue("totaltext", ArabicFigures.GetArabicFigure((long)(bank + cash), ArabicFigures.Con));
+
+            rpt.RegisterData(dgvManager.mBoundDataView.ToTable(), "data");
+
+            return true;
+        }
+
+        private void MenuDesign_Click(object sender, EventArgs e)
+        {
+            FastReport.Report report = new FastReport.Report();
+            if (Readyreport(report))
+                Reports.DesignReport(report);
+        }
+
+        private void MenuPreview_Click(object sender, EventArgs e)
+        {
+            FastReport.Report report = new FastReport.Report();
+            if (Readyreport(report))
+                report.Show();
+        }
+
+        private void MenuPrint_Click(object sender, EventArgs e)
+        {
+            FastReport.Report report = new FastReport.Report();
+            if (Readyreport(report))
+                report.Print();
+        }
+
+        #endregion
+
     }
 }

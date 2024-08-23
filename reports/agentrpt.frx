@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" ReportInfo.Created="04/27/2023 19:26:05" ReportInfo.Modified="06/10/2023 14:29:47" ReportInfo.CreatorVersion="2019.1.5.0">
+  <Dictionary>
+    <TableDataSource Name="data" Restrictions="HideAllProperties" ReferenceName="data" DataType="System.Int32" Enabled="true">
+      <Column Name="guid" DataType="System.Guid"/>
+      <Column Name="number" DataType="System.Int32"/>
+      <Column Name="name" DataType="System.String"/>
+      <Column Name="civilid" DataType="System.String"/>
+      <Column Name="mobile" DataType="System.String"/>
+      <Column Name="email" DataType="System.String"/>
+      <Column Name="vatid" DataType="System.String"/>
+      <Column Name="publicnumber" DataType="System.String"/>
+      <Column Name="agentname" DataType="System.String"/>
+      <Column Name="agentcivilid" DataType="System.String"/>
+      <Column Name="agentmobile" DataType="System.String"/>
+      <Column Name="agentemail" DataType="System.String"/>
+      <Column Name="agentvatid" DataType="System.String"/>
+      <Column Name="agencynumber" DataType="System.String"/>
+      <Column Name="agentpublicnumber" DataType="System.String"/>
+      <Column Name="officename" DataType="System.String"/>
+      <Column Name="officecr" DataType="System.String"/>
+      <Column Name="officephone" DataType="System.String"/>
+      <Column Name="officeemail" DataType="System.String"/>
+      <Column Name="officevatid" DataType="System.String"/>
+      <Column Name="officepublicnumber" DataType="System.String"/>
+      <Column Name="note" DataType="System.String"/>
+      <Column Name="agenttype" DataType="System.Int32"/>
+    </TableDataSource>
+    <Parameter Name="UserName" DataType="System.String"/>
+  </Dictionary>
+  <ReportPage Name="Page1" Width="793.8" Height="1122.66" LeftMargin="0" TopMargin="0" RightMargin="0" BottomMargin="0">
+    <ReportTitleBand Name="ReportTitle1" Width="793.8" Height="56.7">
+      <TextObject Name="Text1" Left="18.9" Top="9.45" Width="756" Height="37.8" Text="بحث عن عميل" HorzAlign="Center" VertAlign="Center" Font="Arial, 14pt, style=Bold"/>
+    </ReportTitleBand>
+    <PageHeaderBand Name="PageHeader1" Top="60.7" Width="793.8" Height="37.8">
+      <TextObject Name="Text5" Left="18.9" Width="56.7" Height="37.8" Border.Lines="All" Fill.Color="WhiteSmoke" Text="رقم الوكالة" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text7" Left="75.6" Width="103.95" Height="37.8" Border.Lines="All" Fill.Color="WhiteSmoke" Text="الرقم الضريبي للوكيل" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text11" Left="179.55" Width="85.05" Height="37.8" Border.Lines="All" Fill.Color="WhiteSmoke" Text="رقم جوال الوكيل" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text13" Left="264.6" Width="85.05" Height="37.8" Border.Lines="All" Fill.Color="WhiteSmoke" Text="اسم الوكيل" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text17" Left="349.65" Width="103.95" Height="37.8" Border.Lines="All" Fill.Color="WhiteSmoke" Text="الرقم الضريبي" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text21" Left="453.6" Width="103.95" Height="37.8" Border.Lines="All" Fill.Color="WhiteSmoke" Text="رقم الجوال" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text25" Left="557.55" Width="179.55" Height="37.8" Border.Lines="All" Fill.Color="WhiteSmoke" Text="الاسم" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text29" Left="737.1" Width="37.8" Height="37.8" Border.Lines="All" Fill.Color="WhiteSmoke" Text="الرقم" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+    </PageHeaderBand>
+    <DataBand Name="Data1" Top="102.5" Width="793.8" Height="28.35" DataSource="data">
+      <TextObject Name="Text4" Left="18.9" Width="56.7" Height="28.35" Border.Lines="All" Text="[data.agencynumber]" HorzAlign="Center" VertAlign="Center"/>
+      <TextObject Name="Text6" Left="75.6" Width="103.95" Height="28.35" Border.Lines="All" Text="[data.agentvatid]" HorzAlign="Center" VertAlign="Center"/>
+      <TextObject Name="Text10" Left="179.55" Width="85.05" Height="28.35" Border.Lines="All" Text="[data.agentmobile]" HorzAlign="Center" VertAlign="Center"/>
+      <TextObject Name="Text12" Left="264.6" Width="85.05" Height="28.35" Border.Lines="All" Text="[data.agentname]" HorzAlign="Center" VertAlign="Center"/>
+      <TextObject Name="Text16" Left="349.65" Width="103.95" Height="28.35" Border.Lines="All" Text="[data.vatid]" HorzAlign="Center" VertAlign="Center"/>
+      <TextObject Name="Text20" Left="453.6" Width="103.95" Height="28.35" Border.Lines="All" Text="[data.mobile]" HorzAlign="Center" VertAlign="Center"/>
+      <TextObject Name="Text24" Left="557.55" Width="179.55" Height="28.35" Border.Lines="All" Text="[data.name]" HorzAlign="Center" VertAlign="Center"/>
+      <TextObject Name="Text28" Left="737.1" Width="37.8" Height="28.35" Border.Lines="All" Text="[data.number]" HorzAlign="Center" VertAlign="Center"/>
+    </DataBand>
+    <PageFooterBand Name="PageFooter1" Top="134.85" Width="793.8" Height="37.8"/>
+  </ReportPage>
+</Report>

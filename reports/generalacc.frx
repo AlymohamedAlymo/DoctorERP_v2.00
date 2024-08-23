@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" ReportInfo.Created="05/25/2023 18:07:02" ReportInfo.Modified="10/22/2023 16:57:56" ReportInfo.CreatorVersion="2019.1.5.0">
+  <Dictionary>
+    <TableDataSource Name="planinfodata" Restrictions="HideAllProperties" ReferenceName="planinfodata" DataType="System.Int32" Enabled="true">
+      <Column Name="guid" DataType="System.Guid"/>
+      <Column Name="name" DataType="System.String"/>
+      <Column Name="ownerguid" DataType="System.Guid"/>
+      <Column Name="city" DataType="System.String"/>
+      <Column Name="location" DataType="System.String"/>
+      <Column Name="number" DataType="System.String"/>
+    </TableDataSource>
+    <TableDataSource Name="vwGeneralAccountLandSales" Restrictions="HideAllProperties" ReferenceName="vwGeneralAccountLandSales" DataType="System.Int32" Enabled="true">
+      <Column Name="guid" DataType="System.Guid"/>
+      <Column Name="c" DataType="System.Int32"/>
+      <Column Name="title" DataType="System.String"/>
+      <Column Name="totalnet" DataType="System.Decimal"/>
+      <Column Name="payments" DataType="System.Decimal"/>
+      <Column Name="remain" DataType="System.Decimal"/>
+      <Column Name="paytype" DataType="System.String"/>
+    </TableDataSource>
+    <TableDataSource Name="ownerdata" Restrictions="HideAllProperties" ReferenceName="ownerdata" DataType="System.Int32" Enabled="true">
+      <Column Name="guid" DataType="System.Guid"/>
+      <Column Name="number" DataType="System.Int32"/>
+      <Column Name="name" DataType="System.String"/>
+      <Column Name="civilid" DataType="System.String"/>
+      <Column Name="mobile" DataType="System.String"/>
+      <Column Name="email" DataType="System.String"/>
+      <Column Name="vatid" DataType="System.String"/>
+      <Column Name="publicnumber" DataType="System.String"/>
+      <Column Name="agentname" DataType="System.String"/>
+      <Column Name="agentcivilid" DataType="System.String"/>
+      <Column Name="agentmobile" DataType="System.String"/>
+      <Column Name="agentemail" DataType="System.String"/>
+      <Column Name="agentvatid" DataType="System.String"/>
+      <Column Name="agencynumber" DataType="System.String"/>
+      <Column Name="agentpublicnumber" DataType="System.String"/>
+      <Column Name="officename" DataType="System.String"/>
+      <Column Name="officecr" DataType="System.String"/>
+      <Column Name="officephone" DataType="System.String"/>
+      <Column Name="officeemail" DataType="System.String"/>
+      <Column Name="officevatid" DataType="System.String"/>
+      <Column Name="officepublicnumber" DataType="System.String"/>
+      <Column Name="note" DataType="System.String"/>
+      <Column Name="agenttype" DataType="System.Int32"/>
+    </TableDataSource>
+    <Parameter Name="payments" DataType="System.Decimal"/>
+    <Parameter Name="totalsales" DataType="System.Decimal"/>
+    <Parameter Name="remain" DataType="System.Decimal"/>
+    <Parameter Name="totalland" DataType="System.Int32"/>
+    <Parameter Name="salesland" DataType="System.Int32"/>
+    <Parameter Name="reserveland" DataType="System.Int32"/>
+    <Parameter Name="remainlands" DataType="System.Int32"/>
+    <Parameter Name="UserName" DataType="System.String"/>
+    <Total Name="Total" Expression="[vwGeneralAccountLandSales.totalnet]" Evaluator="Data1" EvaluateCondition="[vwGeneralAccountLandSales.paytype] == &quot;الكل&quot;"/>
+    <Total Name="TotalPayments" Expression="[vwGeneralAccountLandSales.payments]" Evaluator="Data1" EvaluateCondition="[vwGeneralAccountLandSales.paytype] == &quot;الكل&quot;"/>
+    <Total Name="TotalRemain" Expression="[vwGeneralAccountLandSales.remain]" Evaluator="Data1" EvaluateCondition="[vwGeneralAccountLandSales.paytype] == &quot;الكل&quot;"/>
+  </Dictionary>
+  <ReportPage Name="Page1" RawPaperSize="9" LeftMargin="0" TopMargin="0" RightMargin="0" BottomMargin="0" FirstPageSource="15" OtherPagesSource="15">
+    <ReportTitleBand Name="ReportTitle1" Width="793.8" Height="103.95">
+      <TextObject Name="Text36" Left="18.9" Top="9.45" Width="756" Height="66.15" Text="مخطط : [planinfodata.name] &#13;&#10;لمالكه : [ownerdata.name]&#13;&#10;معتمد برقم : [planinfodata.number]" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt, style=Bold"/>
+      <TextObject Name="Text52" Left="18.9" Top="85.05" Width="132.3" Height="18.9" Text="[Date]" Format="Custom" Format.Format="yyyy/MM/dd hh:mm tt" HorzAlign="Center" VertAlign="Center" Font="Arial, 9pt"/>
+      <TextObject Name="Text53" Left="151.2" Top="85.05" Width="103.95" Height="18.9" Text="تاريخ ووقت الطباعة" VertAlign="Bottom" Font="Arial, 9pt"/>
+    </ReportTitleBand>
+    <PageHeaderBand Name="PageHeader1" Top="107.95" Width="793.8" Height="217.35">
+      <TextObject Name="Text2" Left="708.75" Top="189" Width="66.15" Height="28.35" Border.Lines="All" Fill.Color="WhiteSmoke" Text="عدد القطع" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text4" Left="548.1" Top="189" Width="160.65" Height="28.35" Border.Lines="All" Fill.Color="WhiteSmoke" Text="البيان" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text6" Left="283.5" Top="189" Width="132.3" Height="28.35" Border.Lines="All" Fill.Color="WhiteSmoke" Text="القيمة" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text9" Left="151.2" Top="189" Width="132.3" Height="28.35" Border.Lines="All" Fill.Color="WhiteSmoke" Text="المدفوع" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text37" Left="18.9" Top="189" Width="132.3" Height="28.35" Border.Lines="All" Fill.Color="WhiteSmoke" Text="المتبقي" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text10" Left="18.9" Top="9.45" Width="746.55" Height="28.35" Text="إجمالي مبيعات المخطط [totalsales]" Format="Number" Format.UseLocale="false" Format.DecimalDigits="2" Format.DecimalSeparator="." Format.GroupSeparator="," Format.NegativePattern="1" VertAlign="Center" RightToLeft="true" Font="Arial, 14pt"/>
+      <TextObject Name="Text38" Left="18.9" Top="37.8" Width="746.55" Height="28.35" Text="إجمالي المبالغ النقدية الواصلة من مبيعات المخطط [payments]" Format="Number" Format.UseLocale="false" Format.DecimalDigits="2" Format.DecimalSeparator="." Format.GroupSeparator="," Format.NegativePattern="1" VertAlign="Center" RightToLeft="true" Font="Arial, 14pt"/>
+      <TextObject Name="Text39" Left="18.9" Top="66.15" Width="746.55" Height="28.35" Text="لإجمالي المبالغ المتبقية لدى العملاء [remain]" Format="Number" Format.UseLocale="false" Format.DecimalDigits="2" Format.DecimalSeparator="." Format.GroupSeparator="," Format.NegativePattern="1" VertAlign="Center" RightToLeft="true" Font="Arial, 14pt"/>
+      <TextObject Name="Text40" Left="18.9" Top="94.5" Width="746.55" Height="47.25" Text="عدد الأراضي بالمخطط  [totalland] أرض ، المباعة ( [salesland]  ) قطعة و المتبقية ( [remainlands] ) قطعة و ( [reserveland] ) قطعة تم إفراغها ل [ownerdata.name] مالك المخطط" VertAlign="Center" RightToLeft="true" Font="Arial, 14pt">
+        <Formats>
+          <NumberFormat UseLocale="false" DecimalDigits="0" NegativePattern="1"/>
+          <NumberFormat UseLocale="false" DecimalDigits="0"/>
+          <NumberFormat UseLocale="false" DecimalDigits="0"/>
+          <NumberFormat UseLocale="false" DecimalDigits="0"/>
+          <GeneralFormat/>
+        </Formats>
+      </TextObject>
+      <TextObject Name="Text41" Left="18.9" Top="160.65" Width="746.55" Height="28.35" Text="التفاصيل فـي الجدول التالي : " Format="Number" Format.UseLocale="false" Format.DecimalDigits="2" Format.DecimalSeparator="." Format.GroupSeparator="," Format.NegativePattern="1" VertAlign="Center" RightToLeft="true" Font="Arial, 14pt"/>
+      <TextObject Name="Text54" Left="415.8" Top="189" Width="132.3" Height="28.35" Border.Lines="All" Fill.Color="WhiteSmoke" Text="نوع الدفعة" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+    </PageHeaderBand>
+    <DataBand Name="Data1" Top="329.3" Width="793.8" Height="28.35" DataSource="vwGeneralAccountLandSales">
+      <TextObject Name="Text1" Left="708.75" Width="66.15" Height="28.35" Border.Lines="All" Text="[vwGeneralAccountLandSales.c]" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt"/>
+      <TextObject Name="Text3" Left="548.1" Width="160.65" Height="28.35" Border.Lines="All" Text="[vwGeneralAccountLandSales.title]" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt"/>
+      <TextObject Name="Text5" Left="283.5" Width="132.3" Height="28.35" Border.Lines="All" Text="[vwGeneralAccountLandSales.totalnet]" Format="Number" Format.UseLocale="false" Format.DecimalDigits="2" Format.DecimalSeparator="." Format.GroupSeparator="," Format.NegativePattern="1" HorzAlign="Center" VertAlign="Center" WordWrap="false" Font="Arial, 12pt" Trimming="EllipsisCharacter"/>
+      <TextObject Name="Text7" Left="151.2" Width="132.3" Height="28.35" Border.Lines="All" Text="[vwGeneralAccountLandSales.payments]" Format="Number" Format.UseLocale="false" Format.DecimalDigits="2" Format.DecimalSeparator="." Format.GroupSeparator="," Format.NegativePattern="1" HorzAlign="Center" VertAlign="Center" WordWrap="false" Font="Arial, 12pt" Trimming="EllipsisCharacter"/>
+      <TextObject Name="Text8" Left="18.9" Width="132.3" Height="28.35" Border.Lines="All" Text="[vwGeneralAccountLandSales.remain]" Format="Number" Format.UseLocale="false" Format.DecimalDigits="2" Format.DecimalSeparator="." Format.GroupSeparator="," Format.NegativePattern="1" HorzAlign="Center" VertAlign="Center" WordWrap="false" Font="Arial, 12pt" Trimming="EllipsisCharacter"/>
+      <TextObject Name="Text55" Left="415.8" Width="132.3" Height="28.35" Border.Lines="All" Text="[vwGeneralAccountLandSales.paytype]" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt"/>
+    </DataBand>
+    <ReportSummaryBand Name="ReportSummary1" Top="361.65" Width="793.8" Height="151.2">
+      <TextObject Name="Text11" Left="642.6" Top="66.15" Width="132.3" Height="28.35" Text="المدير المالي" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt, style=Bold"/>
+      <TextObject Name="Text42" Left="434.7" Top="66.15" Width="132.3" Height="28.35" Text="المحاسب المراجع" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt, style=Bold"/>
+      <TextObject Name="Text43" Left="236.25" Top="66.15" Width="132.3" Height="28.35" Text="المدير العام" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt, style=Bold"/>
+      <TextObject Name="Text44" Left="18.9" Top="66.15" Width="132.3" Height="28.35" Text="ملك المخطط" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt, style=Bold"/>
+      <TextObject Name="Text45" Left="18.9" Top="94.5" Width="132.3" Height="28.35" Text="[ownerdata.name]" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt"/>
+      <TextObject Name="Text46" Left="236.25" Top="94.5" Width="132.3" Height="28.35" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt"/>
+      <TextObject Name="Text47" Left="434.7" Top="94.5" Width="132.3" Height="28.35" Text="[UserName]" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt"/>
+      <TextObject Name="Text48" Left="642.6" Top="94.5" Width="132.3" Height="28.35" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt"/>
+      <TextObject Name="Text49" Left="283.5" Width="132.3" Height="28.35" Border.Lines="All" Fill.Color="WhiteSmoke" Text="[Total]" Format="Number" Format.UseLocale="false" Format.DecimalDigits="2" Format.DecimalSeparator="." Format.GroupSeparator="," Format.NegativePattern="1" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text50" Left="151.2" Width="132.3" Height="28.35" Border.Lines="All" Fill.Color="WhiteSmoke" Text="[TotalPayments]" Format="Number" Format.UseLocale="false" Format.DecimalDigits="2" Format.DecimalSeparator="." Format.GroupSeparator="," Format.NegativePattern="1" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text51" Left="18.9" Width="132.3" Height="28.35" Border.Lines="All" Fill.Color="WhiteSmoke" Text="[TotalRemain]" Format="Number" Format.UseLocale="false" Format.DecimalDigits="2" Format.DecimalSeparator="." Format.GroupSeparator="," Format.NegativePattern="1" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+    </ReportSummaryBand>
+  </ReportPage>
+</Report>

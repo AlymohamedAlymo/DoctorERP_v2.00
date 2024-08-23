@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" ReportInfo.Created="05/18/2023 01:20:44" ReportInfo.Modified="09/04/2023 13:50:48" ReportInfo.CreatorVersion="2019.1.5.0">
+  <Dictionary>
+    <TableDataSource Name="billdata" Restrictions="HideAllProperties" ReferenceName="billdata" DataType="System.Int32" Enabled="true">
+      <Column Name="guid" DataType="System.Guid"/>
+      <Column Name="landguid" DataType="System.Guid"/>
+      <Column Name="number" DataType="System.Int32"/>
+      <Column Name="land" DataType="System.String"/>
+      <Column Name="agent" DataType="System.String"/>
+      <Column Name="regdate" DataType="System.DateTime"/>
+      <Column Name="deednumber" DataType="System.String"/>
+      <Column Name="buildingnumber" DataType="System.String"/>
+      <Column Name="buildingfeevalue" DataType="System.Decimal"/>
+      <Column Name="remain" DataType="System.Decimal"/>
+      <Column Name="note" DataType="System.String"/>
+    </TableDataSource>
+    <Parameter Name="UserName" DataType="System.String"/>
+  </Dictionary>
+  <ReportPage Name="Page1" RawPaperSize="9" LeftMargin="0" TopMargin="0" RightMargin="0" BottomMargin="0">
+    <ReportTitleBand Name="ReportTitle1" Width="793.8" Height="160.65">
+      <TextObject Name="Text36" Left="18.9" Top="9.45" Width="756" Height="66.15" Text="مخطط : [planinfodata.name] &#13;&#10;لمالكه : [ownerdata.name]&#13;&#10;معتمد برقم : [planinfodata.number]" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt, style=Bold"/>
+      <TextObject Name="Text37" Left="18.9" Top="132.3" Width="132.3" Height="18.9" Text="[Date]" Format="Custom" Format.Format="yyyy/MM/dd hh:mm tt" HorzAlign="Center" VertAlign="Center" Font="Arial, 9pt"/>
+      <TextObject Name="Text38" Left="151.2" Top="132.3" Width="103.95" Height="18.9" Text="تاريخ ووقت الطباعة" VertAlign="Bottom" Font="Arial, 9pt"/>
+      <TextObject Name="Text1" Left="18.9" Top="85.05" Width="756" Height="37.8" Text="إفراغات الأراضي المباعة" HorzAlign="Center" VertAlign="Center" Font="Arial, 14pt, style=Bold"/>
+    </ReportTitleBand>
+    <PageHeaderBand Name="PageHeader1" Top="164.65" Width="793.8" Height="47.25">
+      <TextObject Name="Text3" Left="746.55" Top="9.45" Width="37.8" Height="37.8" Border.Lines="All" Text="م" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text5" Left="652.05" Top="9.45" Width="94.5" Height="37.8" Border.Lines="All" Text="الصنف" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text7" Left="557.55" Top="9.45" Width="94.5" Height="37.8" Border.Lines="All" Text="المشتري" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text9" Left="463.05" Top="9.45" Width="94.5" Height="37.8" Border.Lines="All" Text="تاريخ الإفراغ" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text11" Left="387.45" Top="9.45" Width="75.6" Height="37.8" Border.Lines="All" Text="رقم الصك الجديد" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text13" Left="292.95" Top="9.45" Width="94.5" Height="37.8" Border.Lines="All" Text="رقم ضريبة التصرفات العقارية" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text15" Left="198.45" Top="9.45" Width="94.5" Height="37.8" Border.Lines="All" Text="قيمة ضريبة التصرفات العقارية" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text17" Left="103.95" Top="9.45" Width="94.5" Height="37.8" Border.Lines="All" Text="الرصيد المتبقي" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text39" Left="9.45" Top="9.45" Width="94.5" Height="37.8" Border.Lines="All" Text="ملاحظات" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+    </PageHeaderBand>
+    <DataBand Name="Data1" Top="215.9" Width="793.8" Height="28.35" DataSource="billdata">
+      <TextObject Name="Text2" Left="746.55" Width="37.8" Height="28.35" Border.Lines="All" Text="[billdata.number]" HorzAlign="Center" VertAlign="Center"/>
+      <TextObject Name="Text4" Left="652.05" Width="94.5" Height="28.35" Border.Lines="All" Text="[billdata.land]" HorzAlign="Center" VertAlign="Center"/>
+      <TextObject Name="Text6" Left="557.55" Width="94.5" Height="28.35" Border.Lines="All" Text="[billdata.agent]" HorzAlign="Center" VertAlign="Center"/>
+      <TextObject Name="Text8" Left="463.05" Width="94.5" Height="28.35" Border.Lines="All" Text="[billdata.regdate]" HideZeros="true" Format="Date" Format.Format="d" HorzAlign="Center" VertAlign="Center"/>
+      <TextObject Name="Text10" Left="387.45" Width="75.6" Height="28.35" Border.Lines="All" Text="[billdata.deednumber]" HorzAlign="Center" VertAlign="Center"/>
+      <TextObject Name="Text12" Left="292.95" Width="94.5" Height="28.35" Border.Lines="All" Text="[billdata.buildingnumber]" HorzAlign="Center" VertAlign="Center"/>
+      <TextObject Name="Text14" Left="198.45" Width="94.5" Height="28.35" Border.Lines="All" Text="[billdata.buildingfeevalue]" Format="Number" Format.UseLocale="false" Format.DecimalDigits="0" Format.DecimalSeparator="." Format.GroupSeparator="," Format.NegativePattern="1" HorzAlign="Center" VertAlign="Center" WordWrap="false" Trimming="EllipsisCharacter"/>
+      <TextObject Name="Text16" Left="103.95" Width="94.5" Height="28.35" Border.Lines="All" Text="[billdata.remain]" Format="Number" Format.UseLocale="false" Format.DecimalDigits="0" Format.DecimalSeparator="." Format.GroupSeparator="," Format.NegativePattern="1" HorzAlign="Center" VertAlign="Center" WordWrap="false" Trimming="EllipsisCharacter"/>
+      <TextObject Name="Text18" Left="9.45" Width="94.5" Height="28.35" Border.Lines="All" Text="[billdata.note]" HorzAlign="Center" VertAlign="Center"/>
+    </DataBand>
+    <PageFooterBand Name="PageFooter1" Top="248.25" Width="793.8" Height="37.8"/>
+  </ReportPage>
+</Report>

@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" ReportInfo.Created="04/27/2023 19:19:37" ReportInfo.Modified="04/27/2023 19:24:23" ReportInfo.CreatorVersion="2019.1.5.0">
+  <Dictionary>
+    <TableDataSource Name="data" Restrictions="HideAllProperties" ReferenceName="data" DataType="System.Int32" Enabled="true">
+      <Column Name="guid" DataType="System.Guid"/>
+      <Column Name="code" DataType="System.Int32"/>
+      <Column Name="number" DataType="System.Int32"/>
+      <Column Name="blocknumber" DataType="System.String"/>
+      <Column Name="landtype" DataType="System.String"/>
+      <Column Name="area" DataType="System.Decimal"/>
+      <Column Name="deednumber" DataType="System.String"/>
+      <Column Name="amount" DataType="System.Decimal"/>
+      <Column Name="isworkfee" DataType="System.Boolean" BindableControl="CheckBox"/>
+      <Column Name="workfee" DataType="System.Decimal"/>
+      <Column Name="issalefee" DataType="System.Boolean" BindableControl="CheckBox"/>
+      <Column Name="salesfee" DataType="System.Decimal"/>
+      <Column Name="isbuildingfee" DataType="System.Boolean" BindableControl="CheckBox"/>
+      <Column Name="buildingfee" DataType="System.Decimal"/>
+      <Column Name="isvat" DataType="System.Boolean" BindableControl="CheckBox"/>
+      <Column Name="vat" DataType="System.Decimal"/>
+      <Column Name="isdiscounttotal" DataType="System.Boolean" BindableControl="CheckBox"/>
+      <Column Name="discounttotal" DataType="System.Decimal"/>
+      <Column Name="discounttotalvalue" DataType="System.Decimal"/>
+      <Column Name="isdiscountfee" DataType="System.Boolean" BindableControl="CheckBox"/>
+      <Column Name="discountfee" DataType="System.Decimal"/>
+      <Column Name="discountfeevalue" DataType="System.Decimal"/>
+      <Column Name="total" DataType="System.Decimal"/>
+      <Column Name="south" DataType="System.String"/>
+      <Column Name="southdesc" DataType="System.String"/>
+      <Column Name="north" DataType="System.String"/>
+      <Column Name="northdesc" DataType="System.String"/>
+      <Column Name="east" DataType="System.String"/>
+      <Column Name="eastdesc" DataType="System.String"/>
+      <Column Name="west" DataType="System.String"/>
+      <Column Name="westdesc" DataType="System.String"/>
+      <Column Name="status" DataType="System.String"/>
+      <Column Name="note" DataType="System.String"/>
+    </TableDataSource>
+    <Parameter Name="UserName" DataType="System.String"/>
+    <Total Name="CountSold" TotalType="Count" Evaluator="Data1" EvaluateCondition="[data.status] == &quot;مباع&quot;"/>
+    <Total Name="CountRevrse" Evaluator="Data1" EvaluateCondition="[data.status] == &quot;محجوز&quot;"/>
+    <Total Name="CountRemain" Evaluator="Data1" EvaluateCondition="[data.status] == &quot;متاح&quot;"/>
+  </Dictionary>
+  <ReportPage Name="Page1" Width="793.8" Height="1122.66" LeftMargin="0" TopMargin="0" RightMargin="0" BottomMargin="0">
+    <ReportTitleBand Name="ReportTitle1" Width="793.8" Height="56.7">
+      <TextObject Name="Text1" Left="18.9" Top="9.45" Width="756" Height="37.8" Text="بحث عن صنف" HorzAlign="Center" VertAlign="Center" Font="Arial, 14pt, style=Bold"/>
+    </ReportTitleBand>
+    <PageHeaderBand Name="PageHeader1" Top="60.7" Width="793.8" Height="28.35">
+      <TextObject Name="Text5" Left="18.9" Width="75.6" Height="28.35" Border.Lines="All" Fill.Color="WhiteSmoke" Text="الحالة" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text7" Left="94.5" Width="103.95" Height="28.35" Border.Lines="All" Fill.Color="WhiteSmoke" Text="الإجمالي" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text9" Left="198.45" Width="103.95" Height="28.35" Border.Lines="All" Fill.Color="WhiteSmoke" Text="القيمة" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text11" Left="302.4" Width="75.6" Height="28.35" Border.Lines="All" Fill.Color="WhiteSmoke" Text="رقم الصك" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text13" Left="378" Width="75.6" Height="28.35" Border.Lines="All" Fill.Color="WhiteSmoke" Text="المساحة" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text15" Left="453.6" Width="94.5" Height="28.35" Border.Lines="All" Fill.Color="WhiteSmoke" Text="نوع الأرض" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text17" Left="548.1" Width="75.6" Height="28.35" Border.Lines="All" Fill.Color="WhiteSmoke" Text="رقم البلوك" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text19" Left="623.7" Width="75.6" Height="28.35" Border.Lines="All" Fill.Color="WhiteSmoke" Text="الرقم" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text21" Left="699.3" Width="75.6" Height="28.35" Border.Lines="All" Fill.Color="WhiteSmoke" Text="الكود" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+    </PageHeaderBand>
+    <DataBand Name="Data1" Top="93.05" Width="793.8" Height="28.35" DataSource="data">
+      <TextObject Name="Text4" Left="18.9" Width="75.6" Height="28.35" Border.Lines="All" Text="[data.status]" HorzAlign="Center" VertAlign="Center">
+        <Highlight>
+          <Condition Expression="[data.status] == &quot;مباع&quot;" Fill.Color="Pink" ApplyFill="true" ApplyTextFill="false"/>
+          <Condition Expression="[data.status] == &quot;محجوز&quot;" Fill.Color="Gold" ApplyFill="true" ApplyTextFill="false"/>
+        </Highlight>
+      </TextObject>
+      <TextObject Name="Text6" Left="94.5" Width="103.95" Height="28.35" Border.Lines="All" Text="[data.total]" HorzAlign="Center" VertAlign="Center">
+        <Formats>
+          <NumberFormat UseLocale="false" NegativePattern="1"/>
+          <GeneralFormat/>
+          <GeneralFormat/>
+        </Formats>
+        <Highlight>
+          <Condition Expression="[data.status] == &quot;مباع&quot;" Fill.Color="Pink" ApplyFill="true" ApplyTextFill="false"/>
+          <Condition Expression="[data.status] == &quot;محجوز&quot;" Fill.Color="Gold" ApplyFill="true" ApplyTextFill="false"/>
+        </Highlight>
+      </TextObject>
+      <TextObject Name="Text8" Left="198.45" Width="103.95" Height="28.35" Border.Lines="All" Text="[data.amount]" HorzAlign="Center" VertAlign="Center">
+        <Formats>
+          <NumberFormat UseLocale="false" NegativePattern="1"/>
+          <GeneralFormat/>
+          <GeneralFormat/>
+        </Formats>
+        <Highlight>
+          <Condition Expression="[data.status] == &quot;مباع&quot;" Fill.Color="Pink" ApplyFill="true" ApplyTextFill="false"/>
+          <Condition Expression="[data.status] == &quot;محجوز&quot;" Fill.Color="Gold" ApplyFill="true" ApplyTextFill="false"/>
+        </Highlight>
+      </TextObject>
+      <TextObject Name="Text10" Left="302.4" Width="75.6" Height="28.35" Border.Lines="All" Text="[data.deednumber]" HorzAlign="Center" VertAlign="Center">
+        <Highlight>
+          <Condition Expression="[data.status] == &quot;مباع&quot;" Fill.Color="Pink" ApplyFill="true" ApplyTextFill="false"/>
+          <Condition Expression="[data.status] == &quot;محجوز&quot;" Fill.Color="Gold" ApplyFill="true" ApplyTextFill="false"/>
+        </Highlight>
+      </TextObject>
+      <TextObject Name="Text12" Left="378" Width="75.6" Height="28.35" Border.Lines="All" Text="[data.area]" HorzAlign="Center" VertAlign="Center">
+        <Highlight>
+          <Condition Expression="[data.status] == &quot;مباع&quot;" Fill.Color="Pink" ApplyFill="true" ApplyTextFill="false"/>
+          <Condition Expression="[data.status] == &quot;محجوز&quot;" Fill.Color="Gold" ApplyFill="true" ApplyTextFill="false"/>
+        </Highlight>
+      </TextObject>
+      <TextObject Name="Text14" Left="453.6" Width="94.5" Height="28.35" Border.Lines="All" Text="[data.landtype]" HorzAlign="Center" VertAlign="Center">
+        <Highlight>
+          <Condition Expression="[data.status] == &quot;مباع&quot;" Fill.Color="Pink" ApplyFill="true" ApplyTextFill="false"/>
+          <Condition Expression="[data.status] == &quot;محجوز&quot;" Fill.Color="Gold" ApplyFill="true" ApplyTextFill="false"/>
+        </Highlight>
+      </TextObject>
+      <TextObject Name="Text16" Left="548.1" Width="75.6" Height="28.35" Border.Lines="All" Text="[data.blocknumber]" HorzAlign="Center" VertAlign="Center">
+        <Highlight>
+          <Condition Expression="[data.status] == &quot;مباع&quot;" Fill.Color="Pink" ApplyFill="true" ApplyTextFill="false"/>
+          <Condition Expression="[data.status] == &quot;محجوز&quot;" Fill.Color="Gold" ApplyFill="true" ApplyTextFill="false"/>
+        </Highlight>
+      </TextObject>
+      <TextObject Name="Text18" Left="623.7" Width="75.6" Height="28.35" Border.Lines="All" Text="[data.number]" HorzAlign="Center" VertAlign="Center">
+        <Highlight>
+          <Condition Expression="[data.status] == &quot;مباع&quot;" Fill.Color="Pink" ApplyFill="true" ApplyTextFill="false"/>
+          <Condition Expression="[data.status] == &quot;محجوز&quot;" Fill.Color="Gold" ApplyFill="true" ApplyTextFill="false"/>
+        </Highlight>
+      </TextObject>
+      <TextObject Name="Text20" Left="699.3" Width="75.6" Height="28.35" Border.Lines="All" Text="[data.code]" HorzAlign="Center" VertAlign="Center">
+        <Highlight>
+          <Condition Expression="[data.status] == &quot;مباع&quot;" Fill.Color="Pink" ApplyFill="true" ApplyTextFill="false"/>
+          <Condition Expression="[data.status] == &quot;محجوز&quot;" Fill.Color="Gold" ApplyFill="true" ApplyTextFill="false"/>
+        </Highlight>
+      </TextObject>
+    </DataBand>
+    <ReportSummaryBand Name="ReportSummary1" Top="125.4" Width="793.8" Height="85.05">
+      <TextObject Name="Text22" Left="94.5" Top="9.45" Width="75.6" Height="28.35" Border.Lines="All" Fill.Color="WhiteSmoke" Text="مباع" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text23" Left="94.5" Top="47.25" Width="75.6" Height="28.35" Border.Lines="All" Fill.Color="WhiteSmoke" Text="متبقي" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text24" Left="302.4" Top="9.45" Width="75.6" Height="28.35" Border.Lines="All" Fill.Color="WhiteSmoke" Text="محجوز" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text25" Left="226.8" Top="9.45" Width="75.6" Height="28.35" Border.Lines="All" Text="[CountRevrse]" HorzAlign="Center" VertAlign="Center"/>
+      <TextObject Name="Text26" Left="18.9" Top="9.45" Width="75.6" Height="28.35" Border.Lines="All" Text="[CountSold]" HorzAlign="Center" VertAlign="Center"/>
+      <TextObject Name="Text27" Left="18.9" Top="47.25" Width="75.6" Height="28.35" Border.Lines="All" Text="[CountRemain]" HorzAlign="Center" VertAlign="Center"/>
+    </ReportSummaryBand>
+    <PageFooterBand Name="PageFooter1" Top="214.45" Width="793.8" Height="37.8"/>
+  </ReportPage>
+</Report>

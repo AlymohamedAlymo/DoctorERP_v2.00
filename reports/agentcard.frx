@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" ReportInfo.Created="06/10/2023 13:24:33" ReportInfo.Modified="08/18/2024 20:24:11" ReportInfo.CreatorVersion="2019.1.5.0">
+  <Dictionary>
+    <TableDataSource Name="data" Restrictions="HideAllProperties" ReferenceName="data" DataType="System.Int32" Enabled="true">
+      <Column Name="guid" DataType="System.Guid"/>
+      <Column Name="number" DataType="System.Int32"/>
+      <Column Name="name" DataType="System.String"/>
+      <Column Name="civilid" DataType="System.String"/>
+      <Column Name="mobile" DataType="System.String"/>
+      <Column Name="email" DataType="System.String"/>
+      <Column Name="vatid" DataType="System.String"/>
+      <Column Name="publicnumber" DataType="System.String"/>
+      <Column Name="agentname" DataType="System.String"/>
+      <Column Name="agentcivilid" DataType="System.String"/>
+      <Column Name="agentmobile" DataType="System.String"/>
+      <Column Name="agentemail" DataType="System.String"/>
+      <Column Name="agentvatid" DataType="System.String"/>
+      <Column Name="agencynumber" DataType="System.String"/>
+      <Column Name="agentpublicnumber" DataType="System.String"/>
+      <Column Name="officename" DataType="System.String"/>
+      <Column Name="officecr" DataType="System.String"/>
+      <Column Name="officephone" DataType="System.String"/>
+      <Column Name="officeemail" DataType="System.String"/>
+      <Column Name="officevatid" DataType="System.String"/>
+      <Column Name="officepublicnumber" DataType="System.String"/>
+      <Column Name="note" DataType="System.String"/>
+      <Column Name="agenttype" DataType="System.Int32"/>
+      <Column Name="lastaction" DataType="System.String"/>
+    </TableDataSource>
+    <Parameter Name="UserName" DataType="System.String"/>
+  </Dictionary>
+  <ReportPage Name="Page1">
+    <ReportTitleBand Name="ReportTitle1" Width="718.2" Height="859.95">
+      <TextObject Name="Text1" Left="567" Top="179.55" Width="132.3" Height="28.35" Border.Lines="All" Fill.Color="WhiteSmoke" Text="رقم العميل" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text2" Left="567" Top="207.9" Width="132.3" Height="28.35" Border.Lines="All" Fill.Color="WhiteSmoke" Text="الاسم" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text3" Left="567" Top="236.25" Width="132.3" Height="28.35" Border.Lines="All" Fill.Color="WhiteSmoke" Text="رقم الهوية" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text4" Left="567" Top="264.6" Width="132.3" Height="28.35" Border.Lines="All" Fill.Color="WhiteSmoke" Text="رقم الجوال" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text5" Left="567" Top="292.95" Width="132.3" Height="28.35" Border.Lines="All" Fill.Color="WhiteSmoke" Text="البريد الإلكتروني" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text6" Left="567" Top="349.65" Width="132.3" Height="28.35" Border.Lines="All" Fill.Color="WhiteSmoke" Text="رقم المعلن" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text24" Left="18.9" Top="207.9" Width="548.1" Height="28.35" Border.Lines="All" Text="[data.name]" HorzAlign="Right" VertAlign="Center"/>
+      <TextObject Name="Text25" Left="18.9" Top="179.55" Width="548.1" Height="28.35" Border.Lines="All" Text="[data.number]" HorzAlign="Right" VertAlign="Center"/>
+      <TextObject Name="Text26" Left="18.9" Top="264.6" Width="548.1" Height="28.35" Border.Lines="All" Text="[data.mobile]" HorzAlign="Right" VertAlign="Center"/>
+      <TextObject Name="Text27" Left="18.9" Top="236.25" Width="548.1" Height="28.35" Border.Lines="All" Text="[data.civilid]" HorzAlign="Right" VertAlign="Center"/>
+      <TextObject Name="Text28" Left="18.9" Top="349.65" Width="548.1" Height="28.35" Border.Lines="All" Text="[data.publicnumber]" HorzAlign="Right" VertAlign="Center"/>
+      <TextObject Name="Text29" Left="18.9" Top="292.95" Width="548.1" Height="28.35" Border.Lines="All" Text="[data.email]" Format="Number" Format.UseLocale="false" Format.DecimalDigits="0" Format.DecimalSeparator="." Format.GroupSeparator="," Format.NegativePattern="1" HorzAlign="Right" VertAlign="Center"/>
+      <TextObject Name="Text59" Left="18.9" Top="103.95" Width="680.4" Height="28.35" Border.Lines="All" Fill.Color="WhiteSmoke" Text="بطاقة عميل" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text60" Left="567" Top="378" Width="132.3" Height="28.35" Border.Lines="All" Fill.Color="WhiteSmoke" Text="ملاحظات" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text61" Left="18.9" Top="378" Width="548.1" Height="28.35" Border.Lines="All" Text="[data.note]" HorzAlign="Right" VertAlign="Center"/>
+      <TextObject Name="Text62" Left="567" Top="321.3" Width="132.3" Height="28.35" Border.Lines="All" Fill.Color="WhiteSmoke" Text="الرقم الضريبي" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text63" Left="18.9" Top="321.3" Width="548.1" Height="28.35" Border.Lines="All" Text="[data.vatid]" Format="Number" Format.UseLocale="false" Format.DecimalDigits="0" Format.DecimalSeparator="." Format.GroupSeparator="," Format.NegativePattern="1" HorzAlign="Right" VertAlign="Center"/>
+      <TextObject Name="Text64" Left="18.9" Top="151.2" Width="680.4" Height="28.35" Border.Lines="All" Fill.Color="WhiteSmoke" Text="عام" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text66" Left="567" Top="453.6" Width="132.3" Height="28.35" Border.Lines="All" Fill.Color="WhiteSmoke" Text="الاسم" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text67" Left="567" Top="481.95" Width="132.3" Height="28.35" Border.Lines="All" Fill.Color="WhiteSmoke" Text="رقم الهوية" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text68" Left="567" Top="510.3" Width="132.3" Height="28.35" Border.Lines="All" Fill.Color="WhiteSmoke" Text="رقم الجوال" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text69" Left="567" Top="538.65" Width="132.3" Height="28.35" Border.Lines="All" Fill.Color="WhiteSmoke" Text="البريد الإلكتروني" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text70" Left="567" Top="595.35" Width="132.3" Height="28.35" Border.Lines="All" Fill.Color="WhiteSmoke" Text="رقم المعلن" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text71" Left="18.9" Top="453.6" Width="548.1" Height="28.35" Border.Lines="All" Text="[data.agentname]" HorzAlign="Right" VertAlign="Center"/>
+      <TextObject Name="Text73" Left="18.9" Top="510.3" Width="548.1" Height="28.35" Border.Lines="All" Text="[data.agentmobile]" HorzAlign="Right" VertAlign="Center"/>
+      <TextObject Name="Text74" Left="18.9" Top="481.95" Width="548.1" Height="28.35" Border.Lines="All" Text="[data.agentmobile]" HorzAlign="Right" VertAlign="Center"/>
+      <TextObject Name="Text75" Left="18.9" Top="595.35" Width="548.1" Height="28.35" Border.Lines="All" Text="[data.agentpublicnumber]" HorzAlign="Right" VertAlign="Center"/>
+      <TextObject Name="Text76" Left="18.9" Top="538.65" Width="548.1" Height="28.35" Border.Lines="All" Text="[data.agentemail]" Format="Number" Format.UseLocale="false" Format.DecimalDigits="0" Format.DecimalSeparator="." Format.GroupSeparator="," Format.NegativePattern="1" HorzAlign="Right" VertAlign="Center"/>
+      <TextObject Name="Text79" Left="567" Top="567" Width="132.3" Height="28.35" Border.Lines="All" Fill.Color="WhiteSmoke" Text="رقم الوكالة" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text80" Left="18.9" Top="567" Width="548.1" Height="28.35" Border.Lines="All" Text="[data.agencynumber]" Format="Number" Format.UseLocale="false" Format.DecimalDigits="0" Format.DecimalSeparator="." Format.GroupSeparator="," Format.NegativePattern="1" HorzAlign="Right" VertAlign="Center"/>
+      <TextObject Name="Text81" Left="18.9" Top="425.25" Width="680.4" Height="28.35" Border.Lines="All" Fill.Color="WhiteSmoke" Text="الوكيل" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text82" Left="18.9" Top="18.9" Width="680.4" Height="66.15" Text="مخطط : [planinfodata.name] &#13;&#10;لمالكه : [ownerdata.name]&#13;&#10;معتمد برقم : [planinfodata.number]" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt, style=Bold"/>
+      <TextObject Name="Text83" Left="567" Top="670.95" Width="132.3" Height="28.35" Border.Lines="All" Fill.Color="WhiteSmoke" Text="الاسم" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text84" Left="567" Top="699.3" Width="132.3" Height="28.35" Border.Lines="All" Fill.Color="WhiteSmoke" Text="السجل التجاري" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text85" Left="567" Top="727.65" Width="132.3" Height="28.35" Border.Lines="All" Fill.Color="WhiteSmoke" Text="رقم الهاتف" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text86" Left="567" Top="756" Width="132.3" Height="28.35" Border.Lines="All" Fill.Color="WhiteSmoke" Text="البريد الإلكتروني" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text87" Left="567" Top="812.7" Width="132.3" Height="28.35" Border.Lines="All" Fill.Color="WhiteSmoke" Text="رقم المعلن" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text88" Left="18.9" Top="670.95" Width="548.1" Height="28.35" Border.Lines="All" Text="[data.officename]" HorzAlign="Right" VertAlign="Center"/>
+      <TextObject Name="Text89" Left="18.9" Top="727.65" Width="548.1" Height="28.35" Border.Lines="All" Text="[data.officephone]" HorzAlign="Right" VertAlign="Center"/>
+      <TextObject Name="Text90" Left="18.9" Top="699.3" Width="548.1" Height="28.35" Border.Lines="All" Text="[data.officecr]" HorzAlign="Right" VertAlign="Center"/>
+      <TextObject Name="Text91" Left="18.9" Top="812.7" Width="548.1" Height="28.35" Border.Lines="All" Text="[data.officepublicnumber]" HorzAlign="Right" VertAlign="Center"/>
+      <TextObject Name="Text92" Left="18.9" Top="756" Width="548.1" Height="28.35" Border.Lines="All" Text="[data.officeemail]" Format="Number" Format.UseLocale="false" Format.DecimalDigits="0" Format.DecimalSeparator="." Format.GroupSeparator="," Format.NegativePattern="1" HorzAlign="Right" VertAlign="Center"/>
+      <TextObject Name="Text93" Left="567" Top="784.35" Width="132.3" Height="28.35" Border.Lines="All" Fill.Color="WhiteSmoke" Text="الرقم الضريبي" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text94" Left="18.9" Top="784.35" Width="548.1" Height="28.35" Border.Lines="All" Text="[data.officevatid]" Format="Number" Format.UseLocale="false" Format.DecimalDigits="0" Format.DecimalSeparator="." Format.GroupSeparator="," Format.NegativePattern="1" HorzAlign="Right" VertAlign="Center"/>
+      <TextObject Name="Text95" Left="18.9" Top="642.6" Width="680.4" Height="28.35" Border.Lines="All" Fill.Color="WhiteSmoke" Text="الموثق" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+    </ReportTitleBand>
+  </ReportPage>
+</Report>

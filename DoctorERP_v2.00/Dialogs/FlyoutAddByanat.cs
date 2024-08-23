@@ -18,6 +18,16 @@ namespace DoctorERP_v2_00.Dialogs
             InitializeComponent();
             this.Result = DialogResult.Cancel;
 
+            idLabel.TextAlignment = ContentAlignment.TopLeft;
+            radLabel1.TextAlignment = ContentAlignment.TopLeft;
+            radLabel5.TextAlignment = ContentAlignment.TopLeft;
+            radLabel4.TextAlignment = ContentAlignment.TopLeft;
+            radLabel2.TextAlignment = ContentAlignment.TopLeft;
+
+            System.Globalization.CultureInfo cultureInfo = new System.Globalization.CultureInfo("ar-EG");
+            radDateTimePicker1.Culture = cultureInfo;
+            radDateTimePicker2.Culture = cultureInfo;
+
         }
 
 
@@ -74,6 +84,86 @@ namespace DoctorERP_v2_00.Dialogs
         {
             this.Result = DialogResult.Abort;
             RadFlyoutManager.Close();
+
+        }
+
+        private void radDropDownList1_SelectedIndexChanged(object sender, Telerik.WinControls.UI.Data.PositionChangedEventArgs e)
+        {
+            if (radDropDownList1.SelectedIndex == 0)
+            {
+                DriverMultiColumnComboBox.Visible = true;
+                CarsMultiColumnComboBox.Visible = false;
+
+            }
+            if (radDropDownList1.SelectedIndex == 1)
+            {
+                DriverMultiColumnComboBox.Visible = false;
+                CarsMultiColumnComboBox.Visible = true;
+
+            }
+
+        }
+
+        private void radMultiColumnComboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void radLabel1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void radMultiColumnComboBox1_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void editPanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void radSeparator2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FlyoutAddByanat_Load(object sender, EventArgs e)
+        {
+            this.driverTableAdapter.Fill(this.contract_ManagementDataSet.Driver);
+            // TODO: This line of code loads data into the 'contract_ManagementDataSet.Companies' table. You can move, or remove it, as needed.
+            this.companiesTableAdapter.Fill(this.contract_ManagementDataSet.Companies);
+            // TODO: This line of code loads data into the 'contract_ManagementDataSet.Cars' table. You can move, or remove it, as needed.
+            this.carsTableAdapter.Fill(this.contract_ManagementDataSet.Cars);
+            // TODO: This line of code loads data into the 'contract_ManagementDataSet.Companies' table. You can move, or remove it, as needed.
+            this.companiesTableAdapter.Fill(this.contract_ManagementDataSet.Companies);
+
+            radDropDownList1.SelectedIndex = 0;
+        }
+
+        private void radMultiColumnComboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void radLabel3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void radLabel4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void idLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void radLabel5_Click(object sender, EventArgs e)
+        {
 
         }
     }

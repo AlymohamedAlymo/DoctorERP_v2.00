@@ -33,6 +33,8 @@
             this.closeButton = new Telerik.WinControls.UI.RadButton();
             this.saveButton = new Telerik.WinControls.UI.RadButton();
             this.editPanel = new Telerik.WinControls.UI.RadPanel();
+            this.noteTextBox = new Telerik.WinControls.UI.RadTextBox();
+            this.noteLabel = new Telerik.WinControls.UI.RadLabel();
             this.idTextBox = new Telerik.WinControls.UI.RadTextBox();
             this.idSeparator = new Telerik.WinControls.UI.RadSeparator();
             this.idLabel = new Telerik.WinControls.UI.RadLabel();
@@ -41,10 +43,6 @@
             this.nameLabel = new Telerik.WinControls.UI.RadLabel();
             this.errorLabel = new Telerik.WinControls.UI.RadLabel();
             this.radButton1 = new Telerik.WinControls.UI.RadButton();
-            this.noteLabel = new Telerik.WinControls.UI.RadLabel();
-            this.noteTextBox = new Telerik.WinControls.UI.RadTextBox();
-            this.radSeparator1 = new Telerik.WinControls.UI.RadSeparator();
-            this.addressSeparator = new Telerik.WinControls.UI.RadSeparator();
             ((System.ComponentModel.ISupportInitialize)(this.headerPanel)).BeginInit();
             this.headerPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guestInfoLabel)).BeginInit();
@@ -52,6 +50,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.saveButton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.editPanel)).BeginInit();
             this.editPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.noteTextBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.noteLabel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.idTextBox)).BeginInit();
             this.idTextBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.idSeparator)).BeginInit();
@@ -62,11 +62,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.nameLabel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorLabel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radButton1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.noteLabel)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.noteTextBox)).BeginInit();
-            this.noteTextBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.radSeparator1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.addressSeparator)).BeginInit();
             this.SuspendLayout();
             // 
             // headerPanel
@@ -83,9 +78,11 @@
             // 
             this.guestInfoLabel.AutoSize = false;
             this.guestInfoLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.guestInfoLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guestInfoLabel.Location = new System.Drawing.Point(30, 0);
             this.guestInfoLabel.Margin = new System.Windows.Forms.Padding(0);
             this.guestInfoLabel.Name = "guestInfoLabel";
+            this.guestInfoLabel.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
             this.guestInfoLabel.Size = new System.Drawing.Size(240, 40);
             this.guestInfoLabel.TabIndex = 2;
             this.guestInfoLabel.Text = "بيانات السائق";
@@ -126,6 +123,31 @@
             this.editPanel.TabIndex = 3;
             this.editPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.editPanel_Paint);
             // 
+            // noteTextBox
+            // 
+            this.noteTextBox.AutoSize = false;
+            this.noteTextBox.Dock = System.Windows.Forms.DockStyle.Top;
+            this.noteTextBox.Location = new System.Drawing.Point(0, 200);
+            this.noteTextBox.Multiline = true;
+            this.noteTextBox.Name = "noteTextBox";
+            this.noteTextBox.NullText = "ادخل الملاحظات";
+            this.noteTextBox.ShowNullText = true;
+            this.noteTextBox.Size = new System.Drawing.Size(270, 87);
+            this.noteTextBox.TabIndex = 7;
+            this.noteTextBox.TextChanged += new System.EventHandler(this.noteTextBox_TextChanged);
+            // 
+            // noteLabel
+            // 
+            this.noteLabel.AutoSize = false;
+            this.noteLabel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.noteLabel.Location = new System.Drawing.Point(0, 160);
+            this.noteLabel.Name = "noteLabel";
+            this.noteLabel.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
+            this.noteLabel.Size = new System.Drawing.Size(270, 40);
+            this.noteLabel.TabIndex = 6;
+            this.noteLabel.Text = "ملاحظات:";
+            this.noteLabel.TextAlignment = System.Drawing.ContentAlignment.TopRight;
+            // 
             // idTextBox
             // 
             this.idTextBox.AutoSize = false;
@@ -138,7 +160,7 @@
             // 
             // idSeparator
             // 
-            this.idSeparator.Location = new System.Drawing.Point(10, 33);
+            this.idSeparator.Location = new System.Drawing.Point(29, 33);
             this.idSeparator.Name = "idSeparator";
             this.idSeparator.Size = new System.Drawing.Size(230, 4);
             this.idSeparator.TabIndex = 2;
@@ -150,6 +172,7 @@
             this.idLabel.Dock = System.Windows.Forms.DockStyle.Top;
             this.idLabel.Location = new System.Drawing.Point(0, 80);
             this.idLabel.Name = "idLabel";
+            this.idLabel.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
             this.idLabel.Size = new System.Drawing.Size(270, 40);
             this.idLabel.TabIndex = 2;
             this.idLabel.Text = "رقم البطاقة:";
@@ -167,7 +190,7 @@
             // 
             // nameSeparator
             // 
-            this.nameSeparator.Location = new System.Drawing.Point(10, 33);
+            this.nameSeparator.Location = new System.Drawing.Point(29, 33);
             this.nameSeparator.Name = "nameSeparator";
             this.nameSeparator.Size = new System.Drawing.Size(230, 4);
             this.nameSeparator.TabIndex = 1;
@@ -178,6 +201,7 @@
             this.nameLabel.Dock = System.Windows.Forms.DockStyle.Top;
             this.nameLabel.Location = new System.Drawing.Point(0, 0);
             this.nameLabel.Name = "nameLabel";
+            this.nameLabel.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
             this.nameLabel.Size = new System.Drawing.Size(270, 40);
             this.nameLabel.TabIndex = 0;
             this.nameLabel.Text = "الأسم:";
@@ -201,46 +225,6 @@
             this.radButton1.TabIndex = 6;
             this.radButton1.Text = "إلغاء";
             // 
-            // noteLabel
-            // 
-            this.noteLabel.AutoSize = false;
-            this.noteLabel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.noteLabel.Location = new System.Drawing.Point(0, 160);
-            this.noteLabel.Name = "noteLabel";
-            this.noteLabel.Size = new System.Drawing.Size(270, 40);
-            this.noteLabel.TabIndex = 6;
-            this.noteLabel.Text = "ملاحظات:";
-            this.noteLabel.TextAlignment = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // noteTextBox
-            // 
-            this.noteTextBox.AutoSize = false;
-            this.noteTextBox.Controls.Add(this.addressSeparator);
-            this.noteTextBox.Controls.Add(this.radSeparator1);
-            this.noteTextBox.Dock = System.Windows.Forms.DockStyle.Top;
-            this.noteTextBox.Location = new System.Drawing.Point(0, 200);
-            this.noteTextBox.Multiline = true;
-            this.noteTextBox.Name = "noteTextBox";
-            this.noteTextBox.NullText = "ادخل الملاحظات";
-            this.noteTextBox.ShowNullText = true;
-            this.noteTextBox.Size = new System.Drawing.Size(270, 87);
-            this.noteTextBox.TabIndex = 7;
-            // 
-            // radSeparator1
-            // 
-            this.radSeparator1.Location = new System.Drawing.Point(10, 33);
-            this.radSeparator1.Name = "radSeparator1";
-            this.radSeparator1.Size = new System.Drawing.Size(230, 4);
-            this.radSeparator1.TabIndex = 2;
-            // 
-            // addressSeparator
-            // 
-            this.addressSeparator.Location = new System.Drawing.Point(10, 80);
-            this.addressSeparator.Name = "addressSeparator";
-            this.addressSeparator.Size = new System.Drawing.Size(230, 4);
-            this.addressSeparator.TabIndex = 3;
-            this.addressSeparator.Click += new System.EventHandler(this.radSeparator2_Click);
-            // 
             // EditGuestInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -261,6 +245,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.saveButton)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.editPanel)).EndInit();
             this.editPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.noteTextBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.noteLabel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.idTextBox)).EndInit();
             this.idTextBox.ResumeLayout(false);
             this.idTextBox.PerformLayout();
@@ -273,12 +259,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.nameLabel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorLabel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radButton1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.noteLabel)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.noteTextBox)).EndInit();
-            this.noteTextBox.ResumeLayout(false);
-            this.noteTextBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.radSeparator1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.addressSeparator)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -287,7 +267,6 @@
 
         private Telerik.WinControls.UI.RadPanel headerPanel;
         private Telerik.WinControls.UI.RadButton closeButton;
-        private Telerik.WinControls.UI.RadLabel guestInfoLabel;
         private Telerik.WinControls.UI.RadButton saveButton;
         private Telerik.WinControls.UI.RadPanel editPanel;
         private Telerik.WinControls.UI.RadSeparator nameSeparator;
@@ -295,12 +274,11 @@
         private Telerik.WinControls.UI.RadLabel errorLabel;
         private Telerik.WinControls.UI.RadButton radButton1;
         public Telerik.WinControls.UI.RadLabel noteLabel;
-        private Telerik.WinControls.UI.RadSeparator radSeparator1;
-        private Telerik.WinControls.UI.RadSeparator addressSeparator;
         public Telerik.WinControls.UI.RadTextBox idTextBox;
         public Telerik.WinControls.UI.RadTextBox nameTextBox;
         public Telerik.WinControls.UI.RadTextBox noteTextBox;
         public Telerik.WinControls.UI.RadLabel idLabel;
         public Telerik.WinControls.UI.RadLabel nameLabel;
+        public Telerik.WinControls.UI.RadLabel guestInfoLabel;
     }
 }

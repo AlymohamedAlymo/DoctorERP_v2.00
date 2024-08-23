@@ -1,4 +1,5 @@
-﻿using DoctorERP_v2_00.Contract_ManagementDataSetTableAdapters;
+﻿using CustomControls;
+using DoctorERP_v2_00.Contract_ManagementDataSetTableAdapters;
 using DoctorERP_v2_00.Dialogs;
 using Helper.Helpers;
 using HotelApp.Data;
@@ -104,7 +105,7 @@ namespace HotelApp
             this.LeftView.ListViewElement.Padding = new System.Windows.Forms.Padding(0, 16, 0, 0);
 
             this.ByanatView.ViewType = ListViewType.IconsView;
-            this.ByanatView.ItemSize = new Size(200, 120);
+            this.ByanatView.ItemSize = new Size(150, 80);
             this.ByanatView.ItemSpacing = 10;
             this.ByanatView.AllowEdit = false;
             this.ByanatView.EnableFiltering = true;
@@ -153,7 +154,10 @@ namespace HotelApp
             this.radLabel2.TextAlignment = ContentAlignment.TopLeft;
             this.radLabel4.TextAlignment = ContentAlignment.TopLeft;
 
-            
+            this.labelBookings.TextAlignment = ContentAlignment.MiddleLeft;
+            editGuestInfo.guestInfoLabel.TextAlignment = ContentAlignment.MiddleLeft;
+
+
             this.ByanatView.VisualItemCreating += roomsView_VisualItemCreating;
             this.LeftView.VisualItemCreating += leftView_VisualItemCreating;
 
@@ -178,6 +182,8 @@ namespace HotelApp
             GridViewNotification.TableElement.TableHeaderHeight = 30;
 
             mainContainer.SelectedPage = OverviewPage;
+
+
 
         }
 
@@ -230,6 +236,48 @@ namespace HotelApp
                             //RadCallout.Show(callout, this.BtnReservation, "فشلت عملية تنشيط بطاقة العميل!", "فشلت العملية");
                         }
                     }
+                else if (e.Content is FlyoutAddCarOrDriver)
+                {
+                    RadCallout callout = new RadCallout();
+                    callout.ArrowDirection = Telerik.WinControls.ArrowDirection.Up;
+
+                    FlyoutAddCarOrDriver content = e.Content as FlyoutAddCarOrDriver;
+                    if (content != null)
+                    {
+                        if (content.Result == DialogResult.Yes)
+                        {
+                            //RadFlyoutManager.Show(this, typeof(FlyoutAddCarOrDriver));
+
+                        }
+                        if (content.Result == DialogResult.OK)
+                        {
+                            //RadFlyoutManager.Show(this, typeof(FlyoutAddCarOrDriver));
+                            RadFlyoutManager.Show(this, typeof(FlyoutAddByanat));
+
+                        }
+
+                        //tbAgent Agent = (tbAgent)Bs.Current;
+                        //if (content.Result == DialogResult.OK)
+                        //{
+                        //    DBConnect.StartTransAction();
+                        //    radstatus.Text = Agent.note = "غير نشط";
+                        //    BtnReservation.Text = "تنشيط";
+                        //    Agent.Update();
+                        //    if (DBConnect.CommitTransAction())
+                        //    {
+                        //        ShowDesktopAlert("تنشيط بطاقة عميل", "تنشيط بطاقة العميل", "تمت عملية تنشيط البطاقة بنجاح", "تم تنشيط بطاقة العميل يمكن القيام بالعمليات عليها الأن.");
+                        //        FrmMain.DataHasChanged = true;
+                        //    }
+
+                        //    string ReserveReason = $"{content.ReserveReason}";
+                        //    RadCallout.Show(callout, this.BtnReservation, $"عملية تنشيط بطاقة العميل بسبب{ReserveReason} تمت!", "تمت العملية بنجاح");
+                    }
+                    else
+                    {
+                        //RadCallout.Show(callout, this.BtnReservation, "فشلت عملية تنشيط بطاقة العميل!", "فشلت العملية");
+                    }
+                }
+
 
             });
 
@@ -249,13 +297,6 @@ namespace HotelApp
             // TODO: This line of code loads data into the 'contract_ManagementDataSet.Byan' table. You can move, or remove it, as needed.
             this.byanTableAdapter.Fill(this.contract_ManagementDataSet.Byan);
             // TODO: This line of code loads data into the 'contract_ManagementDataSet.NotificationView' table. You can move, or remove it, as needed.
-            this.notificationViewTableAdapter.Fill(this.contract_ManagementDataSet.NotificationView);
-            // TODO: This line of code loads data into the 'contract_ManagementDataSet.Companies' table. You can move, or remove it, as needed.
-            this.companiesTableAdapter.Fill(this.contract_ManagementDataSet.Companies);
-            // TODO: This line of code loads data into the 'contract_ManagementDataSet.Cars' table. You can move, or remove it, as needed.
-            this.carsTableAdapter.Fill(this.contract_ManagementDataSet.Cars);
-            // TODO: This line of code loads data into the 'contract_ManagementDataSet.Byan' table. You can move, or remove it, as needed.
-            this.byanTableAdapter.Fill(this.contract_ManagementDataSet.Byan);
 
             this.ByanatView.DataSource = this.contract_ManagementDataSet.Byan;
             this.ByanatView.DisplayMember = "ParentType";
@@ -272,8 +313,11 @@ namespace HotelApp
             {
                 ListViewDataItem roomTypeItem = new ListViewDataItem(item.CompanyName);
                 roomTypeItem.Value = item.CompanyName;
-                int count = contract_ManagementDataSet.Byan.Where(u => u.CompanyName == item.CompanyName).Count();
-                roomTypeItem.Tag = count;
+                var CompanyData = contract_ManagementDataSet.Byan.Where(u => u.CompanyName == item.CompanyName).ToList();
+                var CarsCount = CompanyData.Where(u => u.ParentType == "سيارة").Count();
+                var DriversCount = CompanyData.Where(u => u.ParentType == "سائق").Count();
+                int[] ints = new int[] { CarsCount, DriversCount };
+                roomTypeItem.Tag = ints;
 
                 roomTypeItem.CheckState = Telerik.WinControls.Enumerations.ToggleState.On;
                 //roomTypeItem.Group = CompaniesGroup;
@@ -291,6 +335,44 @@ namespace HotelApp
             this.ByanatView.GroupDescriptors.Add(groupByValue);
 
 
+            ByanatView.SelectedItem = null;
+
+
+            //GridViewNotification.DataSource = this.contract_ManagementDataSet.NotificationView;
+            //foreach (var row in GridViewNotification.Rows)
+            //{
+            //    row.Cells[0].Value = DoctorERP_v2_00.Properties.Resources.DriverRed_30;
+            //    row.Cells[12].Value = "منتهي";
+
+
+            //}
+            GridViewNotification.Rows[0].Cells[0].Value = DoctorERP_v2_00.Properties.Resources.DriverRed_30;
+            GridViewNotification.Rows[0].Cells[11].Value = "منتهي";
+            GridViewNotification.Rows[1].Cells[0].Value = DoctorERP_v2_00.Properties.Resources.DriverOrange_30;
+            GridViewNotification.Rows[1].Cells[11].Value = "أوشك";
+
+            GridViewDriver.Visible = true;
+            GridViewCars.Visible = false;
+            GridViewCompanies.Visible = false;
+            radBindingNavigator1.BindingSource = this.driverBindingSource;
+            editGuestInfo.guestInfoLabel.Text = "بيانات السائق";
+            editGuestInfo.nameLabel.Text = "اسم السائق";
+            editGuestInfo.nameTextBox.NullText = "ادخل أسم السائق";
+            Binding nameControlBinding = new System.Windows.Forms.Binding("Text", this.driverBindingSource, "DriverName", false);
+            editGuestInfo.nameTextBox.DataBindings.Clear();
+
+            editGuestInfo.nameTextBox.DataBindings.Add(nameControlBinding);
+
+            editGuestInfo.idLabel.Text = "رقم البطاقة";
+            editGuestInfo.idTextBox.NullText = "ادخل رقم البطاقة";
+            Binding idControlBinding = new System.Windows.Forms.Binding("Text", this.driverBindingSource, "CardID", false);
+            editGuestInfo.idTextBox.DataBindings.Clear();
+
+            editGuestInfo.idTextBox.DataBindings.Add(idControlBinding);
+
+
+
+
 
         }
 
@@ -305,8 +387,14 @@ namespace HotelApp
         }
         private void radButton1_Click(object sender, EventArgs e)
         {
-            RadFlyoutManager.Show(this, typeof(FlyoutAddByanat));
+            try
+            {
+                RadFlyoutManager.Show(this, typeof(FlyoutAddByanat));
 
+
+
+            }
+            catch { }
 
         }
 
@@ -351,6 +439,175 @@ namespace HotelApp
         }
 
         private void mainContainer_SelectedPageChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void MenuStripOverviewLandsView_Opening(object sender, CancelEventArgs e)
+        {
+            if (ByanatView.SelectedItem == null) { e.Cancel = true; return; }
+        }
+
+        private void ByanatView_ContextMenuStripChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void ByanatView_CellCreating(object sender, ListViewCellElementCreatingEventArgs e)
+        {
+        }
+
+        private void bookingsMainContainer_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void RadioButtonDriver_ToggleStateChanged(object sender, StateChangedEventArgs args)
+        {
+
+        }
+
+        private void RadioButtonDriver_CheckStateChanged(object sender, EventArgs e)
+        {
+
+            if (RadioButtonDriver.CheckState == CheckState.Checked)
+            {
+                GridViewDriver.Visible = true;
+                GridViewCars.Visible = false;
+                GridViewCompanies.Visible = false;
+                radBindingNavigator1.BindingSource = this.driverBindingSource;
+                editGuestInfo.guestInfoLabel.Text ="بيانات السائق";
+                editGuestInfo.nameLabel.Text = "اسم السائق";
+                editGuestInfo.nameTextBox.NullText = "ادخل أسم السائق";
+                Binding nameControlBinding = new System.Windows.Forms.Binding("Text", this.driverBindingSource, "DriverName", false);
+                editGuestInfo.nameTextBox.DataBindings.Clear();
+
+                editGuestInfo.nameTextBox.DataBindings.Add(nameControlBinding);
+
+                editGuestInfo.idLabel.Text = "رقم البطاقة";
+                editGuestInfo.idTextBox.NullText = "ادخل رقم البطاقة";
+                Binding idControlBinding = new System.Windows.Forms.Binding("Text", this.driverBindingSource, "CardID", false);
+                editGuestInfo.idTextBox.DataBindings.Clear();
+
+                editGuestInfo.idTextBox.DataBindings.Add(idControlBinding);
+
+                labelBookings.Text = "   الساقين";
+            }
+            else
+            {
+                if (RadioButtonCars.CheckState == CheckState.Checked)
+                {
+                    GridViewCars.Visible = true;
+                    GridViewDriver.Visible = false;
+                    GridViewCompanies.Visible = false;
+
+                    editGuestInfo.guestInfoLabel.Text = "بيانات السيارة";
+                    editGuestInfo.nameLabel.Text = "رقم الصهريج";
+                    editGuestInfo.nameTextBox.NullText = "ادخل رقم الصهريج";
+                    editGuestInfo.nameLabel.Text = "رقم البطاقة";
+                    editGuestInfo.nameTextBox.NullText = "ادخل رقم البطاقة";
+
+                    radBindingNavigator1.BindingSource = this.carsBindingSource;
+                    Binding nameControlBinding = new System.Windows.Forms.Binding("Text", this.carsBindingSource, "CarName", false);
+                    editGuestInfo.nameTextBox.DataBindings.Clear();
+
+                    editGuestInfo.nameTextBox.DataBindings.Add(nameControlBinding);
+                    Binding idControlBinding = new System.Windows.Forms.Binding("Text", this.carsBindingSource, "CardID", false);
+                    editGuestInfo.idTextBox.DataBindings.Clear();
+
+                    editGuestInfo.idTextBox.DataBindings.Add(idControlBinding);
+                    labelBookings.Text = "   السيارات";
+
+                }
+                else
+                {
+                    GridViewCompanies.Visible = true;
+                    GridViewDriver.Visible = false;
+                    GridViewCars.Visible = false;
+
+                    editGuestInfo.guestInfoLabel.Text = "بيانات الشركة";
+                    editGuestInfo.nameLabel.Text = "اسم الشركة";
+                    editGuestInfo.nameTextBox.NullText = "ادخل اسم الشركة";
+                    editGuestInfo.nameLabel.Text = "رقم العميل";
+                    editGuestInfo.nameTextBox.NullText = "ادخل رقم العميل";
+
+                    radBindingNavigator1.BindingSource = this.companiesBindingSource;
+                    Binding nameControlBinding = new System.Windows.Forms.Binding("Text", this.companiesBindingSource, "CompanyName", false);
+                    editGuestInfo.nameTextBox.DataBindings.Clear();
+                    editGuestInfo.nameTextBox.DataBindings.Add(nameControlBinding);
+                    Binding idControlBinding = new System.Windows.Forms.Binding("Text", this.companiesBindingSource, "ClientID", false);
+                    editGuestInfo.idTextBox.DataBindings.Clear();
+                    editGuestInfo.idTextBox.DataBindings.Add(idControlBinding);
+                    labelBookings.Text = "   الشركات";
+
+                }
+
+            }
+
+
+        }
+
+        private void GridViewCars_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void editGuestInfo_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void radLabel4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void radBindingNavigator1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void GridViewCompanies_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void RadioButtonCars_ToggleStateChanged(object sender, StateChangedEventArgs args)
+        {
+
+        }
+
+        private void radPanel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void LeftView_SelectedItemChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelBookings_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void searchContainerBookings_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void radPanel2_Paint_1(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void radPanel6_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void radPanel4_Paint(object sender, PaintEventArgs e)
         {
 
         }

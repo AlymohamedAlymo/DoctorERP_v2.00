@@ -41,7 +41,8 @@ namespace CustomControls
 
             this.guestInfoLabel.RootElement.EnableElementShadow = false;
             this.guestInfoLabel.LabelElement.CustomFont = Utils.MainFontMedium;
-            this.guestInfoLabel.LabelElement.CustomFontSize = 10.5f;
+            this.guestInfoLabel.LabelElement.CustomFontSize = 12.5f;
+            this.guestInfoLabel.LabelElement.CustomFontStyle = FontStyle.Bold;
             this.guestInfoLabel.LabelElement.LabelText.Margin = new Padding(5, 15, 0, 0);
 
             this.nameLabel.LabelElement.CustomFont = Utils.MainFont;
@@ -93,7 +94,7 @@ namespace CustomControls
 
             this.nameSeparator.SeparatorElement.Line1.BackColor = Color.FromArgb(209, 209, 209);
             this.idSeparator.SeparatorElement.Line1.BackColor = Color.FromArgb(209, 209, 209);
-            this.addressSeparator.SeparatorElement.Line1.BackColor = Color.FromArgb(209, 209, 209);
+            //this.addressSeparator.SeparatorElement.Line1.BackColor = Color.FromArgb(209, 209, 209);
 
             this.saveButton.ButtonElement.CustomFont = Utils.MainFontMedium;
             this.saveButton.ButtonElement.CustomFontSize = 10.5f;
@@ -238,6 +239,11 @@ namespace CustomControls
         }
 
         private void radSeparator2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void noteTextBox_TextChanged(object sender, EventArgs e)
         {
 
         }

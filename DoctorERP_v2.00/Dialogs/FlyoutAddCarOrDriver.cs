@@ -18,6 +18,10 @@ namespace DoctorERP_v2_00.Dialogs
             InitializeComponent();
             this.Result = DialogResult.Cancel;
 
+            idLabel.TextAlignment = ContentAlignment.TopLeft;
+            radLabel1.TextAlignment = ContentAlignment.TopLeft;
+            radLabel2.TextAlignment = ContentAlignment.TopLeft;
+
         }
 
         public DialogResult Result
@@ -66,6 +70,60 @@ namespace DoctorERP_v2_00.Dialogs
         {
             this.Result = DialogResult.No;
             RadFlyoutManager.Close();
+
+        }
+
+        private void idLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void radLabel1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void radLabel2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void radDropDownList1_SelectedIndexChanged(object sender, Telerik.WinControls.UI.Data.PositionChangedEventArgs e)
+        {
+            if (radDropDownList1.SelectedIndex == 0)
+            {
+                idLabel.Text = "اسم السائق";
+                radTextBox2.NullText = "ادخل اسم السائق";
+
+            }
+            if (radDropDownList1.SelectedIndex == 1)
+            {
+                idLabel.Text = "رقم الصهريج";
+                radTextBox2.NullText = "ادخل رقم الصهريج";
+
+            }
+
+
+        }
+
+        private void FlyoutAddCarOrDriver_Load(object sender, EventArgs e)
+        {
+
+            radDropDownList1.SelectedIndex = 0;
+        }
+
+        private void idTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void radTextBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void radLabel3_Click(object sender, EventArgs e)
+        {
 
         }
     }

@@ -436,6 +436,42 @@
   <ItemGroup>
     <None Include="Resources\Count_32.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Car_40.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Driver_40.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DriverRed_30.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CarBlue_30.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DriverOrange_30.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CarOrange_30.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DriverBlue_30.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CarRed_30.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DriverGreen_30.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CarGreen_50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CarGreen_30.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DriverGreen_50.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
     <VisualStudio>

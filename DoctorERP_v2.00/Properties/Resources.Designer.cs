@@ -93,6 +93,26 @@ namespace DoctorERP_v2_00.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Car_40 {
+            get {
+                object obj = ResourceManager.GetObject("Car_40", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap CarBlue_30 {
+            get {
+                object obj = ResourceManager.GetObject("CarBlue_30", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap CarBlue_32 {
             get {
                 object obj = ResourceManager.GetObject("CarBlue_32", resourceCulture);
@@ -103,9 +123,49 @@ namespace DoctorERP_v2_00.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap CarGreen_30 {
+            get {
+                object obj = ResourceManager.GetObject("CarGreen_30", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap CarGreen_50 {
+            get {
+                object obj = ResourceManager.GetObject("CarGreen_50", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap CarOrange_30 {
+            get {
+                object obj = ResourceManager.GetObject("CarOrange_30", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap CarOrange_32 {
             get {
                 object obj = ResourceManager.GetObject("CarOrange_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap CarRed_30 {
+            get {
+                object obj = ResourceManager.GetObject("CarRed_30", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -173,6 +233,26 @@ namespace DoctorERP_v2_00.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Driver_40 {
+            get {
+                object obj = ResourceManager.GetObject("Driver_40", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap DriverBlue_30 {
+            get {
+                object obj = ResourceManager.GetObject("DriverBlue_30", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap DriverBlue_32 {
             get {
                 object obj = ResourceManager.GetObject("DriverBlue_32", resourceCulture);
@@ -183,9 +263,49 @@ namespace DoctorERP_v2_00.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap DriverGreen_30 {
+            get {
+                object obj = ResourceManager.GetObject("DriverGreen_30", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap DriverGreen_50 {
+            get {
+                object obj = ResourceManager.GetObject("DriverGreen_50", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap DriverOrange_30 {
+            get {
+                object obj = ResourceManager.GetObject("DriverOrange_30", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap DriverOrange_32 {
             get {
                 object obj = ResourceManager.GetObject("DriverOrange_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap DriverRed_30 {
+            get {
+                object obj = ResourceManager.GetObject("DriverRed_30", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

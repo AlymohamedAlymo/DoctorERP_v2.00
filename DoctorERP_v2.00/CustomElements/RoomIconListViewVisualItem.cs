@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Reflection;
 using System.Text;
 using System.Xml.Linq;
@@ -57,8 +58,8 @@ namespace HotelApp
             companyName.StretchHorizontally = true;
             companyName.CustomFont = Utils.MainFont;
             companyName.CustomFontSize = 10;
-            companyName.CustomFontStyle = FontStyle.Bold;
-            companyName.Margin = new System.Windows.Forms.Padding(0, 10, 0, 0);
+            companyName.CustomFontStyle = FontStyle.Regular;
+            //companyName.Margin = new System.Windows.Forms.Padding(0, 10, 0, 0);
             companyName.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
 
             cardStatus.NotifyParentOnMouseInput = true;
@@ -67,7 +68,7 @@ namespace HotelApp
             cardStatus.CustomFont = Utils.MainFont;
             cardStatus.CustomFontSize = 10;
             cardStatus.CustomFontStyle = FontStyle.Italic;
-            cardStatus.Margin = new System.Windows.Forms.Padding(0,5,-5,0);
+            //cardStatus.Margin = new System.Windows.Forms.Padding(0,5,0-5,0);
 
             roomFooterContainer.Orientation = System.Windows.Forms.Orientation.Horizontal;
             roomFooterContainer.NotifyParentOnMouseInput = true;
@@ -76,17 +77,19 @@ namespace HotelApp
             roomFooterContainer.DrawFill = true;
             roomFooterContainer.BackColor = Color.White;
             roomFooterContainer.GradientStyle = GradientStyles.Solid;
-            roomFooterContainer.MinSize = new System.Drawing.Size(0, 30);
-
+            roomFooterContainer.MinSize = new System.Drawing.Size(130, 20);
+            roomFooterContainer.RightToLeftMode = StackLayoutElement.RightToLeftModes.ReverseOffset;
+            roomFooterContainer.RightToLeft = true;
+            roomFooterContainer.Margin = new System.Windows.Forms.Padding(0,0,-3,0);
             parentName.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             parentName.StretchHorizontally = false;
-            parentName.Layout.LeftPart.Padding = new System.Windows.Forms.Padding(24, 0, 8, 0);
+            //parentName.Layout.LeftPart.Padding = new System.Windows.Forms.Padding(0, 0, 0 ,0);
 
             parentName.Alignment = System.Drawing.ContentAlignment.MiddleCenter;
             parentName.NotifyParentOnMouseInput = true;
             parentName.ShouldHandleMouseInput = false;
             parentName.CustomFont = Utils.MainFont;
-            parentName.CustomFontSize = 12;
+            parentName.CustomFontSize = 11;
             parentName.CustomFontStyle = FontStyle.Bold;
 
             endDate.NotifyParentOnMouseInput = true;
@@ -102,23 +105,24 @@ namespace HotelApp
             PeriodDays.StretchHorizontally = false;
             PeriodDays.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             PeriodDays.CustomFont = Utils.MainFont;
-            PeriodDays.CustomFontSize = 12;
+            PeriodDays.CustomFontSize = 9;
             PeriodDays.CustomFontStyle = FontStyle.Regular;
 
             endDate.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             endDate.CustomFont = Utils.MainFont;
-            endDate.CustomFontSize = 12;
+            endDate.CustomFontSize = 9;
             endDate.CustomFontStyle = FontStyle.Regular;
-            endDate.Margin = new System.Windows.Forms.Padding(5, 0, 0, 0);    
-            endDate.StretchHorizontally = false; 
-             
+            ////endDate.Margin = new System.Windows.Forms.Padding(0, 0, 0, 0);    
+            endDate.StretchHorizontally = false;
             verticalContainer.Children.Add(roomHeaderContainer);
             verticalContainer.Children.Add(parentName);
             verticalContainer.Children.Add(roomFooterContainer);
+            //roomFooterContainer.StretchHorizontally = true;
 
             this.Children.Add(this.verticalContainer);
         }
         
+
         protected override void SynchronizeProperties()
         {
             base.SynchronizeProperties();
@@ -126,19 +130,19 @@ namespace HotelApp
             this.BackColor = Color.White;
             this.DrawFill = true;
             this.DrawBorder = false;
-            companyName.Margin = new System.Windows.Forms.Padding(8,8,0,0);
+            companyName.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
             parentName.ImageLayout = System.Windows.Forms.ImageLayout.None;
-            parentName.Margin = new System.Windows.Forms.Padding(24, 0, 0, 0); 
-            
+            //parentName.Margin = new System.Windows.Forms.Padding(0, 0, 0, 0); 
+
             parentName.Layout.LeftPart.Margin = new System.Windows.Forms.Padding(0, 0, 5, 0);
             parentName.StretchHorizontally = true;
             parentName.ImageAlignment = ContentAlignment.MiddleLeft;
             parentName.TextAlignment = ContentAlignment.MiddleLeft;
-             
-            endDate.Layout.LeftPart.Margin = new System.Windows.Forms.Padding(0, -3, 0, 0);
+
+            //endDate.Layout.LeftPart.Margin = new System.Windows.Forms.Padding(0, -3, 0, 0);
             endDate.ForeColor = Color.FromArgb(200, 0, 0, 0);
             PeriodDays.ForeColor = Color.FromArgb(200, 0, 0, 0);
-            PeriodDays.Layout.LeftPart.Margin = new System.Windows.Forms.Padding(0, -3, 0, 0);
+            //PeriodDays.Layout.LeftPart.Margin = new System.Windows.Forms.Padding(0, -3, 0, 0);
 
             DataRowView datarow = this.Data.DataBoundItem as DataRowView;
             if (datarow.Row is ByanRow byan)
@@ -147,6 +151,7 @@ namespace HotelApp
                 parentName.Text = byan.ParentName;
 
                 Bitmap icon = null;
+                Bitmap ScreenTipIcon = null;
 
 
                 int Period = (byan.EndDate - DateTime.Now).Days;
@@ -168,10 +173,13 @@ namespace HotelApp
                     if (byan.ParentType == "سائق")
                     {
                         icon = DoctorERP_v2_00.Properties.Resources.DriverRed_32;
+                        ScreenTipIcon = DoctorERP_v2_00.Properties.Resources.DriverRed_30;
+
                     }
                     else
                     {
                         icon = DoctorERP_v2_00.Properties.Resources.CarRed_32;
+                        ScreenTipIcon = DoctorERP_v2_00.Properties.Resources.CarRed_30;
 
                     }
 
@@ -190,20 +198,22 @@ namespace HotelApp
                     if (byan.ParentType == "سائق")
                     {
                         icon = DoctorERP_v2_00.Properties.Resources.DriverOrange_32;
+                        ScreenTipIcon = DoctorERP_v2_00.Properties.Resources.DriverOrange_30;
+
                     }
                     else
                     {
                         icon = DoctorERP_v2_00.Properties.Resources.CarOrange_32;
+                        ScreenTipIcon = DoctorERP_v2_00.Properties.Resources.CarOrange_30;
 
                     }
 
                 }
-
                 else
                 {
                     cardStatus.Text = "ساري";
 
-                    this.BackColor = Color.CornflowerBlue;
+                    this.BackColor = Color.SeaGreen;
                     PeriodDays.Image = DoctorERP_v2_00.Properties.Resources.GlyphCheck_small;
                     companyName.ForeColor = Color.White;
                     cardStatus.ForeColor = Color.White;
@@ -211,11 +221,14 @@ namespace HotelApp
 
                     if (byan.ParentType == "سائق")
                     {
-                        icon = DoctorERP_v2_00.Properties.Resources.DriverBlue_32;
+                        icon = DoctorERP_v2_00.Properties.Resources.DriverGreen_50;
+                        ScreenTipIcon = DoctorERP_v2_00.Properties.Resources.DriverGreen_30;
+
                     }
                     else
                     {
-                        icon = DoctorERP_v2_00.Properties.Resources.CarBlue_32;
+                        icon = DoctorERP_v2_00.Properties.Resources.CarGreen_50;
+                        ScreenTipIcon = DoctorERP_v2_00.Properties.Resources.CarGreen_30;
 
                     }
 
@@ -230,7 +243,8 @@ namespace HotelApp
                 screenTip.CaptionLabel.Font = new Font("Traditional Arabic", 15, FontStyle.Bold);
                 screenTip.CaptionLabel.TextAlignment = ContentAlignment.MiddleCenter;
                 screenTip.CaptionLabel.Padding = new System.Windows.Forms.Padding(8);
-                screenTip.CaptionLabel.Image = icon;
+
+                screenTip.CaptionLabel.Image = ScreenTipIcon;
                 screenTip.CaptionLabel.Text = "المتبقي : " + Period + " يوم";
 
                 string Header = " الأسم : " + byan.ParentName;
@@ -253,7 +267,107 @@ namespace HotelApp
                 this.ScreenTip.ShouldApplyTheme = true;
 
 
+               
             }
+
         }
+
+
+
+        protected override void OnSelect()
+        {
+            base.OnSelect();
+        }
+
+        protected override void DoClick(EventArgs e)
+        {
+            base.DoClick(e);
+            //this.BackColor = Color.CornflowerBlue;
+
+            DataRowView datarow = this.Data.DataBoundItem as DataRowView;
+            if (datarow.Row is ByanRow byan)
+            {
+
+                int Period = (byan.EndDate - DateTime.Now).Days;
+
+                if (Period <= 0)
+                {
+
+                    if (byan.ParentType == "سائق")
+                    {
+                        //icon = DoctorERP_v2_00.Properties.Resources.DriverRed_32;
+                        //ScreenTipIcon = DoctorERP_v2_00.Properties.Resources.DriverRed_30;
+
+                    }
+                    else
+                    {
+                        //icon = DoctorERP_v2_00.Properties.Resources.CarRed_32;
+                        //ScreenTipIcon = DoctorERP_v2_00.Properties.Resources.CarRed_30;
+
+                    }
+
+                }
+                else if (Period <= 15)
+                {
+
+                    if (byan.ParentType == "سائق")
+                    {
+                        //icon = DoctorERP_v2_00.Properties.Resources.DriverOrange_32;
+                        //ScreenTipIcon = DoctorERP_v2_00.Properties.Resources.DriverOrange_30;
+
+                    }
+                    else
+                    {
+                        ////icon = DoctorERP_v2_00.Properties.Resources.CarOrange_32;
+                        ////ScreenTipIcon = DoctorERP_v2_00.Properties.Resources.CarOrange_30;
+
+                    }
+
+                }
+                else
+                {
+
+                    if (byan.ParentType == "سائق")
+                    {
+                        //icon = DoctorERP_v2_00.Properties.Resources.DriverGreen_50;
+                        //ScreenTipIcon = DoctorERP_v2_00.Properties.Resources.DriverGreen_30;
+
+                    }
+                    else
+                    {
+                        //icon = DoctorERP_v2_00.Properties.Resources.CarGreen_50;
+                        //ScreenTipIcon = DoctorERP_v2_00.Properties.Resources.CarGreen_30;
+
+                    }
+
+                }
+
+
+            }
+
+            //tbLand Land = this.Data.DataBoundItem as tbLand;
+
+            //if (Land.status.ToString().Contains("مباع"))
+            //{
+            //    LandID.ForeColor = Color.White;
+
+            //}
+            //else if (Land.status.ToString().Contains("متاح"))
+            //{
+            //    this.BackColor = Color.Green;
+            //    LandID.ForeColor = Color.White;
+
+            //}
+            //else if (Land.status.ToString().Contains("محجوز"))
+            //{
+            //    this.BackColor = Color.Gold;
+            //    LandID.ForeColor = Color.Black;
+
+            //}
+
+        }
+
+
+
     }
 }

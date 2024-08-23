@@ -121,16 +121,16 @@
     <value>17, 17</value>
   </metadata>
   <metadata name="notificationViewBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>537, 54</value>
+    <value>17, 165</value>
   </metadata>
   <metadata name="contract_ManagementDataSet.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 54</value>
   </metadata>
+  <metadata name="MenuStripOverviewLandsView.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>512, 128</value>
+  </metadata>
   <metadata name="contract_ManagementDataSet.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 54</value>
-  </metadata>
-  <metadata name="driverBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>198, 128</value>
   </metadata>
   <metadata name="carsBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>226, 91</value>
@@ -138,6 +138,119 @@
   <metadata name="companiesBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>522, 91</value>
   </metadata>
+  <metadata name="driverBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>198, 128</value>
+  </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="commandBarButton1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        vAAADrwBlbxySQAAAF1JREFUOE9jGAWYwNjY+D+UCQdaWlo8BgYGZ6Fc/ADdACMjozSg2A9sBmMFMIUw
+        W0F8GAYrIARACpFtRcZQJfgBSCHQgGwgTb4BIJoiL0CZYEB2ICIDkqJxxAEGBgDvjzgWjB1ffQAAAABJ
+        RU5ErkJggg==
+</value>
+  </data>
+  <data name="commandBarButton1.SvgImageXml" xml:space="preserve">
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;svg width="16" height="16" viewBox="0, 0, 16, 16" id="Layer_1" data-name="Layer 1" xml="http://www.w3.org/XML/1998/namespace" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xml="http://www.w3.org/XML/1998/namespace" version="1.1"&gt;
+  &lt;defs&gt;
+    &lt;style&gt;.cls-1{fill:#333;}&lt;/style&gt;
+  &lt;/defs&gt;
+  &lt;g id="Layer_1-2" data-name="Layer 1-2"&gt;
+    &lt;path d="M11 4 L5 8 L11 12 z M4 12 L4 4 L5 4 L5 12 z" class="cls-1" style="fill:#333333;" /&gt;
+  &lt;/g&gt;
+&lt;/svg&gt;</value>
+  </data>
+  <data name="commandBarButton2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        vAAADrwBlbxySQAAAElJREFUOE9jGAXEAS0tLR4DA4OzUC5pwMjIKM3Y2PgHEP+HChEHYLaCNMIwVIow
+        QLaVXAOyKTIABCjyAjIgOxCRAUXROOwBAwMAXxkrViYdAoEAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="commandBarButton2.SvgImageXml" xml:space="preserve">
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;svg width="16" height="16" viewBox="0, 0, 16, 16" id="Layer_1" data-name="Layer 1" xml="http://www.w3.org/XML/1998/namespace" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xml="http://www.w3.org/XML/1998/namespace" version="1.1"&gt;
+  &lt;defs&gt;
+    &lt;style&gt;.cls-1{fill:#333;}&lt;/style&gt;
+  &lt;/defs&gt;
+  &lt;g id="Layer_10" data-name="Layer 10"&gt;
+    &lt;path d="M4 8 L10 12 L10 4 z" class="cls-1" style="fill:#333333;" /&gt;
+  &lt;/g&gt;
+&lt;/svg&gt;</value>
+  </data>
+  <data name="commandBarButton3.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        vAAADrwBlbxySQAAAEhJREFUOE9jGAXYgYGBwVktLS0eKJd0YGxs/B+IfxgZGaVBhUgDUAPAmCzXIBsA
+        xaS5BocB2VBpwgBZMyVeID8QKY7GEQUYGACDZCtWL+UI3AAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="commandBarButton3.SvgImageXml" xml:space="preserve">
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;svg width="16" height="16" viewBox="0, 0, 16, 16" id="Layer_1" data-name="Layer 1" xml="http://www.w3.org/XML/1998/namespace" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xml="http://www.w3.org/XML/1998/namespace" version="1.1"&gt;
+  &lt;defs&gt;
+    &lt;style&gt;.cls-1{fill:#333;}&lt;/style&gt;
+  &lt;/defs&gt;
+  &lt;g id="Layer_7" data-name="Layer 7"&gt;
+    &lt;path d="M11 8 L5 12 L5 4 z" class="cls-1" style="fill:#333333;" /&gt;
+  &lt;/g&gt;
+&lt;/svg&gt;</value>
+  </data>
+  <data name="commandBarButton4.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        vAAADrwBlbxySQAAAFZJREFUOE9jGAWYwMDA4KyWlhYPlAsHxsbG/6FM/ACkEIh/GBkZpUGFwIBUA8AY
+        2TVkGQDFYNeA2FAl+AGaZpgB2SA2VAl+gKyZEi+QH4gUR+OIAwwMAI8uOBb/pB9mAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="commandBarButton4.SvgImageXml" xml:space="preserve">
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;svg width="16" height="16" viewBox="0, 0, 16, 16" id="Layer_1" data-name="Layer 1" xml="http://www.w3.org/XML/1998/namespace" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xml="http://www.w3.org/XML/1998/namespace" version="1.1"&gt;
+  &lt;defs&gt;
+    &lt;style&gt;.cls-1{fill:#333;}&lt;/style&gt;
+  &lt;/defs&gt;
+  &lt;g id="Layer_4" data-name="Layer 4"&gt;
+    &lt;path d="M4 4 L10 8 L4 12 z M11 12 L11 4 L10 4 L10 12 z" class="cls-1" style="fill:#333333;" /&gt;
+  &lt;/g&gt;
+&lt;/svg&gt;</value>
+  </data>
+  <data name="commandBarButton5.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        vAAADrwBlbxySQAAADFJREFUOE9jGObA2Nj4PwhDuaSDIWgATAMhDFWOCbApxoahygkDkjWgg2FgwFAA
+        DAwAatQ5YZnRskEAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="commandBarButton5.SvgImageXml" xml:space="preserve">
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;svg width="16" height="16" viewBox="0, 0, 16, 16" xml="http://www.w3.org/XML/1998/namespace" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xml="http://www.w3.org/XML/1998/namespace" version="1.1"&gt;
+  &lt;defs&gt;
+    &lt;style&gt;.cls-1{fill:#333;}&lt;/style&gt;
+  &lt;/defs&gt;
+  &lt;g id="Layer_19" data-name="Layer 19"&gt;
+    &lt;path d="M13 7 L13 9 L9 9 L9 13 L7 13 L7 9 L3 9 L3 7 L7 7 L7 3 L9 3 L9 7 z" class="cls-1" style="fill:#333333;" /&gt;
+  &lt;/g&gt;
+&lt;/svg&gt;</value>
+  </data>
+  <data name="commandBarButton6.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        vAAADrwBlbxySQAAAExJREFUOE9joAkwMDC4a2xs/B+GQXyoFHEApAnKBAN0PlaAbCMhDNWCCrApxIWh
+        WjABTJIQjROMGjCsDMAFCBqAnonQMcmZijBgYAAAOCd+1YkAQccAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="commandBarButton6.SvgImageXml" xml:space="preserve">
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;svg width="16" height="16" viewBox="0, 0, 16, 16" xml="http://www.w3.org/XML/1998/namespace" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xml="http://www.w3.org/XML/1998/namespace" version="1.1"&gt;
+  &lt;defs&gt;
+    &lt;style&gt;.cls-1{fill:#333;}&lt;/style&gt;
+  &lt;/defs&gt;
+  &lt;g id="Layer_20" data-name="Layer 20"&gt;
+    &lt;path d="M13 5 L12 5 L12 14 A0.94 0.94 0 0 1 11.7 14.7 A1 1 0 0 1 11 15 L4 15 A0.94 0.94 0 0 1 3.3 14.7 A0.94 0.94 0 0 1 3 14 L3 5 L2 5 L2 3 L5 3 L5 2 A1 1 0 0 1 5.3 1.3 A0.94 0.94 0 0 1 6 1 L9 1 A1 1 0 0 1 9.7 1.3 A1 1 0 0 1 10 2 L10 3 L13 3 z M11 5 L10 5 L10 13 L9 13 L9 5 L8 5 L8 13 L7 13 L7 5 L6 5 L6 13 L5 13 L5 5 L4 5 L4 14 L11 14 z M6 2 L6 3 L9 3 L9 2 z" class="cls-1" style="fill:#333333;" /&gt;
+  &lt;/g&gt;
+&lt;/svg&gt;</value>
+  </data>
   <metadata name="materialTealTheme1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>156, 17</value>
   </metadata>
@@ -153,9 +266,6 @@
   <metadata name="byanTableAdapter.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>388, 54</value>
   </metadata>
-  <metadata name="notificationViewTableAdapter.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 91</value>
-  </metadata>
   <metadata name="carsTableAdapter.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>378, 91</value>
   </metadata>
@@ -165,7 +275,10 @@
   <metadata name="driverTableAdapter.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>359, 128</value>
   </metadata>
+  <metadata name="notificationViewTableAdapter.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>234, 165</value>
+  </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>91</value>
+    <value>96</value>
   </metadata>
 </root>

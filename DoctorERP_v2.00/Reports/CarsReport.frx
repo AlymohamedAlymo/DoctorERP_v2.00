@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" ReportInfo.Created="04/29/2023 12:25:44" ReportInfo.Modified="08/24/2024 15:30:07" ReportInfo.CreatorVersion="2019.1.5.0">
+  <Dictionary>
+    <TableDataSource Name="data" Restrictions="HideAllProperties" ReferenceName="data" DataType="System.Int32" Enabled="true">
+      <Column Name="ID" DataType="System.Int32" PropName="guid"/>
+      <Column Name="DriverName" DataType="System.String" PropName="number"/>
+      <Column Name="CardID" DataType="System.String" PropName="name"/>
+      <Column Name="Note" DataType="System.String" PropName="amountin" BindableControl="RichText"/>
+      <Column Name="amountout" Enabled="false" DataType="System.Decimal"/>
+      <Column Name="balance" Enabled="false" DataType="System.Decimal"/>
+    </TableDataSource>
+  </Dictionary>
+  <ReportPage Name="Page1" Width="793.8" Height="1122.66" LeftMargin="0" TopMargin="0" RightMargin="0" BottomMargin="0">
+    <ReportTitleBand Name="ReportTitle1" Width="793.8" Height="170.1">
+      <TextObject Name="Text1" Left="18.9" Top="85.05" Width="756" Height="37.8" Text="بيانات السائقين" HorzAlign="Center" VertAlign="Center" Font="Arial, 14pt, style=Bold"/>
+      <TextObject Name="Text37" Left="18.9" Top="132.3" Width="132.3" Height="18.9" Text="[Date]" Format="Custom" Format.Format="yyyy/MM/dd hh:mm tt" HorzAlign="Center" VertAlign="Center" Font="Arial, 9pt"/>
+      <TextObject Name="Text38" Left="151.2" Top="132.3" Width="103.95" Height="18.9" Text="تاريخ ووقت الطباعة" VertAlign="Bottom" Font="Arial, 9pt"/>
+    </ReportTitleBand>
+    <PageHeaderBand Name="PageHeader1" Top="174.1" Width="793.8" Height="28.35">
+      <TextObject Name="Text5" Left="18.9" Width="245.7" Height="28.35" Border.Lines="All" Fill.Color="WhiteSmoke" Text="ملاحظات" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text7" Left="264.6" Width="207.9" Height="28.35" Border.Lines="All" Fill.Color="WhiteSmoke" Text="رقم البطاقة" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text9" Left="472.5" Width="226.8" Height="28.35" Border.Lines="All" Fill.Color="WhiteSmoke" Text="أسم السائق" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text11" Left="699.3" Width="75.6" Height="28.35" Border.Lines="All" Fill.Color="WhiteSmoke" Text="الرقم" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+    </PageHeaderBand>
+    <DataBand Name="Data1" Top="206.45" Width="793.8" Height="28.35" DataSource="data">
+      <TextObject Name="Text4" Left="18.9" Width="245.7" Height="28.35" Border.Lines="All" Text="[data.Note]" Format="Number" Format.UseLocale="false" Format.DecimalDigits="2" Format.DecimalSeparator="." Format.GroupSeparator="," Format.NegativePattern="1" HorzAlign="Center" VertAlign="Center"/>
+      <TextObject Name="Text6" Left="264.6" Width="207.9" Height="28.35" Border.Lines="All" Text="[data.CardID]" Format="Number" Format.UseLocale="false" Format.DecimalDigits="2" Format.DecimalSeparator="." Format.GroupSeparator="," Format.NegativePattern="1" HorzAlign="Center" VertAlign="Center"/>
+      <TextObject Name="Text8" Left="472.5" Width="226.8" Height="28.35" Border.Lines="All" Text="[data.DriverName]" HorzAlign="Center" VertAlign="Center"/>
+      <TextObject Name="Text10" Left="699.3" Width="75.6" Height="28.35" Border.Lines="All" Text="[data.ID]" HorzAlign="Center" VertAlign="Center"/>
+    </DataBand>
+    <ReportSummaryBand Name="ReportSummary1" Top="238.8" Width="793.8" Height="28.35"/>
+    <PageFooterBand Name="PageFooter1" Top="271.15" Width="793.8" Height="47.25"/>
+  </ReportPage>
+</Report>

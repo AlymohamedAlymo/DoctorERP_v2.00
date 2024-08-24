@@ -28,6 +28,8 @@ namespace CustomControls
             searchButton.ShowBorder = false;
             searchButton.EnableElementShadow = false;
             this.TextBoxElement.Padding = new Padding(0);
+            this.ShowClearButton = true;
+
         }
 
         RadButtonElement searchButton = new RadButtonElement();
@@ -35,13 +37,16 @@ namespace CustomControls
         protected override void InitializeTextElement()
         {
             base.InitializeTextElement();
-            this.TextBoxElement.TextBoxItem.NullText = "Search by room# or guest name";
+            //this.TextBoxElement.TextBoxItem.NullText = "Search by room# or guest name";
             searchButton.Click += new EventHandler(button_Click);
             searchButton.Margin = new Padding(0, 0, 0, 0);
-            this.TextBoxElement.TextBoxItem.CustomFont =  Utils.MainFont;          
+            this.TextBoxElement.TextBoxItem.CustomFont = Utils.MainFont;
             this.TextBoxElement.TextBoxItem.CustomFontSize = 9;
             searchButton.TextElement.CustomFont = "TelerikWebUI";
             searchButton.TextElement.CustomFontSize = 12;
+            ///
+
+
             searchButton.TextElement.ForeColor = Color.Gray;
             searchButton.MaxSize = new System.Drawing.Size(40, 35);
             searchButton.Text = "\ue13E";
@@ -57,7 +62,6 @@ namespace CustomControls
             dockPanel.Children.Add(tbItem);
             DockLayoutPanel.SetDock(tbItem, Telerik.WinControls.Layouts.Dock.Left);
             DockLayoutPanel.SetDock(stackPanel, Telerik.WinControls.Layouts.Dock.Right);
-
             this.TextBoxElement.Children.Add(dockPanel);
         }
 

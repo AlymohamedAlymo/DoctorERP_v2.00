@@ -493,6 +493,16 @@ namespace DoctorERP_v2_00.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap information50 {
+            get {
+                object obj = ResourceManager.GetObject("information50", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap not_clean {
             get {
                 object obj = ResourceManager.GetObject("not_clean", resourceCulture);

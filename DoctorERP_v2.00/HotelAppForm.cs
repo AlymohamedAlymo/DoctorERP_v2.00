@@ -1,23 +1,19 @@
-﻿using CustomControls;
-using DoctorERP_v2_00.Contract_ManagementDataSetTableAdapters;
-using DoctorERP_v2_00.Dialogs;
+﻿using DoctorERP_v2_00.Dialogs;
+using DoctorERP_v2_00.FlyoutDialogs;
+using DoctorHelper.Helpers;
 using DoctorHelper.Reports;
-using FastReport;
 using Helper.Helpers;
-using HotelApp.Data;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Data.Entity;
 using System.Drawing;
-using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
 using Telerik.WinControls;
 using Telerik.WinControls.Data;
 using Telerik.WinControls.Enumerations;
+using Telerik.WinControls.Extensions;
 using Telerik.WinControls.Primitives;
 using Telerik.WinControls.UI;
 using Telerik.WinControls.UI.Localization;
@@ -28,6 +24,12 @@ namespace HotelApp
 {
     partial class HotelAppForm : RadToolbarForm
     {
+        private bool ISNew = false;
+        private string FlyOutTypeReturn = string.Empty, FlyOutParenterReturn = string.Empty, FlyOutCompanyReturn = string.Empty, FlyOutNoteReturn = string.Empty;
+        private DateTime FlyOutEndDateReturn;
+
+
+
         #region Initialization
         public HotelAppForm()
         {
@@ -37,7 +39,7 @@ namespace HotelApp
             Thread.CurrentThread.CurrentCulture = cultureInfo;
             Thread.CurrentThread.CurrentUICulture = cultureInfo;
 
-
+            
             InitializeComponent();
 
             #region Themes Setting
@@ -79,6 +81,7 @@ namespace HotelApp
 
             #endregion
 
+            #region Initialize Controls
 
             searchContainerOverview.RootElement.EnableElementShadow = false;
 
@@ -96,14 +99,14 @@ namespace HotelApp
             this.radPanelEmptyOverview.BackColor = Color.Transparent;
             this.radPanelEmptyOverview.PanelElement.PanelBorder.Visibility = ElementVisibility.Collapsed;
 
-            this.LeftView.ShowGroups = true;
-            this.LeftView.EnableGrouping = true;
-            this.LeftView.EnableCustomGrouping = true;
-            this.LeftView.ShowCheckBoxes = true;
-            this.LeftView.AllowEdit = false;
-            this.LeftView.RootElement.EnableElementShadow = false;
-            this.LeftView.HotTracking = false;
-            this.LeftView.ListViewElement.Padding = new System.Windows.Forms.Padding(0, 16, 0, 0);
+            this.CompaniesView.ShowGroups = true;
+            this.CompaniesView.EnableGrouping = true;
+            this.CompaniesView.EnableCustomGrouping = true;
+            this.CompaniesView.ShowCheckBoxes = true;
+            this.CompaniesView.AllowEdit = false;
+            this.CompaniesView.RootElement.EnableElementShadow = false;
+            this.CompaniesView.HotTracking = false;
+            this.CompaniesView.ListViewElement.Padding = new System.Windows.Forms.Padding(0, 16, 0, 0);
 
             this.ByanatView.ViewType = ListViewType.IconsView;
             this.ByanatView.ItemSize = new Size(150, 80);
@@ -155,10 +158,14 @@ namespace HotelApp
 
 
             this.ByanatView.VisualItemCreating += roomsView_VisualItemCreating;
-            this.LeftView.VisualItemCreating += leftView_VisualItemCreating;
+            this.CompaniesView.VisualItemCreating += leftView_VisualItemCreating;
 
             RadFlyoutManager.FlyoutClosed -= this.RadFlyoutManager_FlyoutClosed;
             RadFlyoutManager.FlyoutClosed += this.RadFlyoutManager_FlyoutClosed;
+
+
+            RadFlyoutManager.ContentCreated -= this.RadFlyoutManager_ContentCreated;
+            RadFlyoutManager.ContentCreated += this.RadFlyoutManager_ContentCreated;
 
             RadGridLocalizationProvider.CurrentProvider = new MyArabicRadGridLocalizationProvider();
             GridViewNotification.TableElement.UpdateView();
@@ -179,23 +186,130 @@ namespace HotelApp
 
             mainContainer.SelectedPage = OverviewPage;
 
+            //RadButtonElement searchButton = new RadButtonElement();
 
+            //searchButton.ButtonFillElement.Visibility = Telerik.WinControls.ElementVisibility.Collapsed;
+            //searchButton.ShowBorder = false;
+            //searchButton.EnableElementShadow = false;
+            //this.searchTextBoxOverview.TextBoxElement.Padding = new Padding(0);
+            //this.searchTextBoxOverview.ShowClearButton = true;
+            //searchButton.Margin = new Padding(0, 0, 0, 0);
+            //this.searchTextBoxOverview.TextBoxElement.TextBoxItem.CustomFont = Utils.MainFont;
+            //this.searchTextBoxOverview.TextBoxElement.TextBoxItem.CustomFontSize = 9;
+            radLabel3.RootElement.CustomFont = "TelerikWebUI";
+            radLabel3.RootElement.CustomFontSize = 12;
+            radLabel3.RootElement.ForeColor = Color.Gray;
+            radLabel3.RootElement.MaxSize = new System.Drawing.Size(40, 35);
+            radLabel3.Text = "\ue13E";
+            //StackLayoutElement stackPanel = new StackLayoutElement();
+            //stackPanel.Orientation = Orientation.Horizontal;
+            //stackPanel.Margin = new Padding(1, 0, 1, 0);
+            //stackPanel.Children.Add(searchButton);
+            //RadTextBoxItem tbItem = this.searchTextBoxOverview.TextBoxElement.TextBoxItem;
+            ////this.searchTextBoxOverview.TextBoxElement.Children.Remove(tbItem);
+            //DockLayoutPanel dockPanel = new DockLayoutPanel();
+            //dockPanel.Children.Add(stackPanel);
+            //dockPanel.Children.Add(tbItem);
+            //DockLayoutPanel.SetDock(tbItem, Telerik.WinControls.Layouts.Dock.Left);
+            //DockLayoutPanel.SetDock(stackPanel, Telerik.WinControls.Layouts.Dock.Right);
+            //this.searchTextBoxOverview.TextBoxElement.Children.Add(dockPanel);
+            //this.searchTextBoxOverview.ShowClearButton = true;
+            //this.searchTextBoxOverview.TextBoxElement.ClearButton.Visibility = ElementVisibility.Visible;
+
+
+            #endregion
 
         }
 
+        #region Method
 
-        private void leftView_VisualItemCreating(object sender, ListViewVisualItemCreatingEventArgs e)
+        //private void ShowNotification(string Header, string Content, string Note)
+        //{
+        //    radToastNotificationManager1.ToastNotifications[0].Xml = "<toast launch=\"readMoreArg\">\r\n  <visual>\r\n    <binding template=\"ToastGeneric\">\r\n   " +
+        //        "   <text>" + Header + "</text>\r\n   " +
+        //        "   <text>" + Content + "</text>\r\n  " +
+        //        "    <text placement=\"attribution\">" + Note + "</text>\r\n    </binding>\r\n  </visual>\r\n</toast>";
+        //    radToastNotificationManager1.ShowNotification(0);
+
+        //}
+        private bool MessageWarning(string Heading, string Body, string FootNote)
         {
-            if (e.VisualItem is SimpleListViewVisualItem)
+            RadTaskDialogPage page = new RadTaskDialogPage()
             {
-                e.VisualItem = new OptionsSimpleListViewVisualItem();
+
+                Caption = " ",
+                Heading = Heading,
+                Text = Body,
+                RightToLeft = true,
+                CustomFont = "Robot",
+                Icon = RadTaskDialogIcon.ShieldWarningYellowBar,
+                AllowCancel = true,
+                Footnote = new RadTaskDialogFootnote("ملحوظة: " + FootNote),
+                CommandAreaButtons = {
+                    RadTaskDialogButton.Yes,
+                    RadTaskDialogButton.No
+                }
+
+            };
+            page.CommandAreaButtons[0].Text = "نعم";
+            page.CommandAreaButtons[1].Text = "لا";
+            RadTaskDialogButton result = RadTaskDialog.ShowDialog(page, RadTaskDialogStartupLocation.CenterScreen);
+            if (result == null || result == RadTaskDialogButton.No)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
             }
         }
-
-
-        private void RadFlyoutManager_FlyoutClosed(FlyoutClosedEventArgs e)
+        private bool MessageException(string Heading, string Body, string FootNote)
         {
-            Action action = new Action(() =>
+            RadTaskDialogPage page = new RadTaskDialogPage()
+            {
+
+                Caption = " ",
+                Heading = Heading,
+                Text = Body,
+                RightToLeft = true,
+                CustomFont = "Robot",
+                Icon = RadTaskDialogIcon.ShieldErrorRedBar,
+                Footnote = new RadTaskDialogFootnote("ملحوظة: " + FootNote),
+                CommandAreaButtons = {
+                    RadTaskDialogButton.OK,
+                }
+
+            };
+            page.CommandAreaButtons[0].Text = "موافق";
+            RadTaskDialogButton result = RadTaskDialog.ShowDialog(page, RadTaskDialogStartupLocation.CenterScreen);
+            return true;
+        }
+        private void ShowDesktopAlert(string Header, string Content, string ContentHighlight, string Footer)
+        {
+            Content = TextHelper.ReverseText(Content);
+            ContentHighlight = TextHelper.ReverseText(ContentHighlight);
+            Footer = TextHelper.ReverseText(Footer);
+
+            radDesktopAlert1.CaptionText = "<html><b>\n" + Header;
+            radDesktopAlert1.ContentText = "<html><i>" +
+                Content +
+                "</i><b><span><color=Blue>" +
+                "\n" + ContentHighlight + "\n" +
+                "</span></b>" +
+                Footer;
+            radDesktopAlert1.ContentImage = DoctorERP_v2_00.Properties.Resources.information50;
+            radDesktopAlert1.Opacity = 0.9f;
+            radDesktopAlert1.Show();
+
+        }
+
+        #endregion
+
+
+        #region Flyout
+        private void RadFlyoutManager_ContentCreated(ContentCreatedEventArgs e)
+        {
+            Telerik.WinControls.Extensions.Action action = new Telerik.WinControls.Extensions.Action(() =>
             {
                 if (e.Content is FlyoutAddByanat)
                 {
@@ -205,68 +319,78 @@ namespace HotelApp
                     FlyoutAddByanat content = e.Content as FlyoutAddByanat;
                     if (content != null)
                     {
-                        if (content.Result == DialogResult.Yes)
+
+
+
+
+                        content.driverBindingSource.DataSource = this.contract_ManagementDataSet;
+                        content.carsBindingSource.DataSource = this.contract_ManagementDataSet;
+                        content.companiesBindingSource.DataSource = this.contract_ManagementDataSet;
+
+
+                        if (FlyOutTypeReturn != string.Empty) 
                         {
-                            RadFlyoutManager.Show(this, typeof(FlyoutAddCarOrDriver));
+                            if (FlyOutTypeReturn == "سائق")
+                            {
+                                content.CMBParentType.SelectedIndex = 0;
+                                FlyOutTypeReturn = string.Empty;
+                                return;
+
+                            }
+                            else if (FlyOutTypeReturn == "سيارة")
+                            {
+                                content.CMBParentType.SelectedIndex = 1;
+                                FlyOutTypeReturn = string.Empty;
+
+                                return;
+
+                            }
+
 
                         }
 
-                        //tbAgent Agent = (tbAgent)Bs.Current;
-                        //if (content.Result == DialogResult.OK)
-                        //{
-                        //    DBConnect.StartTransAction();
-                        //    radstatus.Text = Agent.note = "غير نشط";
-                        //    BtnReservation.Text = "تنشيط";
-                        //    Agent.Update();
-                        //    if (DBConnect.CommitTransAction())
-                        //    {
-                        //        ShowDesktopAlert("تنشيط بطاقة عميل", "تنشيط بطاقة العميل", "تمت عملية تنشيط البطاقة بنجاح", "تم تنشيط بطاقة العميل يمكن القيام بالعمليات عليها الأن.");
-                        //        FrmMain.DataHasChanged = true;
-                        //    }
-
-                        //    string ReserveReason = $"{content.ReserveReason}";
-                        //    RadCallout.Show(callout, this.BtnReservation, $"عملية تنشيط بطاقة العميل بسبب{ReserveReason} تمت!", "تمت العملية بنجاح");
-                    }
-                    else
+                        if (ISNew)
                         {
-                            //RadCallout.Show(callout, this.BtnReservation, "فشلت عملية تنشيط بطاقة العميل!", "فشلت العملية");
-                        }
-                    }
-                else if (e.Content is FlyoutAddCarOrDriver)
-                {
-                    RadCallout callout = new RadCallout();
-                    callout.ArrowDirection = Telerik.WinControls.ArrowDirection.Up;
+                            ISNew = false;
+                            content.CMBParentType.SelectedIndex = 0;
+                            content.MCCDriverName.SelectedItem = null;
+                            content.MCCCarName.SelectedItem = null;
+                            content.MCCCompanyName.SelectedItem = null;
 
-                    FlyoutAddCarOrDriver content = e.Content as FlyoutAddCarOrDriver;
-                    if (content != null)
-                    {
-                        if (content.Result == DialogResult.Yes)
-                        {
-                            //RadFlyoutManager.Show(this, typeof(FlyoutAddCarOrDriver));
+                            content.saveButton.Text = "حفظ";
+                            content.radButton3.Text = "إلغاء";
 
-                        }
-                        if (content.Result == DialogResult.OK)
-                        {
-                            //RadFlyoutManager.Show(this, typeof(FlyoutAddCarOrDriver));
-                            RadFlyoutManager.Show(this, typeof(FlyoutAddByanat));
-
+                            return;
                         }
 
-                        //tbAgent Agent = (tbAgent)Bs.Current;
-                        //if (content.Result == DialogResult.OK)
-                        //{
-                        //    DBConnect.StartTransAction();
-                        //    radstatus.Text = Agent.note = "غير نشط";
-                        //    BtnReservation.Text = "تنشيط";
-                        //    Agent.Update();
-                        //    if (DBConnect.CommitTransAction())
-                        //    {
-                        //        ShowDesktopAlert("تنشيط بطاقة عميل", "تنشيط بطاقة العميل", "تمت عملية تنشيط البطاقة بنجاح", "تم تنشيط بطاقة العميل يمكن القيام بالعمليات عليها الأن.");
-                        //        FrmMain.DataHasChanged = true;
-                        //    }
+                        DataRowView data = ByanatView.CurrentItem.DataBoundItem as DataRowView;
+                        ByanRow row = data.Row as ByanRow;
 
-                        //    string ReserveReason = $"{content.ReserveReason}";
-                        //    RadCallout.Show(callout, this.BtnReservation, $"عملية تنشيط بطاقة العميل بسبب{ReserveReason} تمت!", "تمت العملية بنجاح");
+                        if (row.ParentType == "سائق")
+                        {
+                            content.CMBParentType.SelectedIndex = 0;
+
+                            content.MCCDriverName.SelectedItem = this.contract_ManagementDataSet.Driver.Where(u => u.DriverName == row.ParentName).FirstOrDefault();
+
+
+                        }
+                        else
+                        {
+                            content.CMBParentType.SelectedIndex = 1;
+
+                            content.MCCCarName.SelectedItem = this.contract_ManagementDataSet.Cars.Where(u => u.CarName == row.ParentName).FirstOrDefault();
+
+                        }
+                        content.MCCCompanyName.Text = row.CompanyName;
+                        content.DTPEndDate.Value = row.EndDate;
+                        content.TXBNote.Text = row.Note;
+
+
+                        content.saveButton.Text = "تعديل";
+                        content.radButton3.Text = "حذف";
+
+                        content.MCCDriverName.Select();
+
                     }
                     else
                     {
@@ -280,6 +404,305 @@ namespace HotelApp
             this.Invoke(action);
         }
 
+
+
+        private void RadFlyoutManager_FlyoutClosed(FlyoutClosedEventArgs e)
+        {
+            Telerik.WinControls.Extensions.Action action = new Telerik.WinControls.Extensions.Action(() =>
+            {
+                if (e.Content is FlyoutAddByanat)
+                {
+                    RadCallout callout = new RadCallout();
+                    callout.ArrowDirection = Telerik.WinControls.ArrowDirection.Up;
+
+                    FlyoutAddByanat content = e.Content as FlyoutAddByanat;
+                    if (content != null)
+                    {
+                        if (content.Result == DialogResult.No)
+                        {
+                            FlyOutTypeReturn = content.CMBParentType.Text;
+
+                            RadFlyoutManager.Show(this, typeof(FlyoutAddCompany));
+
+                        }
+                        else if (content.Result == DialogResult.Yes)
+                        {
+                            if (content.CMBParentType.Text == "سائق")
+                            {
+                                FlyOutTypeReturn = content.CMBParentType.Text;
+                                RadFlyoutManager.Show(this, typeof(FlyoutAddDriver));
+
+                            }
+                            else if (content.CMBParentType.Text == "سيارة")
+                            {
+                                FlyOutTypeReturn = content.CMBParentType.Text;
+
+                                RadFlyoutManager.Show(this, typeof(FlyoutAddCar));
+
+                            }
+
+
+                        }
+                        else if (content.Result == DialogResult.OK)
+                        {
+                            if (content.saveButton.Text == "حفظ")
+                            {
+                                int Result = byanTableAdapter.Insert(content.Type, content.ParentName, content.Company, DateTime.Now, content.EndDate, content.Note);
+
+                                if (Result > 0)
+                                {
+                                    this.byanTableAdapter.Fill(this.contract_ManagementDataSet.Byan);
+                                    ShowDesktopAlert("تنشيط بطاقة عميل", "تنشيط بطاقة العميل", "تمت عملية تنشيط البطاقة بنجاح", "تم تنشيط بطاقة العميل يمكن القيام بالعمليات عليها الأن.");
+                                    RadCallout.Show(callout, this.radButton1, $"عملية إضافة البيان {content.ParentName} تمت!" + $"و المرتبط بشركة  {content.Company}", "تمت العملية بنجاح");
+
+                                }
+                                else
+                                {
+                                    RadCallout.Show(callout, this.radButton1, "فشلت عملية إضافة البيان !", "فشلت العملية");
+
+                                }
+
+                            }
+                            else if (content.saveButton.Text == "تعديل")
+                            {
+
+                                DataRowView data = ByanatView.CurrentItem.DataBoundItem as DataRowView;
+                                ByanRow row = data.Row as ByanRow;
+
+                                ByanRow dataRow = this.contract_ManagementDataSet.Byan.Where(u => u.ID == row.ID).FirstOrDefault();
+                                dataRow.ParentType = content.Type;
+                                dataRow.ParentName = content.ParentName;
+                                dataRow.CompanyName = content.Company;
+                                dataRow.EndDate = content.EndDate;
+                                dataRow.Note = content.Note;
+                                int Result = byanTableAdapter.Update(dataRow);
+
+                                if (Result > 0)
+                                {
+                                    this.byanTableAdapter.Fill(this.contract_ManagementDataSet.Byan);
+                                    ShowDesktopAlert("تنشيط بطاقة عميل", "تنشيط بطاقة العميل", "تمت عملية تنشيط البطاقة بنجاح", "تم تنشيط بطاقة العميل يمكن القيام بالعمليات عليها الأن.");
+                                    RadCallout.Show(callout, this.radButton1, $"عملية تعديل البيان {content.ParentName} تمت!" + $"و المرتبط بشركة  {content.Company}", "تمت العملية بنجاح");
+
+                                }
+                                else
+                                {
+                                    RadCallout.Show(callout, this.radButton1, "فشلت عملية تعديل البيان !", "فشلت العملية");
+
+                                }
+
+                            }
+
+                        }
+                        else if (content.Result == DialogResult.Abort)
+                        {
+
+                            DataRowView data = ByanatView.CurrentItem.DataBoundItem as DataRowView;
+                            ByanRow row = data.Row as ByanRow;
+
+                            ByanRow dataRow = this.contract_ManagementDataSet.Byan.Where(u => u.ID == row.ID).FirstOrDefault();
+                            int Result = byanTableAdapter.Delete(dataRow.ID, dataRow.ParentType, dataRow.ParentName, dataRow.CompanyName, dataRow.StartDate, dataRow.EndDate);
+                            if (Result > 0)
+                            {
+                                this.byanTableAdapter.Fill(this.contract_ManagementDataSet.Byan);
+                                ShowDesktopAlert("حذف بيان", "عملية حذف بيان", "تمت عملية حذف البيان بنجاح", "تمت عملية حذف البيان من قاعدة البيانات بنجاح.");
+                                RadCallout.Show(callout, this.radButton1, $"عملية حذف البيان {content.ParentName} تمت!" + $"و المرتبط بشركة  {content.Company}", "تمت العملية بنجاح");
+
+                            }
+                            else
+                            {
+                                RadCallout.Show(callout, this.radButton1, "فشلت عملية حذف البيان !", "فشلت العملية");
+
+                            }
+
+
+                        }
+
+                    }
+                    else
+                        {
+                            //RadCallout.Show(callout, this.BtnReservation, "فشلت عملية تنشيط بطاقة العميل!", "فشلت العملية");
+                        }
+                    }
+                else if (e.Content is FlyoutAddDriver)
+                {
+                    RadCallout callout = new RadCallout();
+                    callout.ArrowDirection = Telerik.WinControls.ArrowDirection.Up;
+
+                    FlyoutAddDriver content = e.Content as FlyoutAddDriver;
+                    if (content != null)
+                    {
+                        if (content.Result == DialogResult.OK)
+                        {
+
+                            int Result = driverTableAdapter.Insert(content.ParentName, content.ParentCardID, content.Note);
+
+                            if (Result > 0)
+                            {
+                                this.driverTableAdapter.Fill(this.contract_ManagementDataSet.Driver);
+                                ShowDesktopAlert("إضافة سائق", "إضافة سائق جديد", "تمت عملية إضافة سائق الجديد بنجاح", "تمت عملية إضافة سائق الجديد يمكن القيام بالعمليات عليها الأن.");
+                                RadCallout.Show(callout, this.radButton1, $"عملية إضافة السائق {content.ParentName} تمت!", "تمت العملية بنجاح");
+
+                            }
+                            else
+                            {
+                                RadCallout.Show(callout, this.radButton1, "فشلت عملية إضافة السائق !", "فشلت العملية");
+
+                            }
+
+                        }
+                        RadFlyoutManager.Show(this, typeof(FlyoutAddByanat));
+
+                    }
+                    else
+                    {
+                        //RadCallout.Show(callout, this.BtnReservation, "فشلت عملية تنشيط بطاقة العميل!", "فشلت العملية");
+                    }
+                }
+                else if (e.Content is FlyoutAddCar)
+                {
+                    RadCallout callout = new RadCallout();
+                    callout.ArrowDirection = Telerik.WinControls.ArrowDirection.Up;
+
+                    FlyoutAddCar content = e.Content as FlyoutAddCar;
+                    if (content != null)
+                    {
+                        if (content.Result == DialogResult.OK)
+                        {
+
+                            int Result = carsTableAdapter.Insert(content.ParentName, content.ParentName, content.Note);
+
+                            if (Result > 0)
+                            {
+                                this.carsTableAdapter.Fill(this.contract_ManagementDataSet.Cars);
+                                ShowDesktopAlert("إضافة سيارة", "إضافة سيارة جديد", "تمت عملية إضافة سيارة الجديد بنجاح", "تمت عملية إضافة السيارة الجديد يمكن القيام بالعمليات عليها الأن.");
+                                RadCallout.Show(callout, this.radButton1, $"عملية إضافة السيارة {content.ParentName} تمت!", "تمت العملية بنجاح");
+
+                            }
+                            else
+                            {
+                                RadCallout.Show(callout, this.radButton1, "فشلت عملية إضافة السيارة !", "فشلت العملية");
+
+                            }
+
+                        }
+                        RadFlyoutManager.Show(this, typeof(FlyoutAddByanat));
+
+                    }
+                    else
+                    {
+                        //RadCallout.Show(callout, this.BtnReservation, "فشلت عملية تنشيط بطاقة العميل!", "فشلت العملية");
+                    }
+                }
+                else if (e.Content is FlyoutAddCompany)
+                {
+                    RadCallout callout = new RadCallout();
+                    callout.ArrowDirection = Telerik.WinControls.ArrowDirection.Up;
+
+                    FlyoutAddCompany content = e.Content as FlyoutAddCompany;
+                    if (content != null)
+                    {
+                        if (content.Result == DialogResult.OK)
+                        {
+
+                            int Result = companiesTableAdapter.Insert(content.ParentName, content.ParentName, content.Note);
+
+                            if (Result > 0)
+                            {
+                                this.companiesTableAdapter.Fill(this.contract_ManagementDataSet.Companies);
+                                ShowDesktopAlert("إضافة شركة", "إضافة شركة جديد", "تمت عملية إضافة الشركة الجديد بنجاح", "تمت عملية إضافة الشركة الجديد يمكن القيام بالعمليات عليها الأن.");
+                                RadCallout.Show(callout, this.radButton1, $"عملية إضافة الشركة {content.ParentName} تمت!", "تمت العملية بنجاح");
+
+                            }
+                            else
+                            {
+                                RadCallout.Show(callout, this.radButton1, "فشلت عملية إضافة الشركة !", "فشلت العملية");
+
+                            }
+
+                        }
+                        RadFlyoutManager.Show(this, typeof(FlyoutAddByanat));
+
+                    }
+                    else
+                    {
+                        //RadCallout.Show(callout, this.BtnReservation, "فشلت عملية تنشيط بطاقة العميل!", "فشلت العملية");
+                    }
+                }
+
+
+            });
+
+            this.Invoke(action);
+        }
+
+        #endregion
+
+
+        #region List View 
+        private void leftView_VisualItemCreating(object sender, ListViewVisualItemCreatingEventArgs e)
+        {
+            if (e.VisualItem is SimpleListViewVisualItem)
+            {
+                e.VisualItem = new OptionsSimpleListViewVisualItem();
+            }
+        }
+
+        private void OverViewList_ItemMouseClick(object sender, ListViewItemEventArgs e)
+        {
+            DataRowView data = e.Item.DataBoundItem as DataRowView;
+            ByanRow row = data.Row as ByanRow;
+            if (row != null)
+            {
+                RadFlyoutManager.Show(this, typeof(FlyoutAddByanat));
+            }
+        }
+        private void LeftView_ItemCheckedChanged(object sender, ListViewItemEventArgs e)
+        {
+            if (e.Item.CheckState == ToggleState.On)
+            {
+                foreach (ListViewDataItem item in ByanatView.Items)
+                {
+                    DataRowView data = item.DataBoundItem as DataRowView;
+                    ByanRow row = data.Row as ByanRow;
+                    if (e.Item.Text == row.CompanyName)
+                    {
+                        if (item.Group.Visible) { item.Visible = true; }
+
+                    }
+
+                }
+                ButtonSelectAllCompanies.Text = "إلغاء الكل";
+            }
+            else if (e.Item.CheckState == ToggleState.Off)
+            {
+                foreach (ListViewDataItem item in ByanatView.Items)
+                {
+                    DataRowView data = item.DataBoundItem as DataRowView;
+                    ByanRow row = data.Row as ByanRow;
+                    if (e.Item.Text == row.CompanyName)
+                    {
+                        item.Visible = false;
+
+                    }
+
+                }
+                ButtonSelectAllCompanies.Text = "تحديد الكل";
+            }
+
+        }
+        private void roomsView_VisualItemCreating(object sender, ListViewVisualItemCreatingEventArgs e)
+        {
+            if (e.VisualItem is IconListViewVisualItem)
+            {
+                e.VisualItem = new RoomIconListViewVisualItem();
+            }
+        }
+
+        #endregion
+
+        #endregion
+
+        #region Form Events
         private void HotelApp_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'contract_ManagementDataSet.Driver' table. You can move, or remove it, as needed.
@@ -317,7 +740,7 @@ namespace HotelApp
 
                 roomTypeItem.CheckState = Telerik.WinControls.Enumerations.ToggleState.On;
                 //roomTypeItem.Group = CompaniesGroup;
-                this.LeftView.Items.Add(roomTypeItem);
+                this.CompaniesView.Items.Add(roomTypeItem);
             }
 
 
@@ -342,9 +765,9 @@ namespace HotelApp
 
 
             //}
-            GridViewNotification.Rows[0].Cells[0].Value = DoctorERP_v2_00.Properties.Resources.DriverRed_30;
+            GridViewNotification.Rows[0].Cells[0].Value = DoctorERP_v2_00.Properties.Resources.DriverRed_32;
             GridViewNotification.Rows[0].Cells[11].Value = "منتهي";
-            GridViewNotification.Rows[1].Cells[0].Value = DoctorERP_v2_00.Properties.Resources.DriverOrange_30;
+            GridViewNotification.Rows[1].Cells[0].Value = DoctorERP_v2_00.Properties.Resources.DriverOrange_32;
             GridViewNotification.Rows[1].Cells[11].Value = "أوشك";
 
             GridViewDriver.Visible = true;
@@ -372,21 +795,13 @@ namespace HotelApp
 
         }
 
-        #endregion
-
-        private void roomsView_VisualItemCreating(object sender, ListViewVisualItemCreatingEventArgs e)
-        {
-            if (e.VisualItem is IconListViewVisualItem)
-            {
-                e.VisualItem = new RoomIconListViewVisualItem();
-            }
-        }
         private void radButton1_Click(object sender, EventArgs e)
         {
             try
             {
+                RadFlyoutManager.Close();
                 RadFlyoutManager.Show(this, typeof(FlyoutAddByanat));
-
+                ISNew = true;
 
 
             }
@@ -394,73 +809,9 @@ namespace HotelApp
 
         }
 
-        private void overviewMainContainer_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void GridViewNotification_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void radPanel5_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void GridViewDriver_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void idSeparator_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void radPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void radLabel1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void ByanatView_SelectedItemChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void mainContainer_SelectedPageChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void MenuStripOverviewLandsView_Opening(object sender, CancelEventArgs e)
         {
             if (ByanatView.SelectedItem == null) { e.Cancel = true; return; }
-        }
-
-        private void ByanatView_ContextMenuStripChanged(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void ByanatView_CellCreating(object sender, ListViewCellElementCreatingEventArgs e)
-        {
-        }
-
-        private void bookingsMainContainer_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void RadioButtonDriver_ToggleStateChanged(object sender, StateChangedEventArgs args)
-        {
-
         }
 
         private void RadioButtonDriver_CheckStateChanged(object sender, EventArgs e)
@@ -543,110 +894,204 @@ namespace HotelApp
 
         }
 
-        private void GridViewCars_Click(object sender, EventArgs e)
+        private void ButtonSelectAllType_Click(object sender, EventArgs e)
         {
+            if (ButtonSelectAllType.Text == "تحديد الكل")
+            {
+                CheckBoxCars.Checked = true;
+                CheckBoxDrivers.Checked = true;
+            }
+            else if (ButtonSelectAllType.Text == "إلغاء الكل")
+            {
+                CheckBoxCars.Checked = false;
+                CheckBoxDrivers.Checked = false;
+
+            }
 
         }
 
-        private void editGuestInfo_Load(object sender, EventArgs e)
+        private void CheckBoxDrivers_CheckStateChanged(object sender, EventArgs e)
         {
+            if (CheckBoxDrivers.Checked) 
+            {
+                ByanatView.Groups[0].Visible = true;
+
+                foreach (ListViewDataItem item in ByanatView.Groups[0].Items)
+                {
+                    DataRowView data = item.DataBoundItem as DataRowView;
+                    ByanRow row = data.Row as ByanRow;
+                    var companyItem = CompaniesView.Items.Where(u => u.Text == row.CompanyName).FirstOrDefault();
+                    if (companyItem.CheckState == ToggleState.On)
+                    {
+                        item.Visible = true;
+
+                    }
+
+                }
+
+                ButtonSelectAllType.Text = "إلغاء الكل";
+            }
+            else if (!CheckBoxDrivers.Checked)
+            {
+
+                ByanatView.Groups[0].Visible = false;
+
+                foreach(var item in ByanatView.Groups[0].Items)
+                {
+                    item.Visible = false;
+
+                }
+
+                ButtonSelectAllType.Text = "تحديد الكل";
+            }
 
         }
 
-        private void radLabel4_Click(object sender, EventArgs e)
+        private void CheckBoxCars_CheckStateChanged(object sender, EventArgs e)
         {
+            if (CheckBoxCars.Checked)
+            {
+                ByanatView.Groups[1].Visible = true;
 
-        }
+                foreach (ListViewDataItem item in ByanatView.Groups[1].Items)
+                {
+                    DataRowView data = item.DataBoundItem as DataRowView;
+                    ByanRow row = data.Row as ByanRow;
+                    var companyItem = CompaniesView.Items.Where(u => u.Text == row.CompanyName).FirstOrDefault();
+                    if (companyItem.CheckState == ToggleState.On)
+                    {
+                        item.Visible = true;
 
-        private void radBindingNavigator1_Click(object sender, EventArgs e)
-        {
+                    }
 
-        }
+                }
+                ButtonSelectAllType.Text = "إلغاء الكل";
+            }
+            else if (!CheckBoxCars.Checked)
+            {
+                ByanatView.Groups[1].Visible = false;
 
-        private void GridViewCompanies_Click(object sender, EventArgs e)
-        {
+                foreach (ListViewDataItem item in ByanatView.Groups[1].Items)
+                {
+                    item.Visible = false;
 
-        }
-
-        private void RadioButtonCars_ToggleStateChanged(object sender, StateChangedEventArgs args)
-        {
-
-        }
-
-        private void radPanel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void LeftView_SelectedItemChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void labelBookings_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void searchContainerBookings_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void radPanel2_Paint_1(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void radPanel6_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void radPanel4_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void radPanel3_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void radButton5_Click(object sender, EventArgs e)
-        {
+                }
+                ButtonSelectAllType.Text = "تحديد الكل";
+            }
 
         }
 
 
+        private void ButtonSelectAllCompanies_Click(object sender, EventArgs e)
+        {
+            if (ButtonSelectAllCompanies.Text == "تحديد الكل")
+            {
+                foreach (ListViewDataItem item in CompaniesView.Items)
+                {
+                    item.CheckState = ToggleState.On;
+                }
 
+            }
+            else if (ButtonSelectAllCompanies.Text == "إلغاء الكل")
+            {
+                foreach (ListViewDataItem item in CompaniesView.Items)
+                {
+                    item.CheckState = ToggleState.Off;
+                }
 
+            }
+
+        }
+
+        #endregion
+
+        #region Search
+
+        private void SearchTextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (this.searchTextBoxOverview.Text == string.Empty)
+            {
+                this.ByanatView.FilterPredicate = null;
+            }
+            else
+            {
+                this.ByanatView.FilterPredicate = null;
+                this.ByanatView.FilterPredicate = FilterPredicate;
+            }
+            //this.CompaniesView.ListViewElement.SynchronizeVisualItems();
+        }
+
+        private bool FilterPredicate(ListViewDataItem item)
+        {
+            if (this.searchTextBoxOverview.Text != string.Empty)
+            {
+                DataRowView data = item.DataBoundItem as DataRowView;
+                ByanRow row = data.Row as ByanRow;
+                if (row.ID.ToString().ToLower().Contains(this.searchTextBoxOverview.Text.ToLower()))
+                {
+                    return true;
+                }
+                else if (row.CompanyName.ToString().ToLower().Contains(this.searchTextBoxOverview.Text.ToLower()))
+                {
+                    return true;
+                }
+                else if (row.ParentName.ToString().ToLower().Contains(this.searchTextBoxOverview.Text.ToLower()))
+                {
+                    return true;
+                }
+                else if (row.ParentType.ToString().ToLower().Contains(this.searchTextBoxOverview.Text.ToLower()))
+                {
+                    return true;
+                }
+                if (!(row.ItemArray[6] is DBNull))
+                {
+                    if (row.ItemArray[6].ToString().Contains(this.searchTextBoxOverview.Text))
+                    {
+                        return true;
+                    }
+
+                }
+
+                return false;
+            }
+
+            return true;
+        }
+
+        #endregion
 
         #region report and print
         private bool Readyreport(FastReport.Report rpt)
         {
             //Reports.GenerateReport(ReportTitle, DataGridMain, dgvManager.mBoundDataView.ToTable());
-            Reports.InitReport(rpt, "accbalancerpt.frx", false);
+            DoctorHelper.Reports.Reports.InitReport(rpt, "CarsReport.frx", false);
 
-            rpt.SetParameterValue("UserName", FrmMain.CurrentUser.name);
+            //rpt.SetParameterValue("UserName", FrmMain.CurrentUser.name);
 
-            rpt.SetParameterValue("StartDate", dtStartDate.Value);
-            rpt.SetParameterValue("EndDate", dtEndDate.Value);
+            //rpt.SetParameterValue("StartDate", dtStartDate.Value);
+            //rpt.SetParameterValue("EndDate", dtEndDate.Value);
 
             //decimal bank = CalcColumnTotal(DataGridMain, DataGridMain.Columns["bank"]);
             //decimal cash = CalcColumnTotal(DataGridMain, DataGridMain.Columns["cash"]);
 
-            tbAgent.Fill("agenttype", 0);
+            //tbAgent.Fill("agenttype", 0);
 
-            tbPlanInfo.Fill();
-            rpt.RegisterData(tbPlanInfo.dtData, "planinfodata");
-            rpt.RegisterData(tbAgent.dtData, "ownerdata");
+
+            DataSet dataSet = new DataSet();
+
+            DataTable dt = new DataTable();
+            dt = contract_ManagementDataSet.Driver.Copy();
+            dt.TableName = "data";
+            dataSet.Tables.Add(dt);
+
+            rpt.RegisterData(dt, "data");
+            //////rpt.RegisterData(tbAgent.dtData, "ownerdata");
 
 
 
             //rpt.SetParameterValue("totaltext", ArabicFigures.GetArabicFigure((long)(bank + cash), ArabicFigures.Con));
 
-            rpt.RegisterData(dgvManager.mBoundDataView.ToTable(), "data");
+            //rpt.RegisterData(dgvManager.mBoundDataView.ToTable(), "data");
 
             return true;
         }
@@ -665,14 +1110,15 @@ namespace HotelApp
                 report.Show();
         }
 
-        private void MenuPrint_Click(object sender, EventArgs e)
-        {
-            FastReport.Report report = new FastReport.Report();
-            if (Readyreport(report))
-                report.Print();
-        }
+        ////private void MenuPrint_Click(object sender, EventArgs e)
+        ////{
+        ////    FastReport.Report report = new FastReport.Report();
+        ////    if (Readyreport(report))
+        ////        report.Print();
+        ////}
 
         #endregion
+
 
     }
 }

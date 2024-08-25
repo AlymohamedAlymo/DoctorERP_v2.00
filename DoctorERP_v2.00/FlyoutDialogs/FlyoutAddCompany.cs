@@ -124,5 +124,20 @@ namespace DoctorERP_v2_00.FlyoutDialogs
             RadFlyoutManager.Close();
 
         }
+
+        private void radTextBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void radLabel1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void editPanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

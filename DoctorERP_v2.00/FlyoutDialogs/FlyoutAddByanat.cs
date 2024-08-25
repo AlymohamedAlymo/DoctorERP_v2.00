@@ -175,12 +175,15 @@ namespace DoctorERP_v2_00.Dialogs
         {
             if (CMBParentType.SelectedIndex == 0)
             {
+                RadIdLabel.Text = "السائق";
                 MCCDriverName.Visible = true;
                 MCCCarName.Visible = false;
 
             }
             if (CMBParentType.SelectedIndex == 1)
             {
+                RadIdLabel.Text = "السيارة";
+
                 MCCDriverName.Visible = false;
                 MCCCarName.Visible = true;
 
@@ -206,6 +209,21 @@ namespace DoctorERP_v2_00.Dialogs
         }
 
         private void MCCCarName_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void radLabel1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void MCCCompanyName_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void DTPEndDate_ValueChanged(object sender, EventArgs e)
         {
 
         }

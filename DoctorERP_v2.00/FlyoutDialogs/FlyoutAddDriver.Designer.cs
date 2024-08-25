@@ -61,7 +61,7 @@
             this.ExitButton.Location = new System.Drawing.Point(15, 388);
             this.ExitButton.Name = "ExitButton";
             this.ExitButton.Size = new System.Drawing.Size(77, 36);
-            this.ExitButton.TabIndex = 44;
+            this.ExitButton.TabIndex = 5;
             this.ExitButton.Text = "خروج";
             this.ExitButton.ThemeName = "Material";
             this.ExitButton.Click += new System.EventHandler(this.RadButtonCancel_Click);
@@ -71,7 +71,7 @@
             this.radButton3.Location = new System.Drawing.Point(115, 388);
             this.radButton3.Name = "radButton3";
             this.radButton3.Size = new System.Drawing.Size(100, 36);
-            this.radButton3.TabIndex = 43;
+            this.radButton3.TabIndex = 4;
             this.radButton3.Text = "إلغاء";
             this.radButton3.ThemeName = "Material";
             this.radButton3.Click += new System.EventHandler(this.radButton2_Click);
@@ -81,7 +81,7 @@
             this.saveButton.Location = new System.Drawing.Point(221, 388);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(100, 36);
-            this.saveButton.TabIndex = 41;
+            this.saveButton.TabIndex = 3;
             this.saveButton.Text = "حفظ";
             this.saveButton.ThemeName = "Material";
             this.saveButton.Click += new System.EventHandler(this.RadButtonOK_Click);
@@ -106,40 +106,41 @@
             // 
             this.radTextBox2.AutoSize = false;
             this.radTextBox2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radTextBox2.Location = new System.Drawing.Point(19, 108);
+            this.radTextBox2.Location = new System.Drawing.Point(19, 100);
             this.radTextBox2.Name = "radTextBox2";
             this.radTextBox2.NullText = "ادخل اسم السائق";
             this.radTextBox2.ShowNullText = true;
             this.radTextBox2.Size = new System.Drawing.Size(302, 40);
             this.radTextBox2.TabIndex = 0;
+            this.radTextBox2.TextChanged += new System.EventHandler(this.radTextBox2_TextChanged);
             // 
             // idTextBox
             // 
             this.idTextBox.AutoSize = false;
             this.idTextBox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.idTextBox.Location = new System.Drawing.Point(19, 188);
+            this.idTextBox.Location = new System.Drawing.Point(19, 193);
             this.idTextBox.Name = "idTextBox";
             this.idTextBox.NullText = "ادخل رقم البطاقة";
             this.idTextBox.ShowNullText = true;
             this.idTextBox.Size = new System.Drawing.Size(302, 40);
-            this.idTextBox.TabIndex = 33;
+            this.idTextBox.TabIndex = 1;
             // 
             // radLabel2
             // 
-            this.radLabel2.AutoSize = false;
             this.radLabel2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radLabel2.Location = new System.Drawing.Point(29, 244);
+            this.radLabel2.Location = new System.Drawing.Point(251, 259);
             this.radLabel2.Name = "radLabel2";
-            this.radLabel2.Size = new System.Drawing.Size(285, 40);
+            this.radLabel2.Size = new System.Drawing.Size(70, 25);
             this.radLabel2.TabIndex = 32;
             this.radLabel2.Text = "ملاحظات";
             this.radLabel2.TextAlignment = System.Drawing.ContentAlignment.TopRight;
             this.radLabel2.ThemeName = "Material";
+            this.radLabel2.Click += new System.EventHandler(this.radLabel2_Click);
             // 
             // radTextBox1
             // 
             this.radTextBox1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radTextBox1.Location = new System.Drawing.Point(16, 284);
+            this.radTextBox1.Location = new System.Drawing.Point(16, 289);
             this.radTextBox1.Multiline = true;
             this.radTextBox1.Name = "radTextBox1";
             this.radTextBox1.NullText = "ادخل الملاحظات أن وجدت";
@@ -149,12 +150,12 @@
             this.radTextBox1.RootElement.StretchVertically = true;
             this.radTextBox1.ShowNullText = true;
             this.radTextBox1.Size = new System.Drawing.Size(305, 69);
-            this.radTextBox1.TabIndex = 31;
+            this.radTextBox1.TabIndex = 2;
             // 
             // radLabel3
             // 
             this.radLabel3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radLabel3.Location = new System.Drawing.Point(198, 19);
+            this.radLabel3.Location = new System.Drawing.Point(205, 3);
             this.radLabel3.Name = "radLabel3";
             this.radLabel3.Size = new System.Drawing.Size(130, 25);
             this.radLabel3.TabIndex = 30;
@@ -163,27 +164,27 @@
             // 
             // radLabel1
             // 
-            this.radLabel1.AutoSize = false;
             this.radLabel1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radLabel1.Location = new System.Drawing.Point(29, 148);
+            this.radLabel1.Location = new System.Drawing.Point(236, 163);
             this.radLabel1.Name = "radLabel1";
-            this.radLabel1.Size = new System.Drawing.Size(285, 40);
+            this.radLabel1.Size = new System.Drawing.Size(85, 25);
             this.radLabel1.TabIndex = 25;
             this.radLabel1.Text = "رقم البطاقة";
             this.radLabel1.TextAlignment = System.Drawing.ContentAlignment.TopRight;
             this.radLabel1.ThemeName = "Material";
+            this.radLabel1.Click += new System.EventHandler(this.radLabel1_Click);
             // 
             // idLabel
             // 
-            this.idLabel.AutoSize = false;
             this.idLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.idLabel.Location = new System.Drawing.Point(29, 67);
+            this.idLabel.Location = new System.Drawing.Point(236, 69);
             this.idLabel.Name = "idLabel";
-            this.idLabel.Size = new System.Drawing.Size(285, 40);
+            this.idLabel.Size = new System.Drawing.Size(85, 25);
             this.idLabel.TabIndex = 2;
             this.idLabel.Text = "أسم السائق";
             this.idLabel.TextAlignment = System.Drawing.ContentAlignment.TopRight;
             this.idLabel.ThemeName = "Material";
+            this.idLabel.Click += new System.EventHandler(this.idLabel_Click);
             // 
             // FlyoutAddDriver
             // 

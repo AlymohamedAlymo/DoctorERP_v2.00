@@ -29,23 +29,23 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Telerik.WinControls.UI.RadListDataItem radListDataItem1 = new Telerik.WinControls.UI.RadListDataItem();
-            Telerik.WinControls.UI.RadListDataItem radListDataItem2 = new Telerik.WinControls.UI.RadListDataItem();
-            Telerik.WinControls.UI.GridViewDecimalColumn gridViewDecimalColumn1 = new Telerik.WinControls.UI.GridViewDecimalColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn1 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn2 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn3 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition1 = new Telerik.WinControls.UI.TableViewDefinition();
-            Telerik.WinControls.UI.GridViewDecimalColumn gridViewDecimalColumn2 = new Telerik.WinControls.UI.GridViewDecimalColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn4 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn5 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn6 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition2 = new Telerik.WinControls.UI.TableViewDefinition();
-            Telerik.WinControls.UI.GridViewDecimalColumn gridViewDecimalColumn3 = new Telerik.WinControls.UI.GridViewDecimalColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn7 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn8 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn9 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition3 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.RadListDataItem radListDataItem3 = new Telerik.WinControls.UI.RadListDataItem();
+            Telerik.WinControls.UI.RadListDataItem radListDataItem4 = new Telerik.WinControls.UI.RadListDataItem();
+            Telerik.WinControls.UI.GridViewDecimalColumn gridViewDecimalColumn4 = new Telerik.WinControls.UI.GridViewDecimalColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn10 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn11 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn12 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition4 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.GridViewDecimalColumn gridViewDecimalColumn5 = new Telerik.WinControls.UI.GridViewDecimalColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn13 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn14 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn15 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition5 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.GridViewDecimalColumn gridViewDecimalColumn6 = new Telerik.WinControls.UI.GridViewDecimalColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn16 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn17 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn18 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition6 = new Telerik.WinControls.UI.TableViewDefinition();
             this.ExitButton = new Telerik.WinControls.UI.RadButton();
             this.radButton3 = new Telerik.WinControls.UI.RadButton();
             this.saveButton = new Telerik.WinControls.UI.RadButton();
@@ -165,7 +165,7 @@
             // 
             this.radButton1.Image = global::DoctorERP_v2_00.Properties.Resources.plus;
             this.radButton1.ImageAlignment = System.Drawing.ContentAlignment.TopCenter;
-            this.radButton1.Location = new System.Drawing.Point(16, 62);
+            this.radButton1.Location = new System.Drawing.Point(16, 104);
             this.radButton1.Name = "radButton1";
             this.radButton1.Size = new System.Drawing.Size(29, 36);
             this.radButton1.TabIndex = 21;
@@ -175,11 +175,10 @@
             // 
             // radLabel2
             // 
-            this.radLabel2.AutoSize = false;
             this.radLabel2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radLabel2.Location = new System.Drawing.Point(18, 326);
+            this.radLabel2.Location = new System.Drawing.Point(248, 345);
             this.radLabel2.Name = "radLabel2";
-            this.radLabel2.Size = new System.Drawing.Size(300, 40);
+            this.radLabel2.Size = new System.Drawing.Size(70, 25);
             this.radLabel2.TabIndex = 32;
             this.radLabel2.Text = "ملاحظات";
             this.radLabel2.TextAlignment = System.Drawing.ContentAlignment.TopRight;
@@ -188,7 +187,7 @@
             // TXBNote
             // 
             this.TXBNote.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TXBNote.Location = new System.Drawing.Point(18, 366);
+            this.TXBNote.Location = new System.Drawing.Point(18, 376);
             this.TXBNote.Multiline = true;
             this.TXBNote.Name = "TXBNote";
             this.TXBNote.NullText = "ادخل الملاحظات أن وجدت";
@@ -214,10 +213,10 @@
             // 
             this.CMBParentType.DropDownAnimationEnabled = true;
             this.CMBParentType.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList;
-            radListDataItem1.Text = "سائق";
-            radListDataItem2.Text = "سيارة";
-            this.CMBParentType.Items.Add(radListDataItem1);
-            this.CMBParentType.Items.Add(radListDataItem2);
+            radListDataItem3.Text = "سائق";
+            radListDataItem4.Text = "سيارة";
+            this.CMBParentType.Items.Add(radListDataItem3);
+            this.CMBParentType.Items.Add(radListDataItem4);
             this.CMBParentType.Location = new System.Drawing.Point(67, 16);
             this.CMBParentType.Name = "CMBParentType";
             this.CMBParentType.Size = new System.Drawing.Size(167, 36);
@@ -233,6 +232,7 @@
             this.MCCCompanyName.AutoSizeDropDownToBestFit = true;
             this.MCCCompanyName.DataSource = this.companiesBindingSource;
             this.MCCCompanyName.DisplayMember = "CompanyName";
+            this.MCCCompanyName.DropDownSizingMode = Telerik.WinControls.UI.SizingMode.RightBottom;
             // 
             // MCCCompanyName.NestedRadGridView
             // 
@@ -247,45 +247,45 @@
             this.MCCCompanyName.EditorControl.MasterTemplate.AllowCellContextMenu = false;
             this.MCCCompanyName.EditorControl.MasterTemplate.AllowColumnChooser = false;
             this.MCCCompanyName.EditorControl.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill;
-            gridViewDecimalColumn1.DataType = typeof(int);
-            gridViewDecimalColumn1.FieldName = "ID";
-            gridViewDecimalColumn1.HeaderText = "ID";
-            gridViewDecimalColumn1.IsAutoGenerated = true;
-            gridViewDecimalColumn1.IsVisible = false;
-            gridViewDecimalColumn1.Name = "ID";
-            gridViewDecimalColumn1.Width = 42;
-            gridViewTextBoxColumn1.FieldName = "CompanyName";
-            gridViewTextBoxColumn1.HeaderText = "اسم الشركة";
-            gridViewTextBoxColumn1.IsAutoGenerated = true;
-            gridViewTextBoxColumn1.Name = "CompanyName";
-            gridViewTextBoxColumn1.Width = 107;
-            gridViewTextBoxColumn2.FieldName = "ClientID";
-            gridViewTextBoxColumn2.HeaderText = "رقم العميل";
-            gridViewTextBoxColumn2.IsAutoGenerated = true;
-            gridViewTextBoxColumn2.Name = "ClientID";
-            gridViewTextBoxColumn2.Width = 111;
-            gridViewTextBoxColumn3.FieldName = "Note";
-            gridViewTextBoxColumn3.HeaderText = "Note";
-            gridViewTextBoxColumn3.IsAutoGenerated = true;
-            gridViewTextBoxColumn3.IsVisible = false;
-            gridViewTextBoxColumn3.Name = "Note";
-            gridViewTextBoxColumn3.Width = 69;
+            gridViewDecimalColumn4.DataType = typeof(int);
+            gridViewDecimalColumn4.FieldName = "ID";
+            gridViewDecimalColumn4.HeaderText = "ID";
+            gridViewDecimalColumn4.IsAutoGenerated = true;
+            gridViewDecimalColumn4.IsVisible = false;
+            gridViewDecimalColumn4.Name = "ID";
+            gridViewDecimalColumn4.Width = 42;
+            gridViewTextBoxColumn10.FieldName = "CompanyName";
+            gridViewTextBoxColumn10.HeaderText = "اسم الشركة";
+            gridViewTextBoxColumn10.IsAutoGenerated = true;
+            gridViewTextBoxColumn10.Name = "CompanyName";
+            gridViewTextBoxColumn10.Width = 103;
+            gridViewTextBoxColumn11.FieldName = "ClientID";
+            gridViewTextBoxColumn11.HeaderText = "رقم العميل";
+            gridViewTextBoxColumn11.IsAutoGenerated = true;
+            gridViewTextBoxColumn11.Name = "ClientID";
+            gridViewTextBoxColumn11.Width = 107;
+            gridViewTextBoxColumn12.FieldName = "Note";
+            gridViewTextBoxColumn12.HeaderText = "Note";
+            gridViewTextBoxColumn12.IsAutoGenerated = true;
+            gridViewTextBoxColumn12.IsVisible = false;
+            gridViewTextBoxColumn12.Name = "Note";
+            gridViewTextBoxColumn12.Width = 69;
             this.MCCCompanyName.EditorControl.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
-            gridViewDecimalColumn1,
-            gridViewTextBoxColumn1,
-            gridViewTextBoxColumn2,
-            gridViewTextBoxColumn3});
+            gridViewDecimalColumn4,
+            gridViewTextBoxColumn10,
+            gridViewTextBoxColumn11,
+            gridViewTextBoxColumn12});
             this.MCCCompanyName.EditorControl.MasterTemplate.DataSource = this.companiesBindingSource;
             this.MCCCompanyName.EditorControl.MasterTemplate.EnableGrouping = false;
             this.MCCCompanyName.EditorControl.MasterTemplate.ShowFilteringRow = false;
-            this.MCCCompanyName.EditorControl.MasterTemplate.ViewDefinition = tableViewDefinition1;
+            this.MCCCompanyName.EditorControl.MasterTemplate.ViewDefinition = tableViewDefinition4;
             this.MCCCompanyName.EditorControl.Name = "NestedRadGridView";
             this.MCCCompanyName.EditorControl.ReadOnly = true;
             this.MCCCompanyName.EditorControl.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.MCCCompanyName.EditorControl.ShowGroupPanel = false;
             this.MCCCompanyName.EditorControl.Size = new System.Drawing.Size(240, 150);
             this.MCCCompanyName.EditorControl.TabIndex = 0;
-            this.MCCCompanyName.Location = new System.Drawing.Point(51, 188);
+            this.MCCCompanyName.Location = new System.Drawing.Point(51, 194);
             this.MCCCompanyName.Name = "MCCCompanyName";
             this.MCCCompanyName.NullText = "اختر الشركة";
             this.MCCCompanyName.Size = new System.Drawing.Size(270, 40);
@@ -293,6 +293,7 @@
             this.MCCCompanyName.TabStop = false;
             this.MCCCompanyName.ThemeName = "Material";
             this.MCCCompanyName.ValueMember = "ID";
+            this.MCCCompanyName.SelectedIndexChanged += new System.EventHandler(this.MCCCompanyName_SelectedIndexChanged);
             // 
             // companiesBindingSource
             // 
@@ -308,7 +309,7 @@
             // 
             this.radButton2.Image = global::DoctorERP_v2_00.Properties.Resources.plus;
             this.radButton2.ImageAlignment = System.Drawing.ContentAlignment.TopCenter;
-            this.radButton2.Location = new System.Drawing.Point(16, 148);
+            this.radButton2.Location = new System.Drawing.Point(16, 196);
             this.radButton2.Name = "radButton2";
             this.radButton2.Size = new System.Drawing.Size(29, 36);
             this.radButton2.TabIndex = 26;
@@ -318,20 +319,20 @@
             // 
             // radLabel1
             // 
-            this.radLabel1.AutoSize = false;
             this.radLabel1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radLabel1.Location = new System.Drawing.Point(51, 148);
+            this.radLabel1.Location = new System.Drawing.Point(266, 163);
             this.radLabel1.Name = "radLabel1";
-            this.radLabel1.Size = new System.Drawing.Size(267, 36);
+            this.radLabel1.Size = new System.Drawing.Size(52, 25);
             this.radLabel1.TabIndex = 25;
             this.radLabel1.Text = "الشركة";
             this.radLabel1.TextAlignment = System.Drawing.ContentAlignment.TopRight;
             this.radLabel1.ThemeName = "Material";
+            this.radLabel1.Click += new System.EventHandler(this.radLabel1_Click);
             // 
             // radSplitContainer1
             // 
             this.radSplitContainer1.Controls.Add(this.splitPanel1);
-            this.radSplitContainer1.Location = new System.Drawing.Point(16, 234);
+            this.radSplitContainer1.Location = new System.Drawing.Point(16, 244);
             this.radSplitContainer1.Name = "radSplitContainer1";
             // 
             // 
@@ -373,6 +374,7 @@
             this.DTPEndDate.TabStop = false;
             this.DTPEndDate.Text = "8/21/2024";
             this.DTPEndDate.Value = new System.DateTime(2024, 8, 21, 23, 5, 25, 576);
+            this.DTPEndDate.ValueChanged += new System.EventHandler(this.DTPEndDate_ValueChanged);
             // 
             // radLabel5
             // 
@@ -388,11 +390,10 @@
             // 
             // RadIdLabel
             // 
-            this.RadIdLabel.AutoSize = false;
             this.RadIdLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RadIdLabel.Location = new System.Drawing.Point(51, 62);
+            this.RadIdLabel.Location = new System.Drawing.Point(273, 71);
             this.RadIdLabel.Name = "RadIdLabel";
-            this.RadIdLabel.Size = new System.Drawing.Size(267, 34);
+            this.RadIdLabel.Size = new System.Drawing.Size(45, 25);
             this.RadIdLabel.TabIndex = 2;
             this.RadIdLabel.Text = "الأسم";
             this.RadIdLabel.TextAlignment = System.Drawing.ContentAlignment.TopRight;
@@ -406,10 +407,13 @@
             this.MCCCarName.AutoSizeDropDownToBestFit = true;
             this.MCCCarName.DataSource = this.carsBindingSource;
             this.MCCCarName.DisplayMember = "CarName";
+            this.MCCCarName.DropDownSizingMode = Telerik.WinControls.UI.SizingMode.RightBottom;
             // 
             // MCCCarName.NestedRadGridView
             // 
+            this.MCCCarName.EditorControl.AutoScroll = true;
             this.MCCCarName.EditorControl.BackColor = System.Drawing.SystemColors.Window;
+            this.MCCCarName.EditorControl.EnableCustomFiltering = true;
             this.MCCCarName.EditorControl.Font = new System.Drawing.Font("Tahoma", 8F);
             this.MCCCarName.EditorControl.ForeColor = System.Drawing.SystemColors.ControlText;
             this.MCCCarName.EditorControl.Location = new System.Drawing.Point(0, 0);
@@ -419,37 +423,39 @@
             this.MCCCarName.EditorControl.MasterTemplate.AllowAddNewRow = false;
             this.MCCCarName.EditorControl.MasterTemplate.AllowCellContextMenu = false;
             this.MCCCarName.EditorControl.MasterTemplate.AllowColumnChooser = false;
+            this.MCCCarName.EditorControl.MasterTemplate.AllowSearchRow = true;
             this.MCCCarName.EditorControl.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill;
-            gridViewDecimalColumn2.DataType = typeof(int);
-            gridViewDecimalColumn2.FieldName = "ID";
-            gridViewDecimalColumn2.HeaderText = "ID";
-            gridViewDecimalColumn2.IsAutoGenerated = true;
-            gridViewDecimalColumn2.IsVisible = false;
-            gridViewDecimalColumn2.Name = "ID";
-            gridViewTextBoxColumn4.FieldName = "CarName";
-            gridViewTextBoxColumn4.HeaderText = "رقم الصهريج";
-            gridViewTextBoxColumn4.IsAutoGenerated = true;
-            gridViewTextBoxColumn4.Name = "CarName";
-            gridViewTextBoxColumn4.Width = 109;
-            gridViewTextBoxColumn5.FieldName = "CardID";
-            gridViewTextBoxColumn5.HeaderText = "رقم البطاقة";
-            gridViewTextBoxColumn5.IsAutoGenerated = true;
-            gridViewTextBoxColumn5.Name = "CardID";
-            gridViewTextBoxColumn5.Width = 109;
-            gridViewTextBoxColumn6.FieldName = "Note";
-            gridViewTextBoxColumn6.HeaderText = "Note";
-            gridViewTextBoxColumn6.IsAutoGenerated = true;
-            gridViewTextBoxColumn6.IsVisible = false;
-            gridViewTextBoxColumn6.Name = "Note";
+            gridViewDecimalColumn5.DataType = typeof(int);
+            gridViewDecimalColumn5.FieldName = "ID";
+            gridViewDecimalColumn5.HeaderText = "ID";
+            gridViewDecimalColumn5.IsAutoGenerated = true;
+            gridViewDecimalColumn5.IsVisible = false;
+            gridViewDecimalColumn5.Name = "ID";
+            gridViewTextBoxColumn13.FieldName = "CarName";
+            gridViewTextBoxColumn13.HeaderText = "رقم الصهريج";
+            gridViewTextBoxColumn13.IsAutoGenerated = true;
+            gridViewTextBoxColumn13.Name = "CarName";
+            gridViewTextBoxColumn13.Width = 105;
+            gridViewTextBoxColumn14.FieldName = "CardID";
+            gridViewTextBoxColumn14.HeaderText = "رقم البطاقة";
+            gridViewTextBoxColumn14.IsAutoGenerated = true;
+            gridViewTextBoxColumn14.Name = "CardID";
+            gridViewTextBoxColumn14.Width = 105;
+            gridViewTextBoxColumn15.FieldName = "Note";
+            gridViewTextBoxColumn15.HeaderText = "Note";
+            gridViewTextBoxColumn15.IsAutoGenerated = true;
+            gridViewTextBoxColumn15.IsVisible = false;
+            gridViewTextBoxColumn15.Name = "Note";
             this.MCCCarName.EditorControl.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
-            gridViewDecimalColumn2,
-            gridViewTextBoxColumn4,
-            gridViewTextBoxColumn5,
-            gridViewTextBoxColumn6});
+            gridViewDecimalColumn5,
+            gridViewTextBoxColumn13,
+            gridViewTextBoxColumn14,
+            gridViewTextBoxColumn15});
             this.MCCCarName.EditorControl.MasterTemplate.DataSource = this.carsBindingSource;
+            this.MCCCarName.EditorControl.MasterTemplate.EnableCustomFiltering = true;
             this.MCCCarName.EditorControl.MasterTemplate.EnableGrouping = false;
             this.MCCCarName.EditorControl.MasterTemplate.ShowFilteringRow = false;
-            this.MCCCarName.EditorControl.MasterTemplate.ViewDefinition = tableViewDefinition2;
+            this.MCCCarName.EditorControl.MasterTemplate.ViewDefinition = tableViewDefinition5;
             this.MCCCarName.EditorControl.Name = "NestedRadGridView";
             this.MCCCarName.EditorControl.ReadOnly = true;
             this.MCCCarName.EditorControl.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -478,10 +484,13 @@
             this.MCCDriverName.AutoSizeDropDownToBestFit = true;
             this.MCCDriverName.DataSource = this.driverBindingSource;
             this.MCCDriverName.DisplayMember = "DriverName";
+            this.MCCDriverName.DropDownSizingMode = Telerik.WinControls.UI.SizingMode.RightBottom;
             // 
             // MCCDriverName.NestedRadGridView
             // 
+            this.MCCDriverName.EditorControl.AutoScroll = true;
             this.MCCDriverName.EditorControl.BackColor = System.Drawing.SystemColors.Window;
+            this.MCCDriverName.EditorControl.EnableCustomFiltering = true;
             this.MCCDriverName.EditorControl.Font = new System.Drawing.Font("Tahoma", 8F);
             this.MCCDriverName.EditorControl.ForeColor = System.Drawing.SystemColors.ControlText;
             this.MCCDriverName.EditorControl.Location = new System.Drawing.Point(0, 0);
@@ -491,33 +500,39 @@
             this.MCCDriverName.EditorControl.MasterTemplate.AllowAddNewRow = false;
             this.MCCDriverName.EditorControl.MasterTemplate.AllowCellContextMenu = false;
             this.MCCDriverName.EditorControl.MasterTemplate.AllowColumnChooser = false;
+            this.MCCDriverName.EditorControl.MasterTemplate.AllowSearchRow = true;
             this.MCCDriverName.EditorControl.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill;
-            gridViewDecimalColumn3.DataType = typeof(int);
-            gridViewDecimalColumn3.FieldName = "ID";
-            gridViewDecimalColumn3.HeaderText = "ID";
-            gridViewDecimalColumn3.IsAutoGenerated = true;
-            gridViewDecimalColumn3.Name = "ID";
-            gridViewTextBoxColumn7.FieldName = "DriverName";
-            gridViewTextBoxColumn7.HeaderText = "DriverName";
-            gridViewTextBoxColumn7.IsAutoGenerated = true;
-            gridViewTextBoxColumn7.Name = "DriverName";
-            gridViewTextBoxColumn8.FieldName = "CardID";
-            gridViewTextBoxColumn8.HeaderText = "CardID";
-            gridViewTextBoxColumn8.IsAutoGenerated = true;
-            gridViewTextBoxColumn8.Name = "CardID";
-            gridViewTextBoxColumn9.FieldName = "Note";
-            gridViewTextBoxColumn9.HeaderText = "Note";
-            gridViewTextBoxColumn9.IsAutoGenerated = true;
-            gridViewTextBoxColumn9.Name = "Note";
+            gridViewDecimalColumn6.DataType = typeof(int);
+            gridViewDecimalColumn6.FieldName = "ID";
+            gridViewDecimalColumn6.HeaderText = "ID";
+            gridViewDecimalColumn6.IsAutoGenerated = true;
+            gridViewDecimalColumn6.IsVisible = false;
+            gridViewDecimalColumn6.Name = "ID";
+            gridViewTextBoxColumn16.FieldName = "DriverName";
+            gridViewTextBoxColumn16.HeaderText = "اسم السائق";
+            gridViewTextBoxColumn16.IsAutoGenerated = true;
+            gridViewTextBoxColumn16.Name = "DriverName";
+            gridViewTextBoxColumn16.Width = 105;
+            gridViewTextBoxColumn17.FieldName = "CardID";
+            gridViewTextBoxColumn17.HeaderText = "رقم البطاقة";
+            gridViewTextBoxColumn17.IsAutoGenerated = true;
+            gridViewTextBoxColumn17.Name = "CardID";
+            gridViewTextBoxColumn17.Width = 105;
+            gridViewTextBoxColumn18.FieldName = "Note";
+            gridViewTextBoxColumn18.HeaderText = "Note";
+            gridViewTextBoxColumn18.IsAutoGenerated = true;
+            gridViewTextBoxColumn18.IsVisible = false;
+            gridViewTextBoxColumn18.Name = "Note";
             this.MCCDriverName.EditorControl.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
-            gridViewDecimalColumn3,
-            gridViewTextBoxColumn7,
-            gridViewTextBoxColumn8,
-            gridViewTextBoxColumn9});
+            gridViewDecimalColumn6,
+            gridViewTextBoxColumn16,
+            gridViewTextBoxColumn17,
+            gridViewTextBoxColumn18});
             this.MCCDriverName.EditorControl.MasterTemplate.DataSource = this.driverBindingSource;
+            this.MCCDriverName.EditorControl.MasterTemplate.EnableCustomFiltering = true;
             this.MCCDriverName.EditorControl.MasterTemplate.EnableGrouping = false;
             this.MCCDriverName.EditorControl.MasterTemplate.ShowFilteringRow = false;
-            this.MCCDriverName.EditorControl.MasterTemplate.ViewDefinition = tableViewDefinition3;
+            this.MCCDriverName.EditorControl.MasterTemplate.ViewDefinition = tableViewDefinition6;
             this.MCCDriverName.EditorControl.Name = "NestedRadGridView";
             this.MCCDriverName.EditorControl.ReadOnly = true;
             this.MCCDriverName.EditorControl.RightToLeft = System.Windows.Forms.RightToLeft.Yes;

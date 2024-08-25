@@ -63,6 +63,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Real_Estate_Brokerage_Management\Helper\bin\Debug\FastReport.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Toolkit.Uwp.Notifications, Version=7.0.0.0, Culture=neutral, PublicKeyToken=4aff67a105548ee2" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -81,6 +82,7 @@
     </Reference>
     <Reference Include="Telerik.WinControls.ChartView, Version=2023.1.117.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
     <Reference Include="Telerik.WinControls.GridView, Version=2023.1.117.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e" />
+    <Reference Include="Telerik.WinControls.RadToastNotification, Version=2023.1.117.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
     <Reference Include="Telerik.WinControls.Scheduler, Version=2023.1.117.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
     <Reference Include="Telerik.WinControls.Themes.Material, Version=2023.1.117.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
     <Reference Include="Telerik.WinControls.Themes.MaterialBlueGrey, Version=2023.1.117.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
@@ -96,6 +98,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contract_ManagementDataSet.cs">
+      <DependentUpon>Contract_ManagementDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Contract_ManagementDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

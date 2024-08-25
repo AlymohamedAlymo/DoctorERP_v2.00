@@ -121,7 +121,7 @@
     <value>17, 17</value>
   </metadata>
   <metadata name="notificationViewBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 165</value>
+    <value>726, 128</value>
   </metadata>
   <metadata name="contract_ManagementDataSet.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 54</value>
@@ -254,26 +254,8 @@
   <metadata name="materialBlueGreyTheme1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>480, 17</value>
   </metadata>
-  <metadata name="byanBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>231, 54</value>
-  </metadata>
-  <metadata name="byanTableAdapter.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>388, 54</value>
-  </metadata>
-  <metadata name="carsTableAdapter.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>378, 91</value>
-  </metadata>
-  <metadata name="companiesTableAdapter.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 128</value>
-  </metadata>
-  <metadata name="driverTableAdapter.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>359, 128</value>
-  </metadata>
-  <metadata name="notificationViewTableAdapter.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>234, 165</value>
-  </metadata>
   <metadata name="radDesktopAlert1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>443, 165</value>
+    <value>17, 165</value>
   </metadata>
   <data name="radDesktopAlert1.ContentImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -314,6 +296,59 @@
         YII=
 </value>
   </data>
+  <metadata name="radToastNotificationManager1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>162, 165</value>
+  </metadata>
+  <data name="radToastNotification1.Xml" xml:space="preserve">
+    <value>&lt;toast launch="readMoreArg"&gt;
+  &lt;visual&gt;
+    &lt;binding template="ToastGeneric"&gt;
+      &lt;text&gt;بطاقات الأرض&lt;/text&gt;
+      &lt;text&gt;تمت عملية إضافة بطاقة أرض جديدة&lt;/text&gt;
+      &lt;text placement="attribution"&gt;Mars Press&lt;/text&gt;
+    &lt;/binding&gt;
+  &lt;/visual&gt;
+&lt;/toast&gt;</value>
+  </data>
+  <data name="radToastNotification2.Xml" xml:space="preserve">
+    <value>&lt;toast&gt;
+  &lt;visual&gt;
+    &lt;binding template="ToastImageAndText04"&gt;
+      &lt;text id="1"&gt;Enter text here&lt;/text&gt;
+      &lt;text id="1"&gt;Enter text here&lt;/text&gt;
+      &lt;text id="1"&gt;Enter text here&lt;/text&gt;
+      &lt;image id="1" src="C:\Users\User Name\AppData\Local\Temp\Telerik\Toast\TA_EmilySmile.png" alt="Alternative text"/&gt;
+    &lt;/binding&gt;
+  &lt;/visual&gt;
+&lt;/toast&gt;</value>
+  </data>
+  <metadata name="TmrStatic.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>762, 165</value>
+  </metadata>
+  <metadata name="byanBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>231, 54</value>
+  </metadata>
+  <metadata name="byanTableAdapter.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>388, 54</value>
+  </metadata>
+  <metadata name="carsTableAdapter.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>378, 91</value>
+  </metadata>
+  <metadata name="companiesTableAdapter.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 128</value>
+  </metadata>
+  <metadata name="driverTableAdapter.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>359, 128</value>
+  </metadata>
+  <metadata name="notificationViewTableAdapter.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>943, 128</value>
+  </metadata>
+  <metadata name="notificationsBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>376, 165</value>
+  </metadata>
+  <metadata name="notificationsTableAdapter.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>573, 165</value>
+  </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>96</value>
   </metadata>

@@ -5,6 +5,7 @@ using DoctorHelper.Reports;
 using Helper.Helpers;
 using System;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -25,7 +26,10 @@ namespace HotelApp
     partial class HotelAppForm : RadToolbarForm
     {
         private bool ISNew = false;
-        private string FlyOutTypeReturn = string.Empty, FlyOutParenterReturn = string.Empty, FlyOutCompanyReturn = string.Empty, FlyOutNoteReturn = string.Empty;
+        private string FlyOutTypeReturn = string.Empty,FlyOutNoteReturn = string.Empty;
+        private DriverRow FlyOutDriverReturn = null;
+        private CarsRow FlyOutCartReturn = null;
+        private CompaniesRow FlyOutCompanyReturn = null;
         private DateTime FlyOutEndDateReturn;
 
 
@@ -223,15 +227,15 @@ namespace HotelApp
 
         #region Method
 
-        //private void ShowNotification(string Header, string Content, string Note)
-        //{
-        //    radToastNotificationManager1.ToastNotifications[0].Xml = "<toast launch=\"readMoreArg\">\r\n  <visual>\r\n    <binding template=\"ToastGeneric\">\r\n   " +
-        //        "   <text>" + Header + "</text>\r\n   " +
-        //        "   <text>" + Content + "</text>\r\n  " +
-        //        "    <text placement=\"attribution\">" + Note + "</text>\r\n    </binding>\r\n  </visual>\r\n</toast>";
-        //    radToastNotificationManager1.ShowNotification(0);
+        private void ShowNotification(string Header, string Content, string Note)
+        {
+            radToastNotificationManager1.ToastNotifications[0].Xml = "<toast launch=\"readMoreArg\">\r\n  <visual>\r\n    <binding template=\"ToastGeneric\">\r\n   " +
+                "   <text>" + Header + "</text>\r\n   " +
+                "   <text>" + Content + "</text>\r\n  " +
+                "    <text placement=\"attribution\">" + Note + "</text>\r\n    </binding>\r\n  </visual>\r\n</toast>";
+            radToastNotificationManager1.ShowNotification(0);
 
-        //}
+        }
         private bool MessageWarning(string Heading, string Body, string FootNote)
         {
             RadTaskDialogPage page = new RadTaskDialogPage()
@@ -345,6 +349,16 @@ namespace HotelApp
                                 return;
 
                             }
+                            content.MCCDriverName.SelectedItem = FlyOutDriverReturn;
+                            FlyOutDriverReturn = null;
+                            content.MCCCarName.SelectedItem = FlyOutCartReturn;
+                            FlyOutCartReturn = null;
+                            content.MCCCompanyName.SelectedItem = FlyOutCompanyReturn;
+                            FlyOutCompanyReturn = null;
+                            content.DTPEndDate.Value = FlyOutEndDateReturn;
+                            FlyOutEndDateReturn = DateTime.Now;
+                            content.TXBNote.Text = FlyOutNoteReturn;
+                            FlyOutNoteReturn = null;
 
 
                         }
@@ -415,27 +429,42 @@ namespace HotelApp
                     RadCallout callout = new RadCallout();
                     callout.ArrowDirection = Telerik.WinControls.ArrowDirection.Up;
 
-                    FlyoutAddByanat content = e.Content as FlyoutAddByanat;
-                    if (content != null)
+                    FlyoutAddByanat contentFlyoutAddByanat = e.Content as FlyoutAddByanat;
+                    if (contentFlyoutAddByanat != null)
                     {
-                        if (content.Result == DialogResult.No)
+                        if (contentFlyoutAddByanat.Result == DialogResult.No)
                         {
-                            FlyOutTypeReturn = content.CMBParentType.Text;
+                            FlyOutTypeReturn = contentFlyoutAddByanat.CMBParentType.Text;
+                            FlyOutDriverReturn = (DriverRow)contentFlyoutAddByanat.MCCDriverName.SelectedItem;
+                            FlyOutCartReturn = (CarsRow)contentFlyoutAddByanat.MCCCarName.SelectedItem;
+                            FlyOutCompanyReturn = (CompaniesRow)contentFlyoutAddByanat.MCCCompanyName.SelectedItem;
+                            FlyOutEndDateReturn = contentFlyoutAddByanat.DTPEndDate.Value;
+                            FlyOutNoteReturn = contentFlyoutAddByanat.TXBNote.Text;
 
                             RadFlyoutManager.Show(this, typeof(FlyoutAddCompany));
 
                         }
-                        else if (content.Result == DialogResult.Yes)
+                        else if (contentFlyoutAddByanat.Result == DialogResult.Yes)
                         {
-                            if (content.CMBParentType.Text == "سائق")
+                            if (contentFlyoutAddByanat.CMBParentType.Text == "سائق")
                             {
-                                FlyOutTypeReturn = content.CMBParentType.Text;
+                                FlyOutTypeReturn = contentFlyoutAddByanat.CMBParentType.Text;
+                                FlyOutDriverReturn = (DriverRow)contentFlyoutAddByanat.MCCDriverName.SelectedItem;
+                                FlyOutCartReturn = (CarsRow)contentFlyoutAddByanat.MCCCarName.SelectedItem;
+                                FlyOutCompanyReturn = (CompaniesRow)contentFlyoutAddByanat.MCCCompanyName.SelectedItem;
+                                FlyOutEndDateReturn = contentFlyoutAddByanat.DTPEndDate.Value;
+                                FlyOutNoteReturn = contentFlyoutAddByanat.TXBNote.Text;
                                 RadFlyoutManager.Show(this, typeof(FlyoutAddDriver));
 
                             }
-                            else if (content.CMBParentType.Text == "سيارة")
+                            else if (contentFlyoutAddByanat.CMBParentType.Text == "سيارة")
                             {
-                                FlyOutTypeReturn = content.CMBParentType.Text;
+                                FlyOutTypeReturn = contentFlyoutAddByanat.CMBParentType.Text;
+                                FlyOutDriverReturn = (DriverRow)contentFlyoutAddByanat.MCCDriverName.SelectedItem;
+                                FlyOutCartReturn = (CarsRow)contentFlyoutAddByanat.MCCCarName.SelectedItem;
+                                FlyOutCompanyReturn = (CompaniesRow)contentFlyoutAddByanat.MCCCompanyName.SelectedItem;
+                                FlyOutEndDateReturn = contentFlyoutAddByanat.DTPEndDate.Value;
+                                FlyOutNoteReturn = contentFlyoutAddByanat.TXBNote.Text;
 
                                 RadFlyoutManager.Show(this, typeof(FlyoutAddCar));
 
@@ -443,17 +472,22 @@ namespace HotelApp
 
 
                         }
-                        else if (content.Result == DialogResult.OK)
+                        else if (contentFlyoutAddByanat.Result == DialogResult.OK)
                         {
-                            if (content.saveButton.Text == "حفظ")
+                            if (contentFlyoutAddByanat.saveButton.Text == "حفظ")
                             {
-                                int Result = byanTableAdapter.Insert(content.Type, content.ParentName, content.Company, DateTime.Now, content.EndDate, content.Note);
+                                if (!MessageWarning("هل أنت متاكد من الإضافة ؟", "إضافة بيان جديدة", "إذا ضغت علي زر نعم سوف يتم إضافة البيان الجديد \r\n إذا ضغط علي زر لا سوف يتم تجاهل الإضافة"))
+                                    return;
+
+                                int Result = byanTableAdapter.Insert(contentFlyoutAddByanat.Type, contentFlyoutAddByanat.ParentName,
+                                    contentFlyoutAddByanat.Company, DateTime.Now, contentFlyoutAddByanat.EndDate, contentFlyoutAddByanat.Note);
 
                                 if (Result > 0)
                                 {
                                     this.byanTableAdapter.Fill(this.contract_ManagementDataSet.Byan);
+                                    //ShowNotification("إضافة بيان جديدة", "تمت عملية إضافة البيان بنجاح", " بتاريخ : " + DateTime.Now.ToString("yyyy/MM/dd") + " الساعة : " + DateTime.Now.ToString("hh:mm tt"));
                                     ShowDesktopAlert("تنشيط بطاقة عميل", "تنشيط بطاقة العميل", "تمت عملية تنشيط البطاقة بنجاح", "تم تنشيط بطاقة العميل يمكن القيام بالعمليات عليها الأن.");
-                                    RadCallout.Show(callout, this.radButton1, $"عملية إضافة البيان {content.ParentName} تمت!" + $"و المرتبط بشركة  {content.Company}", "تمت العملية بنجاح");
+                                    RadCallout.Show(callout, this.radButton1, $"عملية إضافة البيان {contentFlyoutAddByanat.ParentName} تمت!" + $"و المرتبط بشركة  {contentFlyoutAddByanat.Company}", "تمت العملية بنجاح");
 
                                 }
                                 else
@@ -463,25 +497,28 @@ namespace HotelApp
                                 }
 
                             }
-                            else if (content.saveButton.Text == "تعديل")
+                            else if (contentFlyoutAddByanat.saveButton.Text == "تعديل")
                             {
+                                if (!MessageWarning("هل أنت متاكد من التعديل ؟", "تعديل بيان", "إذا ضغت علي زر نعم سوف يتم تعديل البيان \r\n إذا ضغط علي زر لا سوف يتم تجاهل التعديل"))
+                                    return;
 
                                 DataRowView data = ByanatView.CurrentItem.DataBoundItem as DataRowView;
                                 ByanRow row = data.Row as ByanRow;
 
                                 ByanRow dataRow = this.contract_ManagementDataSet.Byan.Where(u => u.ID == row.ID).FirstOrDefault();
-                                dataRow.ParentType = content.Type;
-                                dataRow.ParentName = content.ParentName;
-                                dataRow.CompanyName = content.Company;
-                                dataRow.EndDate = content.EndDate;
-                                dataRow.Note = content.Note;
+                                dataRow.ParentType = contentFlyoutAddByanat.Type;
+                                dataRow.ParentName = contentFlyoutAddByanat.ParentName;
+                                dataRow.CompanyName = contentFlyoutAddByanat.Company;
+                                dataRow.EndDate = contentFlyoutAddByanat.EndDate;
+                                dataRow.Note = contentFlyoutAddByanat.Note;
                                 int Result = byanTableAdapter.Update(dataRow);
 
                                 if (Result > 0)
                                 {
                                     this.byanTableAdapter.Fill(this.contract_ManagementDataSet.Byan);
-                                    ShowDesktopAlert("تنشيط بطاقة عميل", "تنشيط بطاقة العميل", "تمت عملية تنشيط البطاقة بنجاح", "تم تنشيط بطاقة العميل يمكن القيام بالعمليات عليها الأن.");
-                                    RadCallout.Show(callout, this.radButton1, $"عملية تعديل البيان {content.ParentName} تمت!" + $"و المرتبط بشركة  {content.Company}", "تمت العملية بنجاح");
+                                    //ShowNotification("تعديل بيان", "تمت عملية تعديل البيان بنجاح", " بتاريخ : " + DateTime.Now.ToString("yyyy/MM/dd") + " الساعة : " + DateTime.Now.ToString("hh:mm tt"));
+                                    ShowDesktopAlert("عملية تعديل", "تعديل بيان", "تمت عملية التعديل بنجاح", "تم تعديل البيان يمكن القيام بالعمليات عليه الأن.");
+                                    RadCallout.Show(callout, this.radButton1, $"عملية تعديل البيان {contentFlyoutAddByanat.ParentName} تمت!" + $"و المرتبط بشركة  {contentFlyoutAddByanat.Company}", "تمت العملية بنجاح");
 
                                 }
                                 else
@@ -493,8 +530,10 @@ namespace HotelApp
                             }
 
                         }
-                        else if (content.Result == DialogResult.Abort)
+                        else if (contentFlyoutAddByanat.Result == DialogResult.Abort)
                         {
+                            if (!MessageWarning("هل أنت متاكد من الحذف ؟", "حذف بيان", "إذا ضغت علي زر نعم سوف يتم حذف البيان \r\n إذا ضغط علي زر لا سوف يتم تجاهل الحذف"))
+                                return;
 
                             DataRowView data = ByanatView.CurrentItem.DataBoundItem as DataRowView;
                             ByanRow row = data.Row as ByanRow;
@@ -504,8 +543,9 @@ namespace HotelApp
                             if (Result > 0)
                             {
                                 this.byanTableAdapter.Fill(this.contract_ManagementDataSet.Byan);
+                                //ShowNotification("حذف بيان", "تمت عملية حذف البيان بنجاح", " بتاريخ : " + DateTime.Now.ToString("yyyy/MM/dd") + " الساعة : " + DateTime.Now.ToString("hh:mm tt"));
                                 ShowDesktopAlert("حذف بيان", "عملية حذف بيان", "تمت عملية حذف البيان بنجاح", "تمت عملية حذف البيان من قاعدة البيانات بنجاح.");
-                                RadCallout.Show(callout, this.radButton1, $"عملية حذف البيان {content.ParentName} تمت!" + $"و المرتبط بشركة  {content.Company}", "تمت العملية بنجاح");
+                                RadCallout.Show(callout, this.radButton1, $"عملية حذف البيان {contentFlyoutAddByanat.ParentName} تمت!" + $"و المرتبط بشركة  {contentFlyoutAddByanat.Company}", "تمت العملية بنجاح");
 
                             }
                             else
@@ -528,19 +568,23 @@ namespace HotelApp
                     RadCallout callout = new RadCallout();
                     callout.ArrowDirection = Telerik.WinControls.ArrowDirection.Up;
 
-                    FlyoutAddDriver content = e.Content as FlyoutAddDriver;
-                    if (content != null)
+                    FlyoutAddDriver contentFlyoutAddDriver = e.Content as FlyoutAddDriver;
+                    if (contentFlyoutAddDriver != null)
                     {
-                        if (content.Result == DialogResult.OK)
+                        if (contentFlyoutAddDriver.Result == DialogResult.OK)
                         {
+                            if (!MessageWarning("هل أنت متاكد من الإضافة ؟", "إضافة سائق جديدة", "إذا ضغت علي زر نعم سوف يتم إضافة السائق الجديد \r\n إذا ضغط علي زر لا سوف يتم تجاهل الإضافة"))
+                                return;
 
-                            int Result = driverTableAdapter.Insert(content.ParentName, content.ParentCardID, content.Note);
+                            int Result = driverTableAdapter.Insert(contentFlyoutAddDriver.ParentName, contentFlyoutAddDriver.ParentCardID,
+                                contentFlyoutAddDriver.Note);
 
                             if (Result > 0)
                             {
                                 this.driverTableAdapter.Fill(this.contract_ManagementDataSet.Driver);
-                                ShowDesktopAlert("إضافة سائق", "إضافة سائق جديد", "تمت عملية إضافة سائق الجديد بنجاح", "تمت عملية إضافة سائق الجديد يمكن القيام بالعمليات عليها الأن.");
-                                RadCallout.Show(callout, this.radButton1, $"عملية إضافة السائق {content.ParentName} تمت!", "تمت العملية بنجاح");
+                                //ShowNotification("إضافة سائق جديدة", "تمت عملية إضافة السائق بنجاح", " بتاريخ : " + DateTime.Now.ToString("yyyy/MM/dd") + " الساعة : " + DateTime.Now.ToString("hh:mm tt"));
+                                ShowDesktopAlert("إضافة سائق", "إضافة سائق جديد", $"تمت عملية إضافة السائق {contentFlyoutAddDriver.ParentName} بنجاح", "تمت عملية إضافة سائق الجديد يمكن القيام بالعمليات عليها الأن.");
+                                RadCallout.Show(callout, this.radButton1, $"عملية إضافة السائق {contentFlyoutAddDriver.ParentName} تمت!", "تمت العملية بنجاح");
 
                             }
                             else
@@ -563,19 +607,22 @@ namespace HotelApp
                     RadCallout callout = new RadCallout();
                     callout.ArrowDirection = Telerik.WinControls.ArrowDirection.Up;
 
-                    FlyoutAddCar content = e.Content as FlyoutAddCar;
-                    if (content != null)
+                    FlyoutAddCar contentFlyoutAddCar = e.Content as FlyoutAddCar;
+                    if (contentFlyoutAddCar != null)
                     {
-                        if (content.Result == DialogResult.OK)
+                        if (contentFlyoutAddCar.Result == DialogResult.OK)
                         {
+                            if (!MessageWarning("هل أنت متاكد من الإضافة ؟", "إضافة سيارة جديدة", "إذا ضغت علي زر نعم سوف يتم إضافة السيارة الجديد \r\n إذا ضغط علي زر لا سوف يتم تجاهل الإضافة"))
+                                return;
 
-                            int Result = carsTableAdapter.Insert(content.ParentName, content.ParentName, content.Note);
+                            int Result = carsTableAdapter.Insert(contentFlyoutAddCar.ParentName, contentFlyoutAddCar.ParentName, contentFlyoutAddCar.Note);
 
                             if (Result > 0)
                             {
                                 this.carsTableAdapter.Fill(this.contract_ManagementDataSet.Cars);
-                                ShowDesktopAlert("إضافة سيارة", "إضافة سيارة جديد", "تمت عملية إضافة سيارة الجديد بنجاح", "تمت عملية إضافة السيارة الجديد يمكن القيام بالعمليات عليها الأن.");
-                                RadCallout.Show(callout, this.radButton1, $"عملية إضافة السيارة {content.ParentName} تمت!", "تمت العملية بنجاح");
+                                //ShowNotification("إضافة سيارة جديدة", $"تمت عملية إضافة السيارة {contentFlyoutAddCar.ParentName} بنجاح", " بتاريخ : " + DateTime.Now.ToString("yyyy/MM/dd") + " الساعة : " + DateTime.Now.ToString("hh:mm tt"));
+                                ShowDesktopAlert("إضافة سيارة", "إضافة سيارة جديد", $"تمت عملية إضافة السيارة {contentFlyoutAddCar.ParentName} بنجاح", "تمت عملية إضافة السيارة الجديد يمكن القيام بالعمليات عليها الأن.");
+                                RadCallout.Show(callout, this.radButton1, $"عملية إضافة السيارة {contentFlyoutAddCar.ParentName} تمت!", "تمت العملية بنجاح");
 
                             }
                             else
@@ -598,19 +645,23 @@ namespace HotelApp
                     RadCallout callout = new RadCallout();
                     callout.ArrowDirection = Telerik.WinControls.ArrowDirection.Up;
 
-                    FlyoutAddCompany content = e.Content as FlyoutAddCompany;
-                    if (content != null)
+                    FlyoutAddCompany contentFlyoutAddCompany = e.Content as FlyoutAddCompany;
+                    if (contentFlyoutAddCompany != null)
                     {
-                        if (content.Result == DialogResult.OK)
+                        if (contentFlyoutAddCompany.Result == DialogResult.OK)
                         {
+                            if (!MessageWarning("هل أنت متاكد من الإضافة ؟", "إضافة بيان جديدة", "إذا ضغت علي زر نعم سوف يتم إضافة البيان الجديد \r\n إذا ضغط علي زر لا سوف يتم تجاهل الإضافة"))
+                                return;
 
-                            int Result = companiesTableAdapter.Insert(content.ParentName, content.ParentName, content.Note);
+                            int Result = companiesTableAdapter.Insert(contentFlyoutAddCompany.ParentName, contentFlyoutAddCompany.ParentName,
+                                contentFlyoutAddCompany.Note);
 
                             if (Result > 0)
                             {
                                 this.companiesTableAdapter.Fill(this.contract_ManagementDataSet.Companies);
-                                ShowDesktopAlert("إضافة شركة", "إضافة شركة جديد", "تمت عملية إضافة الشركة الجديد بنجاح", "تمت عملية إضافة الشركة الجديد يمكن القيام بالعمليات عليها الأن.");
-                                RadCallout.Show(callout, this.radButton1, $"عملية إضافة الشركة {content.ParentName} تمت!", "تمت العملية بنجاح");
+                                //ShowNotification("إضافة شركة جديدة", $"تمت عملية إضافة الشركة{contentFlyoutAddCompany.CompanyName} بنجاح", " بتاريخ : " + DateTime.Now.ToString("yyyy/MM/dd") + " الساعة : " + DateTime.Now.ToString("hh:mm tt"));
+                                ShowDesktopAlert("إضافة شركة", "إضافة شركة جديد", $"تمت عملية إضافة الشركة {contentFlyoutAddCompany.ParentName} بنجاح", "تمت عملية إضافة الشركة الجديد يمكن القيام بالعمليات عليها الأن.");
+                                RadCallout.Show(callout, this.radButton1, $"عملية إضافة الشركة {contentFlyoutAddCompany.ParentName} تمت!", "تمت العملية بنجاح");
 
                             }
                             else
@@ -656,6 +707,17 @@ namespace HotelApp
                 RadFlyoutManager.Show(this, typeof(FlyoutAddByanat));
             }
         }
+
+        private bool ClearSelectCase()
+        {
+            foreach (ListViewDataItem item in CompaniesView.Items)
+            {
+                if (item.CheckState == ToggleState.Off) { return false; }
+
+            }
+            return true;
+        }
+
         private void LeftView_ItemCheckedChanged(object sender, ListViewItemEventArgs e)
         {
             if (e.Item.CheckState == ToggleState.On)
@@ -671,7 +733,7 @@ namespace HotelApp
                     }
 
                 }
-                ButtonSelectAllCompanies.Text = "إلغاء الكل";
+                if (ClearSelectCase()) { ButtonSelectAllCompanies.Text = "إلغاء الكل"; }
             }
             else if (e.Item.CheckState == ToggleState.Off)
             {
@@ -705,6 +767,8 @@ namespace HotelApp
         #region Form Events
         private void HotelApp_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'contract_ManagementDataSet.Notifications' table. You can move, or remove it, as needed.
+            this.notificationsTableAdapter.Fill(this.contract_ManagementDataSet.Notifications);
             // TODO: This line of code loads data into the 'contract_ManagementDataSet.Driver' table. You can move, or remove it, as needed.
             this.driverTableAdapter.Fill(this.contract_ManagementDataSet.Driver);
             // TODO: This line of code loads data into the 'contract_ManagementDataSet.Companies' table. You can move, or remove it, as needed.
@@ -757,18 +821,51 @@ namespace HotelApp
             ByanatView.SelectedItem = null;
 
 
-            //GridViewNotification.DataSource = this.contract_ManagementDataSet.NotificationView;
-            //foreach (var row in GridViewNotification.Rows)
-            //{
-            //    row.Cells[0].Value = DoctorERP_v2_00.Properties.Resources.DriverRed_30;
-            //    row.Cells[12].Value = "منتهي";
+            foreach (GridViewRowInfo row in GridViewNotification.Rows)
+            {
+                int Period = ((DateTime)row.Cells[7].Value - DateTime.Now).Days;
+                if (Period <= 0)
+                {
+                    if (row.Cells[3].Value.ToString() == "سائق") 
+                    {
+                        row.Cells[0].Value = DoctorERP_v2_00.Properties.Resources.DriverRed_32;
+                    }
+                    else
+                    {
+                        row.Cells[0].Value = DoctorERP_v2_00.Properties.Resources.CarRed_32;
 
+                    }
+                    row.Cells[13].Value = "منذ "+ -Period + " يوم";
 
-            //}
-            GridViewNotification.Rows[0].Cells[0].Value = DoctorERP_v2_00.Properties.Resources.DriverRed_32;
-            GridViewNotification.Rows[0].Cells[11].Value = "منتهي";
-            GridViewNotification.Rows[1].Cells[0].Value = DoctorERP_v2_00.Properties.Resources.DriverOrange_32;
-            GridViewNotification.Rows[1].Cells[11].Value = "أوشك";
+                    row.Cells[14].Value = "منتهي";
+
+                }
+                else
+                {
+                    if (row.Cells[3].Value.ToString() == "سائق")
+                    {
+                        row.Cells[0].Value = DoctorERP_v2_00.Properties.Resources.DriverOrange_32;
+                    }
+                    else
+                    {
+                        row.Cells[0].Value = DoctorERP_v2_00.Properties.Resources.CarOrange_32;
+
+                    }
+                    row.Cells[13].Value = "باقي " + Period + "يوم";
+
+                    row.Cells[14].Value = "أوشك";
+                }
+
+                row.Cells[12].Value = ((DateTime)row.Cells[7].Value).ToString("yyyy/MM/dd");
+
+            }
+            //GridViewNotification.MasterTemplate.Columns[7].DataType = 
+            //gridViewDateTimeColumn2
+
+            //GridViewDateTimeColumn EndDataColumn = GridViewNotification.Columns[7] as GridViewDateTimeColumn;
+            //EndDataColumn.Format = DateTimePickerFormat.Custom;
+            //EndDataColumn.CustomFormat = "yyyy/MM/DD";
+
 
             GridViewDriver.Visible = true;
             GridViewCars.Visible = false;
@@ -789,12 +886,34 @@ namespace HotelApp
 
             editGuestInfo.idTextBox.DataBindings.Add(idControlBinding);
 
-
-
-
+            NotificationMethod();
 
         }
 
+        private void NotificationMethod()
+        {
+            foreach (ByanRow item in this.contract_ManagementDataSet.Byan.Rows)
+            {
+                int Period = (item.EndDate - DateTime.Now).Days;
+
+                if (Period <= 15)
+                {
+
+                    if (this.contract_ManagementDataSet.Notifications.Any(u => u.ByanID == item.ID)) { return; }
+
+                    int Result = notificationsTableAdapter.Insert(item.ID, item.EndDate, string.Empty);
+
+                    if (Result > 0)
+                    {
+                        this.byanTableAdapter.Fill(this.contract_ManagementDataSet.Byan);
+                        ShowNotification("تنبيه بإنتهاء بطاقة", $"البطاقة الخاصة بال{item.ParentType}  {item.ParentName} أوشكت علي الإنتهاء", $"البيان دخل حيز فترة الإخطار المحددة ب15 يوماً و سوف ينتهي التصريح بتاريخ {item.EndDate.ToString("yyyy/MM/dd)")} .");
+                        ShowDesktopAlert("تنبيه بإنتهاء بطاقة", "البطاقة أوشكت علي الإنتهاء", $"البطاقة الخاصة بال{item.ParentType}  {item.ParentName} أوشكت علي الإنتهاء", $"البيان دخل حيز فترة الإخطار المحددة ب15 يوماً و سوف ينتهي التصريح بتاريخ {item.EndDate.ToString("yyyy/MM/dd)")} .");
+
+                    }
+                }
+            }
+
+        }
         private void radButton1_Click(object sender, EventArgs e)
         {
             try
@@ -929,7 +1048,7 @@ namespace HotelApp
 
                 }
 
-                ButtonSelectAllType.Text = "إلغاء الكل";
+                if (CheckBoxDrivers.Checked && CheckBoxCars.Checked) { ButtonSelectAllType.Text = "إلغاء الكل"; }
             }
             else if (!CheckBoxDrivers.Checked)
             {
@@ -965,7 +1084,7 @@ namespace HotelApp
                     }
 
                 }
-                ButtonSelectAllType.Text = "إلغاء الكل";
+                if (CheckBoxDrivers.Checked && CheckBoxCars.Checked) { ButtonSelectAllType.Text = "إلغاء الكل"; }
             }
             else if (!CheckBoxCars.Checked)
             {
@@ -1031,7 +1150,7 @@ namespace HotelApp
                 {
                     return true;
                 }
-                else if (row.CompanyName.ToString().ToLower().Contains(this.searchTextBoxOverview.Text.ToLower()))
+                else if (row.ParentType.ToString().ToLower().Contains(this.searchTextBoxOverview.Text.ToLower()))
                 {
                     return true;
                 }
@@ -1039,7 +1158,11 @@ namespace HotelApp
                 {
                     return true;
                 }
-                else if (row.ParentType.ToString().ToLower().Contains(this.searchTextBoxOverview.Text.ToLower()))
+                else if (row.CompanyName.ToString().ToLower().Contains(this.searchTextBoxOverview.Text.ToLower()))
+                {
+                    return true;
+                }
+                else if (row.EndDate.ToString().ToLower().Contains(this.searchTextBoxOverview.Text.ToLower()))
                 {
                     return true;
                 }
@@ -1101,6 +1224,16 @@ namespace HotelApp
             FastReport.Report report = new FastReport.Report();
             if (Readyreport(report))
                 Reports.DesignReport(report);
+        }
+
+        private void CompaniesView_SelectedItemChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TmrStatic_Tick(object sender, EventArgs e)
+        {
+            NotificationMethod();
         }
 
         private void MenuPreview_Click(object sender, EventArgs e)

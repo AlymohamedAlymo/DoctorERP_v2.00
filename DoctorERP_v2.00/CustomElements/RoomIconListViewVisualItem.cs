@@ -184,33 +184,37 @@ namespace HotelApp
                     }
 
                 }
-                else if (Period <= 15)
-                {
-                    cardStatus.Text = "أوشك";
-
-                    this.BackColor = Color.DarkOrange;
-
-                    PeriodDays.Image = DoctorERP_v2_00.Properties.Resources.GlyphWrench;
-                    companyName.ForeColor = Color.Black;
-                    cardStatus.ForeColor = Color.Black;
-                    parentName.ForeColor = Color.Black;
-
-                    if (byan.ParentType == "سائق")
-                    {
-                        icon = DoctorERP_v2_00.Properties.Resources.DriverOrange_32;
-                        ScreenTipIcon = DoctorERP_v2_00.Properties.Resources.DriverOrange_30;
-
-                    }
-                    else
-                    {
-                        icon = DoctorERP_v2_00.Properties.Resources.CarOrange_32;
-                        ScreenTipIcon = DoctorERP_v2_00.Properties.Resources.CarOrange_30;
-
-                    }
-
-                }
                 else
                 {
+if (Period <= 15)
+                    {
+                        cardStatus.Text = "أوشك";
+
+                        this.BackColor = Color.DarkOrange;
+
+                        PeriodDays.Image = DoctorERP_v2_00.Properties.Resources.GlyphWrench;
+                        companyName.ForeColor = Color.Black;
+                        cardStatus.ForeColor = Color.Black;
+                        parentName.ForeColor = Color.Black;
+
+                        if (byan.ParentType == "سائق")
+                        {
+                            icon = DoctorERP_v2_00.Properties.Resources.DriverOrange_32;
+                            ScreenTipIcon = DoctorERP_v2_00.Properties.Resources.DriverOrange_30;
+
+                        }
+                        else
+                        {
+                            icon = DoctorERP_v2_00.Properties.Resources.CarOrange_32;
+                            ScreenTipIcon = DoctorERP_v2_00.Properties.Resources.CarOrange_30;
+
+                        }
+
+                    }
+else
+                    {
+
+
                     cardStatus.Text = "ساري";
 
                     this.BackColor = Color.SeaGreen;
@@ -231,6 +235,8 @@ namespace HotelApp
                         ScreenTipIcon = DoctorERP_v2_00.Properties.Resources.CarGreen_30;
 
                     }
+                    }
+
 
                 }
                 parentName.Image = icon;

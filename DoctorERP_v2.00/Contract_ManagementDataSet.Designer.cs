@@ -1113,9 +1113,9 @@ namespace DoctorERP_v2_00 {
             
             private global::System.Data.DataColumn columnCompanyName;
             
-            private global::System.Data.DataColumn columnNote;
-            
             private global::System.Data.DataColumn columnClientID;
+            
+            private global::System.Data.DataColumn columnNote;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
@@ -1168,17 +1168,17 @@ namespace DoctorERP_v2_00 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn NoteColumn {
+            public global::System.Data.DataColumn ClientIDColumn {
                 get {
-                    return this.columnNote;
+                    return this.columnClientID;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn ClientIDColumn {
+            public global::System.Data.DataColumn NoteColumn {
                 get {
-                    return this.columnClientID;
+                    return this.columnNote;
                 }
             }
             
@@ -1219,13 +1219,13 @@ namespace DoctorERP_v2_00 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public CompaniesRow AddCompaniesRow(string CompanyName, string Note, string ClientID) {
+            public CompaniesRow AddCompaniesRow(string CompanyName, string ClientID, string Note) {
                 CompaniesRow rowCompaniesRow = ((CompaniesRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         CompanyName,
-                        Note,
-                        ClientID};
+                        ClientID,
+                        Note};
                 rowCompaniesRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowCompaniesRow);
                 return rowCompaniesRow;
@@ -1257,8 +1257,8 @@ namespace DoctorERP_v2_00 {
             internal void InitVars() {
                 this.columnID = base.Columns["ID"];
                 this.columnCompanyName = base.Columns["CompanyName"];
-                this.columnNote = base.Columns["Note"];
                 this.columnClientID = base.Columns["ClientID"];
+                this.columnNote = base.Columns["Note"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1268,10 +1268,10 @@ namespace DoctorERP_v2_00 {
                 base.Columns.Add(this.columnID);
                 this.columnCompanyName = new global::System.Data.DataColumn("CompanyName", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCompanyName);
-                this.columnNote = new global::System.Data.DataColumn("Note", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnNote);
                 this.columnClientID = new global::System.Data.DataColumn("ClientID", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnClientID);
+                this.columnNote = new global::System.Data.DataColumn("Note", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNote);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnID}, true));
                 this.columnID.AutoIncrement = true;
@@ -1280,8 +1280,8 @@ namespace DoctorERP_v2_00 {
                 this.columnID.AllowDBNull = false;
                 this.columnID.Unique = true;
                 this.columnCompanyName.MaxLength = 255;
-                this.columnNote.MaxLength = 536870910;
                 this.columnClientID.MaxLength = 255;
+                this.columnNote.MaxLength = 536870910;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1725,7 +1725,7 @@ namespace DoctorERP_v2_00 {
             
             private global::System.Data.DataColumn columnByanID;
             
-            private global::System.Data.DataColumn columnPeriodDays;
+            private global::System.Data.DataColumn columnEndDate;
             
             private global::System.Data.DataColumn columnNote;
             
@@ -1780,9 +1780,9 @@ namespace DoctorERP_v2_00 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn PeriodDaysColumn {
+            public global::System.Data.DataColumn EndDateColumn {
                 get {
-                    return this.columnPeriodDays;
+                    return this.columnEndDate;
                 }
             }
             
@@ -1831,12 +1831,12 @@ namespace DoctorERP_v2_00 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public NotificationsRow AddNotificationsRow(int ByanID, int PeriodDays, string Note) {
+            public NotificationsRow AddNotificationsRow(int ByanID, System.DateTime EndDate, string Note) {
                 NotificationsRow rowNotificationsRow = ((NotificationsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         ByanID,
-                        PeriodDays,
+                        EndDate,
                         Note};
                 rowNotificationsRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowNotificationsRow);
@@ -1869,7 +1869,7 @@ namespace DoctorERP_v2_00 {
             internal void InitVars() {
                 this.columnID = base.Columns["ID"];
                 this.columnByanID = base.Columns["ByanID"];
-                this.columnPeriodDays = base.Columns["PeriodDays"];
+                this.columnEndDate = base.Columns["EndDate"];
                 this.columnNote = base.Columns["Note"];
             }
             
@@ -1880,8 +1880,8 @@ namespace DoctorERP_v2_00 {
                 base.Columns.Add(this.columnID);
                 this.columnByanID = new global::System.Data.DataColumn("ByanID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnByanID);
-                this.columnPeriodDays = new global::System.Data.DataColumn("PeriodDays", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnPeriodDays);
+                this.columnEndDate = new global::System.Data.DataColumn("EndDate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEndDate);
                 this.columnNote = new global::System.Data.DataColumn("Note", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnNote);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
@@ -2043,7 +2043,7 @@ namespace DoctorERP_v2_00 {
             
             private global::System.Data.DataColumn columnByanID;
             
-            private global::System.Data.DataColumn columnPeriodDays;
+            private global::System.Data.DataColumn columnNotifications_EndDate;
             
             private global::System.Data.DataColumn columnNotifications_Note;
             
@@ -2154,9 +2154,9 @@ namespace DoctorERP_v2_00 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn PeriodDaysColumn {
+            public global::System.Data.DataColumn Notifications_EndDateColumn {
                 get {
-                    return this.columnPeriodDays;
+                    return this.columnNotifications_EndDate;
                 }
             }
             
@@ -2205,7 +2205,7 @@ namespace DoctorERP_v2_00 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public NotificationViewRow AddNotificationViewRow(string Byan_ParentType, string Byan_ParentName, string Byan_CompanyName, System.DateTime Byan_StartDate, System.DateTime Byan_EndDate, string Byan_Note, int ByanID, int PeriodDays, string Notifications_Note) {
+            public NotificationViewRow AddNotificationViewRow(string Byan_ParentType, string Byan_ParentName, string Byan_CompanyName, System.DateTime Byan_StartDate, System.DateTime Byan_EndDate, string Byan_Note, int ByanID, System.DateTime Notifications_EndDate, string Notifications_Note) {
                 NotificationViewRow rowNotificationViewRow = ((NotificationViewRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -2217,7 +2217,7 @@ namespace DoctorERP_v2_00 {
                         Byan_Note,
                         null,
                         ByanID,
-                        PeriodDays,
+                        Notifications_EndDate,
                         Notifications_Note};
                 rowNotificationViewRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowNotificationViewRow);
@@ -2250,7 +2250,7 @@ namespace DoctorERP_v2_00 {
                 this.columnByan_Note = base.Columns["Byan_Note"];
                 this.columnNotifications_ID = base.Columns["Notifications_ID"];
                 this.columnByanID = base.Columns["ByanID"];
-                this.columnPeriodDays = base.Columns["PeriodDays"];
+                this.columnNotifications_EndDate = base.Columns["Notifications_EndDate"];
                 this.columnNotifications_Note = base.Columns["Notifications_Note"];
             }
             
@@ -2275,8 +2275,8 @@ namespace DoctorERP_v2_00 {
                 base.Columns.Add(this.columnNotifications_ID);
                 this.columnByanID = new global::System.Data.DataColumn("ByanID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnByanID);
-                this.columnPeriodDays = new global::System.Data.DataColumn("PeriodDays", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnPeriodDays);
+                this.columnNotifications_EndDate = new global::System.Data.DataColumn("Notifications_EndDate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNotifications_EndDate);
                 this.columnNotifications_Note = new global::System.Data.DataColumn("Notifications_Note", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnNotifications_Note);
                 this.columnByan_ID.AutoIncrement = true;
@@ -2763,22 +2763,6 @@ namespace DoctorERP_v2_00 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string Note {
-                get {
-                    try {
-                        return ((string)(this[this.tableCompanies.NoteColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Note\' in table \'Companies\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableCompanies.NoteColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public string ClientID {
                 get {
                     try {
@@ -2790,6 +2774,22 @@ namespace DoctorERP_v2_00 {
                 }
                 set {
                     this[this.tableCompanies.ClientIDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string Note {
+                get {
+                    try {
+                        return ((string)(this[this.tableCompanies.NoteColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Note\' in table \'Companies\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableCompanies.NoteColumn] = value;
                 }
             }
             
@@ -2807,18 +2807,6 @@ namespace DoctorERP_v2_00 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsNoteNull() {
-                return this.IsNull(this.tableCompanies.NoteColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetNoteNull() {
-                this[this.tableCompanies.NoteColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsClientIDNull() {
                 return this.IsNull(this.tableCompanies.ClientIDColumn);
             }
@@ -2827,6 +2815,18 @@ namespace DoctorERP_v2_00 {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetClientIDNull() {
                 this[this.tableCompanies.ClientIDColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsNoteNull() {
+                return this.IsNull(this.tableCompanies.NoteColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetNoteNull() {
+                this[this.tableCompanies.NoteColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -2983,17 +2983,17 @@ namespace DoctorERP_v2_00 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public int PeriodDays {
+            public System.DateTime EndDate {
                 get {
                     try {
-                        return ((int)(this[this.tableNotifications.PeriodDaysColumn]));
+                        return ((global::System.DateTime)(this[this.tableNotifications.EndDateColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'PeriodDays\' in table \'Notifications\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'EndDate\' in table \'Notifications\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableNotifications.PeriodDaysColumn] = value;
+                    this[this.tableNotifications.EndDateColumn] = value;
                 }
             }
             
@@ -3027,14 +3027,14 @@ namespace DoctorERP_v2_00 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsPeriodDaysNull() {
-                return this.IsNull(this.tableNotifications.PeriodDaysColumn);
+            public bool IsEndDateNull() {
+                return this.IsNull(this.tableNotifications.EndDateColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetPeriodDaysNull() {
-                this[this.tableNotifications.PeriodDaysColumn] = global::System.Convert.DBNull;
+            public void SetEndDateNull() {
+                this[this.tableNotifications.EndDateColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3210,17 +3210,18 @@ namespace DoctorERP_v2_00 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public int PeriodDays {
+            public System.DateTime Notifications_EndDate {
                 get {
                     try {
-                        return ((int)(this[this.tableNotificationView.PeriodDaysColumn]));
+                        return ((global::System.DateTime)(this[this.tableNotificationView.Notifications_EndDateColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'PeriodDays\' in table \'NotificationView\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Notifications_EndDate\' in table \'NotificationView\' is DBNul" +
+                                "l.", e);
                     }
                 }
                 set {
-                    this[this.tableNotificationView.PeriodDaysColumn] = value;
+                    this[this.tableNotificationView.Notifications_EndDateColumn] = value;
                 }
             }
             
@@ -3350,14 +3351,14 @@ namespace DoctorERP_v2_00 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsPeriodDaysNull() {
-                return this.IsNull(this.tableNotificationView.PeriodDaysColumn);
+            public bool IsNotifications_EndDateNull() {
+                return this.IsNull(this.tableNotificationView.Notifications_EndDateColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetPeriodDaysNull() {
-                this[this.tableNotificationView.PeriodDaysColumn] = global::System.Convert.DBNull;
+            public void SetNotifications_EndDateNull() {
+                this[this.tableNotificationView.Notifications_EndDateColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4534,8 +4535,8 @@ namespace DoctorERP_v2_00.Contract_ManagementDataSetTableAdapters {
             tableMapping.DataSetTable = "Companies";
             tableMapping.ColumnMappings.Add("ID", "ID");
             tableMapping.ColumnMappings.Add("CompanyName", "CompanyName");
-            tableMapping.ColumnMappings.Add("Note", "Note");
             tableMapping.ColumnMappings.Add("ClientID", "ClientID");
+            tableMapping.ColumnMappings.Add("Note", "Note");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.OleDb.OleDbCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
@@ -4584,7 +4585,7 @@ namespace DoctorERP_v2_00.Contract_ManagementDataSetTableAdapters {
             this._commandCollection = new global::System.Data.OleDb.OleDbCommand[1];
             this._commandCollection[0] = new global::System.Data.OleDb.OleDbCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT * FROM Companies";
+            this._commandCollection[0].CommandText = "SELECT ID, CompanyName, ClientID, [Note] FROM Companies";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -5261,40 +5262,40 @@ namespace DoctorERP_v2_00.Contract_ManagementDataSetTableAdapters {
             tableMapping.DataSetTable = "Notifications";
             tableMapping.ColumnMappings.Add("ID", "ID");
             tableMapping.ColumnMappings.Add("ByanID", "ByanID");
-            tableMapping.ColumnMappings.Add("PeriodDays", "PeriodDays");
+            tableMapping.ColumnMappings.Add("EndDate", "EndDate");
             tableMapping.ColumnMappings.Add("Note", "Note");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.OleDb.OleDbCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
             this._adapter.DeleteCommand.CommandText = "DELETE FROM `Notifications` WHERE ((`ID` = ?) AND ((? = 1 AND `ByanID` IS NULL) O" +
-                "R (`ByanID` = ?)) AND ((? = 1 AND `PeriodDays` IS NULL) OR (`PeriodDays` = ?)))";
+                "R (`ByanID` = ?)) AND ((? = 1 AND `EndDate` IS NULL) OR (`EndDate` = ?)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_ID", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ID", global::System.Data.DataRowVersion.Original, false, null));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_ByanID", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ByanID", global::System.Data.DataRowVersion.Original, true, null));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_ByanID", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ByanID", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_PeriodDays", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PeriodDays", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_PeriodDays", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PeriodDays", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_EndDate", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "EndDate", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_EndDate", global::System.Data.OleDb.OleDbType.Date, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "EndDate", global::System.Data.DataRowVersion.Original, false, null));
             this._adapter.InsertCommand = new global::System.Data.OleDb.OleDbCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO `Notifications` (`ByanID`, `PeriodDays`, `Note`) VALUES (?, ?, ?)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO `Notifications` (`ByanID`, `EndDate`, `Note`) VALUES (?, ?, ?)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("ByanID", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ByanID", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("PeriodDays", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PeriodDays", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("EndDate", global::System.Data.OleDb.OleDbType.Date, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "EndDate", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Note", global::System.Data.OleDb.OleDbType.LongVarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Note", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.UpdateCommand = new global::System.Data.OleDb.OleDbCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = "UPDATE `Notifications` SET `ByanID` = ?, `PeriodDays` = ?, `Note` = ? WHERE ((`ID" +
-                "` = ?) AND ((? = 1 AND `ByanID` IS NULL) OR (`ByanID` = ?)) AND ((? = 1 AND `Per" +
-                "iodDays` IS NULL) OR (`PeriodDays` = ?)))";
+            this._adapter.UpdateCommand.CommandText = "UPDATE `Notifications` SET `ByanID` = ?, `EndDate` = ?, `Note` = ? WHERE ((`ID` =" +
+                " ?) AND ((? = 1 AND `ByanID` IS NULL) OR (`ByanID` = ?)) AND ((? = 1 AND `EndDat" +
+                "e` IS NULL) OR (`EndDate` = ?)))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("ByanID", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ByanID", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("PeriodDays", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PeriodDays", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("EndDate", global::System.Data.OleDb.OleDbType.Date, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "EndDate", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Note", global::System.Data.OleDb.OleDbType.LongVarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Note", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_ID", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ID", global::System.Data.DataRowVersion.Original, false, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_ByanID", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ByanID", global::System.Data.DataRowVersion.Original, true, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_ByanID", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ByanID", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_PeriodDays", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PeriodDays", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_PeriodDays", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PeriodDays", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_EndDate", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "EndDate", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_EndDate", global::System.Data.OleDb.OleDbType.Date, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "EndDate", global::System.Data.DataRowVersion.Original, false, null));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5310,7 +5311,7 @@ namespace DoctorERP_v2_00.Contract_ManagementDataSetTableAdapters {
             this._commandCollection = new global::System.Data.OleDb.OleDbCommand[1];
             this._commandCollection[0] = new global::System.Data.OleDb.OleDbCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT ID, ByanID, PeriodDays, [Note] FROM Notifications";
+            this._commandCollection[0].CommandText = "SELECT ID, ByanID, EndDate, [Note] FROM Notifications";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -5371,7 +5372,7 @@ namespace DoctorERP_v2_00.Contract_ManagementDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_ID, global::System.Nullable<int> Original_ByanID, global::System.Nullable<int> Original_PeriodDays) {
+        public virtual int Delete(int Original_ID, global::System.Nullable<int> Original_ByanID, global::System.Nullable<global::System.DateTime> Original_EndDate) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_ID));
             if ((Original_ByanID.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(0));
@@ -5381,9 +5382,9 @@ namespace DoctorERP_v2_00.Contract_ManagementDataSetTableAdapters {
                 this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
-            if ((Original_PeriodDays.HasValue == true)) {
+            if ((Original_EndDate.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[4].Value = ((int)(Original_PeriodDays.Value));
+                this.Adapter.DeleteCommand.Parameters[4].Value = ((System.DateTime)(Original_EndDate.Value));
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(1));
@@ -5409,15 +5410,15 @@ namespace DoctorERP_v2_00.Contract_ManagementDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(global::System.Nullable<int> ByanID, global::System.Nullable<int> PeriodDays, string Note) {
+        public virtual int Insert(global::System.Nullable<int> ByanID, global::System.Nullable<global::System.DateTime> EndDate, string Note) {
             if ((ByanID.HasValue == true)) {
                 this.Adapter.InsertCommand.Parameters[0].Value = ((int)(ByanID.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
-            if ((PeriodDays.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((int)(PeriodDays.Value));
+            if ((EndDate.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[1].Value = ((System.DateTime)(EndDate.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
@@ -5448,15 +5449,15 @@ namespace DoctorERP_v2_00.Contract_ManagementDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(global::System.Nullable<int> ByanID, global::System.Nullable<int> PeriodDays, string Note, int Original_ID, global::System.Nullable<int> Original_ByanID, global::System.Nullable<int> Original_PeriodDays) {
+        public virtual int Update(global::System.Nullable<int> ByanID, global::System.Nullable<global::System.DateTime> EndDate, string Note, int Original_ID, global::System.Nullable<int> Original_ByanID, global::System.Nullable<global::System.DateTime> Original_EndDate) {
             if ((ByanID.HasValue == true)) {
                 this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(ByanID.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
-            if ((PeriodDays.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(PeriodDays.Value));
+            if ((EndDate.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((System.DateTime)(EndDate.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
@@ -5476,9 +5477,9 @@ namespace DoctorERP_v2_00.Contract_ManagementDataSetTableAdapters {
                 this.Adapter.UpdateCommand.Parameters[4].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
             }
-            if ((Original_PeriodDays.HasValue == true)) {
+            if ((Original_EndDate.HasValue == true)) {
                 this.Adapter.UpdateCommand.Parameters[6].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(Original_PeriodDays.Value));
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((System.DateTime)(Original_EndDate.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[6].Value = ((object)(1));
@@ -5631,7 +5632,7 @@ namespace DoctorERP_v2_00.Contract_ManagementDataSetTableAdapters {
             tableMapping.ColumnMappings.Add("Byan.Note", "Byan_Note");
             tableMapping.ColumnMappings.Add("Notifications.ID", "Notifications_ID");
             tableMapping.ColumnMappings.Add("ByanID", "ByanID");
-            tableMapping.ColumnMappings.Add("PeriodDays", "PeriodDays");
+            tableMapping.ColumnMappings.Add("Notifications.EndDate", "Notifications_EndDate");
             tableMapping.ColumnMappings.Add("Notifications.Note", "Notifications_Note");
             this._adapter.TableMappings.Add(tableMapping);
         }
@@ -5650,8 +5651,8 @@ namespace DoctorERP_v2_00.Contract_ManagementDataSetTableAdapters {
             this._commandCollection[0] = new global::System.Data.OleDb.OleDbCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT [Byan.ID], [Byan.ParentType], [Byan.ParentName], [Byan.CompanyName], [Byan" +
-                ".StartDate], [Byan.EndDate], [Byan.Note], [Notifications.ID], ByanID, PeriodDays" +
-                ", [Notifications.Note] FROM NotificationView";
+                ".StartDate], [Byan.EndDate], [Byan.Note], [Notifications.ID], ByanID, [Notificat" +
+                "ions.EndDate], [Notifications.Note] FROM NotificationView";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         

@@ -702,7 +702,7 @@ namespace HotelApp
         private void DriverBindingSource_ListChanged(object sender, ListChangedEventArgs e)
         {
             RadCallout callout = new RadCallout();
-            callout.ArrowDirection = Telerik.WinControls.ArrowDirection.Up;
+            callout.ArrowDirection = Telerik.WinControls.ArrowDirection.Right;
 
             if (e.ListChangedType == ListChangedType.ItemAdded)
             {
@@ -710,15 +710,17 @@ namespace HotelApp
                 if (!MessageWarning("هل أنت متاكد من الإضافة ؟", "إضافة سائق جديدة", "إذا ضغت علي زر نعم سوف يتم إضافة السائق الجديد \r\n إذا ضغط علي زر لا سوف يتم تجاهل الإضافة"))
                     return;
 
-                int Result = driverTableAdapter.Insert(GridViewDriver.Rows[e.NewIndex].Cells[1].Value.ToString(),
-                    GridViewDriver.Rows[e.NewIndex].Cells[2].Value.ToString(),
-                    GridViewDriver.Rows[e.NewIndex].Cells[3].Value.ToString());
+                int Result = driverTableAdapter.Insert(
+                    GridViewDriver.MasterView.TableAddNewRow.Cells[2].Value != null ? GridViewDriver.MasterView.TableAddNewRow.Cells[1].Value.ToString() : string.Empty,
+                    GridViewDriver.MasterView.TableAddNewRow.Cells[2].Value != null ? GridViewDriver.MasterView.TableAddNewRow.Cells[2].Value.ToString() : string.Empty,
+                    GridViewDriver.MasterView.TableAddNewRow.Cells[2].Value != null ? GridViewDriver.MasterView.TableAddNewRow.Cells[3].Value.ToString(): string.Empty);
 
                 if (Result > 0)
                 {
+                    ShowDesktopAlert("إضافة سائق", "تمت عملية إضافة السائق بنجاح", $"عملية إضافة السائق {GridViewDriver.MasterView.TableAddNewRow.Cells[1].Value.ToString()} تمت بنجاح", "تمت عملية إضافة السائق الجديد يمكن القيام بالعمليات عليه الأن.");
+                    RadCallout.Show(callout, GridViewDriver, $"عملية إضافة السائق {GridViewDriver.MasterView.TableAddNewRow.Cells[1].Value.ToString()} تمت بنجاح", "تمت العملية بنجاح");
                     this.driverTableAdapter.Fill(this.contract_ManagementDataSet.Driver);
-                    ShowDesktopAlert("إضافة سائق", "تمت عملية إضافة السائق بنجاح", $"عملية إضافة السائق {GridViewDriver.Rows[e.NewIndex].Cells[1].Value.ToString()} تمت بنجاح", "تمت عملية إضافة السائق الجديد يمكن القيام بالعمليات عليه الأن.");
-                    RadCallout.Show(callout, GridViewDriver, $"عملية إضافة السائق {GridViewDriver.Rows[e.NewIndex].Cells[1].Value.ToString()} تمت بنجاح", "تمت العملية بنجاح");
+                    GridViewDriver.Refresh();
                 }
                 else
                 {
@@ -759,9 +761,9 @@ namespace HotelApp
                 int Result = driverTableAdapter.Delete(dataRow.ID, dataRow.DriverName, dataRow.CardID);
                 if (Result > 0)
                 {
-                    this.driverTableAdapter.Fill(this.contract_ManagementDataSet.Driver);
                     ShowDesktopAlert("حذف سائق", "تمت عملية حذف السائق بنجاح", $"عملية حذف السائق {GridViewDriver.Rows[e.NewIndex].Cells[1].Value.ToString()} تمت بنجاح", "تمت عملية حذف السائق من قاعدة البيانات بنجاح.");
                     RadCallout.Show(callout, this.GridViewDriver, $"عملية حذف السائق {GridViewDriver.Rows[e.NewIndex].Cells[1].Value.ToString()} تمت بنجاح", "تمت العملية بنجاح");
+                    this.driverTableAdapter.Fill(this.contract_ManagementDataSet.Driver);
 
                 }
                 else
@@ -776,7 +778,7 @@ namespace HotelApp
         private void CarsBindingSource_ListChanged(object sender, ListChangedEventArgs e)
         {
             RadCallout callout = new RadCallout();
-            callout.ArrowDirection = Telerik.WinControls.ArrowDirection.Up;
+            callout.ArrowDirection = Telerik.WinControls.ArrowDirection.Right;
 
             if (e.ListChangedType == ListChangedType.ItemAdded)
             {
@@ -790,13 +792,14 @@ namespace HotelApp
 
                 if (Result > 0)
                 {
-                    this.carsTableAdapter.Fill(this.contract_ManagementDataSet.Cars);
                     ShowDesktopAlert("إضافة سيارة", "تمت عملية إضافة السيارة بنجاح", $"عملية إضافة السيارة {GridViewCars.Rows[e.NewIndex].Cells[1].Value.ToString()} تمت بنجاح", "تمت عملية إضافة السيارة الجديد يمكن القيام بالعمليات عليه الأن.");
-                    RadCallout.Show(callout, GridViewCars, $"عملية إضافة السيارة {GridViewCars.Rows[e.NewIndex].Cells[1].Value.ToString()} تمت بنجاح", "تمت العملية بنجاح");
+                    RadCallout.Show(callout, GridViewDriver, $"عملية إضافة السيارة {GridViewCars.Rows[e.NewIndex].Cells[1].Value.ToString()} تمت بنجاح", "تمت العملية بنجاح");
+                    this.carsTableAdapter.Fill(this.contract_ManagementDataSet.Cars);
+
                 }
                 else
                 {
-                    RadCallout.Show(callout, this.GridViewCars, "فشلت عملية إضافة السيارة !", "فشلت العملية");
+                    RadCallout.Show(callout, this.GridViewDriver, "فشلت عملية إضافة السيارة !", "فشلت العملية");
                 }
 
             }
@@ -813,9 +816,10 @@ namespace HotelApp
 
                 if (Result > 0)
                 {
-                    this.carsTableAdapter.Fill(this.contract_ManagementDataSet.Cars);
                     ShowDesktopAlert("تعديل سيارة", "تمت عملية تعديل السيارة", $"عملية تعديل السيارة {GridViewCars.Rows[e.NewIndex].Cells[1].Value.ToString()} تمت بنجاح", "تم تعديل السيارة يمكن القيام بالعمليات عليها الأن.");
                     RadCallout.Show(callout, this.GridViewCars, $"عملية تعديل السيارة {GridViewCars.Rows[e.NewIndex].Cells[1].Value.ToString()} تمت بنجاح", "تمت العملية بنجاح");
+                    this.carsTableAdapter.Fill(this.contract_ManagementDataSet.Cars);
+
 
                 }
                 else
@@ -833,9 +837,10 @@ namespace HotelApp
                 int Result = carsTableAdapter.Delete(dataRow.ID, dataRow.CarName, dataRow.CardID);
                 if (Result > 0)
                 {
-                    this.carsTableAdapter.Fill(this.contract_ManagementDataSet.Cars);
                     ShowDesktopAlert("حذف سيارة", "تمت عملية حذف السيارة بنجاح", $"عملية حذف السيارة {GridViewCars.Rows[e.NewIndex].Cells[1].Value.ToString()} تمت بنجاح", "تمت عملية حذف السيارة من قاعدة البيانات بنجاح.");
                     RadCallout.Show(callout, this.GridViewCars, $"عملية حذف السيارة {GridViewCars.Rows[e.NewIndex].Cells[1].Value.ToString()} تمت بنجاح", "تمت العملية بنجاح");
+                    this.carsTableAdapter.Fill(this.contract_ManagementDataSet.Cars);
+
 
                 }
                 else
@@ -850,7 +855,7 @@ namespace HotelApp
         private void companiesBindingSource_ListChanged(object sender, ListChangedEventArgs e)
         {
             RadCallout callout = new RadCallout();
-            callout.ArrowDirection = Telerik.WinControls.ArrowDirection.Up;
+            callout.ArrowDirection = Telerik.WinControls.ArrowDirection.Right;
 
             if (e.ListChangedType == ListChangedType.ItemAdded)
             {
@@ -864,13 +869,14 @@ namespace HotelApp
 
                 if (Result > 0)
                 {
-                    this.companiesTableAdapter.Fill(this.contract_ManagementDataSet.Companies);
                     ShowDesktopAlert("إضافة شركة", "تمت عملية إضافة الشركة بنجاح", $"عملية إضافة الشركة {GridViewCompanies.Rows[e.NewIndex].Cells[1].Value.ToString()} تمت بنجاح", "تمت عملية إضافة الشركة الجديد يمكن القيام بالعمليات عليه الأن.");
-                    RadCallout.Show(callout, GridViewCompanies, $"عملية إضافة الشركة {GridViewCompanies.Rows[e.NewIndex].Cells[1].Value.ToString()} تمت بنجاح", "تمت العملية بنجاح");
+                    RadCallout.Show(callout, GridViewCars, $"عملية إضافة الشركة {GridViewCompanies.Rows[e.NewIndex].Cells[1].Value.ToString()} تمت بنجاح", "تمت العملية بنجاح");
+                    this.companiesTableAdapter.Fill(this.contract_ManagementDataSet.Companies);
+
                 }
                 else
                 {
-                    RadCallout.Show(callout, this.GridViewCompanies, "فشلت عملية إضافة الشركة !", "فشلت العملية");
+                    RadCallout.Show(callout, this.GridViewCars, "فشلت عملية إضافة الشركة !", "فشلت العملية");
                 }
 
             }
@@ -887,14 +893,14 @@ namespace HotelApp
 
                 if (Result > 0)
                 {
-                    this.companiesTableAdapter.Fill(this.contract_ManagementDataSet.Companies);
                     ShowDesktopAlert("تعديل شركة", "تمت عملية تعديل الشركة", $"عملية تعديل الشركة {GridViewCompanies.Rows[e.NewIndex].Cells[1].Value.ToString()} تمت بنجاح", "تم تعديل الشركة يمكن القيام بالعمليات عليها الأن.");
-                    RadCallout.Show(callout, this.GridViewCompanies, $"عملية تعديل الشركة {GridViewCompanies.Rows[e.NewIndex].Cells[1].Value.ToString()} تمت بنجاح", "تمت العملية بنجاح");
+                    RadCallout.Show(callout, this.GridViewCars, $"عملية تعديل الشركة {GridViewCompanies.Rows[e.NewIndex].Cells[1].Value.ToString()} تمت بنجاح", "تمت العملية بنجاح");
+                    this.companiesTableAdapter.Fill(this.contract_ManagementDataSet.Companies);
 
                 }
                 else
                 {
-                    RadCallout.Show(callout, this.GridViewCompanies, "فشلت عملية تعديل الشركة !", "فشلت العملية");
+                    RadCallout.Show(callout, this.GridViewCars, "فشلت عملية تعديل الشركة !", "فشلت العملية");
                 }
 
             }
@@ -907,14 +913,14 @@ namespace HotelApp
                 int Result = companiesTableAdapter.Delete(dataRow.ID, dataRow.CompanyName, dataRow.ClientID);
                 if (Result > 0)
                 {
-                    this.companiesTableAdapter.Fill(this.contract_ManagementDataSet.Companies);
                     ShowDesktopAlert("حذف شركة", "تمت عملية حذف الشركة بنجاح", $"عملية حذف الشركة {GridViewCompanies.Rows[e.NewIndex].Cells[1].Value.ToString()} تمت بنجاح", "تمت عملية حذف الشركة من قاعدة البيانات بنجاح.");
-                    RadCallout.Show(callout, this.GridViewCompanies, $"عملية حذف الشركة {GridViewCompanies.Rows[e.NewIndex].Cells[1].Value.ToString()} تمت بنجاح", "تمت العملية بنجاح");
+                    RadCallout.Show(callout, this.GridViewCars, $"عملية حذف الشركة {GridViewCompanies.Rows[e.NewIndex].Cells[1].Value.ToString()} تمت بنجاح", "تمت العملية بنجاح");
+                    this.companiesTableAdapter.Fill(this.contract_ManagementDataSet.Companies);
 
                 }
                 else
                 {
-                    RadCallout.Show(callout, this.GridViewCompanies, "فشلت عملية حذف الشركة !", "فشلت العملية");
+                    RadCallout.Show(callout, this.GridViewCars, "فشلت عملية حذف الشركة !", "فشلت العملية");
                 }
 
             }
@@ -1299,6 +1305,20 @@ namespace HotelApp
             }
 
             return true;
+        }
+
+        private void GridViewDriver_UserAddedRow(object sender, GridViewRowEventArgs e)
+        {
+            DataRow[] rows = new DataRow[e.Rows.Length];
+            for (int i = 0; i < e.Rows.Length; i++)
+            {
+                DataRowView dataRowView = e.Rows[i].DataBoundItem as DataRowView;
+                if (dataRowView != null)
+                {
+                    rows[i] = dataRowView.Row;
+                }
+            }
+            //this.employeesTableAdapter.Update(rows);
         }
 
 

@@ -49,6 +49,11 @@ namespace HotelApp
             Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn8 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
             Telerik.WinControls.UI.TableViewDefinition tableViewDefinition1 = new Telerik.WinControls.UI.TableViewDefinition();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HotelAppForm));
+            Telerik.WinControls.UI.GridViewDecimalColumn gridViewDecimalColumn4 = new Telerik.WinControls.UI.GridViewDecimalColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn9 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn10 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn11 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition2 = new Telerik.WinControls.UI.TableViewDefinition();
             Telerik.WinControls.UI.GridViewDecimalColumn gridViewDecimalColumn5 = new Telerik.WinControls.UI.GridViewDecimalColumn();
             Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn12 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
             Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn13 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
@@ -59,11 +64,6 @@ namespace HotelApp
             Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn16 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
             Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn17 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
             Telerik.WinControls.UI.TableViewDefinition tableViewDefinition4 = new Telerik.WinControls.UI.TableViewDefinition();
-            Telerik.WinControls.UI.GridViewDecimalColumn gridViewDecimalColumn4 = new Telerik.WinControls.UI.GridViewDecimalColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn9 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn10 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn11 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition2 = new Telerik.WinControls.UI.TableViewDefinition();
             Telerik.RadToastNotificationManager.RadToastNotification radToastNotification1 = new Telerik.RadToastNotificationManager.RadToastNotification();
             Telerik.RadToastNotificationManager.RadToastNotification radToastNotification2 = new Telerik.RadToastNotificationManager.RadToastNotification();
             Telerik.RadToastNotificationManager.RadToastNotification radToastNotification3 = new Telerik.RadToastNotificationManager.RadToastNotification();
@@ -113,12 +113,12 @@ namespace HotelApp
             this.commandBarButton5 = new Telerik.WinControls.UI.CommandBarButton();
             this.commandBarSeparator5 = new Telerik.WinControls.UI.CommandBarSeparator();
             this.commandBarButton6 = new Telerik.WinControls.UI.CommandBarButton();
+            this.GridViewDriver = new Telerik.WinControls.UI.RadGridView();
+            this.driverBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.GridViewCars = new Telerik.WinControls.UI.RadGridView();
             this.carsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.GridViewCompanies = new Telerik.WinControls.UI.RadGridView();
             this.companiesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.GridViewDriver = new Telerik.WinControls.UI.RadGridView();
-            this.driverBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.radPanel3 = new Telerik.WinControls.UI.RadPanel();
             this.radButton4 = new Telerik.WinControls.UI.RadButton();
             this.radButton5 = new Telerik.WinControls.UI.RadButton();
@@ -182,15 +182,15 @@ namespace HotelApp
             this.bookingInfoRightPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radSeparator1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radBindingNavigator1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GridViewDriver)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GridViewDriver.MasterTemplate)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.driverBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GridViewCars)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GridViewCars.MasterTemplate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.carsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GridViewCompanies)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GridViewCompanies.MasterTemplate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.companiesBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.GridViewDriver)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.GridViewDriver.MasterTemplate)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.driverBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radPanel3)).BeginInit();
             this.radPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radButton4)).BeginInit();
@@ -823,6 +823,82 @@ namespace HotelApp
             this.commandBarButton6.Name = "commandBarButton6";
             this.commandBarButton6.SvgImageXml = resources.GetString("commandBarButton6.SvgImageXml");
             // 
+            // GridViewDriver
+            // 
+            this.GridViewDriver.AllowShowFocusCues = true;
+            this.GridViewDriver.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.GridViewDriver.EnableCodedUITests = true;
+            this.GridViewDriver.EnableCustomDrawing = true;
+            this.GridViewDriver.EnableCustomFiltering = true;
+            this.GridViewDriver.EnableCustomGrouping = true;
+            this.GridViewDriver.EnableCustomSorting = true;
+            this.GridViewDriver.EnableKeyMap = true;
+            this.GridViewDriver.EnableKineticScrolling = true;
+            this.GridViewDriver.Font = new System.Drawing.Font("Traditional Arabic", 14.25F, System.Drawing.FontStyle.Bold);
+            this.GridViewDriver.ImeMode = System.Windows.Forms.ImeMode.On;
+            this.GridViewDriver.Location = new System.Drawing.Point(309, 96);
+            this.GridViewDriver.Margin = new System.Windows.Forms.Padding(20, 3, 20, 3);
+            // 
+            // 
+            // 
+            this.GridViewDriver.MasterTemplate.AllowRowReorder = true;
+            this.GridViewDriver.MasterTemplate.AllowSearchRow = true;
+            this.GridViewDriver.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill;
+            gridViewDecimalColumn4.DataType = typeof(int);
+            gridViewDecimalColumn4.FieldName = "ID";
+            gridViewDecimalColumn4.HeaderText = "ID";
+            gridViewDecimalColumn4.IsAutoGenerated = true;
+            gridViewDecimalColumn4.IsVisible = false;
+            gridViewDecimalColumn4.Name = "ID";
+            gridViewDecimalColumn4.Width = 95;
+            gridViewTextBoxColumn9.FieldName = "DriverName";
+            gridViewTextBoxColumn9.HeaderText = "اسم السائق";
+            gridViewTextBoxColumn9.IsAutoGenerated = true;
+            gridViewTextBoxColumn9.Name = "DriverName";
+            gridViewTextBoxColumn9.Width = 227;
+            gridViewTextBoxColumn10.FieldName = "CardID";
+            gridViewTextBoxColumn10.HeaderText = "رقم البطاقة";
+            gridViewTextBoxColumn10.IsAutoGenerated = true;
+            gridViewTextBoxColumn10.Name = "CardID";
+            gridViewTextBoxColumn10.Width = 182;
+            gridViewTextBoxColumn11.FieldName = "Note";
+            gridViewTextBoxColumn11.HeaderText = "ملاحظات";
+            gridViewTextBoxColumn11.IsAutoGenerated = true;
+            gridViewTextBoxColumn11.Name = "Note";
+            gridViewTextBoxColumn11.Width = 280;
+            this.GridViewDriver.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
+            gridViewDecimalColumn4,
+            gridViewTextBoxColumn9,
+            gridViewTextBoxColumn10,
+            gridViewTextBoxColumn11});
+            this.GridViewDriver.MasterTemplate.DataSource = this.driverBindingSource;
+            this.GridViewDriver.MasterTemplate.EnableAlternatingRowColor = true;
+            this.GridViewDriver.MasterTemplate.EnableCustomFiltering = true;
+            this.GridViewDriver.MasterTemplate.EnableCustomGrouping = true;
+            this.GridViewDriver.MasterTemplate.EnableCustomSorting = true;
+            this.GridViewDriver.MasterTemplate.EnableFiltering = true;
+            this.GridViewDriver.MasterTemplate.EnablePaging = true;
+            this.GridViewDriver.MasterTemplate.ShowChildViewCaptions = true;
+            this.GridViewDriver.MasterTemplate.ShowFilteringRow = false;
+            this.GridViewDriver.MasterTemplate.ShowGroupedColumns = true;
+            this.GridViewDriver.MasterTemplate.ShowHeaderCellButtons = true;
+            this.GridViewDriver.MasterTemplate.ViewDefinition = tableViewDefinition2;
+            this.GridViewDriver.Name = "GridViewDriver";
+            this.GridViewDriver.ShowChildViewCaptions = true;
+            this.GridViewDriver.ShowHeaderCellButtons = true;
+            this.GridViewDriver.Size = new System.Drawing.Size(719, 429);
+            this.GridViewDriver.TabIndex = 7;
+            this.GridViewDriver.Visible = false;
+            this.GridViewDriver.UserAddedRow += new Telerik.WinControls.UI.GridViewRowEventHandler(this.GridViewDriver_UserAddedRow);
+            // 
+            // driverBindingSource
+            // 
+            this.driverBindingSource.DataMember = "Driver";
+            this.driverBindingSource.DataSource = this.contract_ManagementDataSet;
+            this.driverBindingSource.ListChanged += new System.ComponentModel.ListChangedEventHandler(this.DriverBindingSource_ListChanged);
+            // 
             // GridViewCars
             // 
             this.GridViewCars.AllowShowFocusCues = true;
@@ -972,82 +1048,6 @@ namespace HotelApp
             this.companiesBindingSource.DataMember = "Companies";
             this.companiesBindingSource.DataSource = this.contract_ManagementDataSet;
             this.companiesBindingSource.ListChanged += new System.ComponentModel.ListChangedEventHandler(this.companiesBindingSource_ListChanged);
-            // 
-            // GridViewDriver
-            // 
-            this.GridViewDriver.AllowShowFocusCues = true;
-            this.GridViewDriver.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.GridViewDriver.EnableCodedUITests = true;
-            this.GridViewDriver.EnableCustomDrawing = true;
-            this.GridViewDriver.EnableCustomFiltering = true;
-            this.GridViewDriver.EnableCustomGrouping = true;
-            this.GridViewDriver.EnableCustomSorting = true;
-            this.GridViewDriver.EnableKeyMap = true;
-            this.GridViewDriver.EnableKineticScrolling = true;
-            this.GridViewDriver.Font = new System.Drawing.Font("Traditional Arabic", 14.25F, System.Drawing.FontStyle.Bold);
-            this.GridViewDriver.ImeMode = System.Windows.Forms.ImeMode.On;
-            this.GridViewDriver.Location = new System.Drawing.Point(309, 96);
-            this.GridViewDriver.Margin = new System.Windows.Forms.Padding(20, 3, 20, 3);
-            // 
-            // 
-            // 
-            this.GridViewDriver.MasterTemplate.AllowRowReorder = true;
-            this.GridViewDriver.MasterTemplate.AllowSearchRow = true;
-            this.GridViewDriver.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill;
-            gridViewDecimalColumn4.DataType = typeof(int);
-            gridViewDecimalColumn4.FieldName = "ID";
-            gridViewDecimalColumn4.HeaderText = "ID";
-            gridViewDecimalColumn4.IsAutoGenerated = true;
-            gridViewDecimalColumn4.IsVisible = false;
-            gridViewDecimalColumn4.Name = "ID";
-            gridViewDecimalColumn4.Width = 95;
-            gridViewTextBoxColumn9.FieldName = "DriverName";
-            gridViewTextBoxColumn9.HeaderText = "اسم السائق";
-            gridViewTextBoxColumn9.IsAutoGenerated = true;
-            gridViewTextBoxColumn9.Name = "DriverName";
-            gridViewTextBoxColumn9.Width = 227;
-            gridViewTextBoxColumn10.FieldName = "CardID";
-            gridViewTextBoxColumn10.HeaderText = "رقم البطاقة";
-            gridViewTextBoxColumn10.IsAutoGenerated = true;
-            gridViewTextBoxColumn10.Name = "CardID";
-            gridViewTextBoxColumn10.Width = 182;
-            gridViewTextBoxColumn11.FieldName = "Note";
-            gridViewTextBoxColumn11.HeaderText = "ملاحظات";
-            gridViewTextBoxColumn11.IsAutoGenerated = true;
-            gridViewTextBoxColumn11.Name = "Note";
-            gridViewTextBoxColumn11.Width = 280;
-            this.GridViewDriver.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
-            gridViewDecimalColumn4,
-            gridViewTextBoxColumn9,
-            gridViewTextBoxColumn10,
-            gridViewTextBoxColumn11});
-            this.GridViewDriver.MasterTemplate.DataSource = this.driverBindingSource;
-            this.GridViewDriver.MasterTemplate.EnableAlternatingRowColor = true;
-            this.GridViewDriver.MasterTemplate.EnableCustomFiltering = true;
-            this.GridViewDriver.MasterTemplate.EnableCustomGrouping = true;
-            this.GridViewDriver.MasterTemplate.EnableCustomSorting = true;
-            this.GridViewDriver.MasterTemplate.EnableFiltering = true;
-            this.GridViewDriver.MasterTemplate.EnablePaging = true;
-            this.GridViewDriver.MasterTemplate.ShowChildViewCaptions = true;
-            this.GridViewDriver.MasterTemplate.ShowFilteringRow = false;
-            this.GridViewDriver.MasterTemplate.ShowGroupedColumns = true;
-            this.GridViewDriver.MasterTemplate.ShowHeaderCellButtons = true;
-            this.GridViewDriver.MasterTemplate.ViewDefinition = tableViewDefinition2;
-            this.GridViewDriver.Name = "GridViewDriver";
-            this.GridViewDriver.ShowChildViewCaptions = true;
-            this.GridViewDriver.ShowHeaderCellButtons = true;
-            this.GridViewDriver.Size = new System.Drawing.Size(719, 429);
-            this.GridViewDriver.TabIndex = 7;
-            this.GridViewDriver.Visible = false;
-            this.GridViewDriver.UserAddedRow += new Telerik.WinControls.UI.GridViewRowEventHandler(this.GridViewDriver_UserAddedRow);
-            // 
-            // driverBindingSource
-            // 
-            this.driverBindingSource.DataMember = "Driver";
-            this.driverBindingSource.DataSource = this.contract_ManagementDataSet;
-            this.driverBindingSource.ListChanged += new System.ComponentModel.ListChangedEventHandler(this.DriverBindingSource_ListChanged);
             // 
             // radPanel3
             // 
@@ -1260,6 +1260,7 @@ namespace HotelApp
             this.ThemeName = "Material";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.HotelApp_Load);
+            this.Shown += new System.EventHandler(this.HotelAppForm_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.mainContainer)).EndInit();
             this.mainContainer.ResumeLayout(false);
             this.OverviewPage.ResumeLayout(false);
@@ -1302,15 +1303,15 @@ namespace HotelApp
             this.bookingInfoRightPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.radSeparator1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radBindingNavigator1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GridViewDriver.MasterTemplate)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GridViewDriver)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.driverBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.GridViewCars.MasterTemplate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.GridViewCars)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.carsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.GridViewCompanies.MasterTemplate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.GridViewCompanies)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.companiesBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.GridViewDriver.MasterTemplate)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.GridViewDriver)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.driverBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radPanel3)).EndInit();
             this.radPanel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.radButton4)).EndInit();

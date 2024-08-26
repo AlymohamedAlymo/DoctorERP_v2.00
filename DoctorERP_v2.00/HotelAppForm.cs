@@ -25,7 +25,7 @@ namespace HotelApp
     {
         #region Construction
         private bool ISNew = false;
-        private string FlyOutTypeReturn = string.Empty,FlyOutNoteReturn = string.Empty, FlyOutDriverReturn = string.Empty, FlyOutCartReturn = string.Empty, FlyOutCompanyReturn = string.Empty;
+        private string FlyOutTypeReturn = string.Empty,FlyOutNoteReturn = string.Empty, FlyOutDriverReturn = null, FlyOutCartReturn = null, FlyOutCompanyReturn = null;
         private DateTime FlyOutEndDateReturn;
         #endregion
 
@@ -131,7 +131,6 @@ namespace HotelApp
             this.radPanelEmptyOverview.RootElement.EnableElementShadow = false;
 
 
-
             this.radPanel3.BackgroundImage = DoctorERP_v2_00.Properties.Resources.fasha_no_borders;
             this.radPanel3.BackgroundImageLayout = ImageLayout.Stretch;
             this.radPanel3.PanelElement.PanelBorder.Visibility = ElementVisibility.Collapsed;
@@ -211,7 +210,6 @@ namespace HotelApp
         {
             RadTaskDialogPage page = new RadTaskDialogPage()
             {
-
                 Caption = " ",
                 Heading = Heading,
                 Text = Body,
@@ -223,11 +221,13 @@ namespace HotelApp
                 CommandAreaButtons = {
                     RadTaskDialogButton.Yes,
                     RadTaskDialogButton.No
-                }
+                },
+                                RightToLeftLayout = true,
 
             };
             page.CommandAreaButtons[0].Text = "نعم";
             page.CommandAreaButtons[1].Text = "لا";
+            page.CommandAreaButtons[0].Select();
             RadTaskDialogButton result = RadTaskDialog.ShowDialog(page, RadTaskDialogStartupLocation.CenterScreen);
             if (result == null || result == RadTaskDialogButton.No)
             {
@@ -255,6 +255,8 @@ namespace HotelApp
                 }
 
             };
+            page.CommandAreaButtons[0].Select();
+            page.CommandAreaButtons[0].Focus();
             page.CommandAreaButtons[0].Text = "موافق";
             RadTaskDialogButton result = RadTaskDialog.ShowDialog(page, RadTaskDialogStartupLocation.CenterScreen);
             return true;
@@ -287,18 +289,68 @@ namespace HotelApp
                 if (Period <= 15)
                 {
 
-                    if (this.contract_ManagementDataSet.Notifications.Any(u => u.ByanID == item.ID)) { return; }
+                    if (this.contract_ManagementDataSet.Notifications.Any(u => u.ByanID == item.ID)) { continue; }
 
                     int Result = notificationsTableAdapter.Insert(item.ID, item.EndDate, string.Empty);
 
                     if (Result > 0)
                     {
+                        this.notificationsTableAdapter.Fill(this.contract_ManagementDataSet.Notifications);
                         this.notificationViewTableAdapter.Fill(this.contract_ManagementDataSet.NotificationView);
+                        this.GridViewNotification.MasterTemplate.Refresh();
+                        NotificationGridLayout();
                         ShowNotification("تنبيه بإنتهاء بطاقة", $"البطاقة الخاصة بال{item.ParentType}  {item.ParentName} أوشكت علي الإنتهاء", $"البيان دخل حيز فترة الإخطار المحددة ب15 يوماً و سوف ينتهي التصريح بتاريخ {item.EndDate.ToString("yyyy/MM/dd)")} .");
                         ShowDesktopAlert("تنبيه بإنتهاء بطاقة", "البطاقة أوشكت علي الإنتهاء", $"البطاقة الخاصة بال{item.ParentType}  {item.ParentName} أوشكت علي الإنتهاء", $"البيان دخل حيز فترة الإخطار المحددة ب15 يوماً و سوف ينتهي التصريح بتاريخ {item.EndDate.ToString("yyyy/MM/dd)")} .");
 
                     }
                 }
+            }
+
+        }
+        private void NotificationGridLayout()
+        {
+            GridViewDateTimeColumn fromColumn = this.GridViewNotification.Columns["Byan_EndDate"] as GridViewDateTimeColumn;
+            fromColumn.Format = DateTimePickerFormat.Custom;
+            fromColumn.CustomFormat = "yyyy/MM/dd";
+            fromColumn.FormatString = "{0:yyyy/MM/dd}";
+
+            foreach (GridViewRowInfo row in GridViewNotification.Rows)
+            {
+                int Period = ((DateTime)row.Cells[7].Value - DateTime.Now).Days;
+                if (Period <= 0)
+                {
+                    if (row.Cells[3].Value.ToString() == "سائق")
+                    {
+                        row.Cells[0].Value = DoctorERP_v2_00.Properties.Resources.DriverRed_32;
+                    }
+                    else
+                    {
+                        row.Cells[0].Value = DoctorERP_v2_00.Properties.Resources.CarRed_32;
+
+                    }
+                    row.Cells[13].Value = "منذ " + -Period + " يوم";
+
+                    row.Cells[14].Value = "منتهي";
+
+                }
+                else
+                {
+                    if (row.Cells[3].Value.ToString() == "سائق")
+                    {
+                        row.Cells[0].Value = DoctorERP_v2_00.Properties.Resources.DriverOrange_32;
+                    }
+                    else
+                    {
+                        row.Cells[0].Value = DoctorERP_v2_00.Properties.Resources.CarOrange_32;
+
+                    }
+                    row.Cells[13].Value = "باقي " + Period + "يوم";
+
+                    row.Cells[14].Value = "أوشك";
+                }
+
+                row.Cells[12].Value = ((DateTime)row.Cells[7].Value).ToString("yyyy/MM/dd");
+
             }
 
         }
@@ -340,12 +392,12 @@ namespace HotelApp
                                 FlyOutTypeReturn = string.Empty;
                             }
 
-                            content.MCCDriverName.SelectedValue = int.Parse(FlyOutDriverReturn);
-                            FlyOutDriverReturn = string.Empty;
-                            content.MCCCarName.SelectedValue = FlyOutCartReturn;
-                            FlyOutCartReturn = string.Empty;
-                            content.MCCCompanyName.SelectedValue = FlyOutCompanyReturn;
-                            FlyOutCompanyReturn = string.Empty;
+                            if (FlyOutDriverReturn != null) { content.MCCDriverName.SelectedValue = int.Parse(FlyOutDriverReturn); }
+                            FlyOutDriverReturn = null;
+                            if (FlyOutCartReturn != null) { content.MCCCarName.SelectedValue = FlyOutCartReturn; }
+                            FlyOutCartReturn = null;
+                            if (FlyOutCompanyReturn != null) { content.MCCCompanyName.SelectedValue = FlyOutCompanyReturn; }
+                            FlyOutCompanyReturn = null;
                             content.DTPEndDate.Value = FlyOutEndDateReturn;
                             FlyOutEndDateReturn = DateTime.Now;
                             content.TXBNote.Text = FlyOutNoteReturn;
@@ -411,9 +463,9 @@ namespace HotelApp
                         if (contentFlyoutAddByanat.Result == DialogResult.No)
                         {
                             FlyOutTypeReturn = contentFlyoutAddByanat.CMBParentType.Text;
-                            if (FlyOutTypeReturn == "سائق") { FlyOutDriverReturn = contentFlyoutAddByanat.MCCDriverName.SelectedValue.ToString(); }
-                            if (FlyOutTypeReturn == "سيارة") { FlyOutCartReturn = contentFlyoutAddByanat.MCCCarName.SelectedValue.ToString(); }
-                            if (contentFlyoutAddByanat.MCCDriverName.SelectedValue != null) { FlyOutCompanyReturn = contentFlyoutAddByanat.MCCDriverName.SelectedValue.ToString(); }
+                            if (contentFlyoutAddByanat.MCCDriverName.SelectedValue != null) { FlyOutDriverReturn = contentFlyoutAddByanat.MCCDriverName.SelectedValue.ToString(); }
+                            if (contentFlyoutAddByanat.MCCCarName.SelectedValue != null) { FlyOutCartReturn = contentFlyoutAddByanat.MCCCarName.SelectedValue.ToString(); }
+                            if (contentFlyoutAddByanat.MCCCompanyName.SelectedValue != null) { FlyOutCompanyReturn = contentFlyoutAddByanat.MCCCompanyName.SelectedValue.ToString(); }
                             FlyOutEndDateReturn = contentFlyoutAddByanat.DTPEndDate.Value;
                             FlyOutNoteReturn = contentFlyoutAddByanat.TXBNote.Text;
 
@@ -425,20 +477,21 @@ namespace HotelApp
                             if (contentFlyoutAddByanat.CMBParentType.Text == "سائق")
                             {
                                 FlyOutTypeReturn = contentFlyoutAddByanat.CMBParentType.Text;
-                                if (FlyOutTypeReturn == "سائق") { FlyOutDriverReturn = contentFlyoutAddByanat.MCCDriverName.SelectedValue.ToString(); }
-                                if (FlyOutTypeReturn == "سيارة") { FlyOutCartReturn = contentFlyoutAddByanat.MCCCarName.SelectedValue.ToString(); }
-                                if (contentFlyoutAddByanat.MCCDriverName.SelectedValue != null) { FlyOutCompanyReturn = contentFlyoutAddByanat.MCCDriverName.SelectedValue.ToString(); }
+                                if (contentFlyoutAddByanat.MCCDriverName.SelectedValue != null) { FlyOutDriverReturn = contentFlyoutAddByanat.MCCDriverName.SelectedValue.ToString(); }
+                                if (contentFlyoutAddByanat.MCCCarName.SelectedValue != null) { FlyOutCartReturn = contentFlyoutAddByanat.MCCCarName.SelectedValue.ToString(); }
+                                if (contentFlyoutAddByanat.MCCCompanyName.SelectedValue != null) { FlyOutCompanyReturn = contentFlyoutAddByanat.MCCCompanyName.SelectedValue.ToString(); }
                                 FlyOutEndDateReturn = contentFlyoutAddByanat.DTPEndDate.Value;
                                 FlyOutNoteReturn = contentFlyoutAddByanat.TXBNote.Text;
+
                                 RadFlyoutManager.Show(this, typeof(FlyoutAddDriver));
 
                             }
                             else if (contentFlyoutAddByanat.CMBParentType.Text == "سيارة")
                             {
                                 FlyOutTypeReturn = contentFlyoutAddByanat.CMBParentType.Text;
-                                if (FlyOutTypeReturn == "سائق") { FlyOutDriverReturn = contentFlyoutAddByanat.MCCDriverName.SelectedValue.ToString(); }
-                                if (FlyOutTypeReturn == "سيارة") { FlyOutCartReturn = contentFlyoutAddByanat.MCCCarName.SelectedValue.ToString(); }
-                                if (contentFlyoutAddByanat.MCCDriverName.SelectedValue != null) { FlyOutCompanyReturn = contentFlyoutAddByanat.MCCDriverName.SelectedValue.ToString(); }
+                                if (contentFlyoutAddByanat.MCCDriverName.SelectedValue != null) { FlyOutDriverReturn = contentFlyoutAddByanat.MCCDriverName.SelectedValue.ToString(); }
+                                if (contentFlyoutAddByanat.MCCCarName.SelectedValue != null) { FlyOutCartReturn = contentFlyoutAddByanat.MCCCarName.SelectedValue.ToString(); }
+                                if (contentFlyoutAddByanat.MCCCompanyName.SelectedValue != null) { FlyOutCompanyReturn = contentFlyoutAddByanat.MCCCompanyName.SelectedValue.ToString(); }
                                 FlyOutEndDateReturn = contentFlyoutAddByanat.DTPEndDate.Value;
                                 FlyOutNoteReturn = contentFlyoutAddByanat.TXBNote.Text;
 
@@ -541,6 +594,7 @@ namespace HotelApp
                             if (Result > 0)
                             {
                                 this.driverTableAdapter.Fill(this.contract_ManagementDataSet.Driver);
+                                this.GridViewDriver.MasterTemplate.Refresh();
                                 ShowDesktopAlert("إضافة سائق", "تمت عملية إضافة السائق بنجاح", $"عملية إضافة السائق {contentFlyoutAddDriver.ParentName} تمت بنجاح", "تمت عملية إضافة السائق الجديد يمكن القيام بالعمليات عليه الأن.");
                                 RadCallout.Show(callout, this.radButton1, $"عملية إضافة السائق {contentFlyoutAddDriver.ParentName} تمت بنجاح", "تمت العملية بنجاح");
                             }
@@ -570,6 +624,7 @@ namespace HotelApp
                             if (Result > 0)
                             {
                                 this.carsTableAdapter.Fill(this.contract_ManagementDataSet.Cars);
+                                this.GridViewCars.MasterTemplate.Refresh();
                                 ShowDesktopAlert("إضافة سيارة", "تمت عملية إضافة السيارة بنجاح", $"عملية إضافة السيارة {contentFlyoutAddCar.ParentName} تمت بنجاح", "تمت عملية إضافة السيارة الجديد يمكن القيام بالعمليات عليها الأن");
                                 RadCallout.Show(callout, this.radButton1, $"عملية إضافة السيارة {contentFlyoutAddCar.ParentName} تمت بنجاح", "تمت العملية بنجاح");
                             }
@@ -599,6 +654,7 @@ namespace HotelApp
                             if (Result > 0)
                             {
                                 this.companiesTableAdapter.Fill(this.contract_ManagementDataSet.Companies);
+                                this.GridViewCompanies.MasterTemplate.Refresh();
                                 ShowDesktopAlert("إضافة شركة", "تمت عملية إضافة الشركة بنجاح", $"عملية إضافة الشركة  {contentFlyoutAddCompany.ParentName}  تمت بنجاح", "تمت عملية إضافة الشركة الجديد يمكن القيام بالعمليات عليها الأن");
                                 RadCallout.Show(callout, this.radButton1, $"عملية إضافة الشركة  {contentFlyoutAddCompany.ParentName}  تمت بنجاح", "تمت عملية الإضافة بنجاح");
                             }
@@ -702,6 +758,7 @@ namespace HotelApp
         private void DriverBindingSource_ListChanged(object sender, ListChangedEventArgs e)
         {
             RadCallout callout = new RadCallout();
+            
             callout.ArrowDirection = Telerik.WinControls.ArrowDirection.Right;
 
             if (e.ListChangedType == ListChangedType.ItemAdded)
@@ -719,14 +776,19 @@ namespace HotelApp
                 {
                     ShowDesktopAlert("إضافة سائق", "تمت عملية إضافة السائق بنجاح", $"عملية إضافة السائق {GridViewDriver.MasterView.TableAddNewRow.Cells[1].Value.ToString()} تمت بنجاح", "تمت عملية إضافة السائق الجديد يمكن القيام بالعمليات عليه الأن.");
                     RadCallout.Show(callout, GridViewDriver, $"عملية إضافة السائق {GridViewDriver.MasterView.TableAddNewRow.Cells[1].Value.ToString()} تمت بنجاح", "تمت العملية بنجاح");
+                    //GridViewDriver.DataSource = null;
                     this.driverTableAdapter.Fill(this.contract_ManagementDataSet.Driver);
-                    GridViewDriver.Refresh();
+                    ////GridViewDriver.DataSource = driverBindingSource;
+                    GridViewDriver.MasterView.Refresh();
+                    //GridViewDriver.MasterView.Refresh();
+                    //GridViewDriver.DataSource = 
                 }
                 else
                 {
                     RadCallout.Show(callout, this.GridViewDriver, "فشلت عملية إضافة السائق !", "فشلت العملية");
                 }
 
+                return;
             }
             else if (e.ListChangedType == ListChangedType.ItemChanged)
             {
@@ -744,6 +806,7 @@ namespace HotelApp
                     ShowDesktopAlert("تعديل سائق", "تمت عملية تعديل السائق", $"عملية تعديل السائق {GridViewDriver.Rows[e.NewIndex].Cells[1].Value.ToString()} تمت بنجاح", "تم تعديل السائق يمكن القيام بالعمليات عليه الأن.");
                     RadCallout.Show(callout, this.GridViewDriver, $"عملية تعديل السائق {GridViewDriver.Rows[e.NewIndex].Cells[1].Value.ToString()} تمت بنجاح", "تمت العملية بنجاح");
                     this.driverTableAdapter.Fill(this.contract_ManagementDataSet.Driver);
+                    GridViewDriver.MasterView.Refresh();
 
                 }
                 else
@@ -764,6 +827,7 @@ namespace HotelApp
                     ShowDesktopAlert("حذف سائق", "تمت عملية حذف السائق بنجاح", $"عملية حذف السائق {GridViewDriver.Rows[e.NewIndex].Cells[1].Value.ToString()} تمت بنجاح", "تمت عملية حذف السائق من قاعدة البيانات بنجاح.");
                     RadCallout.Show(callout, this.GridViewDriver, $"عملية حذف السائق {GridViewDriver.Rows[e.NewIndex].Cells[1].Value.ToString()} تمت بنجاح", "تمت العملية بنجاح");
                     this.driverTableAdapter.Fill(this.contract_ManagementDataSet.Driver);
+                    GridViewDriver.MasterView.Refresh();
 
                 }
                 else
@@ -795,6 +859,7 @@ namespace HotelApp
                     ShowDesktopAlert("إضافة سيارة", "تمت عملية إضافة السيارة بنجاح", $"عملية إضافة السيارة {GridViewCars.Rows[e.NewIndex].Cells[1].Value.ToString()} تمت بنجاح", "تمت عملية إضافة السيارة الجديد يمكن القيام بالعمليات عليه الأن.");
                     RadCallout.Show(callout, GridViewDriver, $"عملية إضافة السيارة {GridViewCars.Rows[e.NewIndex].Cells[1].Value.ToString()} تمت بنجاح", "تمت العملية بنجاح");
                     this.carsTableAdapter.Fill(this.contract_ManagementDataSet.Cars);
+                    GridViewCars.MasterView.Refresh();
 
                 }
                 else
@@ -819,6 +884,7 @@ namespace HotelApp
                     ShowDesktopAlert("تعديل سيارة", "تمت عملية تعديل السيارة", $"عملية تعديل السيارة {GridViewCars.Rows[e.NewIndex].Cells[1].Value.ToString()} تمت بنجاح", "تم تعديل السيارة يمكن القيام بالعمليات عليها الأن.");
                     RadCallout.Show(callout, this.GridViewCars, $"عملية تعديل السيارة {GridViewCars.Rows[e.NewIndex].Cells[1].Value.ToString()} تمت بنجاح", "تمت العملية بنجاح");
                     this.carsTableAdapter.Fill(this.contract_ManagementDataSet.Cars);
+                    GridViewCars.MasterView.Refresh();
 
 
                 }
@@ -840,6 +906,7 @@ namespace HotelApp
                     ShowDesktopAlert("حذف سيارة", "تمت عملية حذف السيارة بنجاح", $"عملية حذف السيارة {GridViewCars.Rows[e.NewIndex].Cells[1].Value.ToString()} تمت بنجاح", "تمت عملية حذف السيارة من قاعدة البيانات بنجاح.");
                     RadCallout.Show(callout, this.GridViewCars, $"عملية حذف السيارة {GridViewCars.Rows[e.NewIndex].Cells[1].Value.ToString()} تمت بنجاح", "تمت العملية بنجاح");
                     this.carsTableAdapter.Fill(this.contract_ManagementDataSet.Cars);
+                    GridViewCars.MasterView.Refresh();
 
 
                 }
@@ -872,6 +939,7 @@ namespace HotelApp
                     ShowDesktopAlert("إضافة شركة", "تمت عملية إضافة الشركة بنجاح", $"عملية إضافة الشركة {GridViewCompanies.Rows[e.NewIndex].Cells[1].Value.ToString()} تمت بنجاح", "تمت عملية إضافة الشركة الجديد يمكن القيام بالعمليات عليه الأن.");
                     RadCallout.Show(callout, GridViewCars, $"عملية إضافة الشركة {GridViewCompanies.Rows[e.NewIndex].Cells[1].Value.ToString()} تمت بنجاح", "تمت العملية بنجاح");
                     this.companiesTableAdapter.Fill(this.contract_ManagementDataSet.Companies);
+                    GridViewCompanies.MasterView.Refresh();
 
                 }
                 else
@@ -896,6 +964,7 @@ namespace HotelApp
                     ShowDesktopAlert("تعديل شركة", "تمت عملية تعديل الشركة", $"عملية تعديل الشركة {GridViewCompanies.Rows[e.NewIndex].Cells[1].Value.ToString()} تمت بنجاح", "تم تعديل الشركة يمكن القيام بالعمليات عليها الأن.");
                     RadCallout.Show(callout, this.GridViewCars, $"عملية تعديل الشركة {GridViewCompanies.Rows[e.NewIndex].Cells[1].Value.ToString()} تمت بنجاح", "تمت العملية بنجاح");
                     this.companiesTableAdapter.Fill(this.contract_ManagementDataSet.Companies);
+                    GridViewCompanies.MasterView.Refresh();
 
                 }
                 else
@@ -916,6 +985,7 @@ namespace HotelApp
                     ShowDesktopAlert("حذف شركة", "تمت عملية حذف الشركة بنجاح", $"عملية حذف الشركة {GridViewCompanies.Rows[e.NewIndex].Cells[1].Value.ToString()} تمت بنجاح", "تمت عملية حذف الشركة من قاعدة البيانات بنجاح.");
                     RadCallout.Show(callout, this.GridViewCars, $"عملية حذف الشركة {GridViewCompanies.Rows[e.NewIndex].Cells[1].Value.ToString()} تمت بنجاح", "تمت العملية بنجاح");
                     this.companiesTableAdapter.Fill(this.contract_ManagementDataSet.Companies);
+                    GridViewCompanies.MasterView.Refresh();
 
                 }
                 else
@@ -930,6 +1000,7 @@ namespace HotelApp
 
 
         #endregion
+
 
         #region Form Events
         private void HotelApp_Load(object sender, EventArgs e)
@@ -978,44 +1049,7 @@ namespace HotelApp
 
             ByanatView.SelectedItem = null;
 
-            foreach (GridViewRowInfo row in GridViewNotification.Rows)
-            {
-                int Period = ((DateTime)row.Cells[7].Value - DateTime.Now).Days;
-                if (Period <= 0)
-                {
-                    if (row.Cells[3].Value.ToString() == "سائق") 
-                    {
-                        row.Cells[0].Value = DoctorERP_v2_00.Properties.Resources.DriverRed_32;
-                    }
-                    else
-                    {
-                        row.Cells[0].Value = DoctorERP_v2_00.Properties.Resources.CarRed_32;
-
-                    }
-                    row.Cells[13].Value = "منذ "+ -Period + " يوم";
-
-                    row.Cells[14].Value = "منتهي";
-
-                }
-                else
-                {
-                    if (row.Cells[3].Value.ToString() == "سائق")
-                    {
-                        row.Cells[0].Value = DoctorERP_v2_00.Properties.Resources.DriverOrange_32;
-                    }
-                    else
-                    {
-                        row.Cells[0].Value = DoctorERP_v2_00.Properties.Resources.CarOrange_32;
-
-                    }
-                    row.Cells[13].Value = "باقي " + Period + "يوم";
-
-                    row.Cells[14].Value = "أوشك";
-                }
-
-                row.Cells[12].Value = ((DateTime)row.Cells[7].Value).ToString("yyyy/MM/dd");
-
-            }
+            NotificationGridLayout();
 
             GridViewDriver.Visible = true;
             GridViewCars.Visible = false;
@@ -1036,7 +1070,51 @@ namespace HotelApp
 
             editGuestInfo.idTextBox.DataBindings.Add(idControlBinding);
 
-            NotificationMethod();
+            this.GridViewDriver.AutoGenerateHierarchy = true;
+            this.GridViewDriver.TableElement.CellSpacing = 10;
+            this.GridViewDriver.RootElement.EnableElementShadow = false;
+            this.GridViewDriver.GridViewElement.DrawFill = false;
+            this.GridViewDriver.TableElement.Margin = new Padding(15, 0, 15, 0);
+            this.GridViewDriver.BackColor = Color.Transparent;
+            this.GridViewDriver.GridViewElement.DrawFill = true;
+            this.GridViewDriver.AutoSizeColumnsMode = GridViewAutoSizeColumnsMode.Fill;
+            foreach (GridViewDataColumn col in this.GridViewDriver.Columns)
+            {
+                col.TextAlignment = ContentAlignment.MiddleLeft;
+                col.HeaderTextAlignment = ContentAlignment.MiddleLeft;
+            }
+
+            this.GridViewCars.AutoGenerateHierarchy = true;
+            this.GridViewCars.TableElement.CellSpacing = 10;
+            this.GridViewCars.RootElement.EnableElementShadow = false;
+            this.GridViewCars.GridViewElement.DrawFill = false;
+            this.GridViewCars.TableElement.Margin = new Padding(15, 0, 15, 0);
+            this.GridViewCars.BackColor = Color.Transparent;
+            this.GridViewCars.GridViewElement.DrawFill = true;
+            this.GridViewCars.AutoSizeColumnsMode = GridViewAutoSizeColumnsMode.Fill;
+            foreach (GridViewDataColumn col in this.GridViewCars.Columns)
+            {
+                col.TextAlignment = ContentAlignment.MiddleLeft;
+                col.HeaderTextAlignment = ContentAlignment.MiddleLeft;
+            }
+
+            this.GridViewCompanies.AutoGenerateHierarchy = true;
+            this.GridViewCompanies.TableElement.CellSpacing = 10;
+            this.GridViewCompanies.RootElement.EnableElementShadow = false;
+            this.GridViewCompanies.GridViewElement.DrawFill = false;
+            this.GridViewCompanies.TableElement.Margin = new Padding(15, 0, 15, 0);
+            this.GridViewCompanies.BackColor = Color.Transparent;
+            this.GridViewCompanies.GridViewElement.DrawFill = true;
+            this.GridViewCompanies.AutoSizeColumnsMode = GridViewAutoSizeColumnsMode.Fill;
+            foreach (GridViewDataColumn col in this.GridViewCompanies.Columns)
+            {
+                col.TextAlignment = ContentAlignment.MiddleLeft;
+                col.HeaderTextAlignment = ContentAlignment.MiddleLeft;
+            }
+
+            //this.GridViewDriver.AutoGenerateHierarchy = true;
+            //this.GridViewDriver.DataSource = ds;
+           // this.GridViewDriver.DataMember = "DriverName";
 
         }
 
@@ -1249,6 +1327,12 @@ namespace HotelApp
             NotificationMethod();
         }
 
+        private void HotelAppForm_Shown(object sender, EventArgs e)
+        {
+            TmrStatic.Start();
+
+        }
+
         #endregion
 
         #region Search
@@ -1310,16 +1394,17 @@ namespace HotelApp
         private void GridViewDriver_UserAddedRow(object sender, GridViewRowEventArgs e)
         {
             DataRow[] rows = new DataRow[e.Rows.Length];
-            for (int i = 0; i < e.Rows.Length; i++)
-            {
-                DataRowView dataRowView = e.Rows[i].DataBoundItem as DataRowView;
-                if (dataRowView != null)
-                {
-                    rows[i] = dataRowView.Row;
-                }
-            }
+            //for (int i = 0; i < e.Rows.Length; i++)
+            //{
+            //    DataRowView dataRowView = e.Rows[i].DataBoundItem as DataRowView;
+            //    if (dataRowView != null)
+            //    {
+            //        rows[i] = dataRowView.Row;
+            //    }
+            //}
             //this.employeesTableAdapter.Update(rows);
         }
+
 
 
         #endregion

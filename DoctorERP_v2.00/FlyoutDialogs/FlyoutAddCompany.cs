@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using Telerik.WinControls.UI;
 using Telerik.WinControls;
 
-namespace DoctorERP_v2_00.FlyoutDialogs
+namespace Contract_Management.FlyoutDialogs
 {
     public partial class FlyoutAddCompany : UserControl
     {

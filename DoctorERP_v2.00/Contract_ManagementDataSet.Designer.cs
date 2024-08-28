@@ -10,7 +10,7 @@
 
 #pragma warning disable 1591
 
-namespace DoctorERP_v2_00 {
+namespace Contract_Management {
     
     
     /// <summary>
@@ -3579,7 +3579,7 @@ namespace DoctorERP_v2_00 {
         }
     }
 }
-namespace DoctorERP_v2_00.Contract_ManagementDataSetTableAdapters {
+namespace Contract_Management.Contract_ManagementDataSetTableAdapters {
     
     
     /// <summary>
@@ -3764,7 +3764,7 @@ namespace DoctorERP_v2_00.Contract_ManagementDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.OleDb.OleDbConnection();
-            this._connection.ConnectionString = global::DoctorERP_v2_00.Properties.Settings.Default.Contract_ManagementConnectionString;
+            this._connection.ConnectionString = global::Contract_Management.Properties.Settings.Default.Contract_ManagementConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4212,7 +4212,7 @@ namespace DoctorERP_v2_00.Contract_ManagementDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.OleDb.OleDbConnection();
-            this._connection.ConnectionString = global::DoctorERP_v2_00.Properties.Settings.Default.Contract_ManagementConnectionString;
+            this._connection.ConnectionString = global::Contract_Management.Properties.Settings.Default.Contract_ManagementConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4576,7 +4576,7 @@ namespace DoctorERP_v2_00.Contract_ManagementDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.OleDb.OleDbConnection();
-            this._connection.ConnectionString = global::DoctorERP_v2_00.Properties.Settings.Default.Contract_ManagementConnectionString;
+            this._connection.ConnectionString = global::Contract_Management.Properties.Settings.Default.Contract_ManagementConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4939,7 +4939,7 @@ namespace DoctorERP_v2_00.Contract_ManagementDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.OleDb.OleDbConnection();
-            this._connection.ConnectionString = global::DoctorERP_v2_00.Properties.Settings.Default.Contract_ManagementConnectionString;
+            this._connection.ConnectionString = global::Contract_Management.Properties.Settings.Default.Contract_ManagementConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5302,7 +5302,7 @@ namespace DoctorERP_v2_00.Contract_ManagementDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.OleDb.OleDbConnection();
-            this._connection.ConnectionString = global::DoctorERP_v2_00.Properties.Settings.Default.Contract_ManagementConnectionString;
+            this._connection.ConnectionString = global::Contract_Management.Properties.Settings.Default.Contract_ManagementConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5641,7 +5641,7 @@ namespace DoctorERP_v2_00.Contract_ManagementDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.OleDb.OleDbConnection();
-            this._connection.ConnectionString = global::DoctorERP_v2_00.Properties.Settings.Default.Contract_ManagementConnectionString;
+            this._connection.ConnectionString = global::Contract_Management.Properties.Settings.Default.Contract_ManagementConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

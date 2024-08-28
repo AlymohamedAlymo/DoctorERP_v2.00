@@ -1,9 +1,8 @@
-﻿using CustomControls;
-using Telerik.WinControls.UI;
+﻿using Telerik.WinControls.UI;
 
-namespace HotelApp
+namespace Contract_Management
 {
-    partial class HotelAppForm
+    partial class AppForm
     {
         /// <summary>
         /// Required designer variable.
@@ -48,7 +47,7 @@ namespace HotelApp
             Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn7 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
             Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn8 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
             Telerik.WinControls.UI.TableViewDefinition tableViewDefinition1 = new Telerik.WinControls.UI.TableViewDefinition();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HotelAppForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AppForm));
             Telerik.WinControls.UI.GridViewDecimalColumn gridViewDecimalColumn4 = new Telerik.WinControls.UI.GridViewDecimalColumn();
             Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn9 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
             Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn10 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
@@ -74,7 +73,7 @@ namespace HotelApp
             this.idSeparator = new Telerik.WinControls.UI.RadSeparator();
             this.GridViewNotification = new Telerik.WinControls.UI.RadGridView();
             this.notificationViewBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.contract_ManagementDataSet = new DoctorERP_v2_00.Contract_ManagementDataSet();
+            this.contract_ManagementDataSet = new Contract_Management.Contract_ManagementDataSet();
             this.ByanatView = new Telerik.WinControls.UI.RadListView();
             this.radPanel1 = new Telerik.WinControls.UI.RadPanel();
             this.CompaniesView = new Telerik.WinControls.UI.RadListView();
@@ -95,7 +94,7 @@ namespace HotelApp
             this.labelBookings = new Telerik.WinControls.UI.RadLabel();
             this.bookingInfoRightPanel = new Telerik.WinControls.UI.RadPanel();
             this.radSeparator1 = new Telerik.WinControls.UI.RadSeparator();
-            this.editGuestInfo = new CustomControls.EditGuestInfo();
+            this.editGuestInfo = new Contract_Management.CustomControls.EditInfo();
             this.radBindingNavigator1 = new Telerik.WinControls.UI.RadBindingNavigator();
             this.commandBarRowElement1 = new Telerik.WinControls.UI.CommandBarRowElement();
             this.commandBarStripElement1 = new Telerik.WinControls.UI.CommandBarStripElement();
@@ -136,13 +135,13 @@ namespace HotelApp
             this.radToastNotificationManager1 = new Telerik.WinControls.UI.RadToastNotificationManager(this.components);
             this.TmrStatic = new System.Windows.Forms.Timer(this.components);
             this.byanBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.byanTableAdapter = new DoctorERP_v2_00.Contract_ManagementDataSetTableAdapters.ByanTableAdapter();
-            this.carsTableAdapter = new DoctorERP_v2_00.Contract_ManagementDataSetTableAdapters.CarsTableAdapter();
-            this.companiesTableAdapter = new DoctorERP_v2_00.Contract_ManagementDataSetTableAdapters.CompaniesTableAdapter();
-            this.driverTableAdapter = new DoctorERP_v2_00.Contract_ManagementDataSetTableAdapters.DriverTableAdapter();
-            this.notificationViewTableAdapter = new DoctorERP_v2_00.Contract_ManagementDataSetTableAdapters.NotificationViewTableAdapter();
+            this.byanTableAdapter = new Contract_Management.Contract_ManagementDataSetTableAdapters.ByanTableAdapter();
+            this.carsTableAdapter = new Contract_Management.Contract_ManagementDataSetTableAdapters.CarsTableAdapter();
+            this.companiesTableAdapter = new Contract_Management.Contract_ManagementDataSetTableAdapters.CompaniesTableAdapter();
+            this.driverTableAdapter = new Contract_Management.Contract_ManagementDataSetTableAdapters.DriverTableAdapter();
+            this.notificationViewTableAdapter = new Contract_Management.Contract_ManagementDataSetTableAdapters.NotificationViewTableAdapter();
             this.notificationsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.notificationsTableAdapter = new DoctorERP_v2_00.Contract_ManagementDataSetTableAdapters.NotificationsTableAdapter();
+            this.notificationsTableAdapter = new Contract_Management.Contract_ManagementDataSetTableAdapters.NotificationsTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.mainContainer)).BeginInit();
             this.mainContainer.SuspendLayout();
             this.OverviewPage.SuspendLayout();
@@ -541,7 +540,7 @@ namespace HotelApp
             // 
             // radButton1
             // 
-            this.radButton1.Image = global::DoctorERP_v2_00.Properties.Resources.plus;
+            this.radButton1.Image = global::Contract_Management.Properties.Resources.plus;
             this.radButton1.Location = new System.Drawing.Point(27, 12);
             this.radButton1.Name = "radButton1";
             this.radButton1.Size = new System.Drawing.Size(120, 36);
@@ -811,6 +810,7 @@ namespace HotelApp
             this.commandBarButton5.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
             this.commandBarButton5.Name = "commandBarButton5";
             this.commandBarButton5.SvgImageXml = resources.GetString("commandBarButton5.SvgImageXml");
+            this.commandBarButton5.Click += new System.EventHandler(this.commandBarButton5_Click);
             // 
             // commandBarSeparator5
             // 
@@ -892,6 +892,9 @@ namespace HotelApp
             this.GridViewCompanies.Size = new System.Drawing.Size(719, 429);
             this.GridViewCompanies.TabIndex = 6;
             this.GridViewCompanies.Visible = false;
+            this.GridViewCompanies.UserAddingRow += new Telerik.WinControls.UI.GridViewRowCancelEventHandler(this.GridViewCompanies_UserAddingRow);
+            this.GridViewCompanies.UserAddedRow += new Telerik.WinControls.UI.GridViewRowEventHandler(this.GridViewCompanies_UserAddedRow);
+            this.GridViewCompanies.Click += new System.EventHandler(this.GridViewCompanies_Click);
             // 
             // companiesBindingSource
             // 
@@ -1065,7 +1068,7 @@ namespace HotelApp
             // 
             // radButton4
             // 
-            this.radButton4.Image = global::DoctorERP_v2_00.Properties.Resources.plus;
+            this.radButton4.Image = global::Contract_Management.Properties.Resources.plus;
             this.radButton4.Location = new System.Drawing.Point(6, 12);
             this.radButton4.Name = "radButton4";
             this.radButton4.Size = new System.Drawing.Size(120, 36);
@@ -1077,7 +1080,7 @@ namespace HotelApp
             // 
             // radButton5
             // 
-            this.radButton5.Image = global::DoctorERP_v2_00.Properties.Resources.plus;
+            this.radButton5.Image = global::Contract_Management.Properties.Resources.plus;
             this.radButton5.Location = new System.Drawing.Point(152, 12);
             this.radButton5.Name = "radButton5";
             this.radButton5.Size = new System.Drawing.Size(120, 36);
@@ -1171,13 +1174,13 @@ namespace HotelApp
             // radDesktopAlert1
             // 
             this.radDesktopAlert1.AutoSize = true;
-            this.radDesktopAlert1.CanMove = false;
             this.radDesktopAlert1.ContentImage = ((System.Drawing.Image)(resources.GetObject("radDesktopAlert1.ContentImage")));
             this.radDesktopAlert1.FadeAnimationFrames = 20;
             this.radDesktopAlert1.FadeAnimationType = Telerik.WinControls.UI.FadeAnimationType.None;
             this.radDesktopAlert1.Opacity = 0.9F;
             this.radDesktopAlert1.PopupAnimation = false;
             this.radDesktopAlert1.PopupAnimationFrames = 10;
+            this.radDesktopAlert1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.radDesktopAlert1.ScreenPosition = Telerik.WinControls.UI.AlertScreenPosition.TopCenter;
             this.radDesktopAlert1.ShowOptionsButton = false;
             this.radDesktopAlert1.ShowPinButton = false;
@@ -1350,21 +1353,18 @@ namespace HotelApp
         private Telerik.WinControls.UI.RadLabel labelBookings;
         private Telerik.WinControls.UI.RadPanel overviewMainContainer;
         private Telerik.WinControls.UI.RadPanel bookingInfoRightPanel;
-        private EditGuestInfo editGuestInfo;
+        private Contract_Management.CustomControls.EditInfo editGuestInfo;
         private Telerik.WinControls.Themes.MaterialTealTheme materialTealTheme1;
         private Telerik.WinControls.Themes.MaterialPinkTheme materialPinkTheme1;
         private Telerik.WinControls.Themes.MaterialBlueGreyTheme materialBlueGreyTheme1;
         private RadToolbarFormControl radToolbarFormControl1;
         private RadToolbarFormControl radToolbarFormControl2;
         private RadButton radButton1;
-        private DoctorERP_v2_00.Contract_ManagementDataSet contract_ManagementDataSet;
-        private DoctorERP_v2_00.Contract_ManagementDataSetTableAdapters.ByanTableAdapter byanTableAdapter;
-        private System.Windows.Forms.BindingSource carsBindingSource;
-        private DoctorERP_v2_00.Contract_ManagementDataSetTableAdapters.CarsTableAdapter carsTableAdapter;
-        private System.Windows.Forms.BindingSource companiesBindingSource;
-        private DoctorERP_v2_00.Contract_ManagementDataSetTableAdapters.CompaniesTableAdapter companiesTableAdapter;
-        private System.Windows.Forms.BindingSource driverBindingSource;
-        private DoctorERP_v2_00.Contract_ManagementDataSetTableAdapters.DriverTableAdapter driverTableAdapter;
+        private Contract_Management.Contract_ManagementDataSet contract_ManagementDataSet;
+        private Contract_Management.Contract_ManagementDataSetTableAdapters.ByanTableAdapter byanTableAdapter;
+        private Contract_Management.Contract_ManagementDataSetTableAdapters.CarsTableAdapter carsTableAdapter;
+        private Contract_Management.Contract_ManagementDataSetTableAdapters.CompaniesTableAdapter companiesTableAdapter;
+        private Contract_Management.Contract_ManagementDataSetTableAdapters.DriverTableAdapter driverTableAdapter;
         private RadGridView GridViewNotification;
         private RadPanel radPanel1;
         private RadCheckBox CheckBoxDrivers;
@@ -1398,7 +1398,7 @@ namespace HotelApp
         private CommandBarButton commandBarButton6;
         private RadSeparator radSeparator1;
         private System.Windows.Forms.BindingSource notificationViewBindingSource;
-        private DoctorERP_v2_00.Contract_ManagementDataSetTableAdapters.NotificationViewTableAdapter notificationViewTableAdapter;
+        private Contract_Management.Contract_ManagementDataSetTableAdapters.NotificationViewTableAdapter notificationViewTableAdapter;
         private RadRadioButton RadioButtonCars;
         private RadRadioButton RadioButtonDriver;
         private RadRadioButton RadioButtonCompanies;
@@ -1412,7 +1412,10 @@ namespace HotelApp
         private RadDesktopAlert radDesktopAlert1;
         private RadToastNotificationManager radToastNotificationManager1;
         private System.Windows.Forms.BindingSource notificationsBindingSource;
-        private DoctorERP_v2_00.Contract_ManagementDataSetTableAdapters.NotificationsTableAdapter notificationsTableAdapter;
+        private Contract_Management.Contract_ManagementDataSetTableAdapters.NotificationsTableAdapter notificationsTableAdapter;
         private System.Windows.Forms.Timer TmrStatic;
+        public System.Windows.Forms.BindingSource carsBindingSource;
+        public System.Windows.Forms.BindingSource companiesBindingSource;
+        public System.Windows.Forms.BindingSource driverBindingSource;
     }
 }

@@ -1,11 +1,10 @@
-﻿using HotelApp.Data;
-using System;
+﻿using System;
 using System.Drawing;
 using Telerik.WinControls.UI;
 
-namespace HotelApp
+namespace Contract_Management
 {
-    public class OptionsSimpleListViewVisualItem : SimpleListViewVisualItem
+    public class CompanySimpleListViewVisualItem : SimpleListViewVisualItem
     {
         protected override Type ThemeEffectiveType
         {
@@ -64,19 +63,27 @@ namespace HotelApp
         {
             base.SynchronizeProperties();
 
+
             this.DrawText = false;
             this.ToggleElement.Text = this.Text;
 
-            this.ToggleElement.CustomFont = Utils.MainFont;
+            //this.ToggleElement.CustomFont = Utils.MainFont;
             this.ToggleElement.CustomFontSize = 11.5f;
 
             int[] ints = this.dataItem.Tag as int[];
 
-            this.DrivercountElement.CustomFont = Utils.MainFont;
+            if (ints == null)
+            {
+                return;
+            }
+
+            //this.DrivercountElement.CustomFont = Utils.MainFont;
             this.DrivercountElement.CustomFontSize = 11.5f;
             this.DrivercountElement.CustomFontStyle = FontStyle.Bold;
+
             this.DrivercountElement.Text = ints[0].ToString();
-            this.DrivercountImage.Image = DoctorERP_v2_00.Properties.Resources.Car_40;
+
+            this.DrivercountImage.Image = Contract_Management.Properties.Resources.Car_40;
             this.DrivercountImage.ImageAlignment = ContentAlignment.MiddleCenter;
             this.DrivercountElement.ForeColor = Color.DimGray;
             this.DrivercountElement.Margin = new System.Windows.Forms.Padding(0, 8, 0, 0);
@@ -84,14 +91,14 @@ namespace HotelApp
 
 
 
-            this.CarscountElement.CustomFont = Utils.MainFont;
+            //this.CarscountElement.CustomFont = Utils.MainFont;
             this.CarscountElement.CustomFontSize = 11.5f;
             this.CarscountElement.CustomFontStyle = FontStyle.Bold;
             this.CarscountElement.Text = ints[1].ToString();
             this.CarscountElement.ForeColor = Color.DimGray;
             this.CarscountElement.ImageAlignment = ContentAlignment.MiddleCenter;
 
-            this.CarscountImage.Image = DoctorERP_v2_00.Properties.Resources.Driver_40;
+            this.CarscountImage.Image = Contract_Management.Properties.Resources.Driver_40;
             this.CarscountElement.Margin = new System.Windows.Forms.Padding(0, 8, 0, 0);
             this.CarscountImage.Margin = new System.Windows.Forms.Padding(0, 8, 0, 0);
 
@@ -117,14 +124,14 @@ namespace HotelApp
 
             RadLabelElement element = new RadLabelElement();
             element.Text = " عدد السيارات : " + ints[0].ToString();
-            element.Image = DoctorERP_v2_00.Properties.Resources.Car_40;
+            element.Image = Contract_Management.Properties.Resources.Car_40;
             element.ImageAlignment = ContentAlignment.MiddleRight;
             element.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             verticalContainer.Children.Add(element);
 
             RadLabelElement element2 = new RadLabelElement();
             element2.Text = " عدد السائقين : " + ints[1].ToString();
-            element2.Image = DoctorERP_v2_00.Properties.Resources.Driver_40;
+            element2.Image = Contract_Management.Properties.Resources.Driver_40;
             element2.ImageAlignment = ContentAlignment.MiddleRight;
 
             element2.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;

@@ -1,13 +1,15 @@
-﻿using DoctorERP_v2_00.Dialogs;
-using DoctorERP_v2_00.FlyoutDialogs;
+﻿using Contract_Management.Dialogs;
+using Contract_Management.FlyoutDialogs;
 using DoctorHelper.Helpers;
 using DoctorHelper.Reports;
 using Helper.Helpers;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Windows.Forms;
 using Telerik.WinControls;
@@ -17,20 +19,20 @@ using Telerik.WinControls.Primitives;
 using Telerik.WinControls.UI;
 using Telerik.WinControls.UI.Localization;
 using Telerik.WinControls.UI.SplashScreen;
-using static DoctorERP_v2_00.Contract_ManagementDataSet;
+using static Contract_Management.Contract_ManagementDataSet;
 
-namespace HotelApp
+namespace Contract_Management
 {
-    partial class HotelAppForm : RadToolbarForm
+    partial class AppForm : RadToolbarForm
     {
         #region Construction
-        private bool ISNew = false, IsGrid = false, IsUpdate = false;
+        private bool ISNew = false, IsGrid = false, IsUpdate = false, isload = false;
         private string FlyOutTypeReturn = string.Empty,FlyOutNoteReturn = string.Empty, FlyOutDriverReturn = null, FlyOutCartReturn = null, FlyOutCompanyReturn = null;
         private DateTime FlyOutEndDateReturn;
         #endregion
 
         #region Initialization
-        public HotelAppForm()
+        public AppForm()
         {
 
             System.Globalization.CultureInfo cultureInfo = new System.Globalization.CultureInfo("ar-EG");
@@ -56,8 +58,8 @@ namespace HotelApp
             stripElement.ItemContainer.ButtonsPanel.Margin = new System.Windows.Forms.Padding(0, 0, 20, 0);
             themesDropDown.Items.AddRange(new RadListDataItem[]
             {
-                new RadListDataItem("Material") { Image = DoctorERP_v2_00.Properties.Resources.default_small }, new RadListDataItem("MaterialPink") { Image = DoctorERP_v2_00.Properties.Resources.pink_blue_small },
-                new RadListDataItem("MaterialTeal") { Image = DoctorERP_v2_00.Properties.Resources.teal_red_small }, new RadListDataItem("MaterialBlueGrey") { Image = DoctorERP_v2_00.Properties.Resources.blue_grey_green_small }
+                new RadListDataItem("Material") { Image = Contract_Management.Properties.Resources.default_small }, new RadListDataItem("MaterialPink") { Image = Contract_Management.Properties.Resources.pink_blue_small },
+                new RadListDataItem("MaterialTeal") { Image = Contract_Management.Properties.Resources.teal_red_small }, new RadListDataItem("MaterialBlueGrey") { Image = Contract_Management.Properties.Resources.blue_grey_green_small }
             });
             themesDropDown.SelectedIndex = 0;
             themesDropDown.SelectedIndexChanged += delegate (object sender, Telerik.WinControls.UI.Data.PositionChangedEventArgs e)
@@ -85,7 +87,7 @@ namespace HotelApp
             searchContainerOverview.RootElement.EnableElementShadow = false;
 
             this.overviewMainContainer.PanelElement.PanelBorder.Visibility = ElementVisibility.Collapsed;
-            this.navigationPanelOverview.BackgroundImage = DoctorERP_v2_00.Properties.Resources.fasha_no_borders;
+            this.navigationPanelOverview.BackgroundImage = Contract_Management.Properties.Resources.fasha_no_borders;
             this.navigationPanelOverview.BackgroundImageLayout = ImageLayout.Stretch;
             this.navigationPanelOverview.PanelElement.PanelBorder.Visibility = ElementVisibility.Collapsed;
 
@@ -121,17 +123,17 @@ namespace HotelApp
             this.ByanatView.ListViewElement.Padding = new Padding(-9, 0, 0, 0);
 
             this.ByanatView.RootElement.EnableElementShadow = false;
-            this.overviewMainContainer.BackgroundImage = DoctorERP_v2_00.Properties.Resources.Background;
+            this.overviewMainContainer.BackgroundImage = Contract_Management.Properties.Resources.Background;
             this.overviewMainContainer.BackgroundImageLayout = ImageLayout.Stretch;
             this.overviewMainContainer.PanelElement.PanelFill.Visibility = ElementVisibility.Collapsed;
             this.bookingsMainContainer.PanelElement.PanelFill.Visibility = ElementVisibility.Hidden;
-            this.bookingsMainContainer.BackgroundImage = DoctorERP_v2_00.Properties.Resources.Background;
+            this.bookingsMainContainer.BackgroundImage = Contract_Management.Properties.Resources.Background;
             this.bookingsMainContainer.BackgroundImageLayout = ImageLayout.Stretch;
 
             this.radPanelEmptyOverview.RootElement.EnableElementShadow = false;
 
 
-            this.radPanel3.BackgroundImage = DoctorERP_v2_00.Properties.Resources.fasha_no_borders;
+            this.radPanel3.BackgroundImage = Contract_Management.Properties.Resources.fasha_no_borders;
             this.radPanel3.BackgroundImageLayout = ImageLayout.Stretch;
             this.radPanel3.PanelElement.PanelBorder.Visibility = ElementVisibility.Collapsed;
 
@@ -152,7 +154,7 @@ namespace HotelApp
             this.radLabel4.TextAlignment = ContentAlignment.TopLeft;
 
             this.labelBookings.TextAlignment = ContentAlignment.MiddleLeft;
-            editGuestInfo.guestInfoLabel.TextAlignment = ContentAlignment.MiddleLeft;
+            //editGuestInfo.guestInfoLabel.TextAlignment = ContentAlignment.MiddleLeft;
 
 
             this.ByanatView.VisualItemCreating += View_VisualItemCreating;
@@ -172,12 +174,12 @@ namespace HotelApp
             GridViewCars.TableElement.UpdateView();
 
             this.RadioButtonDriver.CheckState = CheckState.Checked;
-            this.editGuestInfo.idTextBox.NullText = "ادخل رقم البطاقة";
-            this.editGuestInfo.nameTextBox.NullText = "ادخل اسم السائق";
-            this.editGuestInfo.noteTextBox.NullText = "ادخل الملاحظات أن وجدت";
+            //this.editGuestInfo.idTextBox.NullText = "ادخل رقم البطاقة";
+            //this.editGuestInfo.nameTextBox.NullText = "ادخل اسم السائق";
+            //this.editGuestInfo.noteTextBox.NullText = "ادخل الملاحظات أن وجدت";
 
-            this.editGuestInfo.idLabel.Text = "رقم البطاقة";
-            this.editGuestInfo.nameLabel.Text = "اسم السائق";
+            //this.editGuestInfo.idLabel.Text = "رقم البطاقة";
+            //this.editGuestInfo.nameLabel.Text = "اسم السائق";
 
             GridViewDriver.Visible = true;
             GridViewNotification.TableElement.TableHeaderHeight = 30;
@@ -285,17 +287,26 @@ namespace HotelApp
             ContentHighlight = TextHelper.ReverseText(ContentHighlight);
             Footer = TextHelper.ReverseText(Footer);
 
-            radDesktopAlert1.RightToLeft = RightToLeft.Yes;
-            radDesktopAlert1.CaptionText = "<html><b>\n" + Header;
-            radDesktopAlert1.ContentText = "<html><i>" +
+            RadDesktopAlert MyDesktopAlert = new Telerik.WinControls.UI.RadDesktopAlert(this.components)
+            {
+                AutoSize = true,
+                ContentImage = Contract_Management.Properties.Resources.information50,
+                FadeAnimationType = Telerik.WinControls.UI.FadeAnimationType.None,
+                Opacity = 0.9F,
+                PopupAnimation = false,
+                RightToLeft = System.Windows.Forms.RightToLeft.Yes,
+                ScreenPosition = Telerik.WinControls.UI.AlertScreenPosition.TopCenter,
+                ShowOptionsButton = false,
+                ShowPinButton = false,
+                CaptionText = "<html><b>\n" + Header,
+                ContentText = "<html><i>" +
                 Content +
                 "</i><b><span><color=Blue>" +
                 "\n" + ContentHighlight + "\n" +
                 "</span></b>" +
-                Footer;
-            radDesktopAlert1.ContentImage = DoctorERP_v2_00.Properties.Resources.information50;
-            radDesktopAlert1.Opacity = 0.9f;
-            radDesktopAlert1.Show();
+                Footer
+            };
+            MyDesktopAlert.Show();
 
         }
 
@@ -355,11 +366,11 @@ namespace HotelApp
                 {
                     if (row.Cells[3].Value.ToString() == "سائق")
                     {
-                        row.Cells[0].Value = DoctorERP_v2_00.Properties.Resources.DriverRed_32;
+                        row.Cells[0].Value = Contract_Management.Properties.Resources.DriverRed_32;
                     }
                     else
                     {
-                        row.Cells[0].Value = DoctorERP_v2_00.Properties.Resources.CarRed_32;
+                        row.Cells[0].Value = Contract_Management.Properties.Resources.CarRed_32;
 
                     }
                     row.Cells[13].Value = "منذ " + -Period + " يوم";
@@ -371,11 +382,11 @@ namespace HotelApp
                 {
                     if (row.Cells[3].Value.ToString() == "سائق")
                     {
-                        row.Cells[0].Value = DoctorERP_v2_00.Properties.Resources.DriverOrange_32;
+                        row.Cells[0].Value = Contract_Management.Properties.Resources.DriverOrange_32;
                     }
                     else
                     {
-                        row.Cells[0].Value = DoctorERP_v2_00.Properties.Resources.CarOrange_32;
+                        row.Cells[0].Value = Contract_Management.Properties.Resources.CarOrange_32;
 
                     }
                     row.Cells[13].Value = "باقي " + Period + "يوم";
@@ -716,7 +727,7 @@ namespace HotelApp
         {
             if (e.VisualItem is SimpleListViewVisualItem)
             {
-                e.VisualItem = new OptionsSimpleListViewVisualItem();
+                e.VisualItem = new CompanySimpleListViewVisualItem();
             }
         }
 
@@ -782,7 +793,7 @@ namespace HotelApp
         {
             if (e.VisualItem is IconListViewVisualItem)
             {
-                e.VisualItem = new RoomIconListViewVisualItem();
+                e.VisualItem = new ByanIconListViewVisualItem();
             }
         }
 
@@ -967,98 +978,332 @@ namespace HotelApp
     ////        }
         }
 
-        private void CompaniesBindingSource_ListChanged(object sender, ListChangedEventArgs e)
+        ////private void SetGridViewCompaniesData()
+        ////{
+        ////    isload = true;
+        ////    GridViewCompanies.Columns.Clear();
+        ////    GridViewCompanies.DataSource = null;
+
+
+
+        ////    this.companiesTableAdapter.Fill(this.contract_ManagementDataSet.Companies);
+        ////    this.companiesBindingSource.ResetBindings(false);
+        ////    this.companiesBindingSource.CancelEdit();
+        ////    this.companiesBindingSource.ResetCurrentItem();
+        ////    this.companiesBindingSource.ResetItem(this.companiesBindingSource.Position);
+
+
+
+
+
+        ////    //Telerik.WinControls.UI.GridViewDecimalColumn gridViewDecimalColumn4 = new Telerik.WinControls.UI.GridViewDecimalColumn();
+        ////    //Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn9 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+        ////    //Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn10 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+        ////    //Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn11 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+
+
+        ////    //gridViewDecimalColumn4.DataType = typeof(int);
+        ////    //gridViewDecimalColumn4.FieldName = "ID";
+        ////    //gridViewDecimalColumn4.HeaderText = "ID";
+        ////    //gridViewDecimalColumn4.IsAutoGenerated = true;
+        ////    //gridViewDecimalColumn4.IsVisible = false;
+        ////    //gridViewDecimalColumn4.Name = "ID";
+        ////    //gridViewDecimalColumn4.Width = 93;
+        ////    //gridViewTextBoxColumn9.FieldName = "CompanyName";
+        ////    //gridViewTextBoxColumn9.HeaderText = "اسم الشركة";
+        ////    //gridViewTextBoxColumn9.IsAutoGenerated = true;
+        ////    //gridViewTextBoxColumn9.Name = "CompanyName";
+        ////    //gridViewTextBoxColumn9.Width = 256;
+        ////    //gridViewTextBoxColumn10.FieldName = "ClientID";
+        ////    //gridViewTextBoxColumn10.HeaderText = "رقم العميل";
+        ////    //gridViewTextBoxColumn10.IsAutoGenerated = true;
+        ////    //gridViewTextBoxColumn10.Name = "ClientID";
+        ////    //gridViewTextBoxColumn10.Width = 175;
+        ////    //gridViewTextBoxColumn11.FieldName = "Note";
+        ////    //gridViewTextBoxColumn11.HeaderText = "ملاحظات";
+        ////    //gridViewTextBoxColumn11.IsAutoGenerated = true;
+        ////    //gridViewTextBoxColumn11.Name = "Note";
+        ////    //gridViewTextBoxColumn11.Width = 258;
+        ////    //this.GridViewCompanies.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
+        ////    //gridViewDecimalColumn4,
+        ////    //gridViewTextBoxColumn9,
+        ////    //gridViewTextBoxColumn10,
+        ////    //gridViewTextBoxColumn11});
+        ////    this.GridViewCompanies.DataSource = this.companiesBindingSource;
+        ////    isload = false;
+
+
+        ////}
+        public void CompaniesBindingSource_ListChanged(object sender, ListChangedEventArgs e)
         {
-
-
-            if (e.ListChangedType == ListChangedType.ItemChanged || e.ListChangedType == ListChangedType.ItemAdded || e.ListChangedType == ListChangedType.ItemDeleted)
+            try
             {
+                if (isload) { return; }
+                if (e.ListChangedType == ListChangedType.ItemAdded)
+                {
+                    if (ISNew)
+                    {
+                        ISNew = false;
+                        //this.companiesBindingSource.CancelEdit();
+                        //this.companiesTableAdapter.Fill(this.contract_ManagementDataSet.Companies);
+                        //this.companiesBindingSource.ResetBindings(true);
+                        //this.companiesBindingSource.DataSource = this.contract_ManagementDataSet.Companies;
+
+                        return;
+                    }
+
+                    ISNew = true;
+
+                    if (!MessageWarning("هل أنت متأكد من الإضافة ؟", "إضافة شركة جديدة", "إذا ضغت علي زر نعم سوف يتم إضافة الشركة الجديد \r\n إذا ضغط علي زر لا سوف يتم تجاهل الإضافة"))
+                    {
+                        GridViewCompanies.CurrentRow.Delete();
 
 
-                this.companiesTableAdapter.Fill(this.contract_ManagementDataSet.Companies);
-                this.companiesBindingSource.ResetBindings(false);
+                        ////this.companiesBindingSource.ResetBindings(true);
+                        //this.companiesBindingSource.CancelEdit();
+                        this.companiesTableAdapter.Fill(this.contract_ManagementDataSet.Companies);
+                        //this.companiesBindingSource.ResetBindings(true);
+                        this.companiesBindingSource.DataSource = this.contract_ManagementDataSet.Companies;
+                        this.CompaniesView.DataSource = this.companiesBindingSource;
 
 
-                //GridViewCompanies.DataSource = null;
-                //companiesTableAdapter.ClearBeforeFill = true;
-
-                // contract_ManagementDataSet.Companies.Reset();
-
-                ////this.companiesTableAdapter.Fill(this.contract_ManagementDataSet.Companies);
-
-                //companiesBindingSource.ResetBindings(true);
+                        //var ttt = companiesBindingSource[companiesBindingSource.Count - 1] as DataRowView;
+                        //var iiiii = ttt.Row as CompaniesRow;
 
 
-                //this.companiesTableAdapter.GetData();
+                        //companiesBindingSource.Remove(iiiii);
 
-                //GridViewCompanies.DataSource = ii;
+                        //////GridViewCompanies.MasterTemplate.CurrentRow.Delete();
+                        //////this.companiesBindingSource.RemoveCurrent();
 
-                //this.companiesTableAdapter.Fill(this.contract_ManagementDataSet.Companies);
-                // this.companiesBindingSource.DataSource = this.contract_ManagementDataSet;
-                //this.companiesBindingSource.DataMember = "Companies";
+                        //////////this.companiesBindingSource.CancelEdit();
 
-                //this.GridViewCompanies.MasterTemplate.DataSource = this.companiesBindingSource;
 
+                        //////GridViewCompanies.CurrentRow.Delete();
+                        //////GridViewCompanies.MasterTemplate.CurrentRow.Delete();
+                        //////GridViewCompanies.MasterView.CurrentRow.Delete();
+
+                        //////this.companiesTableAdapter.Fill(this.contract_ManagementDataSet.Companies);
+                        //////this.companiesBindingSource.ResetBindings(true);
+
+                        //////this.companiesBindingSource.DataSource = this.contract_ManagementDataSet.Companies;
+                        //////GridViewCompanies.DataSource = companiesBindingSource;
+                        //////GridViewCompanies.MasterTemplate.DataSource = companiesBindingSource;
+
+
+                        //////GridViewCompanies.Rows.Clear();
+                        //////GridViewCompanies.MasterTemplate.Rows.Clear();
+                        //GridViewCompanies.DataSource = null;
+                        //GridViewCompanies.MasterTemplate.DataSource = null;
+
+
+                        //GridViewCompanies.MasterTemplate.DataSource = companiesBindingSource;
+                        //this.companiesTableAdapter.Update(this.contract_ManagementDataSet.Companies);
+
+
+                        //this.companiesTableAdapter.Fill(this.contract_ManagementDataSet.Companies);
+
+                        ////GridViewCompanies.DataSource = null;
+                        ////GridViewCompanies.DataSource = List<GridViewRowInfo>();
+
+                        ////List<GridViewCellInfo>eee;
+                        //GridViewCompanies.Refresh();
+                        //GridViewCompanies.Update();
+                        //GridViewCompanies.MasterTemplate.Refresh();
+                        //GridViewCompanies.TableElement.Update(GridUINotifyAction.Reset);
+                        //     GridViewCompanies.TableElement.Update(GridUINotifyAction.DataChanged);
+
+                        //this.companiesBindingSource.CancelEdit();
+                        //this.companiesTableAdapter.Fill(this.contract_ManagementDataSet.Companies);
+                        //this.companiesBindingSource.ResetBindings(true);
+                        //this.companiesBindingSource.DataSource = this.contract_ManagementDataSet.Companies;
+
+                        //GridViewCompanies.MasterView.Refresh();
+
+                        //GridViewCompanies.MasterTemplate.Refresh();
+                        //GridViewCompanies.MasterTemplate.Rows[GridViewCompanies.MasterTemplate.RowCount -1].IsVisible = true;
+                        ////this.GridViewCompanies.DataSource = null;
+                        ////this.GridViewCompanies.MasterTemplate.Columns.Clear();
+                        ////this.GridViewCompanies.MasterTemplate.Rows.Clear();
+
+                        ////this.GridViewCompanies.MasterTemplate.DataSource = null;
+
+
+                        //this.GridViewCompanies.Columns.Clear();
+                        //this.GridViewCompanies.Rows.Clear();
+
+                        //this.GridViewCompanies.DataSource = null;
+                        //SetGridViewCompaniesData();
+
+                        ////this.CompaniesView.DataSource = this.companiesBindingSource;
+
+                        return;
+
+                    }
+
+                    string CompanyName = GridViewCompanies.MasterView.TableAddNewRow.Cells[1].Value != null ? GridViewCompanies.MasterView.TableAddNewRow.Cells[1].Value.ToString() : string.Empty;
+                    string ClintID = GridViewCompanies.MasterView.TableAddNewRow.Cells[2].Value != null ? GridViewCompanies.MasterView.TableAddNewRow.Cells[2].Value.ToString() : string.Empty;
+                    string Note = GridViewCompanies.MasterView.TableAddNewRow.Cells[3].Value != null ? GridViewCompanies.MasterView.TableAddNewRow.Cells[3].Value.ToString() : string.Empty;
+                    int Result = companiesTableAdapter.Insert(CompanyName, ClintID, Note);
+
+
+                    if (Result > 0)
+                    {
+                        ShowDesktopAlert("إضافة شركة", "تمت عملية إضافة الشركة بنجاح", $"عملية إضافة الشركة  {CompanyName}  تمت بنجاح ", "تمت عملية إضافة الشركة الجديد يمكن القيام بالعمليات عليه الأن.");
+                        // RadCallout.Show(callout, GridViewCompanies, $"عملية إضافة الشركة  {CompanyName}  تمت بنجاح ", "تمت العملية بنجاح");
+
+                        this.companiesBindingSource.CancelEdit();
+                        this.companiesTableAdapter.Fill(this.contract_ManagementDataSet.Companies);
+                        this.companiesBindingSource.ResetBindings(true);
+                        this.companiesBindingSource.DataSource = this.contract_ManagementDataSet.Companies;
+
+                    }
+                    else
+                    {
+                        // RadCallout.Show(callout, this.GridViewCompanies, "فشلت عملية إضافة الشركة !", "فشلت العملية");
+                        this.companiesBindingSource.CancelEdit();
+                        this.companiesTableAdapter.Fill(this.contract_ManagementDataSet.Companies);
+                        this.companiesBindingSource.ResetBindings(true);
+                        this.companiesBindingSource.DataSource = this.contract_ManagementDataSet.Companies;
+
+                    }
+                }
+                else if (e.ListChangedType == ListChangedType.ItemChanged)
+                {
+                    if (ISNew)
+                    {
+                        ISNew = false;
+                        //GridViewCompanies.CurrentRow.Delete();
+                        //GridViewCompanies.MasterTemplate.CurrentRow.Delete();
+                        ////this.companiesBindingSource.RemoveCurrent();
+                        //this.companiesBindingSource.CancelEdit();
+                        //this.companiesTableAdapter.Fill(this.contract_ManagementDataSet.Companies);
+                        //this.companiesBindingSource.ResetBindings(true);
+                        //this.companiesBindingSource.DataSource = this.contract_ManagementDataSet.Companies;
+
+                        //GridViewCompanies.Rows.Clear();
+
+                        //GridViewCompanies.MasterTemplate.Rows.Clear();
+
+                        ////GridViewCompanies.DataSource = companiesBindingSource;
+
+                        ////GridViewCompanies.MasterTemplate.DataSource = companiesBindingSource;
+
+
+                        //GridViewCompanies.Refresh();
+                        //GridViewCompanies.MasterView.Refresh();
+                        //GridViewCompanies.MasterTemplate.Refresh();
+
+                        return;
+                    }
+                    if (!MessageWarning("هل أنت متأكد من التعديل ؟", "تعديل شركة", "إذا ضغت علي زر نعم سوف يتم تعديل الشركة \r\n إذا ضغط علي زر لا سوف يتم تجاهل التعديل"))
+                    {
+                        this.companiesBindingSource.CancelEdit();
+                        this.companiesTableAdapter.Fill(this.contract_ManagementDataSet.Companies);
+                        this.companiesBindingSource.ResetBindings(true);
+                        this.companiesBindingSource.DataSource = this.contract_ManagementDataSet.Companies;
+                        return;
+
+                    }
+                    //////DataRowView dataRowView = this.companiesBindingSource.Current as DataRowView;
+                    //////CompaniesRow dataRow = dataRowView.Row as CompaniesRow;
+                    string _Name = GridViewCompanies.CurrentRow.Cells[1].Value.ToString();
+                    int _ID = (int)GridViewCompanies.CurrentRow.Cells[0].Value;
+
+                    CompaniesRow dataBaseRow = this.contract_ManagementDataSet.Companies.Where(u => u.ID == _ID).FirstOrDefault();
+
+                    dataBaseRow.CompanyName = GridViewCompanies.Rows[e.NewIndex].Cells[1].Value.ToString();
+                    dataBaseRow.ClientID = GridViewCompanies.Rows[e.NewIndex].Cells[2].Value.ToString();
+                    dataBaseRow.Note = GridViewCompanies.Rows[e.NewIndex].Cells[3].Value.ToString();
+
+                    //this.companiesBindingSource.CancelEdit();
+
+
+                    int Result = companiesTableAdapter.Update(dataBaseRow);
+
+                    
+
+                    if (Result > 0)
+                    {
+                        ShowDesktopAlert("تعديل شركة", "تمت عملية تعديل الشركة", $"عملية تعديل الشركة  {_Name}  تمت بنجاح ", "تم تعديل الشركة يمكن القيام بالعمليات عليها الأن.");
+                        // RadCallout.Show(callout, this.GridViewCompanies, $"عملية تعديل الشركة  {_Name}  تمت بنجاح ", "تمت العملية بنجاح");
+                        this.companiesBindingSource.CancelEdit();
+                        this.companiesTableAdapter.Fill(this.contract_ManagementDataSet.Companies);
+                        this.companiesBindingSource.ResetBindings(true);
+                        this.companiesBindingSource.DataSource = this.contract_ManagementDataSet.Companies;
+
+                    }
+                    else
+                    {
+                      //  RadCallout.Show(callout, this.GridViewCompanies, "فشلت عملية تعديل الشركة !", "فشلت العملية");
+                        ////this.companiesBindingSource.CancelEdit();
+                        this.companiesTableAdapter.Fill(this.contract_ManagementDataSet.Companies);
+                        this.companiesBindingSource.ResetBindings(true);
+                        //this.companiesBindingSource.DataSource = this.contract_ManagementDataSet.Companies;
+
+                    }
+
+                }
+                else if (e.ListChangedType == ListChangedType.ItemDeleted)
+                {
+                    if (ISNew)
+                    {
+                        ISNew = false;
+                        GridViewCompanies.CurrentRow.Delete();
+                        //GridViewCompanies.MasterTemplate.CurrentRow.Delete();
+
+                        this.companiesBindingSource.CancelEdit();
+                        this.companiesTableAdapter.Fill(this.contract_ManagementDataSet.Companies);
+                        this.companiesBindingSource.ResetBindings(true);
+                        this.companiesBindingSource.DataSource = this.contract_ManagementDataSet.Companies;
+
+                        GridViewCompanies.MasterView.Refresh();
+                        GridViewCompanies.MasterTemplate.Refresh();
+                        return;
+                    }
+
+                    if (GridViewCompanies.CurrentRow == null)
+                    {
+                        return;
+                    }
+
+                    if (!MessageWarning("هل أنت متأكد من الحذف ؟", "حذف شركة", "إذا ضغت علي زر نعم سوف يتم حذف الشركة \r\n إذا ضغط علي زر لا سوف يتم تجاهل الحذف"))
+                    {
+                        this.companiesBindingSource.CancelEdit();
+                        this.companiesTableAdapter.Fill(this.contract_ManagementDataSet.Companies);
+                        this.companiesBindingSource.ResetBindings(true);
+                        this.companiesBindingSource.DataSource = this.contract_ManagementDataSet.Companies;
+                        return;
+
+                    }
+                    ////string _Name = GridViewCompanies.CurrentRow.Cells[1].Value.ToString();
+                    ////int _ID = (int)GridViewCompanies.CurrentRow.Cells[0].Value;
+                    ////string _ClientID = GridViewCompanies.CurrentRow.Cells[2].Value.ToString();
+
+                    ////int Result = companiesTableAdapter.Delete(_ID, _Name, _ClientID);
+                    //if (Result > 0)
+                    //{
+                    //    ShowDesktopAlert("حذف شركة", "تمت عملية حذف الشركة بنجاح", $"عملية حذف الشركة  {_Name}  تمت بنجاح ", "تمت عملية حذف الشركة من قاعدة البيانات بنجاح.");
+                    //    // RadCallout.Show(callout, this.GridViewCompanies, $"عملية حذف الشركة  {_Name}  تمت بنجاح ", "تمت العملية بنجاح");
+                    //    //this.companiesBindingSource.CancelEdit();
+                    //    this.companiesTableAdapter.Fill(this.contract_ManagementDataSet.Companies);
+                    //    this.companiesBindingSource.ResetBindings(true);
+                    //    this.companiesBindingSource.DataSource = this.contract_ManagementDataSet.Companies;
+
+                    //}
+                    //else
+                    //{
+                       // RadCallout.Show(callout, this.GridViewCompanies, "فشلت عملية حذف الشركة !", "فشلت العملية");
+                        this.companiesBindingSource.CancelEdit();
+                        this.companiesTableAdapter.Fill(this.contract_ManagementDataSet.Companies);
+                        this.companiesBindingSource.ResetBindings(true);
+                        this.companiesBindingSource.DataSource = this.contract_ManagementDataSet.Companies;
+
+                    //}
+
+                }
             }
-            //companiesBindingSource.Clear();
-
-
-            //GridViewCompanies
-            //            if (IsGrid) { IsGrid = false; return; }
-            //            RadCallout callout = new RadCallout();
-            //            callout.ArrowDirection = Telerik.WinControls.ArrowDirection.Right;
-
-            //            if (e.ListChangedType == ListChangedType.ItemAdded)
-            //            {
-            //                if (ISNew) { ISNew = false; return; }
-
-            //                if (!MessageWarning("هل أنت متأكد من الإضافة ؟", "إضافة شركة جديدة", "إذا ضغت علي زر نعم سوف يتم إضافة الشركة الجديد \r\n إذا ضغط علي زر لا سوف يتم تجاهل الإضافة"))
-            //                    return;
-
-            //                int Result = carsTableAdapter.Insert(
-            //GridViewCompanies.MasterView.TableAddNewRow.Cells[1].Value != null ? GridViewCompanies.MasterView.TableAddNewRow.Cells[1].Value.ToString() : string.Empty,
-            //GridViewCompanies.MasterView.TableAddNewRow.Cells[2].Value != null ? GridViewCompanies.MasterView.TableAddNewRow.Cells[2].Value.ToString() : string.Empty,
-            //GridViewCompanies.MasterView.TableAddNewRow.Cells[3].Value != null ? GridViewCompanies.MasterView.TableAddNewRow.Cells[3].Value.ToString() : string.Empty);
-            //                ISNew = true;
-
-            //                if (Result > 0)
-            //                {
-            //                    ShowDesktopAlert("إضافة شركة", "تمت عملية إضافة الشركة بنجاح", $"عملية إضافة الشركة  {GridViewCars.MasterView.TableAddNewRow.Cells[1].Value.ToString()}  تمت بنجاح ", "تمت عملية إضافة الشركة الجديد يمكن القيام بالعمليات عليه الأن.");
-            //                    RadCallout.Show(callout, GridViewCompanies, $"عملية إضافة الشركة  {GridViewCars.MasterView.TableAddNewRow.Cells[1].Value.ToString()}  تمت بنجاح ", "تمت العملية بنجاح");
-            //                    //this.companiesTableAdapter.Fill(this.contract_ManagementDataSet.Companies);
-            //                    //GridViewCompanies.MasterView.Refresh();
-
-            //                }
-            //                else
-            //                {
-            //                    RadCallout.Show(callout, this.GridViewCompanies, "فشلت عملية إضافة الشركة !", "فشلت العملية");
-            //                }
-            //            }
-            //            else if (e.ListChangedType == ListChangedType.ItemChanged)
-            //            {
-
-            //            }
-            //            else if (e.ListChangedType == ListChangedType.ItemDeleted)
-            //            {
-            //                if (!MessageWarning("هل أنت متأكد من الحذف ؟", "حذف شركة", "إذا ضغت علي زر نعم سوف يتم حذف الشركة \r\n إذا ضغط علي زر لا سوف يتم تجاهل الحذف"))
-            //                    return;
-
-            //                CompaniesRow dataRow = this.contract_ManagementDataSet.Companies.Where(u => u.ID.ToString() == GridViewCompanies.Rows[e.NewIndex].Cells[1].Value.ToString()).FirstOrDefault();
-            //                int Result = companiesTableAdapter.Delete(dataRow.ID, dataRow.CompanyName, dataRow.ClientID);
-            //                if (Result > 0)
-            //                {
-            //                    ShowDesktopAlert("حذف شركة", "تمت عملية حذف الشركة بنجاح", $"عملية حذف الشركة  {GridViewCompanies.Rows[e.NewIndex].Cells[1].Value.ToString()}  تمت بنجاح ", "تمت عملية حذف الشركة من قاعدة البيانات بنجاح.");
-            //                    RadCallout.Show(callout, this.GridViewCompanies, $"عملية حذف الشركة  {GridViewCompanies.Rows[e.NewIndex].Cells[1].Value.ToString()}  تمت بنجاح ", "تمت العملية بنجاح");
-            //                    //////this.companiesTableAdapter.Fill(this.contract_ManagementDataSet.Companies);
-            //                    //////GridViewCompanies.MasterView.Refresh();
-
-            //                }
-            //                else
-            //                {
-            //                    RadCallout.Show(callout, this.GridViewCompanies, "فشلت عملية حذف الشركة !", "فشلت العملية");
-            //                }
-
-            //            }
+            catch { }
 
         }
 
@@ -1087,7 +1332,7 @@ namespace HotelApp
             this.ByanatView.DataSource = this.contract_ManagementDataSet.Byan;
             this.ByanatView.DisplayMember = "ParentType";
 
-
+            //SetGridViewCompaniesData();
             foreach (CompaniesRow item in this.contract_ManagementDataSet.Companies.Rows)
             {
                 ListViewDataItem roomTypeItem = new ListViewDataItem(item.CompanyName);
@@ -1120,20 +1365,6 @@ namespace HotelApp
             GridViewCars.Visible = false;
             GridViewCompanies.Visible = false;
             radBindingNavigator1.BindingSource = this.driverBindingSource;
-            editGuestInfo.guestInfoLabel.Text = "بيانات السائق";
-            editGuestInfo.nameLabel.Text = "اسم السائق";
-            editGuestInfo.nameTextBox.NullText = "ادخل أسم السائق";
-            Binding nameControlBinding = new System.Windows.Forms.Binding("Text", this.driverBindingSource, "DriverName", false);
-            editGuestInfo.nameTextBox.DataBindings.Clear();
-
-            editGuestInfo.nameTextBox.DataBindings.Add(nameControlBinding);
-
-            editGuestInfo.idLabel.Text = "رقم البطاقة";
-            editGuestInfo.idTextBox.NullText = "ادخل رقم البطاقة";
-            Binding idControlBinding = new System.Windows.Forms.Binding("Text", this.driverBindingSource, "CardID", false);
-            editGuestInfo.idTextBox.DataBindings.Clear();
-
-            editGuestInfo.idTextBox.DataBindings.Add(idControlBinding);
 
             this.GridViewDriver.AutoGenerateHierarchy = true;
             this.GridViewDriver.TableElement.CellSpacing = 10;
@@ -1204,20 +1435,20 @@ namespace HotelApp
                 GridViewCars.Visible = false;
                 GridViewCompanies.Visible = false;
                 radBindingNavigator1.BindingSource = this.driverBindingSource;
-                editGuestInfo.guestInfoLabel.Text ="بيانات السائق";
-                editGuestInfo.nameLabel.Text = "اسم السائق";
-                editGuestInfo.nameTextBox.NullText = "ادخل أسم السائق";
-                Binding nameControlBinding = new System.Windows.Forms.Binding("Text", this.driverBindingSource, "DriverName", false);
-                editGuestInfo.nameTextBox.DataBindings.Clear();
+                //editGuestInfo.guestInfoLabel.Text ="بيانات السائق";
+                //editGuestInfo.nameLabel.Text = "اسم السائق";
+                //editGuestInfo.nameTextBox.NullText = "ادخل أسم السائق";
+                //Binding nameControlBinding = new System.Windows.Forms.Binding("Text", this.driverBindingSource, "DriverName", false);
+                //editGuestInfo.nameTextBox.DataBindings.Clear();
 
-                editGuestInfo.nameTextBox.DataBindings.Add(nameControlBinding);
+                //editGuestInfo.nameTextBox.DataBindings.Add(nameControlBinding);
 
-                editGuestInfo.idLabel.Text = "رقم البطاقة";
-                editGuestInfo.idTextBox.NullText = "ادخل رقم البطاقة";
-                Binding idControlBinding = new System.Windows.Forms.Binding("Text", this.driverBindingSource, "CardID", false);
-                editGuestInfo.idTextBox.DataBindings.Clear();
+                //editGuestInfo.idLabel.Text = "رقم البطاقة";
+                //editGuestInfo.idTextBox.NullText = "ادخل رقم البطاقة";
+                //Binding idControlBinding = new System.Windows.Forms.Binding("Text", this.driverBindingSource, "CardID", false);
+                //editGuestInfo.idTextBox.DataBindings.Clear();
 
-                editGuestInfo.idTextBox.DataBindings.Add(idControlBinding);
+                //editGuestInfo.idTextBox.DataBindings.Add(idControlBinding);
 
                 labelBookings.Text = "   الساقين";
             }
@@ -1229,22 +1460,22 @@ namespace HotelApp
                     GridViewDriver.Visible = false;
                     GridViewCompanies.Visible = false;
 
-                    editGuestInfo.guestInfoLabel.Text = "بيانات السيارة";
-                    editGuestInfo.nameLabel.Text = "رقم الصهريج";
-                    editGuestInfo.nameTextBox.NullText = "ادخل رقم الصهريج";
-                    editGuestInfo.nameLabel.Text = "رقم البطاقة";
-                    editGuestInfo.nameTextBox.NullText = "ادخل رقم البطاقة";
+                    //editGuestInfo.guestInfoLabel.Text = "بيانات السيارة";
+                    //editGuestInfo.nameLabel.Text = "رقم الصهريج";
+                    //editGuestInfo.nameTextBox.NullText = "ادخل رقم الصهريج";
+                    //editGuestInfo.nameLabel.Text = "رقم البطاقة";
+                    //editGuestInfo.nameTextBox.NullText = "ادخل رقم البطاقة";
 
-                    radBindingNavigator1.BindingSource = this.carsBindingSource;
-                    Binding nameControlBinding = new System.Windows.Forms.Binding("Text", this.carsBindingSource, "CarName", false);
-                    editGuestInfo.nameTextBox.DataBindings.Clear();
+                    //radBindingNavigator1.BindingSource = this.carsBindingSource;
+                    //Binding nameControlBinding = new System.Windows.Forms.Binding("Text", this.carsBindingSource, "CarName", false);
+                    //editGuestInfo.nameTextBox.DataBindings.Clear();
 
-                    editGuestInfo.nameTextBox.DataBindings.Add(nameControlBinding);
-                    Binding idControlBinding = new System.Windows.Forms.Binding("Text", this.carsBindingSource, "CardID", false);
-                    editGuestInfo.idTextBox.DataBindings.Clear();
+                    //editGuestInfo.nameTextBox.DataBindings.Add(nameControlBinding);
+                    //Binding idControlBinding = new System.Windows.Forms.Binding("Text", this.carsBindingSource, "CardID", false);
+                    //editGuestInfo.idTextBox.DataBindings.Clear();
 
-                    editGuestInfo.idTextBox.DataBindings.Add(idControlBinding);
-                    labelBookings.Text = "   السيارات";
+                    //editGuestInfo.idTextBox.DataBindings.Add(idControlBinding);
+                    //labelBookings.Text = "   السيارات";
 
                 }
                 else
@@ -1253,19 +1484,19 @@ namespace HotelApp
                     GridViewDriver.Visible = false;
                     GridViewCars.Visible = false;
 
-                    editGuestInfo.guestInfoLabel.Text = "بيانات الشركة";
-                    editGuestInfo.nameLabel.Text = "اسم الشركة";
-                    editGuestInfo.nameTextBox.NullText = "ادخل اسم الشركة";
-                    editGuestInfo.nameLabel.Text = "رقم العميل";
-                    editGuestInfo.nameTextBox.NullText = "ادخل رقم العميل";
+                    //editGuestInfo.guestInfoLabel.Text = "بيانات الشركة";
+                    //editGuestInfo.nameLabel.Text = "اسم الشركة";
+                    //editGuestInfo.nameTextBox.NullText = "ادخل اسم الشركة";
+                    //editGuestInfo.nameLabel.Text = "رقم العميل";
+                    //editGuestInfo.nameTextBox.NullText = "ادخل رقم العميل";
 
                     radBindingNavigator1.BindingSource = this.companiesBindingSource;
-                    Binding nameControlBinding = new System.Windows.Forms.Binding("Text", this.companiesBindingSource, "CompanyName", false);
-                    editGuestInfo.nameTextBox.DataBindings.Clear();
-                    editGuestInfo.nameTextBox.DataBindings.Add(nameControlBinding);
-                    Binding idControlBinding = new System.Windows.Forms.Binding("Text", this.companiesBindingSource, "ClientID", false);
-                    editGuestInfo.idTextBox.DataBindings.Clear();
-                    editGuestInfo.idTextBox.DataBindings.Add(idControlBinding);
+                    //Binding nameControlBinding = new System.Windows.Forms.Binding("Text", this.companiesBindingSource, "CompanyName", false);
+                    //editGuestInfo.nameTextBox.DataBindings.Clear();
+                    //editGuestInfo.nameTextBox.DataBindings.Add(nameControlBinding);
+                    //Binding idControlBinding = new System.Windows.Forms.Binding("Text", this.companiesBindingSource, "ClientID", false);
+                    //editGuestInfo.idTextBox.DataBindings.Clear();
+                    //editGuestInfo.idTextBox.DataBindings.Add(idControlBinding);
                     labelBookings.Text = "   الشركات";
 
                 }
@@ -1409,6 +1640,28 @@ namespace HotelApp
                 this.ByanatView.FilterPredicate = null;
                 this.ByanatView.FilterPredicate = FilterPredicate;
             }
+        }
+
+        private void GridViewCompanies_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void GridViewCompanies_UserAddingRow(object sender, GridViewRowCancelEventArgs e)
+        {
+
+        }
+
+        private void GridViewCompanies_UserAddedRow(object sender, GridViewRowEventArgs e)
+        {
+        }
+
+        private void commandBarButton5_Click(object sender, EventArgs e)
+        {
+            ISNew = true;
+            editGuestInfo.saveButton.Text = "حفظ";
+            editGuestInfo.deleteButton.Text = "إلغاء";
+
         }
 
         private bool FilterPredicate(ListViewDataItem item)

@@ -1,4 +1,4 @@
-﻿namespace DoctorERP_v2_00.Dialogs
+﻿namespace Contract_Management.Dialogs
 {
     partial class FlyoutAddByanat
     {
@@ -29,23 +29,23 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Telerik.WinControls.UI.RadListDataItem radListDataItem3 = new Telerik.WinControls.UI.RadListDataItem();
-            Telerik.WinControls.UI.RadListDataItem radListDataItem4 = new Telerik.WinControls.UI.RadListDataItem();
-            Telerik.WinControls.UI.GridViewDecimalColumn gridViewDecimalColumn4 = new Telerik.WinControls.UI.GridViewDecimalColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn10 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn11 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn12 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition4 = new Telerik.WinControls.UI.TableViewDefinition();
-            Telerik.WinControls.UI.GridViewDecimalColumn gridViewDecimalColumn5 = new Telerik.WinControls.UI.GridViewDecimalColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn13 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn14 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn15 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition5 = new Telerik.WinControls.UI.TableViewDefinition();
-            Telerik.WinControls.UI.GridViewDecimalColumn gridViewDecimalColumn6 = new Telerik.WinControls.UI.GridViewDecimalColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn16 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn17 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn18 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition6 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.RadListDataItem radListDataItem1 = new Telerik.WinControls.UI.RadListDataItem();
+            Telerik.WinControls.UI.RadListDataItem radListDataItem2 = new Telerik.WinControls.UI.RadListDataItem();
+            Telerik.WinControls.UI.GridViewDecimalColumn gridViewDecimalColumn1 = new Telerik.WinControls.UI.GridViewDecimalColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn1 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn2 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn3 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition1 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.GridViewDecimalColumn gridViewDecimalColumn2 = new Telerik.WinControls.UI.GridViewDecimalColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn4 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn5 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn6 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition2 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.GridViewDecimalColumn gridViewDecimalColumn3 = new Telerik.WinControls.UI.GridViewDecimalColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn7 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn8 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn9 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition3 = new Telerik.WinControls.UI.TableViewDefinition();
             this.ExitButton = new Telerik.WinControls.UI.RadButton();
             this.radButton3 = new Telerik.WinControls.UI.RadButton();
             this.saveButton = new Telerik.WinControls.UI.RadButton();
@@ -57,7 +57,7 @@
             this.CMBParentType = new Telerik.WinControls.UI.RadDropDownList();
             this.MCCCompanyName = new Telerik.WinControls.UI.RadMultiColumnComboBox();
             this.companiesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.contract_ManagementDataSet = new DoctorERP_v2_00.Contract_ManagementDataSet();
+            this.contract_ManagementDataSet = new Contract_Management.Contract_ManagementDataSet();
             this.radButton2 = new Telerik.WinControls.UI.RadButton();
             this.radLabel1 = new Telerik.WinControls.UI.RadLabel();
             this.radSplitContainer1 = new Telerik.WinControls.UI.RadSplitContainer();
@@ -69,9 +69,9 @@
             this.carsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.MCCDriverName = new Telerik.WinControls.UI.RadMultiColumnComboBox();
             this.driverBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.carsTableAdapter = new DoctorERP_v2_00.Contract_ManagementDataSetTableAdapters.CarsTableAdapter();
-            this.driverTableAdapter = new DoctorERP_v2_00.Contract_ManagementDataSetTableAdapters.DriverTableAdapter();
-            this.companiesTableAdapter = new DoctorERP_v2_00.Contract_ManagementDataSetTableAdapters.CompaniesTableAdapter();
+            this.carsTableAdapter = new Contract_Management.Contract_ManagementDataSetTableAdapters.CarsTableAdapter();
+            this.driverTableAdapter = new Contract_Management.Contract_ManagementDataSetTableAdapters.DriverTableAdapter();
+            this.companiesTableAdapter = new Contract_Management.Contract_ManagementDataSetTableAdapters.CompaniesTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.ExitButton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radButton3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.saveButton)).BeginInit();
@@ -163,7 +163,7 @@
             // 
             // radButton1
             // 
-            this.radButton1.Image = global::DoctorERP_v2_00.Properties.Resources.plus;
+            this.radButton1.Image = global::Contract_Management.Properties.Resources.plus;
             this.radButton1.ImageAlignment = System.Drawing.ContentAlignment.TopCenter;
             this.radButton1.Location = new System.Drawing.Point(16, 104);
             this.radButton1.Name = "radButton1";
@@ -213,10 +213,10 @@
             // 
             this.CMBParentType.DropDownAnimationEnabled = true;
             this.CMBParentType.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList;
-            radListDataItem3.Text = "سائق";
-            radListDataItem4.Text = "سيارة";
-            this.CMBParentType.Items.Add(radListDataItem3);
-            this.CMBParentType.Items.Add(radListDataItem4);
+            radListDataItem1.Text = "سائق";
+            radListDataItem2.Text = "سيارة";
+            this.CMBParentType.Items.Add(radListDataItem1);
+            this.CMBParentType.Items.Add(radListDataItem2);
             this.CMBParentType.Location = new System.Drawing.Point(67, 16);
             this.CMBParentType.Name = "CMBParentType";
             this.CMBParentType.Size = new System.Drawing.Size(167, 36);
@@ -247,38 +247,38 @@
             this.MCCCompanyName.EditorControl.MasterTemplate.AllowCellContextMenu = false;
             this.MCCCompanyName.EditorControl.MasterTemplate.AllowColumnChooser = false;
             this.MCCCompanyName.EditorControl.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill;
-            gridViewDecimalColumn4.DataType = typeof(int);
-            gridViewDecimalColumn4.FieldName = "ID";
-            gridViewDecimalColumn4.HeaderText = "ID";
-            gridViewDecimalColumn4.IsAutoGenerated = true;
-            gridViewDecimalColumn4.IsVisible = false;
-            gridViewDecimalColumn4.Name = "ID";
-            gridViewDecimalColumn4.Width = 42;
-            gridViewTextBoxColumn10.FieldName = "CompanyName";
-            gridViewTextBoxColumn10.HeaderText = "اسم الشركة";
-            gridViewTextBoxColumn10.IsAutoGenerated = true;
-            gridViewTextBoxColumn10.Name = "CompanyName";
-            gridViewTextBoxColumn10.Width = 103;
-            gridViewTextBoxColumn11.FieldName = "ClientID";
-            gridViewTextBoxColumn11.HeaderText = "رقم العميل";
-            gridViewTextBoxColumn11.IsAutoGenerated = true;
-            gridViewTextBoxColumn11.Name = "ClientID";
-            gridViewTextBoxColumn11.Width = 107;
-            gridViewTextBoxColumn12.FieldName = "Note";
-            gridViewTextBoxColumn12.HeaderText = "Note";
-            gridViewTextBoxColumn12.IsAutoGenerated = true;
-            gridViewTextBoxColumn12.IsVisible = false;
-            gridViewTextBoxColumn12.Name = "Note";
-            gridViewTextBoxColumn12.Width = 69;
+            gridViewDecimalColumn1.DataType = typeof(int);
+            gridViewDecimalColumn1.FieldName = "ID";
+            gridViewDecimalColumn1.HeaderText = "ID";
+            gridViewDecimalColumn1.IsAutoGenerated = true;
+            gridViewDecimalColumn1.IsVisible = false;
+            gridViewDecimalColumn1.Name = "ID";
+            gridViewDecimalColumn1.Width = 42;
+            gridViewTextBoxColumn1.FieldName = "CompanyName";
+            gridViewTextBoxColumn1.HeaderText = "اسم الشركة";
+            gridViewTextBoxColumn1.IsAutoGenerated = true;
+            gridViewTextBoxColumn1.Name = "CompanyName";
+            gridViewTextBoxColumn1.Width = 103;
+            gridViewTextBoxColumn2.FieldName = "ClientID";
+            gridViewTextBoxColumn2.HeaderText = "رقم العميل";
+            gridViewTextBoxColumn2.IsAutoGenerated = true;
+            gridViewTextBoxColumn2.Name = "ClientID";
+            gridViewTextBoxColumn2.Width = 107;
+            gridViewTextBoxColumn3.FieldName = "Note";
+            gridViewTextBoxColumn3.HeaderText = "Note";
+            gridViewTextBoxColumn3.IsAutoGenerated = true;
+            gridViewTextBoxColumn3.IsVisible = false;
+            gridViewTextBoxColumn3.Name = "Note";
+            gridViewTextBoxColumn3.Width = 69;
             this.MCCCompanyName.EditorControl.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
-            gridViewDecimalColumn4,
-            gridViewTextBoxColumn10,
-            gridViewTextBoxColumn11,
-            gridViewTextBoxColumn12});
+            gridViewDecimalColumn1,
+            gridViewTextBoxColumn1,
+            gridViewTextBoxColumn2,
+            gridViewTextBoxColumn3});
             this.MCCCompanyName.EditorControl.MasterTemplate.DataSource = this.companiesBindingSource;
             this.MCCCompanyName.EditorControl.MasterTemplate.EnableGrouping = false;
             this.MCCCompanyName.EditorControl.MasterTemplate.ShowFilteringRow = false;
-            this.MCCCompanyName.EditorControl.MasterTemplate.ViewDefinition = tableViewDefinition4;
+            this.MCCCompanyName.EditorControl.MasterTemplate.ViewDefinition = tableViewDefinition1;
             this.MCCCompanyName.EditorControl.Name = "NestedRadGridView";
             this.MCCCompanyName.EditorControl.ReadOnly = true;
             this.MCCCompanyName.EditorControl.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -307,7 +307,7 @@
             // 
             // radButton2
             // 
-            this.radButton2.Image = global::DoctorERP_v2_00.Properties.Resources.plus;
+            this.radButton2.Image = global::Contract_Management.Properties.Resources.plus;
             this.radButton2.ImageAlignment = System.Drawing.ContentAlignment.TopCenter;
             this.radButton2.Location = new System.Drawing.Point(16, 196);
             this.radButton2.Name = "radButton2";
@@ -372,7 +372,7 @@
             this.DTPEndDate.Size = new System.Drawing.Size(305, 46);
             this.DTPEndDate.TabIndex = 3;
             this.DTPEndDate.TabStop = false;
-            this.DTPEndDate.Text = "8/21/2024";
+            this.DTPEndDate.Text = "21/08/2024";
             this.DTPEndDate.Value = new System.DateTime(2024, 8, 21, 23, 5, 25, 576);
             this.DTPEndDate.ValueChanged += new System.EventHandler(this.DTPEndDate_ValueChanged);
             // 
@@ -425,37 +425,37 @@
             this.MCCCarName.EditorControl.MasterTemplate.AllowColumnChooser = false;
             this.MCCCarName.EditorControl.MasterTemplate.AllowSearchRow = true;
             this.MCCCarName.EditorControl.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill;
-            gridViewDecimalColumn5.DataType = typeof(int);
-            gridViewDecimalColumn5.FieldName = "ID";
-            gridViewDecimalColumn5.HeaderText = "ID";
-            gridViewDecimalColumn5.IsAutoGenerated = true;
-            gridViewDecimalColumn5.IsVisible = false;
-            gridViewDecimalColumn5.Name = "ID";
-            gridViewTextBoxColumn13.FieldName = "CarName";
-            gridViewTextBoxColumn13.HeaderText = "رقم الصهريج";
-            gridViewTextBoxColumn13.IsAutoGenerated = true;
-            gridViewTextBoxColumn13.Name = "CarName";
-            gridViewTextBoxColumn13.Width = 105;
-            gridViewTextBoxColumn14.FieldName = "CardID";
-            gridViewTextBoxColumn14.HeaderText = "رقم البطاقة";
-            gridViewTextBoxColumn14.IsAutoGenerated = true;
-            gridViewTextBoxColumn14.Name = "CardID";
-            gridViewTextBoxColumn14.Width = 105;
-            gridViewTextBoxColumn15.FieldName = "Note";
-            gridViewTextBoxColumn15.HeaderText = "Note";
-            gridViewTextBoxColumn15.IsAutoGenerated = true;
-            gridViewTextBoxColumn15.IsVisible = false;
-            gridViewTextBoxColumn15.Name = "Note";
+            gridViewDecimalColumn2.DataType = typeof(int);
+            gridViewDecimalColumn2.FieldName = "ID";
+            gridViewDecimalColumn2.HeaderText = "ID";
+            gridViewDecimalColumn2.IsAutoGenerated = true;
+            gridViewDecimalColumn2.IsVisible = false;
+            gridViewDecimalColumn2.Name = "ID";
+            gridViewTextBoxColumn4.FieldName = "CarName";
+            gridViewTextBoxColumn4.HeaderText = "رقم الصهريج";
+            gridViewTextBoxColumn4.IsAutoGenerated = true;
+            gridViewTextBoxColumn4.Name = "CarName";
+            gridViewTextBoxColumn4.Width = 105;
+            gridViewTextBoxColumn5.FieldName = "CardID";
+            gridViewTextBoxColumn5.HeaderText = "رقم البطاقة";
+            gridViewTextBoxColumn5.IsAutoGenerated = true;
+            gridViewTextBoxColumn5.Name = "CardID";
+            gridViewTextBoxColumn5.Width = 105;
+            gridViewTextBoxColumn6.FieldName = "Note";
+            gridViewTextBoxColumn6.HeaderText = "Note";
+            gridViewTextBoxColumn6.IsAutoGenerated = true;
+            gridViewTextBoxColumn6.IsVisible = false;
+            gridViewTextBoxColumn6.Name = "Note";
             this.MCCCarName.EditorControl.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
-            gridViewDecimalColumn5,
-            gridViewTextBoxColumn13,
-            gridViewTextBoxColumn14,
-            gridViewTextBoxColumn15});
+            gridViewDecimalColumn2,
+            gridViewTextBoxColumn4,
+            gridViewTextBoxColumn5,
+            gridViewTextBoxColumn6});
             this.MCCCarName.EditorControl.MasterTemplate.DataSource = this.carsBindingSource;
             this.MCCCarName.EditorControl.MasterTemplate.EnableCustomFiltering = true;
             this.MCCCarName.EditorControl.MasterTemplate.EnableGrouping = false;
             this.MCCCarName.EditorControl.MasterTemplate.ShowFilteringRow = false;
-            this.MCCCarName.EditorControl.MasterTemplate.ViewDefinition = tableViewDefinition5;
+            this.MCCCarName.EditorControl.MasterTemplate.ViewDefinition = tableViewDefinition2;
             this.MCCCarName.EditorControl.Name = "NestedRadGridView";
             this.MCCCarName.EditorControl.ReadOnly = true;
             this.MCCCarName.EditorControl.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -502,37 +502,37 @@
             this.MCCDriverName.EditorControl.MasterTemplate.AllowColumnChooser = false;
             this.MCCDriverName.EditorControl.MasterTemplate.AllowSearchRow = true;
             this.MCCDriverName.EditorControl.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill;
-            gridViewDecimalColumn6.DataType = typeof(int);
-            gridViewDecimalColumn6.FieldName = "ID";
-            gridViewDecimalColumn6.HeaderText = "ID";
-            gridViewDecimalColumn6.IsAutoGenerated = true;
-            gridViewDecimalColumn6.IsVisible = false;
-            gridViewDecimalColumn6.Name = "ID";
-            gridViewTextBoxColumn16.FieldName = "DriverName";
-            gridViewTextBoxColumn16.HeaderText = "اسم السائق";
-            gridViewTextBoxColumn16.IsAutoGenerated = true;
-            gridViewTextBoxColumn16.Name = "DriverName";
-            gridViewTextBoxColumn16.Width = 105;
-            gridViewTextBoxColumn17.FieldName = "CardID";
-            gridViewTextBoxColumn17.HeaderText = "رقم البطاقة";
-            gridViewTextBoxColumn17.IsAutoGenerated = true;
-            gridViewTextBoxColumn17.Name = "CardID";
-            gridViewTextBoxColumn17.Width = 105;
-            gridViewTextBoxColumn18.FieldName = "Note";
-            gridViewTextBoxColumn18.HeaderText = "Note";
-            gridViewTextBoxColumn18.IsAutoGenerated = true;
-            gridViewTextBoxColumn18.IsVisible = false;
-            gridViewTextBoxColumn18.Name = "Note";
+            gridViewDecimalColumn3.DataType = typeof(int);
+            gridViewDecimalColumn3.FieldName = "ID";
+            gridViewDecimalColumn3.HeaderText = "ID";
+            gridViewDecimalColumn3.IsAutoGenerated = true;
+            gridViewDecimalColumn3.IsVisible = false;
+            gridViewDecimalColumn3.Name = "ID";
+            gridViewTextBoxColumn7.FieldName = "DriverName";
+            gridViewTextBoxColumn7.HeaderText = "اسم السائق";
+            gridViewTextBoxColumn7.IsAutoGenerated = true;
+            gridViewTextBoxColumn7.Name = "DriverName";
+            gridViewTextBoxColumn7.Width = 105;
+            gridViewTextBoxColumn8.FieldName = "CardID";
+            gridViewTextBoxColumn8.HeaderText = "رقم البطاقة";
+            gridViewTextBoxColumn8.IsAutoGenerated = true;
+            gridViewTextBoxColumn8.Name = "CardID";
+            gridViewTextBoxColumn8.Width = 105;
+            gridViewTextBoxColumn9.FieldName = "Note";
+            gridViewTextBoxColumn9.HeaderText = "Note";
+            gridViewTextBoxColumn9.IsAutoGenerated = true;
+            gridViewTextBoxColumn9.IsVisible = false;
+            gridViewTextBoxColumn9.Name = "Note";
             this.MCCDriverName.EditorControl.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
-            gridViewDecimalColumn6,
-            gridViewTextBoxColumn16,
-            gridViewTextBoxColumn17,
-            gridViewTextBoxColumn18});
+            gridViewDecimalColumn3,
+            gridViewTextBoxColumn7,
+            gridViewTextBoxColumn8,
+            gridViewTextBoxColumn9});
             this.MCCDriverName.EditorControl.MasterTemplate.DataSource = this.driverBindingSource;
             this.MCCDriverName.EditorControl.MasterTemplate.EnableCustomFiltering = true;
             this.MCCDriverName.EditorControl.MasterTemplate.EnableGrouping = false;
             this.MCCDriverName.EditorControl.MasterTemplate.ShowFilteringRow = false;
-            this.MCCDriverName.EditorControl.MasterTemplate.ViewDefinition = tableViewDefinition6;
+            this.MCCDriverName.EditorControl.MasterTemplate.ViewDefinition = tableViewDefinition3;
             this.MCCDriverName.EditorControl.Name = "NestedRadGridView";
             this.MCCDriverName.EditorControl.ReadOnly = true;
             this.MCCDriverName.EditorControl.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -626,9 +626,9 @@
         private Telerik.WinControls.UI.SplitPanel splitPanel1;
         private Telerik.WinControls.UI.RadLabel radLabel5;
         private Telerik.WinControls.UI.RadLabel RadIdLabel;
-        private Contract_ManagementDataSetTableAdapters.CarsTableAdapter carsTableAdapter;
-        private Contract_ManagementDataSetTableAdapters.DriverTableAdapter driverTableAdapter;
-        private Contract_ManagementDataSetTableAdapters.CompaniesTableAdapter companiesTableAdapter;
+        private Contract_Management.Contract_ManagementDataSetTableAdapters.CarsTableAdapter carsTableAdapter;
+        private Contract_Management.Contract_ManagementDataSetTableAdapters.DriverTableAdapter driverTableAdapter;
+        private Contract_Management.Contract_ManagementDataSetTableAdapters.CompaniesTableAdapter companiesTableAdapter;
         public Telerik.WinControls.UI.RadButton radButton3;
         public Telerik.WinControls.UI.RadButton saveButton;
         public Telerik.WinControls.UI.RadTextBox TXBNote;
@@ -637,7 +637,7 @@
         public Telerik.WinControls.UI.RadDropDownList CMBParentType;
         public Telerik.WinControls.UI.RadMultiColumnComboBox MCCDriverName;
         public Telerik.WinControls.UI.RadPanel editPanel;
-        public Contract_ManagementDataSet contract_ManagementDataSet;
+        public Contract_Management.Contract_ManagementDataSet contract_ManagementDataSet;
         public System.Windows.Forms.BindingSource driverBindingSource;
         public System.Windows.Forms.BindingSource carsBindingSource;
         public System.Windows.Forms.BindingSource companiesBindingSource;

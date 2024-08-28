@@ -1,4 +1,4 @@
-﻿namespace DoctorERP_v2_00
+﻿namespace Contract_Management
 {
 
 

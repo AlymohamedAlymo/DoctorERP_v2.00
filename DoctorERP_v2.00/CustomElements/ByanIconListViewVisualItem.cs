@@ -1,22 +1,14 @@
-﻿using DoctorERP_v2_00.Contract_ManagementDataSetTableAdapters;
-using HotelApp.Data;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
-using System.Drawing.Drawing2D;
-using System.Reflection;
-using System.Text;
-using System.Xml.Linq;
 using Telerik.WinControls;
 using Telerik.WinControls.UI;
-using static DoctorERP_v2_00.Contract_ManagementDataSet;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Rebar;
-using static Telerik.WinControls.NativeMethods;
+using static Contract_Management.Contract_ManagementDataSet;
 
-namespace HotelApp
+namespace Contract_Management
 {
-    public class RoomIconListViewVisualItem : IconListViewVisualItem
+    public class ByanIconListViewVisualItem : IconListViewVisualItem
     {
         protected override Type ThemeEffectiveType
         {
@@ -56,7 +48,7 @@ namespace HotelApp
             companyName.NotifyParentOnMouseInput = true;
             companyName.ShouldHandleMouseInput = false;
             companyName.StretchHorizontally = true;
-            companyName.CustomFont = Utils.MainFont;
+            //companyName.CustomFont = Utils.MainFont;
             companyName.CustomFontSize = 10;
             companyName.CustomFontStyle = FontStyle.Regular;
             //companyName.Margin = new System.Windows.Forms.Padding(0, 10, 0, 0);
@@ -65,7 +57,7 @@ namespace HotelApp
             cardStatus.NotifyParentOnMouseInput = true;
             cardStatus.ShouldHandleMouseInput = false;
             cardStatus.StretchHorizontally = false;
-            cardStatus.CustomFont = Utils.MainFont;
+            //cardStatus.CustomFont = Utils.MainFont;
             cardStatus.CustomFontSize = 10;
             cardStatus.CustomFontStyle = FontStyle.Italic;
             //cardStatus.Margin = new System.Windows.Forms.Padding(0,5,0-5,0);
@@ -88,7 +80,7 @@ namespace HotelApp
             parentName.Alignment = System.Drawing.ContentAlignment.MiddleCenter;
             parentName.NotifyParentOnMouseInput = true;
             parentName.ShouldHandleMouseInput = false;
-            parentName.CustomFont = Utils.MainFont;
+            //parentName.CustomFont = Utils.MainFont;
             parentName.CustomFontSize = 11;
             parentName.CustomFontStyle = FontStyle.Bold;
 
@@ -104,12 +96,12 @@ namespace HotelApp
             PeriodDays.ShouldHandleMouseInput = false;
             PeriodDays.StretchHorizontally = false;
             PeriodDays.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            PeriodDays.CustomFont = Utils.MainFont;
+            //PeriodDays.CustomFont = Utils.MainFont;
             PeriodDays.CustomFontSize = 9;
             PeriodDays.CustomFontStyle = FontStyle.Regular;
 
             endDate.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            endDate.CustomFont = Utils.MainFont;
+            //endDate.CustomFont = Utils.MainFont;
             endDate.CustomFontSize = 9;
             endDate.CustomFontStyle = FontStyle.Regular;
             ////endDate.Margin = new System.Windows.Forms.Padding(0, 0, 0, 0);    
@@ -157,7 +149,7 @@ namespace HotelApp
                 int Period = (byan.EndDate - DateTime.Now).Days;
                 endDate.Text = byan.EndDate.ToString("yyyy/MM/dd");
                 PeriodDays.Text = Period + " يوم";
-                endDate.Image = DoctorERP_v2_00.Properties.Resources.GlyphCalendar_small;
+                endDate.Image = Contract_Management.Properties.Resources.GlyphCalendar_small;
 
 
                 if (Period <= 0)
@@ -165,21 +157,21 @@ namespace HotelApp
                     cardStatus.Text = "منتهي";
 
                     this.BackColor = Color.FromArgb(224, 79, 95);
-                    PeriodDays.Image = DoctorERP_v2_00.Properties.Resources.GlyphClose;
+                    PeriodDays.Image = Contract_Management.Properties.Resources.GlyphClose;
                     companyName.ForeColor = Color.White;
                     cardStatus.ForeColor = Color.White;
                     parentName.ForeColor = Color.White;
 
                     if (byan.ParentType == "سائق")
                     {
-                        icon = DoctorERP_v2_00.Properties.Resources.DriverRed_32;
-                        ScreenTipIcon = DoctorERP_v2_00.Properties.Resources.DriverRed_30;
+                        icon = Contract_Management.Properties.Resources.DriverRed_32;
+                        ScreenTipIcon = Contract_Management.Properties.Resources.DriverRed_30;
 
                     }
                     else
                     {
-                        icon = DoctorERP_v2_00.Properties.Resources.CarRed_32;
-                        ScreenTipIcon = DoctorERP_v2_00.Properties.Resources.CarRed_30;
+                        icon = Contract_Management.Properties.Resources.CarRed_32;
+                        ScreenTipIcon = Contract_Management.Properties.Resources.CarRed_30;
 
                     }
 
@@ -192,21 +184,21 @@ if (Period <= 15)
 
                         this.BackColor = Color.DarkOrange;
 
-                        PeriodDays.Image = DoctorERP_v2_00.Properties.Resources.GlyphWrench;
+                        PeriodDays.Image = Contract_Management.Properties.Resources.GlyphWrench;
                         companyName.ForeColor = Color.Black;
                         cardStatus.ForeColor = Color.Black;
                         parentName.ForeColor = Color.Black;
 
                         if (byan.ParentType == "سائق")
                         {
-                            icon = DoctorERP_v2_00.Properties.Resources.DriverOrange_32;
-                            ScreenTipIcon = DoctorERP_v2_00.Properties.Resources.DriverOrange_30;
+                            icon = Contract_Management.Properties.Resources.DriverOrange_32;
+                            ScreenTipIcon = Contract_Management.Properties.Resources.DriverOrange_30;
 
                         }
                         else
                         {
-                            icon = DoctorERP_v2_00.Properties.Resources.CarOrange_32;
-                            ScreenTipIcon = DoctorERP_v2_00.Properties.Resources.CarOrange_30;
+                            icon = Contract_Management.Properties.Resources.CarOrange_32;
+                            ScreenTipIcon = Contract_Management.Properties.Resources.CarOrange_30;
 
                         }
 
@@ -218,21 +210,21 @@ else
                     cardStatus.Text = "ساري";
 
                     this.BackColor = Color.SeaGreen;
-                    PeriodDays.Image = DoctorERP_v2_00.Properties.Resources.GlyphCheck_small;
+                    PeriodDays.Image = Contract_Management.Properties.Resources.GlyphCheck_small;
                     companyName.ForeColor = Color.White;
                     cardStatus.ForeColor = Color.White;
                     parentName.ForeColor = Color.White;
 
                     if (byan.ParentType == "سائق")
                     {
-                        icon = DoctorERP_v2_00.Properties.Resources.DriverGreen_50;
-                        ScreenTipIcon = DoctorERP_v2_00.Properties.Resources.DriverGreen_30;
+                        icon = Contract_Management.Properties.Resources.DriverGreen_50;
+                        ScreenTipIcon = Contract_Management.Properties.Resources.DriverGreen_30;
 
                     }
                     else
                     {
-                        icon = DoctorERP_v2_00.Properties.Resources.CarGreen_50;
-                        ScreenTipIcon = DoctorERP_v2_00.Properties.Resources.CarGreen_30;
+                        icon = Contract_Management.Properties.Resources.CarGreen_50;
+                        ScreenTipIcon = Contract_Management.Properties.Resources.CarGreen_30;
 
                     }
                     }

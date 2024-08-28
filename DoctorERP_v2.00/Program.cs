@@ -6,15 +6,21 @@ namespace DoctorERP_v2_00
 {
     internal static class Program
     {
+
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
         static void Main()
         {
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new HotelApp.HotelAppForm());
+            Application.Run(new Contract_Management.AppForm());
         }
+
+
+
+
     }
 }

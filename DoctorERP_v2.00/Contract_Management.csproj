@@ -10,8 +10,8 @@
     <ProjectGuid>{2D5AB4FD-E813-4460-82C9-1A6606C4B439}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DoctorERP_v2_00</RootNamespace>
-    <AssemblyName>DoctorERP_v2_00</AssemblyName>
+    <RootNamespace>Contract_Management</RootNamespace>
+    <AssemblyName>Contract_Management</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>
@@ -106,15 +106,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Contract_ManagementDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="CustomBehaviors\CustomGridDataRowBehavior.cs" />
-    <Compile Include="CustomElements\CustomResourceHeaderCell.cs" />
-    <Compile Include="CustomElements\NameGridDataCellElement.cs" />
-    <Compile Include="CustomElements\OptionsSimpleListViewVisualItem.cs" />
-    <Compile Include="CustomElements\RoomGridDataCellElement.cs" />
-    <Compile Include="CustomElements\RoomIconListViewVisualItem.cs" />
-    <Compile Include="Data\HouseKeeper.cs" />
-    <Compile Include="Data\Room.cs" />
-    <Compile Include="Data\Utils.cs" />
+    <Compile Include="CustomElements\CompanySimpleListViewVisualItem.cs" />
+    <Compile Include="CustomElements\ByanIconListViewVisualItem.cs" />
     <Compile Include="FlyoutDialogs\FlyoutAddByanat.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -139,35 +132,17 @@
     <Compile Include="FlyoutDialogs\FlyoutAddCompany.Designer.cs">
       <DependentUpon>FlyoutAddCompany.cs</DependentUpon>
     </Compile>
-    <Compile Include="HotelAppForm.cs">
+    <Compile Include="AppForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="HotelAppForm.Designer.cs">
-      <DependentUpon>HotelAppForm.cs</DependentUpon>
+    <Compile Include="AppForm.Designer.cs">
+      <DependentUpon>AppForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\EditGuestInfo.cs">
+    <Compile Include="UserControls\EditInfo.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\EditGuestInfo.Designer.cs">
-      <DependentUpon>EditGuestInfo.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UserControls\SearchDropDownList.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="UserControls\SearchTextBox.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="UserControls\UserControlBookingsByType.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControls\UserControlBookingsByType.Designer.cs">
-      <DependentUpon>UserControlBookingsByType.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UserControls\UserControlCurrentStatus.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControls\UserControlCurrentStatus.Designer.cs">
-      <DependentUpon>UserControlCurrentStatus.cs</DependentUpon>
+    <Compile Include="UserControls\EditInfo.Designer.cs">
+      <DependentUpon>EditInfo.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="FlyoutDialogs\FlyoutAddByanat.resx">
       <DependentUpon>FlyoutAddByanat.cs</DependentUpon>
@@ -181,8 +156,8 @@
     <EmbeddedResource Include="FlyoutDialogs\FlyoutAddCompany.resx">
       <DependentUpon>FlyoutAddCompany.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="HotelAppForm.resx">
-      <DependentUpon>HotelAppForm.cs</DependentUpon>
+    <EmbeddedResource Include="AppForm.resx">
+      <DependentUpon>AppForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <Compile Include="Program.cs" />
@@ -197,14 +172,8 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="UserControls\EditGuestInfo.resx">
-      <DependentUpon>EditGuestInfo.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\UserControlBookingsByType.resx">
-      <DependentUpon>UserControlBookingsByType.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\UserControlCurrentStatus.resx">
-      <DependentUpon>UserControlCurrentStatus.cs</DependentUpon>
+    <EmbeddedResource Include="UserControls\EditInfo.resx">
+      <DependentUpon>EditInfo.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.manifest" />
     <None Include="Contract_Management.db" />

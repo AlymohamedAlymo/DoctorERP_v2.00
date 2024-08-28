@@ -1,6 +1,6 @@
-﻿namespace CustomControls
+﻿namespace Contract_Management.CustomControls
 {
-    partial class EditGuestInfo
+    partial class EditInfo
     {
         /// <summary> 
         /// Required designer variable.
@@ -42,7 +42,7 @@
             this.nameSeparator = new Telerik.WinControls.UI.RadSeparator();
             this.nameLabel = new Telerik.WinControls.UI.RadLabel();
             this.errorLabel = new Telerik.WinControls.UI.RadLabel();
-            this.radButton1 = new Telerik.WinControls.UI.RadButton();
+            this.deleteButton = new Telerik.WinControls.UI.RadButton();
             ((System.ComponentModel.ISupportInitialize)(this.headerPanel)).BeginInit();
             this.headerPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guestInfoLabel)).BeginInit();
@@ -61,7 +61,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.nameSeparator)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nameLabel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorLabel)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radButton1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.deleteButton)).BeginInit();
             this.SuspendLayout();
             // 
             // headerPanel
@@ -96,7 +96,7 @@
             this.closeButton.Name = "closeButton";
             this.closeButton.Size = new System.Drawing.Size(30, 40);
             this.closeButton.TabIndex = 1;
-            this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
+            this.closeButton.Click += new System.EventHandler(this.CloseButton_Click);
             // 
             // saveButton
             // 
@@ -104,9 +104,9 @@
             this.saveButton.Location = new System.Drawing.Point(152, 553);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(100, 24);
-            this.saveButton.TabIndex = 2;
-            this.saveButton.Text = "حفظ";
-            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
+            this.saveButton.TabIndex = 4;
+            this.saveButton.Text = "تعديل";
+            this.saveButton.Click += new System.EventHandler(this.SaveButton_Click);
             // 
             // editPanel
             // 
@@ -121,7 +121,6 @@
             this.editPanel.Name = "editPanel";
             this.editPanel.Size = new System.Drawing.Size(270, 290);
             this.editPanel.TabIndex = 3;
-            this.editPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.editPanel_Paint);
             // 
             // noteTextBox
             // 
@@ -130,11 +129,10 @@
             this.noteTextBox.Location = new System.Drawing.Point(0, 200);
             this.noteTextBox.Multiline = true;
             this.noteTextBox.Name = "noteTextBox";
-            this.noteTextBox.NullText = "ادخل الملاحظات";
+            this.noteTextBox.NullText = "ادخل الملاحظات ان وجدت";
             this.noteTextBox.ShowNullText = true;
             this.noteTextBox.Size = new System.Drawing.Size(270, 87);
-            this.noteTextBox.TabIndex = 7;
-            this.noteTextBox.TextChanged += new System.EventHandler(this.noteTextBox_TextChanged);
+            this.noteTextBox.TabIndex = 3;
             // 
             // noteLabel
             // 
@@ -155,8 +153,9 @@
             this.idTextBox.Dock = System.Windows.Forms.DockStyle.Top;
             this.idTextBox.Location = new System.Drawing.Point(0, 120);
             this.idTextBox.Name = "idTextBox";
+            this.idTextBox.NullText = "ادخل رقم البطاقة";
             this.idTextBox.Size = new System.Drawing.Size(270, 40);
-            this.idTextBox.TabIndex = 3;
+            this.idTextBox.TabIndex = 2;
             // 
             // idSeparator
             // 
@@ -164,7 +163,6 @@
             this.idSeparator.Name = "idSeparator";
             this.idSeparator.Size = new System.Drawing.Size(230, 4);
             this.idSeparator.TabIndex = 2;
-            this.idSeparator.Click += new System.EventHandler(this.idSeparator_Click);
             // 
             // idLabel
             // 
@@ -185,8 +183,9 @@
             this.nameTextBox.Dock = System.Windows.Forms.DockStyle.Top;
             this.nameTextBox.Location = new System.Drawing.Point(0, 40);
             this.nameTextBox.Name = "nameTextBox";
+            this.nameTextBox.NullText = "ادخل اسم السائق";
             this.nameTextBox.Size = new System.Drawing.Size(270, 40);
-            this.nameTextBox.TabIndex = 1;
+            this.nameTextBox.TabIndex = 0;
             // 
             // nameSeparator
             // 
@@ -216,28 +215,29 @@
             this.errorLabel.TabIndex = 6;
             this.errorLabel.TextAlignment = System.Drawing.ContentAlignment.TopRight;
             // 
-            // radButton1
+            // deleteButton
             // 
-            this.radButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.radButton1.Location = new System.Drawing.Point(20, 553);
-            this.radButton1.Name = "radButton1";
-            this.radButton1.Size = new System.Drawing.Size(100, 24);
-            this.radButton1.TabIndex = 6;
-            this.radButton1.Text = "إلغاء";
+            this.deleteButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.deleteButton.Location = new System.Drawing.Point(20, 553);
+            this.deleteButton.Name = "deleteButton";
+            this.deleteButton.Size = new System.Drawing.Size(100, 24);
+            this.deleteButton.TabIndex = 5;
+            this.deleteButton.Text = "حذف";
+            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 
-            // EditGuestInfo
+            // EditInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.radButton1);
+            this.Controls.Add(this.deleteButton);
             this.Controls.Add(this.errorLabel);
             this.Controls.Add(this.editPanel);
             this.Controls.Add(this.saveButton);
             this.Controls.Add(this.headerPanel);
-            this.Name = "EditGuestInfo";
+            this.Name = "EditInfo";
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.Size = new System.Drawing.Size(270, 604);
-            this.Load += new System.EventHandler(this.EditGuestInfo_Load);
+            this.Load += new System.EventHandler(this.EditInfo_Load);
             ((System.ComponentModel.ISupportInitialize)(this.headerPanel)).EndInit();
             this.headerPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.guestInfoLabel)).EndInit();
@@ -258,7 +258,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.nameSeparator)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nameLabel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorLabel)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radButton1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.deleteButton)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -267,18 +267,18 @@
 
         private Telerik.WinControls.UI.RadPanel headerPanel;
         private Telerik.WinControls.UI.RadButton closeButton;
-        private Telerik.WinControls.UI.RadButton saveButton;
         private Telerik.WinControls.UI.RadPanel editPanel;
         private Telerik.WinControls.UI.RadSeparator nameSeparator;
         private Telerik.WinControls.UI.RadSeparator idSeparator;
         private Telerik.WinControls.UI.RadLabel errorLabel;
-        private Telerik.WinControls.UI.RadButton radButton1;
-        public Telerik.WinControls.UI.RadLabel noteLabel;
-        public Telerik.WinControls.UI.RadTextBox idTextBox;
-        public Telerik.WinControls.UI.RadTextBox nameTextBox;
-        public Telerik.WinControls.UI.RadTextBox noteTextBox;
-        public Telerik.WinControls.UI.RadLabel idLabel;
-        public Telerik.WinControls.UI.RadLabel nameLabel;
-        public Telerik.WinControls.UI.RadLabel guestInfoLabel;
+        private Telerik.WinControls.UI.RadTextBox idTextBox;
+        private Telerik.WinControls.UI.RadTextBox nameTextBox;
+        private Telerik.WinControls.UI.RadTextBox noteTextBox;
+        private Telerik.WinControls.UI.RadLabel noteLabel;
+        private Telerik.WinControls.UI.RadLabel idLabel;
+        private Telerik.WinControls.UI.RadLabel nameLabel;
+        private Telerik.WinControls.UI.RadLabel guestInfoLabel;
+        public Telerik.WinControls.UI.RadButton saveButton;
+        public Telerik.WinControls.UI.RadButton deleteButton;
     }
 }

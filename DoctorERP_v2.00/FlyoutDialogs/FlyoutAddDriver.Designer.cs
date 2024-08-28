@@ -1,4 +1,4 @@
-﻿namespace DoctorERP_v2_00.Dialogs
+﻿namespace Contract_Management.Dialogs
 {
     partial class FlyoutAddDriver
     {
